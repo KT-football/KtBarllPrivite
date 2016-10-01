@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#00000000"
+              android:gravity="bottom"
+              android:orientation="vertical"
+              android:padding="@dimen/padding_widget_default">
+
+    <Button
+        android:id="@+id/button_capture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/photo_gallery_selector"
+        android:padding="@dimen/padding_layout_default"
+        android:text="@string/text_capture"
+        android:textColor="@color/homepager_title_color_new"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="#DAD9DB"/>
+
+    <Button
+        android:id="@+id/button_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/photo_camera_selector"
+        android:padding="@dimen/padding_layout_default"
+        android:text="@string/text_gallery"
+        android:textColor="@color/homepager_title_color_new"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_widget_default"
+        android:background="@drawable/photo_cancel_selector"
+        android:padding="@dimen/padding_layout_default"
+        android:text="@string/text_cancel"
+        android:textColor="@color/homepager_title_color_new"
+        android:textSize="16sp"/>
+
+</LinearLayout>

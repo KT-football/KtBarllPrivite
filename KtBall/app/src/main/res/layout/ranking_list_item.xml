@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/ranking_list_cell"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageView49"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="12dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="排名:"
+        android:textSize="15dp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/textView52"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/imageView49"
+        android:layout_toEndOf="@+id/imageView49" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="战斗力："
+        android:textSize="15dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView53"
+        android:layout_alignBottom="@+id/textView52"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

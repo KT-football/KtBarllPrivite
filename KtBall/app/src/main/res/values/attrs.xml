@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="newProgressBar">
+        <attr name="outsideColor" format="color"/>
+        <attr name="centreColor" format="color"/>
+        <attr name="buttonColor" format="color"/>
+        <attr name="progressColorS" format="color"/>
+        <attr name="progressColorP" format="color"/>
+        <attr name="progressColorF" format="color"/>
+        <attr name="buttonWidth" format="dimension"/>
+        <attr name="buttonMax" format="integer"/>
+        <attr name="lenCentre" format="dimension"/>
+        <attr name="lenOutside" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="spiderProgressBar">
+        <attr name="spiderProgressBarColor" format="color"/>
+
+    </declare-styleable>
+</resources>

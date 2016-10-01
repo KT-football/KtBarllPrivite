@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/explosion01_1" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_2" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_3" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_4" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_5" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_6" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_7" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_8" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_9" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_10" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_11" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_12" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_13" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_14" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_15" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_16" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_17" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_18" android:duration="50" />
+    <item android:drawable="@drawable/explosion01_19" android:duration="50" />
+
+
+</animation-list>

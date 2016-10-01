@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#10000000</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorOrange">#E2551F</color>
+    <color name="colorOrange2">#EC8A29</color>
+    <color name="colorOrange3">#FCC375</color>
+    <color name="colorOrangeFont">#FEEA3B</color>
+    <color name="colorHui">#949393</color>
+    <color name="colorQianHui">#F8F8F8</color>
+    <color name="colorYellow">#CDA236</color>
+    <color name="colorZong">#FBD9D9</color>
+    <color name="footTextColor">#666666</color>
+    <color name="train_start_text_color">#888888</color>
+    <color name="transparent_background">#dd000000</color>
+    <color name="homepager_title_color_new">#3e98f0</color>
+    <color name="setting_text_bt_color">#63accb</color>
+    <color name="province_line_border">#D0D0D0</color>
+    <color name="actionBar">#CCCCCC</color>
+    <color name="block_book_text_color">#fdd102</color>
+
+    <color name="colorBank">#000000</color>
+    <color name="blue">#0033ff</color>
+    <color name="black">#000000</color>
+    <color name="transBlack">#66000000</color>
+    <color name="login_bg">#F0F0F2</color>
+    <color name="mytext">#999999</color>
+    <color name="footTextColorSelect">#ee3017</color>
+    <color name="myOder">#ff5200</color>
+    <color name="myOderItem">#ee7624</color>
+    <color name="myOderItemBG">#f2f4f6</color>
+    <color name="myOder$">#d8292f</color>
+    <color name="nomel">#ededed</color>
+    <color name="goumai">#ff8400</color>
+    <color name="goumai_press">#dc790e</color>
+    <color name="baojia">#ee3017</color>
+    <color name="baojia_press">#ce2f1b</color>
+    <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+
+    <color name="date_1">#F24949</color>
+    <color name="date_2">#40000000</color>
+
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="bg_scanuser">#272e32</color>
+</resources>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">KT足球-你身边的足球教练</string>
+
+    <string name="text_cancel">取消</string>
+    <string name="text_capture">拍照</string>
+    <string name="text_gallery">从相册选择</string>
+    <string name="wait_dialog_title">正在请求，请稍后…</string>
+    <string name="request_method_not_allow">请求的方法被不服务器允许。</string>
+    <string name="request_succeed">请求成功</string>
+    <string name="request_failed">数据异常</string>
+    <string name="train_details_text">以漫画的形式将动作要点完全解析是练习前的必读课程！</string>
+    <string name="train_details_text_2_1">KTBall想要去广场练习</string>
+    <string name="train_details_text_2_2">却遇到了要去练习广场舞的小女孩，KT豹将怎么解决这次冲突呢...</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="button_ok">OK</string>
+    <!-- Download error -->
+    <string name="download_error">下载出错了：%1$s</string>
+    <string name="download_error_server">当前排队下载的用户过多，请稍后再试！</string>
+    <string name="download_error_network">网络不可用，请检查网络！</string>
+    <string name="download_error_storage">存储卡错误，请检查存储卡！</string>
+    <string name="download_error_space">存储卡空间不足！</string>
+    <string name="download_error_timeout">下载超时！</string>
+    <string name="download_error_un_know_host">找不到服务器。</string>
+    <string name="download_error_url">URL地址错误。</string>
+    <string name="download_error_argument">下载参数错误。</string>
+    <string name="download_error_un">未知错误。</string>
+</resources>

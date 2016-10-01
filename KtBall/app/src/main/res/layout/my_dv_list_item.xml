@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:paddingRight="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/vcr_color">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:id="@+id/imageView52"
+        android:layout_marginRight="8dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView54"
+        android:src="@drawable/right_icon"
+        android:layout_marginRight="8dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="名称"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/textView61"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageView52"
+        android:layout_toEndOf="@+id/imageView52" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="地址"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/textView62"
+        android:layout_below="@+id/textView61"
+        android:layout_toRightOf="@+id/imageView52"
+        android:layout_toEndOf="@+id/imageView52" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="时间"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/textView63"
+        android:layout_below="@+id/textView62"
+        android:layout_alignLeft="@+id/textView62"
+        android:layout_alignStart="@+id/textView62" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="比分"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/textView64"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView62"
+        android:layout_toEndOf="@+id/textView62" />
+</RelativeLayout>

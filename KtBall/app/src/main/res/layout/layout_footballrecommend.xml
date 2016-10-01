@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f5f6"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/footTextColor">
+
+        <ImageView
+            android:id="@+id/imageView45"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:onClick="doBack"
+            android:src="@drawable/retu" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="什么是KT足球"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/layout_footballrecommend_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="        由前女足国脚leo创新研发的一种线下与线上结合的小型足球比赛实现方式，选手通过App报名，在气场里进行为时3分钟的1vs1、2vs2比赛。进球计2分，穿裆计1分，通常情况下，得分多者获胜，但是，如果运动员带球穿档过人并且在球碰到场地之前控制住球，则直接获胜（也就是KT）;比赛结束之后您可以通过app或登录KT足球官网查看自己的比赛视频。" />
+
+        <TextView
+            android:id="@+id/layout_footballrecommend_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="观看案例视频"
+            android:textColor="@color/setting_text_bt_color"
+            android:layout_below="@+id/layout_footballrecommend_tv"/>
+
+        <TextView
+            android:id="@+id/layout_footballrecommend_fa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/setting_text_bt_color"
+            android:layout_below="@+id/layout_footballrecommend_tv"
+            android:layout_toRightOf="@+id/layout_footballrecommend_sp"
+            android:text="查看参赛方案"
+            android:layout_marginLeft="10dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

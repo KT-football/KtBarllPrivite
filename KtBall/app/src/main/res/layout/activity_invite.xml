@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Activity.InviteActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/footTextColor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout6">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/imageView45"
+            android:src="@drawable/retu"
+            android:onClick="doBack"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邀请"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:id="@+id/textView36"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@color/colorZong"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/relativeLayout6"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/relativeLayout40">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="搜索"
+            android:onClick="doSearch"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:id="@+id/textView57"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/editText8"
+            android:hint="请输入手机号或昵称搜索"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:background="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/textView57"
+            android:layout_toStartOf="@+id/textView57" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout40" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/firend_bg"
+        android:layout_marginBottom="4dp"
+        android:paddingLeft="16dp"
+        android:visibility="gone"
+        android:onClick="doFirendDetails"
+        android:id="@+id/relativeLayout009"
+        android:layout_below="@+id/relativeLayout40"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageView53"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="230dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView53"
+            android:layout_toEndOf="@+id/imageView53">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="姓名"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:id="@+id/textView58"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="战斗力"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:id="@+id/textView59"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邀请"
+            android:onClick="doInviteFirend"
+            android:layout_marginRight="16dp"
+            android:textSize="17dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:id="@+id/textView60"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

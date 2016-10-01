@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_set"
+        android:title="设置"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_share"
+        android:title="分享"
+        app:showAsAction="never"/>
+
+    <!--<item android:id="@+id/action_my_msg"-->
+        <!--android:title="我的消息"-->
+        <!--app:showAsAction="never"/>-->
+
+    <item android:id="@+id/action_judge"
+        android:title="裁判系统"
+        app:showAsAction="never"/>
+
+</menu>

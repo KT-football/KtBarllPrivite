@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".UI.Activity.GamesDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout2">
+
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:onClick="doBack"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <ImageView
+                android:id="@+id/imageView30"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/retu" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="赛事详情"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:id="@+id/textView22"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView34"
+            android:src="@drawable/fengxiang"
+            android:onClick="doFenXing"
+            android:scaleType="fitXY"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:id="@+id/textView23"
+            android:background="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="16dp"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout45">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/imageView35"
+            android:src="@drawable/game_introduce_"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="name"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="18dp"
+            android:id="@+id/textView117"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageView35"
+            android:layout_toEndOf="@+id/imageView35" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="120dp"
+        android:id="@+id/imageView36"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="6dp"
+        android:layout_below="@+id/relativeLayout45"
+        android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingLeft="16dp"
+        android:layout_below="@+id/imageView36"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout47">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayout46">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView37"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/game_introduce_"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="赛事介绍："
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:id="@+id/textView118"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView37"
+                android:layout_toEndOf="@+id/imageView37" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="赛事介绍"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:gravity="center_vertical"
+            android:id="@+id/textView119"
+            android:layout_marginLeft="39dp"
+            android:layout_marginStart="39dp"
+            android:layout_below="@+id/relativeLayout46"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/white"
+        android:id="@+id/textView120"
+        android:layout_below="@+id/relativeLayout47"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingLeft="16dp"
+        android:layout_below="@+id/textView120"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout49">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayout48">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView38"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/game_time"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="赛事时间："
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:id="@+id/textView121"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView38"
+                android:layout_toEndOf="@+id/imageView38" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="赛事时间"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:gravity="center_vertical"
+            android:id="@+id/textView122"
+            android:layout_below="@+id/relativeLayout48"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/textView123"
+        android:background="@android:color/white"
+        android:layout_below="@+id/relativeLayout49"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingLeft="16dp"
+        android:layout_below="@+id/textView123"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout51">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayout50">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView39"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/game_place"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="赛事地点："
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:id="@+id/textView124"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView39"
+                android:layout_toEndOf="@+id/imageView39" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="赛事地点"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:gravity="center_vertical"
+            android:id="@+id/textView125"
+            android:layout_below="@+id/relativeLayout50"
+            android:layout_alignLeft="@+id/relativeLayout50"
+            android:layout_alignStart="@+id/relativeLayout50"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="(点击查看地址)"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:onClick="doAddress"
+            android:textColor="@color/colorOrangeFont"
+            android:layout_marginRight="25dp"
+            android:id="@+id/textView129"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/relativeLayout50"
+            android:layout_alignEnd="@+id/relativeLayout50" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/textView126"
+        android:background="@android:color/white"
+        android:layout_below="@+id/relativeLayout51"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingLeft="16dp"
+        android:layout_below="@+id/textView126"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayout52">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView91"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/game_money"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="人均消费(价格)："
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:gravity="center_vertical"
+                android:id="@+id/textView127"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView91"
+                android:layout_toEndOf="@+id/imageView91" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="人均消费"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:gravity="center_vertical"
+            android:id="@+id/textView128"
+            android:layout_below="@+id/relativeLayout52"
+            android:layout_alignLeft="@+id/relativeLayout52"
+            android:layout_alignStart="@+id/relativeLayout52"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

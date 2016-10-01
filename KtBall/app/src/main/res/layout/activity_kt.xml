@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kt">
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="doBack">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_back" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_A"
+        style="@style/activity_kt_rl"
+        android:layout_marginLeft="7dp">
+
+        <com.kt.ktball.myclass.MyCircleImageView
+            android:id="@+id/game_avatar1_imageView"
+            style="@style/activity_kt_header"
+            android:onClick="doScan"
+            android:src="@drawable/game_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info_A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/game_avatar1_imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_scanuser"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView40"
+                style="@style/activity_kt_rl_rl_tv" />
+
+            <ImageView
+                android:id="@+id/dengji_A"
+                style="@style/activity_kt_rl_rl_dengji" />
+
+            <TextView
+                android:id="@+id/zandouli_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dengji_A"
+                android:layout_centerHorizontal="true"
+                android:text="战斗力"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <TextView
+                android:id="@+id/zandouli_num_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zandouli_A"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <ImageView
+                android:id="@+id/boom_A"
+                style="@style/activity_kt_rl_rl_dengji"
+                android:layout_above="@+id/zandouli_A" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_B"
+        style="@style/activity_kt_rl"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/relativelayout_A">
+
+        <com.kt.ktball.myclass.MyCircleImageView
+            android:id="@+id/game_avatar2_imageView"
+            style="@style/activity_kt_header"
+            android:onClick="doScan"
+            android:src="@drawable/game_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info_B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/game_avatar2_imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_scanuser"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView41"
+                style="@style/activity_kt_rl_rl_tv" />
+
+            <ImageView
+                android:id="@+id/dengji_B"
+                style="@style/activity_kt_rl_rl_dengji" />
+
+            <TextView
+                android:id="@+id/zandouli_B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dengji_B"
+                android:layout_centerHorizontal="true"
+                android:text="战斗力"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <TextView
+                android:id="@+id/zandouli_num_B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zandouli_B"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <ImageView
+                android:id="@+id/boom_B"
+                style="@style/activity_kt_rl_rl_dengji"
+                android:layout_above="@+id/zandouli_B" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_C"
+        style="@style/activity_kt_rl"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/relativelayout_B">
+
+        <com.kt.ktball.myclass.MyCircleImageView
+            android:id="@+id/game_avatar3_imageView"
+            style="@style/activity_kt_header"
+            android:onClick="doScan"
+            android:src="@drawable/game_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info_C"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/game_avatar3_imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_scanuser"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView42"
+                style="@style/activity_kt_rl_rl_tv" />
+
+            <ImageView
+                android:id="@+id/dengji_C"
+                style="@style/activity_kt_rl_rl_dengji" />
+
+            <TextView
+                android:id="@+id/zandouli_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dengji_C"
+                android:layout_centerHorizontal="true"
+                android:text="战斗力"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <TextView
+                android:id="@+id/zandouli_num_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zandouli_C"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <ImageView
+                android:id="@+id/boom_C"
+                style="@style/activity_kt_rl_rl_dengji"
+                android:layout_above="@+id/zandouli_C" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_F"
+        style="@style/activity_kt_rl"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="7dp">
+
+        <com.kt.ktball.myclass.MyCircleImageView
+            android:id="@+id/game_avatar6_imageView"
+            style="@style/activity_kt_header"
+            android:onClick="doScan"
+            android:src="@drawable/game_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info_F"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/game_avatar6_imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_scanuser"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView45"
+                style="@style/activity_kt_rl_rl_tv" />
+
+            <ImageView
+                android:id="@+id/dengji_F"
+                style="@style/activity_kt_rl_rl_dengji" />
+
+            <TextView
+                android:id="@+id/zandouli_F"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dengji_F"
+                android:layout_centerHorizontal="true"
+                android:text="战斗力"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <TextView
+                android:id="@+id/zandouli_num_F"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zandouli_F"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <ImageView
+                android:id="@+id/boom_F"
+                style="@style/activity_kt_rl_rl_dengji"
+                android:layout_above="@+id/zandouli_F" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_E"
+        style="@style/activity_kt_rl"
+        android:layout_marginLeft="8dp"
+        android:layout_toLeftOf="@+id/relativelayout_F">
+
+        <com.kt.ktball.myclass.MyCircleImageView
+            android:id="@+id/game_avatar5_imageView"
+            style="@style/activity_kt_header"
+            android:onClick="doScan"
+            android:src="@drawable/game_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info_E"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/game_avatar5_imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_scanuser"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView44"
+                style="@style/activity_kt_rl_rl_tv" />
+
+            <ImageView
+                android:id="@+id/dengji_E"
+                style="@style/activity_kt_rl_rl_dengji" />
+
+            <TextView
+                android:id="@+id/zandouli_E"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dengji_E"
+                android:layout_centerHorizontal="true"
+                android:text="战斗力"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <TextView
+                android:id="@+id/zandouli_num_E"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zandouli_E"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <ImageView
+                android:id="@+id/boom_E"
+                style="@style/activity_kt_rl_rl_dengji"
+                android:layout_above="@+id/zandouli_E" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_D"
+        style="@style/activity_kt_rl"
+        android:layout_toLeftOf="@+id/relativelayout_E">
+
+        <com.kt.ktball.myclass.MyCircleImageView
+            android:id="@+id/game_avatar4_imageView"
+            style="@style/activity_kt_header"
+            android:onClick="doScan"
+            android:src="@drawable/game_avatar" />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info_D"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/game_avatar4_imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_scanuser"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView43"
+                style="@style/activity_kt_rl_rl_tv" />
+
+            <ImageView
+                android:id="@+id/dengji_D"
+                style="@style/activity_kt_rl_rl_dengji" />
+
+            <TextView
+                android:id="@+id/zandouli_D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dengji_D"
+                android:layout_centerHorizontal="true"
+                android:text="战斗力"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <TextView
+                android:id="@+id/zandouli_num_D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/zandouli_D"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/activity_kt_text_size" />
+
+            <ImageView
+                android:id="@+id/boom_D"
+                style="@style/activity_kt_rl_rl_dengji"
+                android:layout_above="@+id/zandouli_D" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_kt_ready"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:src="@drawable/ready"/>
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/activity_kt_camare"
+            android:layout_width="88dp"
+            android:layout_height="62dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/icon_camare" />
+
+        <RadioGroup
+            android:layout_marginTop="10dp"
+            android:id="@+id/activity_kt_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/activity_kt_smooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:background="@drawable/select_smooth"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/activity_kt_hdtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_hdtv"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/activity_kt_very_high"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_very_higt"
+                android:button="@null" />
+        </RadioGroup>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '24.0.3'
 
     defaultConfig {
         applicationId "com.ktfootball.app"
@@ -15,9 +15,9 @@ android {
     signingConfigs {
         simple {
             storeFile file("key/KTFootBall.jks")
-            storePassword "ktfootball2016"
-            keyAlias "KT足球官方版"
-            keyPassword ""
+            storePassword "123456"
+            keyAlias "ktdebug"
+            keyPassword "123456"
         }
     }
     buildTypes {
@@ -38,6 +38,11 @@ android {
             jniLibs.srcDirs = ['libs']
             java.srcDirs = ['src/main/java', 'src/main/java-gen']
         }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        incremental true
     }
 
 }

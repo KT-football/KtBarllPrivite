@@ -15,16 +15,7 @@
             <option value="$PROJECT_DIR$/youku" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Frame" />
-            <option value="$PROJECT_DIR$/MyDaoGenerator" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/sharedsdk" />
-            <option value="$PROJECT_DIR$/youku" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

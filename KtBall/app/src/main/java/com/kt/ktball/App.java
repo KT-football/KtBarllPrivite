@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.preference.PreferenceManager;
+import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.baidu.mapapi.SDKInitializer;
@@ -32,6 +33,7 @@ public class App extends MultiDexApplication {
     public void onCreate() {
         // TODO Auto-generated method stub
         super.onCreate();
+        MultiDex.install(this);
         SDKInitializer.initialize(this);
         NoHttp.initialize(this);
         configuration = new YoukuPlayerBaseConfiguration(this) {

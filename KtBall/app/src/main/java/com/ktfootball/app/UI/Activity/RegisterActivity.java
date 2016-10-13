@@ -1,6 +1,7 @@
 package com.ktfootball.app.UI.Activity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity {
 
@@ -50,6 +52,8 @@ public class RegisterActivity extends BaseActivity {
     TextView buttomRegister;
     @Bind(R.id.button2)
     Button buttonGetCode;
+    @Bind(R.id.tv_isregister)
+    TextView mTv_register;
 
     MyAlertDialog myAlertDialog;
     Timer timer;//定时器
@@ -74,6 +78,7 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void initData(Bundle savedInstanceState) {
         myAlertDialog = new MyAlertDialog(this);
+        mTv_register.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
     }
 
     public void doFinsh(View view) {//退出
@@ -86,9 +91,9 @@ public class RegisterActivity extends BaseActivity {
 
     public void doGetCode(View view) {//获取验证码
         String phone = editTextPhone.getText().toString();
-        if (TextUtils.isEmpty(phone)){
+        if (TextUtils.isEmpty(phone)) {
             myAlertDialog.doAlertDialog("请输入手机号");
-        } else if (phone.length() == 11){
+        } else if (phone.length() == 11) {
             doButtonChange();
             time = 60;
             String url = "http://www.ktfootball.com/apiv2/users/send_mobile_captcha?phone="
@@ -115,11 +120,11 @@ public class RegisterActivity extends BaseActivity {
 
     private void doButtonChange() {//点击发送验证码后buttom状态的改变
         if (timer == null) timer = new Timer();
-        if (timerTask != null)timerTask.cancel();
+        if (timerTask != null) timerTask.cancel();
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                if (time > 1){
+                if (time > 1) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -139,7 +144,7 @@ public class RegisterActivity extends BaseActivity {
                 time--;
             }
         };
-        timer.schedule(timerTask,0,1000);
+        timer.schedule(timerTask, 0, 1000);
     }
 
     public void doRegister(View view) {//注册
@@ -149,28 +154,28 @@ public class RegisterActivity extends BaseActivity {
         String password = editTextPassword.getText().toString();
         String passwordAgain = editTextPasswordAgain.getText().toString();
         boolean flag = checkBox.isChecked();
-        if (TextUtils.isEmpty(phone)){
+        if (TextUtils.isEmpty(phone)) {
             myAlertDialog.doAlertDialog("请输入手机号");
-        } else if (TextUtils.isEmpty(code)){
+        } else if (TextUtils.isEmpty(code)) {
             myAlertDialog.doAlertDialog("请输入验证码");
-        } else if (TextUtils.isEmpty(name)){
+        } else if (TextUtils.isEmpty(name)) {
             myAlertDialog.doAlertDialog("请输入昵称或者姓名");
-        } else if (TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             myAlertDialog.doAlertDialog("请输入密码");
-        } else if (!password.equals(passwordAgain)){
+        } else if (!password.equals(passwordAgain)) {
             myAlertDialog.doAlertDialog("两次密码输入不一致");
-        } else if (!flag){
+        } else if (!flag) {
             myAlertDialog.doAlertDialog("请点击同意注册及参赛须知");
         } else {
             String url = "http://www.ktfootball.com/apiv2/users/mregister";
             JSONObject jsonObject1 = new JSONObject();
             try {
-                jsonObject1.put("nickname",name);
-                jsonObject1.put("phone",phone);
-                jsonObject1.put("password",password);
-                jsonObject1.put("password_confirmation",passwordAgain);
-                jsonObject1.put("captcha",code);
-                jsonObject1.put("authenticity_token","K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                jsonObject1.put("nickname", name);
+                jsonObject1.put("phone", phone);
+                jsonObject1.put("password", password);
+                jsonObject1.put("password_confirmation", passwordAgain);
+                jsonObject1.put("captcha", code);
+                jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -181,23 +186,23 @@ public class RegisterActivity extends BaseActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                            Log.d("==============",jsonObject.toString());
+                            Log.d("==============", jsonObject.toString());
                             try {
                                 JSONObject jsonObject2 = new JSONObject(jsonObject.toString());
                                 String response = jsonObject2.getString("response");
-                                if (response.equals("error")){
+                                if (response.equals("error")) {
                                     String msg = jsonObject2.getString("msg");
                                     myAlertDialog.doAlertDialog(msg);
-                                } else if (response.equals("success")){
+                                } else if (response.equals("success")) {
                                     myAlertDialog.doAlertDialog("注册成功");
                                     Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
-                                            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                             finish();
                                         }
-                                    },1500);
+                                    }, 1500);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -206,10 +211,10 @@ public class RegisterActivity extends BaseActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-                    Log.d("==============",volleyError.toString());
+                    Log.d("==============", volleyError.toString());
                 }
             }
-            ){
+            ) {
                 @Override
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<String, String>();
@@ -220,5 +225,10 @@ public class RegisterActivity extends BaseActivity {
             };
             VolleyUtil.getInstance(this).addRequest(jsonRequest);
         }
+    }
+
+    @OnClick(R.id.tv_isregister)
+    public void isreister() {
+        finish();
     }
 }

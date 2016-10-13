@@ -275,7 +275,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         return mHandler;
     }
 
-    protected void dimActivity(Dialog dialog, float dimAmount) {
+    public void dimActivity(Dialog dialog, float dimAmount) {
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
         lp.dimAmount = dimAmount;
         dialog.getWindow().setAttributes(lp);

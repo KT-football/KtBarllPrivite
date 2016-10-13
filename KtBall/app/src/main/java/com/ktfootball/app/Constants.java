@@ -72,7 +72,6 @@ public class Constants {
     public static final String VIDEO_COMMENT_REPLY = KTHOST + "stars/video_comment_reply";
 
 
-
     //包场赛事登录(post)
     public static final String LOGIN = KTHOST + "bc_jd/login";
     //比赛地点
@@ -132,7 +131,7 @@ public class Constants {
     public static final int TO_PAY_AVTIVITY = 1002;
     public static final int TO_WEEKSELECT_AVTIVITY = 1003;
     public static final int TO_WANTTOMAKE_AVTIVITY = 1004;
-
+    public static final String IS_FIRST = "if_first";
 
 
     //用户id
@@ -180,7 +179,6 @@ public class Constants {
     public static final int REQUEST_CODE_SCAN = 0x0000;
     public static final String DECODED_CONTENT_KEY = "codedContent";
     public static final String DECODED_BITMAP_KEY = "codedBitmap";
-
 
 
     public static final int CAPTUREACTIVITY_RESULT_OK = 1001;

@@ -22,6 +22,8 @@ import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.manager.ThirdPartyManager;
 import com.frame.app.view.LoadingDialog;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseFragment extends Fragment {
 
 	/** UI 线程ID */
@@ -84,6 +86,7 @@ public abstract class BaseFragment extends Fragment {
 
 	protected void setContentView(@LayoutRes int layoutResID) {
 		rootView = LayoutInflater.from(getThis()).inflate(layoutResID, null);
+		ButterKnife.bind(this,rootView);
 	}
 
 	/**

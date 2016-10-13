@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/lunbo_3">
+
+
+
+    <com.ktfootball.app.Views.DiffuseView
+        android:id="@+id/diffuseView"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_alignParentBottom="true"
+        app:diffuse_color="@color/gold"
+        app:diffuse_coreColor="@color/gold"
+        app:diffuse_coreImage="@mipmap/lunbo_go"
+        app:diffuse_coreRadius="100"
+        app:diffuse_maxWidth="300"
+        app:diffuse_width="4" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@mipmap/lunbo_hand" />
+    </LinearLayout>
+</RelativeLayout>

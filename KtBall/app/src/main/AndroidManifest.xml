@@ -65,6 +65,17 @@
         <activity
             android:name=".UI.Activity.LoginActivity"
             android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".UI.Activity.CarouselActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".UI.Activity.StartActivity"
+            android:theme="@style/AppThemeTwo"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

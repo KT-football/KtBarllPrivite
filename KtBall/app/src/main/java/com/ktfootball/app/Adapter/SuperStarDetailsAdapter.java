@@ -40,16 +40,12 @@ public class SuperStarDetailsAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) {
-            return HEADER;
-        } else {
             return ITEM;
-        }
     }
 
     @Override
     public int getItemCount() {
-        return videoses.size() + 1;
+        return videoses.size();
     }
 
     @Override
@@ -70,14 +66,14 @@ public class SuperStarDetailsAdapter extends RecyclerView.Adapter<RecyclerView.V
             ((SuperStarHeaderViewHolder) holder).name.setText(starUserProfile.nickname);
             BitmapManager.getInstance().displayUserLogo(((SuperStarHeaderViewHolder) holder).header, Constants.HOST+starUserProfile.avatar);
         }else{
-            BitmapManager.getInstance().displayKTItem(((SuperStarViewHolder) holder).img, Constants.HOST+videoses.get(position-1).picture);
-            ((SuperStarViewHolder) holder).time.setText(videoses.get(position-1).upload_date);
-            ((SuperStarViewHolder) holder).name.setText(videoses.get(position-1).place);
-            ((SuperStarViewHolder) holder).new_item.setVisibility(View.GONE);
+            BitmapManager.getInstance().displayKTItem(((SuperStarViewHolder) holder).img, Constants.HOST+videoses.get(position).picture);
+            ((SuperStarViewHolder) holder).time.setText(videoses.get(position).upload_date);
+            ((SuperStarViewHolder) holder).name.setText(videoses.get(position).place);
+//            ((SuperStarViewHolder) holder).new_item.setVisibility(View.GONE);
             ((SuperStarViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CommentedVideos.Videos videos = videoses.get(position-1);
+                    CommentedVideos.Videos videos = videoses.get(position);
                     Intent intent = new Intent(activity,VideoDetailsActivity.class);
                     intent.putExtra(Constants.EXTRA_VIDEOS_ID,videos.id);
                     intent.putExtra(Constants.EXTRA_SCORES,videos.scores);
@@ -90,7 +86,7 @@ public class SuperStarDetailsAdapter extends RecyclerView.Adapter<RecyclerView.V
     public class SuperStarViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView img;
-        public ImageView new_item;
+//        public ImageView new_item;
         public TextView name;
         public TextView time;
 
@@ -98,7 +94,7 @@ public class SuperStarDetailsAdapter extends RecyclerView.Adapter<RecyclerView.V
             super(itemView);
 
             img = (ImageView) itemView.findViewById(R.id.layout_superstardetails_img);
-            new_item = (ImageView) itemView.findViewById(R.id.layout_superstardetails_item_new);
+//            new_item = (ImageView) itemView.findViewById(R.id.layout_superstardetails_item_new);
             name = (TextView) itemView.findViewById(R.id.layout_superstardetails_name);
             time = (TextView) itemView.findViewById(R.id.layout_superstardetails_time);
         }

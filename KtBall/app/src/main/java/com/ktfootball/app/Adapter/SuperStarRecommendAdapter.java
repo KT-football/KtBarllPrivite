@@ -49,11 +49,11 @@ public class SuperStarRecommendAdapter extends RecyclerView.Adapter<SuperStarRec
         BitmapManager.getInstance().displayKTItem(((SuperStarViewHolder) holder).img, Constants.HOST + videoses.get(position).picture);
         ((SuperStarViewHolder) holder).time.setText(videoses.get(position).upload_date);
         ((SuperStarViewHolder) holder).name.setText(videoses.get(position).place);
-        if(videoses.get(position).is_commented == 1){
-            holder.new_star.setVisibility(View.GONE);
-        }else{
-            holder.new_star.setVisibility(View.VISIBLE);
-        }
+//        if(videoses.get(position).is_commented == 1){
+//            holder.new_star.setVisibility(View.GONE);
+//        }else{
+//            holder.new_star.setVisibility(View.VISIBLE);
+//        }
         ((SuperStarViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +71,7 @@ public class SuperStarRecommendAdapter extends RecyclerView.Adapter<SuperStarRec
         public ImageView img;
         public TextView name;
         public TextView time;
-        public ImageView new_star;
+//        public ImageView new_star;
 
         public SuperStarViewHolder(View itemView) {
             super(itemView);
@@ -79,7 +79,7 @@ public class SuperStarRecommendAdapter extends RecyclerView.Adapter<SuperStarRec
             img = (ImageView) itemView.findViewById(R.id.layout_superstardetails_img);
             name = (TextView) itemView.findViewById(R.id.layout_superstardetails_name);
             time = (TextView) itemView.findViewById(R.id.layout_superstardetails_time);
-            new_star = (ImageView) itemView.findViewById(R.id.layout_superstardetails_item_new);
+//            new_star = (ImageView) itemView.findViewById(R.id.layout_superstardetails_item_new);
         }
     }
 }

@@ -60,7 +60,7 @@ public class SpiderProgressBar extends View {
         radius = center - start;
 
         //画蜘蛛网
-        paint.setColor(Color.WHITE);
+        paint.setColor(getResources().getColor(R.color.gold));
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(3);
@@ -136,10 +136,10 @@ public class SpiderProgressBar extends View {
 //                12+radius / (float) max * (float) goal * (float) Math.sin(Math.PI / 180 * 2 * (360 / (max - 1))) + center,paint,(float)360/5*2);
 
 //        float textWidth = paint.measureText("进球");
-        paint.setColor(Color.WHITE);
+        paint.setColor(getResources().getColor(R.color.gold));
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(2);
-        paint.setTextSize(20);
+        paint.setTextSize(30);
 
 
         drawText(canvas,"胜率",radius * (float) Math.cos(Math.PI / 180 * 0 * (360 / (max - 1))) + center+6,

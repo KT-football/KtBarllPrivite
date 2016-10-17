@@ -4,7 +4,7 @@
     <color name="color_line">#e1e1e3</color>
     <color name="color_line_h">#f0eff4</color>
     <color name="toolbar_bg_color">#3392e9</color>
-    <color name="toolbar_bg_color_2">#dd000000</color>
+    <color name="toolbar_bg_color_2">#000000</color>
     <color name="toolbar_bg_color_3">#66000000</color>
     <color name="toolbar_state_bg_color">@color/black</color>
     <color name="text_color">#6b4509</color>
@@ -57,7 +57,7 @@
     <!-- 纳瓦白 -->
     <color name="peachpuff">#FFDAB9</color>
     <!-- 桃色 -->
-    <color name="gold">#FFD700</color>
+    <color name="gold">#FFC701</color>
     <!-- 金色 -->
     <color name="pink">#FFC0CB</color>
     <!-- 粉红色 -->

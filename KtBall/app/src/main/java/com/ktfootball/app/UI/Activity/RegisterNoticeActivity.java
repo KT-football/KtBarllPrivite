@@ -29,7 +29,8 @@ public class RegisterNoticeActivity extends BaseActivity {
 
     }
 
-    public void doFinsh(View view) {//退出
+
+    public void doBack(View view) {
         finish();
     }
 }

@@ -3,6 +3,7 @@ package com.ktfootball.app.Adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.frame.app.base.Adapter.BaseRecyclerViewAdapter;
@@ -39,12 +40,12 @@ public class StarViewAdapter extends BaseRecyclerViewAdapter<StarUsers.Star,Star
 
     public class StarViewhoder extends BaseViewHolder{
 
-        public MyCircleImageView header;
+        public ImageView header;
         public TextView name;
 
         public StarViewhoder(RecyclerView recyclerView, View rootView, BaseRecyclerViewAdapter mBaseRecyclerViewAdapter) {
             super(recyclerView, rootView, mBaseRecyclerViewAdapter);
-            header = (MyCircleImageView) rootView.findViewById(R.id.item_staritem_header);
+            header = (ImageView) rootView.findViewById(R.id.item_staritem_header);
             name = (TextView) rootView.findViewById(R.id.item_staritem_name);
         }
     }

@@ -27,6 +27,7 @@ import com.frame.app.base.activity.BaseActivity;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Event.AddTeamEvent;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -42,6 +43,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.Bind;
+import de.greenrobot.event.EventBus;
 
 public class NewTeamActivity extends BaseActivity {
 
@@ -84,6 +86,15 @@ public class NewTeamActivity extends BaseActivity {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID,0);
         myAlertDialog = new MyAlertDialog(this);
         myDialog = new MyDialog(this,"正在创建");
+        if (getIntent()!=null) {
+            if (getIntent().getStringExtra("type").equals("1")) {
+                textView.setText("2v2");
+                game_type = 1;
+            } else {
+                textView.setText("3v3");
+                game_type = 2;
+            }
+        }
     }
 
     public void doNewTeamFinsh(View view) {//创建战队完成
@@ -118,6 +129,8 @@ public class NewTeamActivity extends BaseActivity {
                                 String response = jsonObject11.getString("response");
                                 if (response.equals("success")){
                                     myAlertDialog.doAlertDialog("创建战队成功");
+                                    EventBus.getDefault().post(new AddTeamEvent());
+                                    finish();
                                 } else if (response.equals("error")){
                                     String msg = jsonObject11.getString("msg");
                                     myAlertDialog.doAlertDialog(msg);

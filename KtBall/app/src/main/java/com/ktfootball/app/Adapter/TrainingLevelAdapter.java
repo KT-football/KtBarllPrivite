@@ -42,7 +42,7 @@ public class TrainingLevelAdapter extends RecyclerView.Adapter<RecyclerView.View
         TrainHolder trainHolder = (TrainHolder) holder;
         final UserAppCartoonsStudy.AppCartoons appCarToons = list.get(position);
         trainHolder.name.setText(appCarToons.name);
-        trainHolder.name_2.setText(appCarToons.sub_name);
+//        trainHolder.name_2.setText(appCarToons.sub_name);
         trainHolder.bar.setCurrentValues(Float.parseFloat(appCarToons.now_level_progress));
         int[] colcr = CommonUtils.getTrainColor(appCarToons.now_level_color);
         trainHolder.bar.setColors(colcr);
@@ -62,14 +62,14 @@ public class TrainingLevelAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     public class TrainHolder extends RecyclerView.ViewHolder {
         public TextView name;
-        public TextView name_2;
+//        public TextView name_2;
         public ImageView img;
         public ColorArcProgressBar bar;
 
         public TrainHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.item_train_default_name);
-            name_2 = (TextView) itemView.findViewById(R.id.item_train_default_name_2);
+//            name_2 = (TextView) itemView.findViewById(R.id.item_train_default_name_2);
             img = (ImageView) itemView.findViewById(R.id.item_train_default_img);
             bar = (ColorArcProgressBar) itemView.findViewById(R.id.item_train_default_bar);
         }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator">
+    <!-- 旋转，根据自己的中心位置旋转，持续时间为5秒 -->
+    <rotate
+        android:fromDegrees="0"
+        android:toDegrees="+350"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="5000" />
+</set>

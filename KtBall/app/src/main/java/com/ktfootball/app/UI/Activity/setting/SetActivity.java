@@ -14,6 +14,7 @@ import com.kt.ktball.entity.UserLogin;
 import com.ktfootball.app.Manager.BitmapManager;
 import com.kt.ktball.myclass.MyCircleImageView;
 import com.ktfootball.app.R;
+import com.ktfootball.app.UI.Activity.MyQRCodeActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -32,7 +33,7 @@ public class SetActivity extends BaseActivity {
     @Bind(R.id.layout_erweima)
     ImageView erweima;
 
-
+    public static final int NICKNAME_START = 1111;
     @Override
     protected void initHandler(Message msg) {
 
@@ -76,5 +77,23 @@ public class SetActivity extends BaseActivity {
         Intent intent = new Intent(getThis(), UserinfoChangeActivity.class);
         intent.putExtra(UserinfoChangeActivity.USER_ID,App.getUserLogin().user_id+"");
         startActivity(intent);
+    }
+
+//
+//    @OnClick(R.id.layout_userinfochange_rl_qrcode)
+//    public void qrcode(View v) {
+//        Intent intent = new Intent(getThis(), MyQRCodeActivity.class);
+//        startActivityForResult(intent, NICKNAME_START);
+//    }
+
+    @OnClick(R.id.layout_userinfochange_changepassword)
+    public void changepassword(View v) {
+        Intent intent = new Intent(getThis(), ChangePassWordActivity.class);
+        startActivityForResult(intent, NICKNAME_START);
+    }
+
+    @OnClick(R.id.layout_userinfochange_bingphone)
+    public void bingphone(View v) {
+
     }
 }

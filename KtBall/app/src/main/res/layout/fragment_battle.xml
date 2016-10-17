@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/battle_tab_bg">
+
+        <TextView
+            android:id="@+id/tv_battle_tab1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 VS 1"
+            android:textColor="@color/gold"
+            android:textSize="12dp" />
+
+        <View
+            android:layout_width="0.1dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="#e1e1e1">
+
+        </View>
+
+        <TextView
+            android:id="@+id/tv_battle_tab2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2 VS 2"
+            android:textColor="#666666"
+            android:textSize="12dp" />
+
+        <View
+            android:layout_width="0.1dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="#e1e1e1">
+
+        </View>
+
+        <TextView
+            android:id="@+id/tv_battle_tab3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="3 VS 3"
+            android:textColor="#666666"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <com.ktfootball.app.Views.NoScrollViewPager
+        android:id="@+id/noscroolview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1">
+
+    </com.ktfootball.app.Views.NoScrollViewPager>
+</LinearLayout>

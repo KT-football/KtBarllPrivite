@@ -6,20 +6,21 @@
     tools:context=".UI.Activity.TeamDetailsActivity">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout6"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/footTextColor"
-        android:layout_alignParentTop="true"
+        android:layout_height="44dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout6">
+        android:layout_alignParentTop="true"
+        android:background="@color/black">
 
         <RelativeLayout
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:onClick="doBack"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:onClick="doBack"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView30"
@@ -30,241 +31,268 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="战队名字"
             android:textColor="@android:color/white"
-            android:textSize="20dp"
-            android:id="@+id/textView36"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:textSize="18dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout34"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/team_details"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout34">
+        android:layout_marginTop="10dp">
 
         <ImageView
-            android:layout_width="85dp"
-            android:layout_height="85dp"
             android:id="@+id/imageView66"
-            android:layout_marginLeft="109dp"
-            android:layout_marginStart="109dp"
-            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#9f000000"
+            android:gravity="right|center_vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textView89"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/team_lv"
+                android:drawablePadding="5dp"
+                android:text="战队积分:"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/textView90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imageView67"
+                android:layout_toStartOf="@+id/imageView67"
+                android:text="0"
+                android:textColor="@color/gold"
+                android:textSize="14dp" />
+        </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="8dp"
-        android:layout_below="@+id/relativeLayout34"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout36">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="战队积分"
-            android:textSize="17dp"
-            android:id="@+id/textView89"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/imageView67"
-            android:src="@drawable/zhandui"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="17dp"
-            android:id="@+id/textView90"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/imageView67"
-            android:layout_toStartOf="@+id/imageView67" />
-
-    </RelativeLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
         android:id="@+id/textView91"
-        android:background="@color/colorHui"
-        android:layout_below="@+id/relativeLayout36"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingRight="8dp"
-        android:paddingLeft="16dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/textView91"
+        android:layout_height="5dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout37">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我的战队"
-            android:textSize="17dp"
-            android:id="@+id/textView92"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/imageView68"
-            android:src="@drawable/zhandui"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="name"
-            android:textSize="17dp"
-            android:id="@+id/textView93"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/imageView68"
-            android:layout_toStartOf="@+id/imageView68" />
-    </RelativeLayout>
+        android:layout_below="@+id/relativeLayout34"
+        android:background="#f5f5f5" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout37"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_below="@+id/relativeLayout37"
+        android:layout_height="40dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView91"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="8dp">
 
-        <RelativeLayout
-            android:layout_width="100dp"
-            android:layout_height="140dp"
-            android:layout_alignParentTop="true"
+        <TextView
+            android:id="@+id/textView92"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/team_people"
+            android:drawablePadding="5dp"
+            android:text="战队成员"
+            android:textColor="#333333"
+            android:textSize="15dp" />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/imageView69"
-                android:src="@drawable/add_firend"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text=""
-                android:gravity="center"
-                android:id="@+id/textView94"
-                android:layout_below="@+id/imageView69"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text=""
-                android:gravity="center"
-                android:id="@+id/textView95"
-                android:layout_below="@+id/textView94"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="100dp"
-            android:layout_height="140dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/imageView71"
-                android:src="@drawable/add_firend"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text=""
-                android:gravity="center"
-                android:id="@+id/textView98"
-                android:layout_below="@+id/imageView71"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text=""
-                android:gravity="center"
-                android:id="@+id/textView99"
-                android:layout_below="@+id/textView98"
-                android:layout_alignLeft="@+id/textView98"
-                android:layout_alignStart="@+id/textView98" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="100dp"
-            android:layout_height="140dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/imageView70"
-                android:src="@drawable/add_firend"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text=""
-                android:gravity="center"
-                android:id="@+id/textView96"
-                android:layout_below="@+id/imageView70"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text=""
-                android:gravity="center"
-                android:id="@+id/textView97"
-                android:layout_below="@+id/textView96"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/textView93"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageView68"
+            android:layout_toStartOf="@+id/imageView68"
+            android:text="name"
+            android:textSize="17dp"
+            android:visibility="gone" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout37"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView69"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/oval_glod"
+                android:padding="2dp"
+                android:src="@drawable/result_btnkt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imageView69"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView94"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="eqweqw"
+                    android:textColor="#333333"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/textView95"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="3123123312"
+                    android:textColor="@color/gold"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView71"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/oval_glod"
+                android:padding="2dp"
+                android:src="@drawable/result_btnkt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imageView71"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView98"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="eqweqw"
+                    android:textColor="#333333"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/textView99"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="3123123312"
+                    android:textColor="@color/gold"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView70"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/oval_glod"
+                android:padding="2dp"
+                android:src="@drawable/result_btnkt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imageView70"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView96"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="eqweqw"
+                    android:textColor="#333333"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/textView97"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="3123123312"
+                    android:textColor="@color/gold"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

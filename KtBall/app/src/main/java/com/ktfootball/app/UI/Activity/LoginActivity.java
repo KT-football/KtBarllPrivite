@@ -128,7 +128,7 @@ public class LoginActivity extends BaseActivity {
                             //把俱乐部的id用意图传递过去
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
-//                            finish();
+                            finish();
                         }
                     }
                 }, new Response.ErrorListener() {

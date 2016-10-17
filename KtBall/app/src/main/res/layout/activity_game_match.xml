@@ -1,110 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Activity.GameMatchActivity">
+    android:background="#F5F5F5"
+    android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout6"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/footTextColor"
-        android:layout_alignParentTop="true"
+        android:layout_height="44dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout6">
+        android:layout_alignParentTop="true"
+        android:background="@color/black">
 
-        <RelativeLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:onClick="doBack"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <ImageView
-                android:id="@+id/imageView30"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/retu" />
-        </RelativeLayout>
 
         <TextView
+            android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="赛事列表"
-            android:textColor="@android:color/white"
-            android:textSize="20dp"
-            android:id="@+id/textView36"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerInParent="true"
+            android:text="赛事"
+            android:textColor="@color/gold"
+            android:textSize="18dp" />
 
-        <RelativeLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:onClick="doBack"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"></RelativeLayout>
+        <TextView
+            android:id="@+id/activity_game_match_to_baochang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="包场"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
 
     </RelativeLayout>
 
-    <TextView
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/rl_modulename_refresh"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="离我最近"
-        android:textSize="17dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:textColor="@android:color/white"
-        android:background="@color/colorHui"
-        android:id="@+id/textView112"
-        android:layout_below="@+id/relativeLayout6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="match_parent">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView9"
-        android:layout_below="@+id/textView112"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="更多选择"
-        android:textSize="17dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:textColor="@android:color/white"
-        android:background="@color/colorHui"
-        android:id="@+id/textView113"
-        android:layout_below="@+id/listView9"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/yellow"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="22sp"
-        android:id="@+id/activity_game_match_to_baochang"
-        android:textColor="@color/dimgray"
-        android:text="我 要 包 场"/>
+                <TextView
+                    android:id="@+id/textView112"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:text="离我最近"
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView11"
-        android:layout_above="@+id/activity_game_match_to_baochang"
-        android:layout_below="@+id/textView113"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+                <com.frame.app.view.MyListView
+                    android:id="@+id/listView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="0.1dp"
+                    android:listSelector="#f5f5f5" />
 
-</RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView113"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="更多选择"
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
+
+
+                <com.frame.app.view.MyListView
+                    android:id="@+id/listView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="0.1dp"
+                    android:listSelector="#f5f5f5" />
+
+            </LinearLayout>
+        </ScrollView>
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+</LinearLayout>

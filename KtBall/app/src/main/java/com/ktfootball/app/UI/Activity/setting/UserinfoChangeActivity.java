@@ -1,8 +1,11 @@
 package com.ktfootball.app.UI.Activity.setting;
 
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +32,7 @@ import com.kt.ktball.myclass.MyCircleImageView;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Net.CallServer;
 import com.ktfootball.app.Net.HttpListener;
+import com.ktfootball.app.UI.Activity.UserProfiles;
 import com.ktfootball.app.Views.SelectAvatarDialog;
 import com.ktfootball.app.Views.SelectSexDialog;
 import com.kt.ktball.views.wheelview.OnWheelScrollListener;
@@ -86,6 +90,8 @@ public class UserinfoChangeActivity extends BaseActivity {
     private String userId;
     public static final String USER_ID = "userid";
     private UserInfo userInfo;
+    @Bind(R.id.tv_version)
+    TextView tv_version;
 
     @Override
     protected void initHandler(Message msg) {
@@ -107,6 +113,13 @@ public class UserinfoChangeActivity extends BaseActivity {
         userId = getIntent().getStringExtra(USER_ID);
         getuserInfo(userId);
         BitmapManager.getInstance().displayUserLogo(header, Constants.HOST + App.getUserLogin().avatar);
+        PackageManager manager = this.getPackageManager();
+        try {
+            PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+            tv_version.setText("- 版本 "+info.versionName+" -"); // 版本名
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void doBack(View view) {
@@ -139,22 +152,6 @@ public class UserinfoChangeActivity extends BaseActivity {
         showDialog();
     }
 
-    @OnClick(R.id.layout_userinfochange_rl_qrcode)
-    public void qrcode(View v) {
-        Intent intent = new Intent(getThis(), MyQRCodeActivity.class);
-        startActivityForResult(intent, NICKNAME_START);
-    }
-
-    @OnClick(R.id.layout_userinfochange_changepassword)
-    public void changepassword(View v) {
-        Intent intent = new Intent(getThis(), ChangePassWordActivity.class);
-        startActivityForResult(intent, NICKNAME_START);
-    }
-
-    @OnClick(R.id.layout_userinfochange_bingphone)
-    public void bingphone(View v) {
-
-    }
 
     private void showDialog() {
         if (dialog == null) {
@@ -498,6 +495,26 @@ public class UserinfoChangeActivity extends BaseActivity {
                     break;
             }
         }
+    }
+
+    @OnClick(R.id.layout_set_question)
+    public void toQurestionActivity(View v) {
+        startActivity(new Intent(getThis(), QuestionActivity.class));
+    }
+
+    @OnClick(R.id.layout_set_about)
+    public void toAboutActivity(View v) {
+        startActivity(new Intent(getThis(), AboutActivity.class));
+    }
+
+    @OnClick(R.id.btn_goout)
+    public void goout() {
+//        android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    @OnClick(R.id.layout_settting)
+    public void settig() {
+        startActivity(new Intent(getThis(), SetActivity.class));
     }
 
 

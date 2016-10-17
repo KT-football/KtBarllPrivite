@@ -7,15 +7,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/footTextColor"
+        android:layout_height="44dp"
+        android:background="@color/black"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/relativeLayout6">
 
         <RelativeLayout
-        android:layout_width="60dp"
+        android:layout_width="44dp"
         android:layout_height="match_parent"
         android:onClick="doBack"
         android:layout_alignParentLeft="true"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="战队名字"
             android:textColor="@android:color/white"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:id="@+id/textView36"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
@@ -45,8 +45,8 @@
             android:text="完成"
             android:onClick="doNewTeamFinsh"
             android:textColor="@android:color/white"
-            android:textSize="20dp"
-            android:layout_marginRight="16dp"
+            android:textSize="18dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/textView100"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -56,9 +56,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
+        android:layout_height="44dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:layout_below="@+id/relativeLayout6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -68,29 +68,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="头像"
-            android:textSize="17dp"
-            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textColor="#333333"
             android:id="@+id/textView101"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/imageView72"
             android:onClick="doGetPhoto"
-            android:src="@drawable/iconfont_add"
+            android:src="@mipmap/zhandui_add"
+            android:padding="10dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@+id/relativeLayout38"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#dcdcdc"></View>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_height="44dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_below="@+id/relativeLayout38"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -100,30 +107,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="战队名称"
-            android:textSize="17dp"
-            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textColor="#333333"
             android:id="@+id/textView102"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
          <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/editText10"
             android:hint="请填写战队名称"
-            android:textSize="17dp"
+            android:textSize="13dp"
             android:background="@drawable/no_border"
+             android:gravity="right|center_vertical"
             android:layout_centerVertical="true"
+             android:textColor="#333333"
+             android:textColorHint="#999999"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
+        android:layout_height="44dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:layout_below="@+id/relativeLayout39"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -132,20 +142,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="战队类型"
-            android:textSize="17dp"
-            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textColor="#333333"
             android:id="@+id/textView103"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/imageView73"
             android:src="@drawable/new_team_buttom"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:onClick="doSeleteType"
+            android:padding="10dp"
             android:layout_alignParentEnd="true" />
 
         <TextView
@@ -153,9 +165,10 @@
             android:layout_height="wrap_content"
             android:text="--请选择战队类型--"
             android:id="@+id/textView104"
-            android:onClick="doSeleteType"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/imageView73"
+            android:textColor="#999999"
+            android:textSize="13dp"
             android:layout_toStartOf="@+id/imageView73" />
     </RelativeLayout>
 

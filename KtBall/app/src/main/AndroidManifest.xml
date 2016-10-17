@@ -83,6 +83,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UI.Activity.HengHuadActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".UI.Activity.VideoActivity"
             android:screenOrientation="portrait" />
         <activity

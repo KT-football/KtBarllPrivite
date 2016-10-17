@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.frame.app.base.fragment.BaseFragment;
+import com.frame.app.view.MyListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kt.ktball.adapter.GameMatchAdapter;
@@ -36,25 +37,32 @@ import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.BlockBook.MyOrderActivity;
 import com.ktfootball.app.UI.Activity.GamesDetailsActivity;
 import com.ktfootball.app.UI.Activity.LoginActivity;
+import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
+import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
+
 /**
  * Created by leo on 16/10/13.
  */
 
-public class GameMatchFragment extends BaseFragment{
+public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
     public static final String EXTRA_GAME_ID = "game_id";
     private double latitude;//纬度
     private double longitude;//经度
     long userId;
-    ListView listView1;
-    ListView listView2;
+    MyListView listView1;
+    MyListView listView2;
     GameMatchAdapter gameMatchAdapter1;
     GameMatchAdapter gameMatchAdapter2;
     private TextView baocahng;
+    private BGARefreshLayout mRefreshLayout;
+    private String url;
 
     @Override
     protected void initHandler(Message msg) {
@@ -64,17 +72,27 @@ public class GameMatchFragment extends BaseFragment{
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_game_match);
+        initRefreshLayout();
         listView1 = getViewById(R.id.listView9);
         listView2 = getViewById(R.id.listView11);
         baocahng = getViewById(R.id.activity_game_match_to_baochang);
     }
+
+    private void initRefreshLayout() {
+        mRefreshLayout = getViewById(R.id.rl_modulename_refresh);
+        mRefreshLayout.setDelegate(this);
+        BGARefreshViewHolder refreshViewHolder = new MyBGARefreshViewHolder(getActivity(), true);
+        mRefreshLayout.setRefreshViewHolder(refreshViewHolder);
+
+    }
+
 
     @Override
     protected void setListener() {
         baocahng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MyOrderActivity.class);
+                Intent intent = new Intent(getActivity(), MyOrderActivity.class);
                 startActivity(intent);
             }
         });
@@ -123,7 +141,6 @@ public class GameMatchFragment extends BaseFragment{
         criteria.setBearingRequired(false);
         criteria.setCostAllowed(true);
         criteria.setPowerRequirement(Criteria.POWER_LOW); // 低功耗
-
         String provider = locationManager.getBestProvider(criteria, true); // 获取GPS信息
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -164,9 +181,26 @@ public class GameMatchFragment extends BaseFragment{
 
     private void initView() {
         userId = PreferenceManager.getDefaultSharedPreferences(getActivity()).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
-        String url = "http://www.ktfootball.com/apiv2/games/list?user_id=" +
+        url = "http://www.ktfootball.com/apiv2/games/list?user_id=" +
                 userId + "&lon=" + longitude + "&lat=" + latitude +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+        mRefreshLayout.beginRefreshing();
+    }
+
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        initData();
+
+    }
+
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        return false;
+    }
+
+
+
+    private void initData(){
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -176,7 +210,7 @@ public class GameMatchFragment extends BaseFragment{
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         closeLoadingDialog();
-                        Log.d("=========", jsonObject.toString());
+                        mRefreshLayout.endRefreshing();
                         GamePlace gamePlace = new Gson().fromJson(jsonObject.toString(),
                                 new TypeToken<GamePlace>() {
                                 }.getType());
@@ -215,10 +249,11 @@ public class GameMatchFragment extends BaseFragment{
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 closeLoadingDialog();
-                Log.d("=========", volleyError.toString());
+                mRefreshLayout.endRefreshing();
             }
         }
         );
         VolleyUtil.getInstance(getActivity()).addRequest(jsonRequest);
     }
+
 }

@@ -1,9 +1,8 @@
 package com.ktfootball.app.UI.Activity;
 
 import android.content.Intent;
-import android.os.Message;
-import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,12 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,14 +24,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.bumptech.glide.Glide;
-import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.base.activity.BaseToolBarActivity2;
 import com.frame.app.utils.LogUtils;
 import com.frame.app.utils.PhoneUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kt.ktball.App;
-import com.kt.ktball.adapter.CommentsAdapter;
 import com.kt.ktball.entity.CimmentsData;
 import com.kt.ktball.entity.Comments;
 import com.kt.ktball.entity.LikeUsers;
@@ -45,25 +40,18 @@ import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Adapter.MyExpandableListViewAdapter;
 import com.ktfootball.app.Base.BaseEntity;
-import com.ktfootball.app.Base.BaseRestRequest;
 import com.ktfootball.app.Constants;
-import com.ktfootball.app.Entity.ClubBcOrders;
 import com.ktfootball.app.Entity.StarComment;
 import com.ktfootball.app.Entity.SubComment;
 import com.ktfootball.app.Entity.Video;
 import com.ktfootball.app.Net.CallServer;
 import com.ktfootball.app.Net.HttpListener;
+import com.ktfootball.app.R;
 import com.ktfootball.app.Request.BaseEntityRequest;
-import com.ktfootball.app.Request.ClubBcOrdersRequest;
 import com.ktfootball.app.Request.VideoRequest;
 import com.ktfootball.app.Views.CustomExpandableListView;
 import com.ktfootball.app.Views.SharedDialog;
-import com.ktfootball.app.R;
-import com.yolanda.nohttp.Headers;
 import com.yolanda.nohttp.RequestMethod;
-import com.youku.player.base.YoukuBasePlayerManager;
-import com.youku.player.base.YoukuPlayer;
-import com.youku.player.base.YoukuPlayerView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,6 +62,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import cn.sharesdk.framework.ShareSDK;
 
 public class VideoDetailsActivity extends BaseToolBarActivity2 {
@@ -99,8 +88,6 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     @Bind(R.id.textView66)
     TextView textViewLeftBiFen;//左边比分
-    @Bind(R.id.textView67)
-    TextView textViewRightBiFen;//右边比分
     @Bind(R.id.textView00009)
     TextView textViewName;//赛事名称
     @Bind(R.id.textView00008)
@@ -188,7 +175,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("视频详情");
+        setToolBarTitle("对战详情");
     }
 
     @Override
@@ -294,17 +281,17 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                         initList(cimmentsData);
 
                         item_list = new ArrayList<>();
-                        if(videoBean != null){
-                            for(int x = 0;x<group_list.size();x++){
-                                if(x >= videoBean.star_comments.size()){
+                        if (videoBean != null) {
+                            for (int x = 0; x < group_list.size(); x++) {
+                                if (x >= videoBean.star_comments.size()) {
                                     item_list.add(new ArrayList<SubComment>());
-                                }else{
+                                } else {
                                     item_list.add(videoBean.star_comments.get(x).sub_comments);
                                 }
                             }
                         }
                         textViewPingLun.setText("" + group_list.size());
-                        commentsAdapter = new MyExpandableListViewAdapter((VideoDetailsActivity) getThis(),group_list,item_list);
+                        commentsAdapter = new MyExpandableListViewAdapter((VideoDetailsActivity) getThis(), group_list, item_list);
                         listView.setAdapter(commentsAdapter);
                         setListViewHeight(listView);
                     }
@@ -317,18 +304,18 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         VolleyUtil.getInstance(this).addRequest(jsonRequest);
     }
 
-    private void initList(CimmentsData cimmentsData){
+    private void initList(CimmentsData cimmentsData) {
         group_list = new ArrayList<>();
-        if(videoBean != null){
+        if (videoBean != null) {
             group_list.addAll(videoBean.star_comments);
         }
-        if(cimmentsData != null){
-            for(int x = 0;x<cimmentsData.comments.size();x++){
+        if (cimmentsData != null) {
+            for (int x = 0; x < cimmentsData.comments.size(); x++) {
                 Comments comments = cimmentsData.comments.get(x);
                 StarComment starComment = new StarComment();
                 starComment.avatar = comments.avatar;
                 starComment.content = comments.content;
-                starComment.id = comments.game_video_comment_id+"";
+                starComment.id = comments.game_video_comment_id + "";
                 starComment.nickname = comments.nickname;
                 group_list.add(starComment);
             }
@@ -337,11 +324,11 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     private void initStarV() {
         VideoRequest request = new VideoRequest(Constants.VIDEO, RequestMethod.GET);
-        request.add("game_video_id", video+"");
+        request.add("game_video_id", video + "");
         CallServer.getRequestInstance().add(this, 0, request, new HttpListener<Video>() {
             @Override
             public void onSucceed(int what, com.yolanda.nohttp.rest.Response<Video> response) {
-                if (response.get().response.equals("success")) {
+                if (response.get().response != null && response.get().response.equals("success")) {
                     videoBean = response.get();
                     initV();
                 } else {
@@ -384,13 +371,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     }
 
     private void init(VideoDetailsData videoDetailsData) {//获取视频详情
-        if (score != null && score.contains(":")) {
-            String[] s = score.split(":");
-            textViewLeftBiFen.setText(s[0]);
-            textViewRightBiFen.setText(s[1]);
-        } else {
-            textViewLeftBiFen.setText("0");
-            textViewRightBiFen.setText("0");
+        if (score != null) {
+            textViewLeftBiFen.setText(score);
         }
 
         switch (videoDetailsData.game_video_type) {
@@ -461,15 +443,15 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 textViewZhanF.setText("战斗力" + videoDetailsData.users.get(5).power);
                 break;
         }
-        textViewName.setText("赛事名称：" + videoDetailsData.name);
-        textViewTime.setText("赛事时间：" + videoDetailsData.time);
-        textViewAddress.setText("赛事地址：" + videoDetailsData.local);
+        textViewName.setText(videoDetailsData.name);
+        textViewTime.setText(videoDetailsData.time);
+        textViewAddress.setText(videoDetailsData.local);
         ArrayList<LikeUsers> likeUserses = videoDetailsData.like_users;
         ArrayList<Long> list = new ArrayList<>();
         for (int i = 0; i < likeUserses.size(); i++) {
             list.add(likeUserses.get(i).user_id);
         }
-        if (list.contains(userId)) imageViewLove.setImageResource(R.drawable.love_r);
+        if (list.contains(userId)) imageViewLove.setImageResource(R.mipmap.dianzan_zan);
         textViewLove.setText("" + videoDetailsData.likes);
     }
 
@@ -497,7 +479,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                             String response = jsonObject11.getString("response");
                             if (response.equals("success")) {
                                 int likes = jsonObject11.getInt("likes");
-                                imageViewLove.setImageResource(R.drawable.love_r);
+                                imageViewLove.setImageResource(R.mipmap.dianzan_zan);
                                 textViewLove.setText("" + likes);
                             } else if (response.equals("error")) {
                                 String msg = jsonObject11.getString("msg");
@@ -535,17 +517,17 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     }
 
     public void doSendMessage(View view) {
-        doComment(view,null);
+        doComment(view, null);
     }
 
-    public void doComment(View view,String video_comment_id){
-        if(video_comment_id == null || "".equals(video_comment_id)){
-            if(App.getUserLogin().is_star){
+    public void doComment(View view, String video_comment_id) {
+        if (video_comment_id == null || "".equals(video_comment_id)) {
+            if (App.getUserLogin().is_star) {
                 conmmentCode = 1;
-            }else{
+            } else {
                 conmmentCode = 0;
             }
-        }else{
+        } else {
             conmmentCode = 2;
             this.video_comment_id = video_comment_id;
         }
@@ -553,7 +535,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         PhoneUtils.showInputMethod(getThis(), editTextAdd);
     }
 
-    private void hide(){
+    private void hide() {
         send_rl.setVisibility(View.GONE);
         PhoneUtils.closeInputMethod(getThis(), editTextAdd);
     }
@@ -596,7 +578,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         String input = editTextAdd.getText().toString();
         if (!TextUtils.isEmpty(input)) {
             showLoadingDiaglog();
-            switch (conmmentCode){
+            switch (conmmentCode) {
                 case 0:
                     doAddComment(input);
                     break;
@@ -604,7 +586,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                     doVideoComment(input);
                     break;
                 case 2:
-                    doVideoCommentReply(video_comment_id,input);
+                    doVideoCommentReply(video_comment_id, input);
                     break;
             }
         }
@@ -612,8 +594,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     public void doVideoComment(String text) {
         BaseEntityRequest request = new BaseEntityRequest(Constants.VIDEO_COMMENT, RequestMethod.POST);
-        request.add("game_video_id", video+"");
-        request.add("user_id", userId+"");
+        request.add("game_video_id", video + "");
+        request.add("user_id", userId + "");
         request.add("content", text);
         CallServer.getRequestInstance().add(this, 0, request, new HttpListener<BaseEntity>() {
             @Override
@@ -623,7 +605,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                     editTextAdd.setText("");
                     hide();
                     initStarV();
-                } else{
+                } else {
                     showDialogToast(response.get().msg);
                 }
             }
@@ -637,8 +619,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     public void doAddComment(String text) {
         BaseEntityRequest request = new BaseEntityRequest(Constants.ADD_COMMENT, RequestMethod.POST);
-        request.add("game_video_id", video+"");
-        request.add("user_id", userId+"");
+        request.add("game_video_id", video + "");
+        request.add("user_id", userId + "");
         request.add("content", text);
         CallServer.getRequestInstance().add(this, 0, request, new HttpListener<BaseEntity>() {
             @Override
@@ -648,8 +630,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                     editTextAdd.setText("");
                     hide();
                     initStarV();
-                } else{
-                   showDialogToast(response.get().msg);
+                } else {
+                    showDialogToast(response.get().msg);
                 }
             }
 
@@ -660,10 +642,10 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         }, false, false);
     }
 
-    public void doVideoCommentReply(String video_comment_id,String text) {
+    public void doVideoCommentReply(String video_comment_id, String text) {
         BaseEntityRequest request = new BaseEntityRequest(Constants.VIDEO_COMMENT_REPLY, RequestMethod.POST);
-        request.add("game_video_id", video+"");
-        request.add("user_id", userId+"");
+        request.add("game_video_id", video + "");
+        request.add("user_id", userId + "");
         request.add("video_comment_id", video_comment_id);
         request.add("content", text);
         CallServer.getRequestInstance().add(this, 0, request, new HttpListener<BaseEntity>() {
@@ -674,7 +656,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                     editTextAdd.setText("");
                     hide();
                     initStarV();
-                } else{
+                } else {
                     showDialogToast(response.get().msg);
                 }
             }
@@ -691,4 +673,19 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         super.onDestroy();
         ShareSDK.stopSDK(this);
     }
+
+    @OnClick(R.id.duizhan_btn)
+    public void btn() {
+        if (videoDetailsData != null) {
+            Intent intent = new Intent(getThis(), HengHuadActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("info",videoDetailsData);
+            bundle.putString("url","http://ktfootball.com/app_share/game_video?game_video_id=" + video);
+            bundle.putString("title",getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + "来自KT足球");
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+    }
+
 }

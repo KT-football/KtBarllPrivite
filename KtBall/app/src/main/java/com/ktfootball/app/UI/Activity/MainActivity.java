@@ -7,22 +7,24 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.frame.app.base.activity.BaseActivity;
-import com.kt.ktball.App;
 import com.ktfootball.app.UI.Activity.Main.SuperStarActivity;
 import com.ktfootball.app.UI.Activity.train.TrainActivity;
 import com.kt.ktball.views.IRoundBallViewScrollListener;
-import com.kt.ktball.views.RoundBallView;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Fragment.GameMatchFragment;
-import com.ktfootball.app.UI.Fragment.SuperStarFragment;
+import com.ktfootball.app.UI.Fragment.StatrRankFragment;
 import com.ktfootball.app.UI.Fragment.TrainFragment;
 import com.ktfootball.app.UI.Fragment.UserProfilesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -51,13 +53,6 @@ public class MainActivity extends BaseActivity implements IRoundBallViewScrollLi
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.layout_ball);
         ShareSDK.initSDK(this);
-//        RoundBallView img = (RoundBallView) findViewById(R.id.layout_ball);
-//        if(App.getUserLogin().is_star){
-//            img.setModel(R.drawable.ball2);
-//            img.invalidate();
-//        }
-////        showDialogToast(App.getUserLogin().is_star+"");
-//        img.setScrollListener(this);
     }
 
     @Override
@@ -70,7 +65,7 @@ public class MainActivity extends BaseActivity implements IRoundBallViewScrollLi
         mList.add(new UserProfilesFragment());
         mList.add(new GameMatchFragment());
         mList.add(new TrainFragment());
-        mList.add(new SuperStarFragment());
+        mList.add(new StatrRankFragment());
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -185,5 +180,38 @@ public class MainActivity extends BaseActivity implements IRoundBallViewScrollLi
     protected void onDestroy() {
         super.onDestroy();
         ShareSDK.stopSDK(this);
+    }
+
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            exitBy2Click(); //调用双击退出函数
+        }
+        return false;
+    }
+    /**
+     * 双击退出函数
+     */
+    private static Boolean isExit = false;
+
+    private void exitBy2Click() {
+        Timer tExit = null;
+        if (isExit == false) {
+            isExit = true; // 准备退出
+            Toast.makeText(this, "确定要退出程序嘛~", Toast.LENGTH_SHORT).show();
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false; // 取消退出
+                }
+            }, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.utils.PhoneUtils;
 import com.google.zxing.BarcodeFormat;
@@ -16,6 +17,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.kt.ktball.App;
+import com.kt.ktball.myclass.GlideCircleTransform;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.UI.Activity.setting.WhatIsKTBiActivity;
 import com.kt.ktball.entity.UserLogin;
@@ -32,7 +34,7 @@ import butterknife.OnClick;
 public class MyQRCodeActivity extends BaseActivity {
 
     @Bind(R.id.layout_qrcode_header)
-    MyCircleImageView header;
+    ImageView header;
     @Bind(R.id.layout_qrcode_name)
     TextView name;
 
@@ -61,10 +63,10 @@ public class MyQRCodeActivity extends BaseActivity {
     @Override
     protected void initData(Bundle savedInstanceState) {
         UserLogin userLogin = App.getUserLogin();
-        BitmapManager.getInstance().displayUserLogo(header, Constants.HOST + userLogin.avatar);
+        Glide.with(getThis()).load(Constants.HOST + userLogin.avatar).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).into(header);
         name.setText(userLogin.nickname);
-        bi.setText("剩余KT币        " + userLogin.ktb);
-        chang.setText("剩余场次         " + userLogin.vip_count);
+        bi.setText(userLogin.ktb+"");
+        chang.setText(userLogin.vip_count+"");
         int screenW = PhoneUtils.getScreenWidth(getThis());
         LinearLayout.LayoutParams ll = (LinearLayout.LayoutParams) qrcode.getLayoutParams();
         ll.height = screenW/2;

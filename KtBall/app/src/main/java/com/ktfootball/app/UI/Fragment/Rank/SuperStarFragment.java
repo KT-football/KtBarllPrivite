@@ -1,4 +1,4 @@
-package com.ktfootball.app.UI.Fragment;
+package com.ktfootball.app.UI.Fragment.Rank;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +21,7 @@ import com.ktfootball.app.Net.CallServer;
 import com.ktfootball.app.Net.HttpListener;
 import com.ktfootball.app.R;
 import com.ktfootball.app.Request.StarUsersRequest;
+import com.ktfootball.app.UI.Activity.RankingListActivity;
 import com.ktfootball.app.UI.Activity.SuperStar.SuperStarDetailsActivity;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.rest.Response;

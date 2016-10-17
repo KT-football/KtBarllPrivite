@@ -28,6 +28,8 @@ import com.ktfootball.app.UI.Activity.train.TrainDetailsActivity;
 import com.ktfootball.app.Entity.UserAppCartoons;
 import com.ktfootball.app.R;
 import com.ktfootball.app.Utils.CommonUtils;
+import com.ktfootball.app.Views.CircleProgressView;
+import com.ktfootball.app.Views.RingView;
 import com.mob.tools.gui.*;
 
 import java.io.File;
@@ -94,8 +96,8 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             TrainHeaderHolder trainHeaderHolder = (TrainHeaderHolder) holder;
             BitmapManager.getInstance().display(trainHeaderHolder.header, Constants.HOST + userAppCartoons.avatar);
             trainHeaderHolder.yxl.setText(userAppCartoons.total_finished_minutes);
-            trainHeaderHolder.ywc.setText(userAppCartoons.total_finished_times);
-            trainHeaderHolder.lxxl.setText(userAppCartoons.study_days);
+            trainHeaderHolder.ywc.setText(userAppCartoons.total_finished_times+"min");
+            trainHeaderHolder.lxxl.setText(userAppCartoons.study_days+"天");
             trainHeaderHolder.mytrain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -106,12 +108,10 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             final TrainHolder trainHolder = (TrainHolder) holder;
             final UserAppCartoons.AppCarToons appCarToons = list.get(position - 1);
             trainHolder.name.setText(appCarToons.name);
-            trainHolder.name_2.setText(appCarToons.sub_name);
-            trainHolder.bar.setCurrentValues(Float.parseFloat(appCarToons.now_level_progress));
+//            trainHolder.name_2.setText(appCarToons.sub_name);
+            trainHolder.bar.setAngle((int) Float.parseFloat(appCarToons.now_level_progress));
             int[] colcr = CommonUtils.getTrainColor(appCarToons.now_level_color);
-            trainHolder.bar.setColors(colcr);
-            trainHolder.bar.setHintString(appCarToons.now_level_name);
-            trainHolder.bar.setHintPaintColor(colcr[0]);
+            trainHolder.bar.setText(appCarToons.now_level_name);
             BitmapManager.getInstance().display(trainHolder.img, Constants.HOST + appCarToons.avatar);
             trainHolder.rl.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -122,6 +122,8 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     context.startActivity(intent);
                 }
             });
+             trainHolder.item_wanc.setText("已完成"+(5*(int)Float.parseFloat(appCarToons.now_level_progress)));
+             trainHolder.item_shenyu.setText("距离学徒还有"+(500 -(5*(int)Float.parseFloat(appCarToons.now_level_progress)))+"次训练");
             ((ViewPager) trainHolder.mView).setCurrentItem(mItemSwipedStates.get(position).ordinal());
             trainHolder.delect.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -204,22 +206,23 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public class TrainHolder extends RecyclerView.ViewHolder {
         public TextView name;
-        public TextView name_2;
         public ImageView img;
-        public ColorArcProgressBar bar;
+        public RingView bar;
         public View mView;
         public Button delect;
         public RelativeLayout rl;
+        private TextView item_wanc,item_shenyu;
 
         public TrainHolder(View itemView) {
             super(itemView);
             mView = itemView;
             name = (TextView) itemView.findViewById(R.id.item_train_default_name);
             rl = (RelativeLayout) itemView.findViewById(R.id.primaryContentCardView);
-            name_2 = (TextView) itemView.findViewById(R.id.item_train_default_name_2);
             img = (ImageView) itemView.findViewById(R.id.item_train_default_img);
-            bar = (ColorArcProgressBar) itemView.findViewById(R.id.item_train_default_bar);
+            bar = (RingView) itemView.findViewById(R.id.item_train_default_bar);
             delect = (Button) itemView.findViewById(R.id.btn1);
+            item_shenyu = (TextView) itemView.findViewById(R.id.item_shenyu);
+            item_wanc = (TextView) itemView.findViewById(R.id.item_wanc);
         }
     }
 

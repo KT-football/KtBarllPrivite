@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#f4f5f6"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout6"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/footTextColor">
+        android:layout_height="44dp"
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/imageView45"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:onClick="doBack"
-            android:src="@drawable/retu" />
+            android:src="@drawable/icon_back" />
 
         <TextView
             android:id="@+id/textView36"
@@ -27,24 +29,26 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="什么是KT币"
+            android:text="关于KT币"
             android:textColor="@android:color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_marginTop="10dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="        KT币为KT足球的虚拟货币，每个账号第一场比赛均不消耗KT币，之后比赛都会消耗一定的KT币，部分的赛事为免费赛事的，KT币消耗为0， 当您账号内的KT币不够当前赛事消耗扣除的时候，您需要充值KT币，KT币与人民币的充值比例为10：1，200KT币起冲，充值的金额越高，您将获得更多的额外KT币（超过10：1的比例）" />
+            android:layout_marginBottom="15dp"
+            android:textColor="#333333"
+            android:text="KT币为KT足球的虚拟货币，每个账号第一场比赛均不消耗KT币，之后比赛都会消耗一定的KT币，部分的赛事为免费赛事的，KT币消耗为\n
+ 当您账号内的KT币不够当前赛事消耗扣除的时候，您需要充值KT币，KT币与人民币的充值比例为10：1，200KT币起冲，充值的金额越高，您将获得更多的额外KT币（超过10：1的比例）" />
 
     </RelativeLayout>
 </LinearLayout>

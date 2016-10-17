@@ -23,6 +23,8 @@ import com.frame.app.manager.ThirdPartyManager;
 import com.frame.app.view.LoadingDialog;
 
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
 
 public abstract class BaseFragment extends Fragment {
 
@@ -55,6 +57,7 @@ public abstract class BaseFragment extends Fragment {
 				parent.removeView(rootView);
 			}
 		}
+		EventBus.getDefault().register(this);
 		return rootView;
 	}
 
@@ -87,6 +90,26 @@ public abstract class BaseFragment extends Fragment {
 	protected void setContentView(@LayoutRes int layoutResID) {
 		rootView = LayoutInflater.from(getThis()).inflate(layoutResID, null);
 		ButterKnife.bind(this,rootView);
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+	}
+
+
+	@Override
+	public void onStop() {
+		super.onStop();
+
+	}
+
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 	/**
@@ -348,4 +371,13 @@ public abstract class BaseFragment extends Fragment {
 	 * 业务数据处理后的回调, 一般用于异步网络请求完成后执行的界面刷新
 	 */
 	protected abstract void initHandler(android.os.Message msg);
+
+	public class FragmentBean{
+
+	}
+
+	@Subscribe()
+	public void fragmentEventBus(FragmentBean message){
+
+	}
 }

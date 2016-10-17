@@ -30,6 +30,7 @@ public class Leagues {
     public String userc_nickname;
     public String userc_avatar;
     public int userc_power;
+    public int code = -1;
 
     @Override
     public String toString() {

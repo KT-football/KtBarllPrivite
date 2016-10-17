@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kt.ktball.db.THDatabaseLoader;
 import com.kt.ktball.entity.UserLogin;
+import com.kt.ktball.entity.UserMsg;
 import com.ktfootball.app.Constants;
 import com.yolanda.nohttp.NoHttp;
 import com.youku.player.YoukuPlayerBaseConfiguration;
@@ -28,6 +29,7 @@ public class App extends MultiDexApplication {
     public static OkHttpClient httpClient;
     public static final String USER_INFO = "userinfo";
     private static UserLogin user;
+    public static UserMsg userMsg;
 
     @Override
     public void onCreate() {
@@ -93,6 +95,14 @@ public class App extends MultiDexApplication {
         return user;
     }
 
+
+    public void setUserMSG(UserMsg userMsg){
+        this.userMsg = userMsg;
+    }
+
+    public static UserMsg getUserMsg(){
+        return userMsg;
+    }
 
     public static String getImageUrl(String url){
         return Constants.HOST + url;

@@ -1,9 +1,11 @@
 package com.kt.ktball.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by ARTHUR on 2016/4/12.
  */
-public class Users {
+public class Users implements Serializable{
 //    user_id: 28844
     public long user_id;
 //    nickname: 贝云滨

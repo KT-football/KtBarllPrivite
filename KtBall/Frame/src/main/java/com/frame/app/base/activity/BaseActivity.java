@@ -23,6 +23,8 @@ import com.frame.app.utils.LogUtils;
 import com.frame.app.view.LoadingDialog;
 
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -43,6 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         loadingDialog = new LoadingDialog(getThis()); // 初始化进度条
         initView(savedInstanceState);
         ButterKnife.bind(this);//绑定
+        EventBus.getDefault().register(this);
         initData(savedInstanceState);
         setListener();
         LogUtils.allowD = BaseApplication.isTest; // 测试环境下允许打log
@@ -53,6 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         AppManager.getAppManager().finishActivity(getThis());
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     protected <V> V getViewById(int resId) {
@@ -208,6 +212,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+
+
     /**
      * 对toast的简易封装。线程安全，可以在非UI线程调用。
      */
@@ -330,4 +336,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             return false;
         }
     }
+    public class MessagBean{
+
+    }
+
+    @Subscribe()
+    public void helloEventBus(MessagBean message){
+
+    }
+
+
+
 }

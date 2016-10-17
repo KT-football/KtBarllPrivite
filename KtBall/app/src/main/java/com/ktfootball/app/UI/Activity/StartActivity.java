@@ -35,10 +35,10 @@ public class StartActivity extends BaseActivity {
          * 不是第一次登錄
          */
         if (SharedPreferencesUtils.getBoolean(getThis(), Constants.IS_FIRST, false)) {
-            if (SharedPreferencesUtils.getString(getThis(), "username", "").equals(""))
+//            if (SharedPreferencesUtils.getString(getThis(), "username", "").equals(""))
                 intent.setClass(getThis(), LoginActivity.class);
-            else
-                intent.setClass(getThis(), MainActivity.class);
+//            else
+//                intent.setClass(getThis(), MainActivity.class);
         } else {
             intent.setClass(getThis(), CarouselActivity.class);
         }

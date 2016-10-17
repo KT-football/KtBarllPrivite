@@ -5,7 +5,7 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/action_shared"
-        android:icon="@drawable/icon_shared"
+        android:icon="@mipmap/zhuangfa"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="always" />

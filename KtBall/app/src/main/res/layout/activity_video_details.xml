@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".UI.Activity.VideoDetailsActivity">
 
     <RelativeLayout
@@ -42,9 +44,9 @@
             android:layout_toStartOf="@+id/textView65"
             android:background="@drawable/zhangfangyuanjiao_details"
             android:gravity="center_vertical"
-            android:textSize="14sp"
             android:hint="添加评论"
-            android:paddingLeft="5dp" />
+            android:paddingLeft="5dp"
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <ScrollView
@@ -53,38 +55,57 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/relativeLayout29"
         android:layout_alignParentLeft="true"
+        android:scrollbars="none"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout28">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/relativeLayout9999"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="200dp"
                 android:background="@drawable/vcr_play_bg">
 
                 <ImageView
                     android:id="@+id/view"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:onClick="doPlay"
-                    android:src="@drawable/play_bi" />
+                    android:src="@mipmap/duizhan_video" />
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView00009"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:textSize="15dp"
+                tools:text="虹桥万科KT体验赛" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="3dp"
+                android:background="#dcdcdc">
+
+            </View>
 
             <LinearLayout
                 android:id="@+id/relativeLayout99999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relativeLayout9999"
-                android:orientation="horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -96,9 +117,9 @@
                         android:id="@+id/relativeLayout30"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:visibility="gone"
                         android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true">
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/imageView57"
@@ -107,40 +128,45 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/result_btnkt" />
 
-                        <TextView
-                            android:id="@+id/textView71"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignLeft="@+id/textView72"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/textView72"
-                            android:gravity="center"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/textView72"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_below="@+id/textView71"
+                            android:layout_height="match_parent"
                             android:layout_toEndOf="@+id/imageView57"
                             android:layout_toRightOf="@+id/imageView57"
-                            android:gravity="center"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView71"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#333333"
+                                android:textSize="13dp"
+                                tools:text="dsadas" />
+
+                            <TextView
+                                android:id="@+id/textView72"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#999999"
+                                android:textSize="12dp"
+                                tools:text="dsadas" />
+                        </LinearLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeLayout31"
                         android:layout_width="match_parent"
-                        android:visibility="gone"
-                        android:layout_height="50dp">
+                        android:layout_height="50dp"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/imageView577"
@@ -149,43 +175,48 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/result_btnkt" />
 
-                        <TextView
-                            android:id="@+id/textView711"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignLeft="@+id/textView722"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/textView722"
-                            android:gravity="center"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/textView722"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_below="@+id/textView711"
+                            android:layout_height="match_parent"
                             android:layout_toEndOf="@+id/imageView577"
                             android:layout_toRightOf="@+id/imageView577"
-                            android:gravity="center"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView711"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#333333"
+                                android:textSize="13dp"
+                                tools:text="dsadas" />
+
+                            <TextView
+                                android:id="@+id/textView722"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#999999"
+                                android:textSize="12dp"
+                                tools:text="dsadas" />
+                        </LinearLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeLayout32"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:visibility="gone"
                         android:layout_alignLeft="@+id/relativeLayout31"
                         android:layout_alignStart="@+id/relativeLayout31"
-                        android:layout_below="@+id/relativeLayout31">
+                        android:layout_below="@+id/relativeLayout31"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/imageView5777"
@@ -194,257 +225,302 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/result_btnkt" />
 
-                        <TextView
-                            android:id="@+id/textView7111"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignLeft="@+id/textView7222"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/textView7222"
-                            android:gravity="center"
-                            android:text=""
-                            android:lines="1"
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/textView7222"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_below="@+id/textView7111"
+                            android:layout_height="match_parent"
                             android:layout_toEndOf="@+id/imageView5777"
                             android:layout_toRightOf="@+id/imageView5777"
-                            android:gravity="center"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView7111"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#333333"
+                                android:textSize="13dp"
+                                tools:text="dsadas" />
+
+                            <TextView
+                                android:id="@+id/textView7222"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#999999"
+                                android:textSize="12dp"
+                                tools:text="dsadas" />
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginRight="15dp">
-
-                    <TextView
-                        android:id="@+id/textView66"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="12dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="17dp" />
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/imageView56"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/vs_bi" />
-
-                    <TextView
-                        android:id="@+id/textView67"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="12dp"
+                        android:src="@mipmap/duizhan_vs" />
+
+                    <TextView
+                        android:id="@+id/textView66"
+                        android:layout_width="35dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@mipmap/duizhan_cont"
+                        android:gravity="center"
                         android:textColor="@android:color/white"
-                        android:textSize="17dp" />
+                        android:textSize="10dp"
+                        tools:text="4:5" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <RelativeLayout
                         android:id="@+id/relativeLayout33"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
+                        android:layout_height="50dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true">
+                        android:layout_alignParentTop="true"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/imageView58"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/result_btnkt" />
 
-                        <TextView
-                            android:id="@+id/textView77"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentTop="true"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@+id/imageView58"
                             android:layout_toRightOf="@+id/imageView58"
                             android:gravity="center_vertical"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textView78"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:lines="1"
-                            android:layout_below="@+id/textView77"
-                            android:layout_toRightOf="@+id/imageView58"
-                            android:gravity="center_vertical"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            <TextView
+                                android:id="@+id/textView77"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#333333"
+                                android:textSize="13dp"
+                                tools:text="dsadas" />
 
+                            <TextView
+                                android:id="@+id/textView78"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#999999"
+                                android:textSize="12dp"
+                                tools:text="dsadas" />
+                        </LinearLayout>
 
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeLayout333"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
+                        android:layout_height="50dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true">
+                        android:layout_alignParentTop="true"
+                        android:visibility="gone">
 
-                        <TextView
-                            android:id="@+id/textView777"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_toRightOf="@+id/imageView588"
-                            android:gravity="center_vertical"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/textView788"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_below="@+id/textView777"
-                            android:layout_toRightOf="@+id/imageView588"
-                            android:gravity="center_vertical"
-                            android:lines="1"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
 
                         <ImageView
                             android:id="@+id/imageView588"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/result_btnkt" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@+id/imageView588"
+                            android:layout_toRightOf="@+id/imageView588"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView777"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#333333"
+                                android:textSize="13dp"
+                                tools:text="dsadas" />
+
+                            <TextView
+                                android:id="@+id/textView788"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#999999"
+                                android:textSize="12dp"
+                                tools:text="dsadas" />
+                        </LinearLayout>
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/relativeLayout3333"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
+                        android:layout_height="50dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true">
+                        android:layout_alignParentTop="true"
+                        android:visibility="gone">
 
-                        <TextView
-                            android:id="@+id/textView7777"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:lines="1"
-                            android:layout_alignParentTop="true"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@+id/imageView5888"
                             android:layout_toRightOf="@+id/imageView5888"
                             android:gravity="center_vertical"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textView7888"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:lines="1"
-                            android:layout_below="@+id/textView7777"
-                            android:layout_toRightOf="@+id/imageView5888"
-                            android:gravity="center_vertical"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
+                            <TextView
+                                android:id="@+id/textView7777"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#333333"
+                                android:textSize="13dp"
+                                tools:text="dsadas" />
+
+                            <TextView
+                                android:id="@+id/textView7888"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#999999"
+                                android:textSize="12dp"
+                                tools:text="dsadas" />
+                        </LinearLayout>
 
                         <ImageView
                             android:id="@+id/imageView5888"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="5dp" />
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/result_btnkt" />
                     </RelativeLayout>
 
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView00009"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/duizhan_btn"
+                android:layout_width="150dp"
                 android:layout_height="30dp"
-                android:layout_below="@+id/relativeLayout99999"
-                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:text="赛事名称："
-                android:textColor="@android:color/white"
+                android:background="@mipmap/duizhanbtn"
+                android:gravity="center"
+                android:text="对战狠话"
+                android:textColor="@color/white"
                 android:textSize="14dp" />
 
-            <TextView
-                android:id="@+id/textView00008"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_below="@+id/textView00009"
-                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"
-                android:text="赛事时间："
-                android:textColor="@android:color/white"
-                android:textSize="14dp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView00007"
+
+                <TextView
+                    android:id="@+id/textView00007"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView00008"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/duizhan_address"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:minLines="1"
+                    android:textColor="#333333"
+                    android:textSize="12dp"
+                    tools:text="虹桥万科中心" />
+
+                <TextView
+                    android:id="@+id/textView00008"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#333333"
+                    android:textSize="12dp"
+                    tools:text="08-13" />
+            </LinearLayout>
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_below="@+id/textView00008"
-                android:layout_marginLeft="8dp"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:minLines="1"
-                android:text="赛事地点："
-                android:textColor="@android:color/white"
-                android:textSize="14dp" />
+                android:layout_height="0.1dp"
+                android:background="#dcdcdc">
+
+            </View>
 
             <RelativeLayout
                 android:id="@+id/relativeLayout35"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="44dp"
                 android:layout_below="@+id/textView00007"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/imageView60"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/imageView59"
                     android:layout_alignStart="@+id/imageView59"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="5dp"
                     android:onClick="doLove"
-                    android:src="@drawable/love_w" />
+                    android:src="@mipmap/duizan_nomal" />
 
                 <TextView
                     android:id="@+id/textView79"
@@ -454,8 +530,8 @@
                     android:layout_toEndOf="@+id/imageView60"
                     android:layout_toRightOf="@+id/imageView60"
                     android:text="0"
-                    android:textColor="@android:color/white"
-                    android:textSize="17dp" />
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textView80"
@@ -466,13 +542,12 @@
 
                 <ImageView
                     android:id="@+id/imageView61"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_toLeftOf="@+id/textView80"
                     android:layout_toStartOf="@+id/textView80"
-                    android:src="@drawable/pinglun" />
+                    android:src="@mipmap/duizhan_message" />
 
                 <TextView
                     android:id="@+id/textView81"
@@ -483,8 +558,8 @@
                     android:layout_toEndOf="@+id/textView80"
                     android:layout_toRightOf="@+id/textView80"
                     android:text="0"
-                    android:textColor="@android:color/white"
-                    android:textSize="17dp" />
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textView82"
@@ -495,35 +570,34 @@
                     android:layout_centerVertical="true"
                     android:onClick="doSendMessage"
                     android:text="评一下"
-                    android:textColor="@android:color/white"
-                    android:textSize="17dp" />
+                    android:layout_marginRight="30dp"
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
 
                 <ImageView
                     android:id="@+id/imageView62"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/imageView61"
                     android:layout_marginRight="16dp"
                     android:layout_toLeftOf="@+id/textView82"
                     android:layout_toStartOf="@+id/textView82"
                     android:onClick="doSendMessage"
-                    android:src="@drawable/fengxiang" />
+                    android:visibility="gone"
+                    android:src="@mipmap/zhuangfa" />
 
             </RelativeLayout>
 
-            <View
-                android:layout_below="@+id/relativeLayout35"
-                android:id="@+id/view1"
-                android:layout_height="3dp"
-                style="@style/line"/>
 
             <com.ktfootball.app.Views.CustomExpandableListView
                 android:id="@+id/listView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/view1"/>
+                android:groupIndicator="@null"
+                android:listSelector="@color/transparent"
+                android:layout_below="@+id/view1" />
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>

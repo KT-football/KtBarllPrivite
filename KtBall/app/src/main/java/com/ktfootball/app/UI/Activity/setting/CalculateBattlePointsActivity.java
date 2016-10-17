@@ -2,6 +2,7 @@ package com.ktfootball.app.UI.Activity.setting;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.view.View;
 
 import com.frame.app.base.activity.BaseActivity;
 import com.ktfootball.app.R;
@@ -29,5 +30,8 @@ public class CalculateBattlePointsActivity extends BaseActivity {
     @Override
     protected void initData(Bundle savedInstanceState) {
 
+    }
+    public void doBack(View view) {
+        finish();
     }
 }

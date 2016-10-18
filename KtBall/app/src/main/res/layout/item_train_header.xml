@@ -136,6 +136,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F5F5F5"
         android:orientation="horizontal">
 
         <TextView
@@ -147,7 +148,7 @@
             android:background="#F5F5F5"
             android:drawableLeft="@mipmap/add_class"
             android:drawablePadding="5dp"
-            android:padding="3dp"
+            android:padding="10dp"
             android:text="添加课程"
             android:textColor="#333333"
             android:textSize="12dp" />

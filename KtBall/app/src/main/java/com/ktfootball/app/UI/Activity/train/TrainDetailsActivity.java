@@ -11,19 +11,20 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.base.activity.BaseToolBarActivity2;
 import com.frame.app.utils.FileUtil;
 import com.frame.app.utils.GsonTools;
 import com.frame.app.utils.LogUtils;
 import com.frame.app.utils.PhoneUtils;
 import com.frame.app.utils.ZipUtils;
-import com.frame.app.view.ColorArcProgressBar;
 import com.frame.app.view.Dialog.SingleDownDialog;
 import com.kt.ktball.App;
-import com.ktfootball.app.Manager.BitmapManager;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.AddToUserAppCartoons;
 import com.ktfootball.app.Entity.AppCartoon;
@@ -34,6 +35,7 @@ import com.ktfootball.app.R;
 import com.ktfootball.app.Request.AddToUserAppCartoonsRequest;
 import com.ktfootball.app.Request.AppCartoonRequest;
 import com.ktfootball.app.Utils.CommonUtils;
+import com.ktfootball.app.Views.CircleProgressView;
 import com.ktfootball.app.Views.DownListDialog;
 import com.ktfootball.app.Views.SharedDialog;
 import com.ktfootball.app.Views.StartTrainDialog;
@@ -56,30 +58,54 @@ import com.yolanda.nohttp.rest.Response;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.Bind;
 import butterknife.OnClick;
 import cn.sharesdk.framework.ShareSDK;
 
 /**
  * Created by jy on 16/6/14.
  */
-public class TrainDetailsActivity extends BaseToolBarActivity2 {
+public class TrainDetailsActivity extends BaseActivity {
+    @Bind(R.id.progress)
+    CircleProgressView mProgressView;
+    @Bind(R.id.level_name)
+    TextView mName;
+    @Bind(R.id.tv_chuji)
+    TextView tv_chuji;
+    @Bind(R.id.tv_zhongji)
+    TextView tv_zhongji;
+    @Bind(R.id.tv_gaoji)
+    TextView tv_gaoji;
+    @Bind(R.id.tv_tishi)
+    TextView tv_tishi;
+    @Bind(R.id.tv_manhua_download)
+    TextView mTv_manhua_download;
+    @Bind(R.id.tv_zhenren_download)
+    TextView mTv_zheren_download;
+    @Bind(R.id.tv_mKT_download)
+    TextView mTv_kt_download;
+    @Bind(R.id.image_kt)
+    ImageView mImage_kt;
+    @Bind(R.id.image_manhua)
+    ImageView mImage_manhua;
+    @Bind(R.id.kt_progress)
+    ProgressBar mProgress_kt;
+    @Bind(R.id.manhua_progress)
+    ProgressBar mProgress_manhua;
+    @Bind(R.id.layout_traindetails_start)
+    Button layout_traindetails_start;
+    @Bind(R.id.xunlian_progress)
+    ProgressBar mProgressXunlian;
+    @Bind(R.id.tv_title)
+    TextView tv_title;
 
-    private TextView name;
-    private TextView name_2;
-    private TextView details;
-    private TextView intro;
-    private TextView intro_2;
-    private TextView intro_3;
     private TextView yxl;
     private TextView ywc;
-    private ImageView img;
-    private ImageView img_2;
-    private ImageView img_3;
-    private ColorArcProgressBar bar;
     private String app_cartoon_id;
     private String sub_name;
     private StartTrainDialog startTrainDiialog;
@@ -88,7 +114,6 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
     public static final int STARTTRAIN_3 = 1003;
     public static final int MANHUA_1 = 1004;
     public static final int MANHUA_2 = 1005;
-    private AppCartoon appCartoon;
     private SingleDownDialog singleDownDialog;
     private DownListDialog listDownDialog;
     /**
@@ -97,31 +122,13 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
     private DownloadRequest mDownloadRequest;
     private int x = 0;
     private SharedDialog dialog;
+    private AppCartoon appCartoon;
 
-    @Override
-    protected void initToolBar() {
-        setToolBarTitle("");
+    private final int DOWNLOAD_GUSHI = 2;
+    private final int DOWNLOAD_MANHUA = 1;
+    private final int DOWNLOAD_XUNLIAN = 3;
+    private int tab = 1;
 
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.shared, menu);
-        return true;
-    }
-
-    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.action_shared:
-                    showSharedDialog();
-                    break;
-            }
-            return true;
-        }
-    };
 
     private void showSharedDialog() {
         if (dialog == null) {
@@ -134,37 +141,8 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         dimActivity(dialog, 0.6f);
 
 
-//        ShareSDK.initSDK(this);
-//        OnekeyShare oks = new OnekeyShare();
-//        //关闭sso授权
-//        oks.disableSSOWhenAuthorize();
-//
-//        // title标题：微信、QQ（新浪微博不需要标题）
-//        oks.setTitle("我是分享标题");  //最多30个字符
-//
-//        // text是分享文本：所有平台都需要这个字段
-//        oks.setText("我是分享文本，啦啦啦~http://uestcbmi.com/");  //最多40个字符
-//
-//        // imagePath是图片的本地路径：除Linked-In以外的平台都支持此参数
-//        //oks.setImagePath(Environment.getExternalStorageDirectory() + "/meinv.jpg");//确保SDcard下面存在此张图片
-//
-//        //网络图片的url：所有平台
-//        oks.setImageUrl("http://7sby7r.com1.z0.glb.clouddn.com/CYSJ_02.jpg");//网络图片rul
-//
-//        // url：仅在微信（包括好友和朋友圈）中使用
-//        oks.setUrl("http://sharesdk.cn");   //网友点进链接后，可以看到分享的详情
-//
-//        // Url：仅在QQ空间使用
-//        oks.setTitleUrl("http://www.baidu.com");  //网友点进链接后，可以看到分享的详情
-//
-//        // 启动分享GUI
-//        oks.show(this);
     }
 
-    @Override
-    protected void OnNavigationClick(View v) {
-        finish();
-    }
 
     @Override
     protected void initHandler(Message msg) {
@@ -173,14 +151,6 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void setListener() {
-        bar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getThis(), TrainingLevelActivity.class);
-                startActivity(intent);
-            }
-        });
-        getToolbar().setOnMenuItemClickListener(onMenuItemClick);
     }
 
     @Override
@@ -193,26 +163,34 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        super.initView(savedInstanceState);
-        addContentView(R.layout.layout_traindetails);
-        setBackgroundResource(R.drawable.bg_train);
-        name = (TextView) findViewById(R.id.layout_traindetails_name);
-        name_2 = (TextView) findViewById(R.id.layout_traindetails_name_2);
-        details = (TextView) findViewById(R.id.layout_traindetails_details);
-        intro = (TextView) findViewById(R.id.layout_traindetails_intro);
-        intro_2 = (TextView) findViewById(R.id.layout_traindetails_intro_2);
-        intro_3 = (TextView) findViewById(R.id.layout_traindetails_intro_3);
-        img = (ImageView) findViewById(R.id.layout_traindetails_img);
-        img_2 = (ImageView) findViewById(R.id.layout_traindetails_img_2);
-        img_3 = (ImageView) findViewById(R.id.layout_traindetails_img_3);
+        setContentView(R.layout.layout_traindetails);
         yxl = (TextView) findViewById(R.id.layout_traindetails_yxl_tv);
         ywc = (TextView) findViewById(R.id.layout_traindetails_ywc_tv);
-        bar = (ColorArcProgressBar) findViewById(R.id.layout_traindetails_bar);
     }
 
     @OnClick(R.id.layout_traindetails_start)
     public void startTrain(View v) {
-        showDialog();
+        switch (tab){
+            /**
+             * 初級
+             */
+            case 1:
+                showDownDialog(TrainDetailsActivity.STARTTRAIN_1);
+                break;
+            /**
+             * 中級
+             */
+            case 2:
+                showDownDialog(TrainDetailsActivity.STARTTRAIN_2);
+                break;
+            /**
+             * 高級
+             */
+            case 3:
+                showDownDialog(TrainDetailsActivity.STARTTRAIN_3);
+                break;
+        }
+//        showDialog(); 多下载
     }
 
     private void showDialog() {
@@ -242,6 +220,9 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         dimActivity(startTrainDiialog, 0.6f);
     }
 
+    /**
+     * 獲取數據
+     */
     private void doAppCartoons() {
         AppCartoonRequest request = new AppCartoonRequest(Constants.APP_CARTOON, RequestMethod.GET);
         request.add("user_id", App.getUserLogin().user_id + "");
@@ -266,26 +247,63 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         }
     };
 
+    /**
+     * 初始化UI
+     * @param userAppCartoons
+     */
     private void init(AppCartoon userAppCartoons) {
-        setToolBarTitle(userAppCartoons.name);
-        name_2.setText(sub_name);
-        BitmapManager.getInstance().display(img, Constants.HOST + userAppCartoons.avatar);
-        BitmapManager.getInstance().display(img_2, Constants.HOST + userAppCartoons.lessons.get(0).avatar);
-        BitmapManager.getInstance().display(img_3, Constants.HOST + userAppCartoons.lessons.get(1).avatar);
-        intro_2.setText(getString(R.string.train_details_text));
-        intro_3.setText(getString(R.string.train_details_text_2_1) + userAppCartoons.name + getString(R.string.train_details_text_2_2));
-        name.setText("KTBall" + userAppCartoons.name + "练习");
-        intro.setText(userAppCartoons.intro);
-        details.setText(userAppCartoons.description);
-        yxl.setText(userAppCartoons.finished_minutes);
-        ywc.setText(userAppCartoons.finished_times);
-        bar.setCurrentValues(Float.parseFloat(userAppCartoons.now_level_progress));
+        appCartoon = userAppCartoons;
+        tv_title.setText(userAppCartoons.name);
+        yxl.setText(userAppCartoons.finished_minutes + "min");
+        ywc.setText(userAppCartoons.finished_times + "次");
+        mProgressView.setTimerProgress((int) Float.parseFloat(userAppCartoons.now_level_progress));
         int[] colcr = CommonUtils.getTrainColor(userAppCartoons.now_level_color);
-        bar.setColors(colcr);
-        bar.setHintString(userAppCartoons.now_level_name);
-        bar.setHintPaintColor(colcr[0]);
+        mName.setText(userAppCartoons.now_level_name);
+        mName.setTextColor(colcr[0]);
+        mTv_manhua_download.setText("下载 " + checkSize(Integer.valueOf(userAppCartoons.lessons.get(1).zip_size)));
+        mTv_kt_download.setText("下载 " + checkSize(Integer.valueOf(userAppCartoons.lessons.get(0).zip_size)));
+        if (FileUtil.fileExists(FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/" + userAppCartoons.lessons.get(1).name)) {
+            mTv_manhua_download.setVisibility(View.GONE);
+        } else {
+            mTv_manhua_download.setVisibility(View.VISIBLE);
+            mImage_manhua.setVisibility(View.GONE);
+        }
+
+        if (FileUtil.fileExists(FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/" + userAppCartoons.lessons.get(0).name)) {
+            mTv_kt_download.setVisibility(View.GONE);
+        } else {
+            mTv_kt_download.setVisibility(View.VISIBLE);
+            mImage_kt.setVisibility(View.GONE);
+        }
+        AppCartoon.Videos videos1 = selectVideo("0");
+        if (videos1 != null) {
+            String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
+            String name = getFileName(videos1.download_video_url).replace(".zip", "");
+            if (FileUtil.fileExists(path + name)) {
+                layout_traindetails_start.setText("开始训练");
+            } else {
+                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+            }
+        }
     }
 
+
+    /**
+     *換算M
+     * @param size
+     * @return
+     */
+    private String checkSize(int size) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format((double) size / 1024) + "M";
+
+    }
+
+    /**
+     * 單步下載
+     * @param url
+     * @param name
+     */
     private void doSingleDown(String url, String name) {
         String fileName = getFileName(url);
         LogUtils.e(fileName);
@@ -296,14 +314,23 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         // isDeleteOld 如果发现存在同名文件，是否删除后重新下载，如果不删除，则直接下载成功。
         LogUtils.e(url);
         url = getReleaUrl(url);
-        showsingleDownDialog(name);
+
         mDownloadRequest = NoHttp.createDownloadRequest(url, FileUtil.getDownloadDir(getThis()), fileName, true, true);
         mDownloadRequest.addHeader("Accept", "application/json");
         mDownloadRequest.setContentType("application/octet-stream; charset=UTF-8");
         // what 区分下载。
         // downloadRequest 下载请求对象。
         // downloadListener 下载监听。
-        CallServer.getDownloadInstance().add(0, mDownloadRequest, downloadListener);
+        if (name.contains("故事")) {
+            CallServer.getDownloadInstance().add(DOWNLOAD_GUSHI, mDownloadRequest, downloadListener);
+        } else if (name.contains("教学")) {
+            CallServer.getDownloadInstance().add(DOWNLOAD_MANHUA, mDownloadRequest, downloadListener);
+        } else if (name.contains("训练")) {
+            CallServer.getDownloadInstance().add(DOWNLOAD_XUNLIAN, mDownloadRequest, downloadListener);
+        } else {
+            showsingleDownDialog(name);
+            CallServer.getDownloadInstance().add(0, mDownloadRequest, downloadListener);
+        }
     }
 
     public static String getReleaUrl(String url) {
@@ -374,6 +401,12 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         }
     }
 
+    /**
+     * ]
+     * 下载视频
+     *
+     * @param str
+     */
     private void downVideos(String str, AppCartoon.Videos videos) {
         String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
         String name = getFileName(videos.download_video_url).replace(".zip", "");
@@ -385,10 +418,19 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
             intent.putExtra("video", videos);
             startActivity(intent);
         } else {
-            selectDialog(str, videos.video_size, videos.download_video_url, str);
+            doSingleDown(videos.download_video_url, str);
+//            selectDialog(str, videos.video_size, videos.download_video_url, str);
         }
     }
 
+    /**
+     * ]
+     * 下载漫画
+     *
+     * @param str
+     * @param lessons
+     * @param code
+     */
     private void downLessons(String str, AppCartoon.Lessons lessons, int code) {
         String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/" + lessons.name;
         if (FileUtil.fileExists(path)) {
@@ -399,7 +441,8 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
             intent.putExtra("code", code);
             startActivity(intent);
         } else {
-            selectDialog(str, lessons.zip_size, lessons.download_images_url, str);
+            doSingleDown(lessons.download_images_url, str);
+//            selectDialog(str, lessons.zip_size, lessons.download_images_url, str);
         }
     }
 
@@ -587,8 +630,8 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         public void onFinish(int what, String filePath) {
             Logger.d("Download finish");
             try {
-                Log.d("onFinish",filePath);
-                Log.d("onFinish",FileUtil.getDecompressionDir(getThis()) + appCartoon.name+"...");
+                Log.d("onFinish", filePath);
+                Log.d("onFinish", FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "...");
                 ZipUtils.UnZipFolder(filePath, FileUtil.getDecompressionDir(getThis()) + appCartoon.name);
                 new File(filePath).delete();
             } catch (Exception e) {
@@ -661,13 +704,33 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
 
         @Override
         public void onProgress(int what, int progress, long fileCount) {
-            LogUtils.e(progress + "..." + fileCount);
-            updateProgress(progress);
+            switch (what) {
+                case DOWNLOAD_MANHUA:
+                    mProgress_manhua.setVisibility(View.VISIBLE);
+                    mTv_manhua_download.setVisibility(View.GONE);
+                    mProgress_manhua.setProgress(progress);
+                    break;
+                case DOWNLOAD_GUSHI:
+                    mProgress_kt.setVisibility(View.VISIBLE);
+                    mTv_kt_download.setVisibility(View.GONE);
+                    mProgress_kt.setProgress(progress);
+                    break;
+                case DOWNLOAD_XUNLIAN:
+                    mProgressXunlian.setVisibility(View.VISIBLE);
+                    mProgressXunlian.setProgress(progress);
+                    layout_traindetails_start.setVisibility(View.GONE);
+                    break;
+                default:
+                    updateProgress(progress);
+                    break;
+            }
+
         }
 
         @Override
-        public void onFinish(int what, String filePath) {
-            singleDownDialog.setProgress(100);
+        public void onFinish(final int what, String filePath) {
+            if (singleDownDialog != null)
+                singleDownDialog.setProgress(100);
             LogUtils.e("onFinish");
             LogUtils.e("文件路径：" + filePath);
             LogUtils.e(FileUtil.getDecompressionDir(getThis()));
@@ -681,7 +744,24 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
             getHandler().postAtTime(new Runnable() {
                 @Override
                 public void run() {
-                    singleDownDialog.dialogDismiss();
+                    switch (what) {
+                        case DOWNLOAD_MANHUA:
+                            mProgress_manhua.setVisibility(View.GONE);
+                            mImage_manhua.setVisibility(View.VISIBLE);
+                            break;
+                        case DOWNLOAD_GUSHI:
+                            mProgress_kt.setVisibility(View.GONE);
+                            mImage_kt.setVisibility(View.VISIBLE);
+                            break;
+                        case DOWNLOAD_XUNLIAN:
+                            mProgressXunlian.setVisibility(View.GONE);
+                            layout_traindetails_start.setVisibility(View.VISIBLE);
+                            layout_traindetails_start.setText("开始训练");
+                            break;
+                        default:
+                            singleDownDialog.dialogDismiss();
+                            break;
+                    }
                 }
             }, 500);
 
@@ -721,6 +801,7 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         // 暂停下载
         if (mDownloadRequest != null) {
             mDownloadRequest.cancel();
+            CallServer.getDownloadInstance().cancelAll();
         }
         super.onDestroy();
     }
@@ -747,4 +828,91 @@ public class TrainDetailsActivity extends BaseToolBarActivity2 {
         super.onStart();
         closeLoadingDialog();
     }
+
+    @OnClick(R.id.tv_chuji)
+    public void checkChuji() {
+        tv_tishi.setText("适合足球基础差,零基础的初学者");
+        tv_chuji.setTextColor(0xffffffff);
+        tv_chuji.setBackgroundColor(getResourcesColor(R.color.gold));
+        tv_zhongji.setBackgroundColor(0xffffffff);
+        tv_zhongji.setTextColor(getResourcesColor(R.color.gold));
+        tv_gaoji.setBackgroundColor(0xffffffff);
+        tv_gaoji.setTextColor(getResourcesColor(R.color.gold));
+        tab = 1;
+        AppCartoon.Videos videos1 = selectVideo("0");
+        if (videos1 != null) {
+            String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
+            String name = getFileName(videos1.download_video_url).replace(".zip", "");
+            if (FileUtil.fileExists(path + name)) {
+                layout_traindetails_start.setText("开始训练");
+            } else {
+                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+            }
+        }
+    }
+
+    @OnClick(R.id.tv_zhongji)
+    public void checkZhongji() {
+        tv_tishi.setText("适合身体尚可,有一定的基础的训练者");
+        tv_zhongji.setTextColor(0xffffffff);
+        tv_zhongji.setBackgroundColor(getResourcesColor(R.color.gold));
+        tv_chuji.setBackgroundColor(0xffffffff);
+        tv_chuji.setTextColor(getResourcesColor(R.color.gold));
+        tv_gaoji.setBackgroundColor(0xffffffff);
+        tv_gaoji.setTextColor(getResourcesColor(R.color.gold));
+        tab = 2;
+        AppCartoon.Videos videos1 = selectVideo("1");
+        if (videos1 != null) {
+            String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
+            String name = getFileName(videos1.download_video_url).replace(".zip", "");
+            if (FileUtil.fileExists(path + name)) {
+                layout_traindetails_start.setText("开始训练");
+            } else {
+                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+            }
+        }
+    }
+
+    @OnClick(R.id.tv_gaoji)
+    public void checkGaoji() {
+        tv_tishi.setText("适合身体素质强大,有一定基础的训练者");
+        tv_gaoji.setTextColor(0xffffffff);
+        tv_gaoji.setBackgroundColor(getResourcesColor(R.color.gold));
+        tv_zhongji.setBackgroundColor(0xffffffff);
+        tv_zhongji.setTextColor(getResourcesColor(R.color.gold));
+        tv_chuji.setBackgroundColor(0xffffffff);
+        tv_chuji.setTextColor(getResourcesColor(R.color.gold));
+        tab = 3;
+        AppCartoon.Videos videos1 = selectVideo("2");
+        if (videos1 != null) {
+            String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
+            String name = getFileName(videos1.download_video_url).replace(".zip", "");
+            if (FileUtil.fileExists(path + name)) {
+                layout_traindetails_start.setText("开始训练");
+            } else {
+                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+            }
+        }
+
+    }
+
+    @OnClick(R.id.linear_zhenren)
+    public void download_zhenren() {
+        Intent intent = new Intent(getThis(), ZhenRenVodeoActivity.class);
+        intent.putStringArrayListExtra("info", (ArrayList<String>) appCartoon.youku_videos);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.image_help)
+    public void help() {
+        Intent intent = new Intent(getThis(), BigClassHelp.class);
+        intent.putExtra("info", appCartoon);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.image_back)
+    public void back() {
+        finish();
+    }
+
 }

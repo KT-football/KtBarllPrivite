@@ -23,6 +23,8 @@ public class AppCartoon extends BaseEntity implements Serializable{
     public String now_level_color; //目前等级颜色,
     public String now_level_progress; //目前等级进度
 
+
+
     public class Lessons implements Serializable{
         public String id; //课时id,
         public String name; //名称,

@@ -8,7 +8,8 @@ public class Constants {
 
     public static final String HOST = "http://www.ktfootball.com";
     public static final String KTHOST = HOST + "/apiv2/";
-    //更改战队头像
+//    public static final String KTHOST = HOST;
+    //更改战队头像、
     public static final String CHANGE_LEAGUE_AVATAR = KTHOST + "users/change_league_avatar";
     //修改个人头像
     public static final String UPLOAD_AVATAR = KTHOST + "users/upload_avatar";

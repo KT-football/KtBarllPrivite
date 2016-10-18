@@ -21,15 +21,6 @@
 
     </RelativeLayout>
 
-    <ImageView
-        android:layout_below="@+id/item_trainlist_1"
-        android:id="@+id/item_trainlist_img"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="centerInside"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"/>
-
     <TextView
         android:id="@+id/item_trainlist_name_2"
         android:layout_width="144dp"
@@ -44,11 +35,21 @@
         android:textSize="12sp" />
 
     <ImageView
+        android:id="@+id/item_trainlist_img"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerInside"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/item_trainlist_1"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
         android:id="@+id/item_trainlist_tag"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/icon_trainlist_tag"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="3dp"/>
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -140,7 +140,16 @@
             android:name=".UI.Activity.train.TrainingLevelActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".UI.Activity.train.AddClassActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".UI.Activity.train.TrainDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UI.Activity.train.BigClassHelp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UI.Activity.train.ZhenRenVodeoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.train.TrainListActivity"

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.utils.FileUtil;
 import com.frame.app.view.ColorArcProgressBar;
+import com.ktfootball.app.UI.Activity.train.AddClassActivity;
 import com.ktfootball.app.UI.Activity.train.TrainListActivity;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Manager.BitmapManager;
@@ -101,7 +102,7 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             trainHeaderHolder.mytrain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    context.startActivity(new Intent(context,TrainListActivity.class));
+                    context.startActivity(new Intent(context,AddClassActivity.class));
                 }
             });
         } else {

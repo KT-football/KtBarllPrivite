@@ -370,7 +370,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         VolleyUtil.getInstance(this).addRequest(jsonRequest);
     }
 
-    private void init(VideoDetailsData videoDetailsData) {//获取视频详情
+    private void init(final VideoDetailsData videoDetailsData) {//获取视频详情
         if (score != null) {
             textViewLeftBiFen.setText(score);
         }
@@ -387,6 +387,22 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 textViewNameB.setText(videoDetailsData.users.get(1).nickname);
                 textViewZhanA.setText("战斗力" + videoDetailsData.users.get(0).power);
                 textViewZhanB.setText("战斗力" + videoDetailsData.users.get(1).power);
+                imageViewA.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(0).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(1).user_id);
+                        startActivity(intent);
+                    }
+                });
                 break;
             case 1://2v2
                 relativeLayout1.setVisibility(View.VISIBLE);
@@ -409,6 +425,38 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 textViewZhanC.setText("战斗力" + videoDetailsData.users.get(1).power);
                 textViewZhanB.setText("战斗力" + videoDetailsData.users.get(2).power);
                 textViewZhanD.setText("战斗力" + videoDetailsData.users.get(3).power);
+                imageViewA.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(0).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewC.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(1).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(2).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewD.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(3).user_id);
+                        startActivity(intent);
+                    }
+                });
                 break;
             case 2://3v3
                 relativeLayout1.setVisibility(View.VISIBLE);
@@ -441,6 +489,54 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 textViewZhanB.setText("战斗力" + videoDetailsData.users.get(3).power);
                 textViewZhanD.setText("战斗力" + videoDetailsData.users.get(4).power);
                 textViewZhanF.setText("战斗力" + videoDetailsData.users.get(5).power);
+                imageViewA.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(0).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewC.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(1).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewE.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(2).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(3).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewD.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(4).user_id);
+                        startActivity(intent);
+                    }
+                });
+                imageViewF.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getThis(), UserProfiles.class);
+                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(5).user_id);
+                        startActivity(intent);
+                    }
+                });
                 break;
         }
         textViewName.setText(videoDetailsData.name);
@@ -453,6 +549,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         }
         if (list.contains(userId)) imageViewLove.setImageResource(R.mipmap.dianzan_zan);
         textViewLove.setText("" + videoDetailsData.likes);
+
+
     }
 
     public void doBack(View view) {//退出

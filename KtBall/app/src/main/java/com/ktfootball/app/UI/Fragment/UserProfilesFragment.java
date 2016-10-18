@@ -1,14 +1,21 @@
 package com.ktfootball.app.UI.Fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -25,7 +32,9 @@ import com.kt.ktball.entity.UserMsg;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.R;
+import com.ktfootball.app.UI.Activity.JudgeSeleteActivity;
 import com.ktfootball.app.UI.Activity.LoginActivity;
+import com.ktfootball.app.UI.Activity.MyBaiDuFootPrintActivity;
 import com.ktfootball.app.UI.Activity.MyQRCodeActivity;
 import com.ktfootball.app.UI.Activity.UserProfiles;
 import com.ktfootball.app.UI.Fragment.UserProFile.AbilityFragment;
@@ -105,7 +114,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
         String url = "http://www.ktfootball.com/apiv2/users/detail?" +
                 "current_user_id=" + currentUserId + "&user_id=" + userId +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
-        Log.e("huangbo",currentUserId +" +  "+userId + url);
+        Log.e("huangbo", currentUserId + " +  " + userId + url);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -131,7 +140,6 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
     }
 
 
-
     //初始化视图
     private void initView(UserMsg userMsg) {
         String uri = "http://www.ktfootball.com" + userMsg.avatar;//加载头像
@@ -140,27 +148,27 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
         if (userMsg.exp <= 50) {
             lvi = 0;
             if (userMsg.exp > 0)
-                mProgressView.setTimerProgress(Util.voll(userMsg.exp ,50));
+                mProgressView.setTimerProgress(Util.voll(userMsg.exp, 50));
             else
                 mProgressView.setTimerProgress(0);
         } else if (userMsg.exp > 50 && userMsg.exp <= 250) {
             lvi = 1;
-            mProgressView.setTimerProgress(Util.voll(userMsg.exp-50 , 200));
+            mProgressView.setTimerProgress(Util.voll(userMsg.exp - 50, 200));
         } else if (userMsg.exp > 250 && userMsg.exp <= 750) {
             lvi = 2;
-            mProgressView.setTimerProgress(Util.voll(userMsg.exp-250 , 500));
+            mProgressView.setTimerProgress(Util.voll(userMsg.exp - 250, 500));
         } else if (userMsg.exp > 750 && userMsg.exp <= 1750) {
             lvi = 3;
-            mProgressView.setTimerProgress(Util.voll(userMsg.exp-750 , 1000));
+            mProgressView.setTimerProgress(Util.voll(userMsg.exp - 750, 1000));
         } else if (userMsg.exp > 1750 && userMsg.exp <= 4000) {
             lvi = 4;
-            mProgressView.setTimerProgress(Util.voll(userMsg.exp-1750 , 2250));
+            mProgressView.setTimerProgress(Util.voll(userMsg.exp - 1750, 2250));
         } else if (userMsg.exp > 4000 && userMsg.exp <= 7500) {
             lvi = 5;
-            mProgressView.setTimerProgress(Util.voll(userMsg.exp-4000 , 3500));
+            mProgressView.setTimerProgress(Util.voll(userMsg.exp - 4000, 3500));
         } else if (userMsg.exp > 7500 && userMsg.exp <= 10000) {
             lvi = 6;
-            mProgressView.setTimerProgress(Util.voll(userMsg.exp-7500 , 92500));
+            mProgressView.setTimerProgress(Util.voll(userMsg.exp - 7500, 92500));
         } else if (userMsg.exp > 100000) {
             lvi = 7;
             mProgressView.setTimerProgress(100);
@@ -290,17 +298,71 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
                 setSelect(3);
                 break;
             case R.id.image_more:
-
+                showPopupWindow(v);
                 break;
             case R.id.image_erweima:
                 Intent intent = new Intent(getThis(), MyQRCodeActivity.class);
                 startActivity(intent);
                 break;
             case R.id.image_head:
-                Intent intent1 = new Intent(getThis(),UserProfiles.class);
-                intent1.putExtra(UserProfiles.USERID,userId);
+                Intent intent1 = new Intent(getThis(), UserProfiles.class);
+                intent1.putExtra(UserProfiles.USERID, userId);
                 startActivity(intent1);
                 break;
         }
     }
+
+    private void showPopupWindow(View view) {
+
+        // 一个自定义的布局，作为显示的内容
+        View contentView = LayoutInflater.from(getThis()).inflate(
+                R.layout.layout_more_menu, null);
+        final PopupWindow popupWindow = new PopupWindow(contentView,
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        contentView.findViewById(R.id.linear_message).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        int isJudge = PreferenceManager.getDefaultSharedPreferences(getThis()).getInt(LoginActivity.PRE_CURRENT_IS_JUSGE, 0);
+        if (isJudge == 0) {
+            contentView.findViewById(R.id.linear_caipan).setVisibility(View.GONE);
+        }
+        contentView.findViewById(R.id.linear_zhuji).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getThis(), MyBaiDuFootPrintActivity.class);
+                intent.putExtra("user_id", currentUserId);
+                startActivity(intent);
+                popupWindow.dismiss();
+            }
+        });
+        contentView.findViewById(R.id.linear_caipan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getThis(), JudgeSeleteActivity.class));
+                popupWindow.dismiss();
+            }
+        });
+        popupWindow.setTouchable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(getResources(), (Bitmap) null));
+        final WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
+        lp.alpha = 0.7f;
+        getActivity().getWindow().setAttributes(lp);
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                lp.alpha = 1f;
+                getActivity().getWindow().setAttributes(lp);
+            }
+        });
+        popupWindow.setAnimationStyle(R.style.AnimationPreview);
+        popupWindow.showAsDropDown(view);
+
+    }
+
+
 }

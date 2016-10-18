@@ -121,9 +121,9 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         }else{
             holder.delete.setVisibility(View.GONE);
-            holder.name.setTextColor(Color.WHITE);
-            holder.comments.setTextColor(Color.WHITE);
-            holder.num.setTextColor(Color.WHITE);
+            holder.name.setTextColor(0xff333333);
+            holder.comments.setTextColor(0xff333333);
+            holder.num.setTextColor(0xff333333);
         }
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,8 +160,8 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
         itemHolder.name.setText(comments.nickname+":");
         itemHolder.comments.setText(comments.content);
         if(comments.is_star == null || !"1".equals(comments.is_star)){
-            itemHolder.name.setTextColor(Color.WHITE);
-            itemHolder.comments.setTextColor(Color.WHITE);
+            itemHolder.name.setTextColor(0xff333333);
+            itemHolder.comments.setTextColor(0xff333333);
         }else{
             itemHolder.name.setTextColor(Color.parseColor("#FFD700"));
             itemHolder.comments.setTextColor(Color.parseColor("#FFD700"));

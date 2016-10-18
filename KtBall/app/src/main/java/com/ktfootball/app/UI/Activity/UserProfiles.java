@@ -487,7 +487,6 @@ public class UserProfiles extends BaseActivity {
 
     @OnClick(R.id.image_setting)
     public void toSetting(){
-//        startActivity(new Intent(UserProfiles.this, JudgeSeleteActivity.class));
         Intent intent = new Intent(getThis(), UserinfoChangeActivity.class);
         intent.putExtra(UserinfoChangeActivity.USER_ID, App.getUserLogin().user_id+"");
         startActivity(intent);

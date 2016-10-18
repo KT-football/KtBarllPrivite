@@ -40,7 +40,7 @@ public class MyBaiDuFootPrintActivity extends AppCompatActivity {
     private Marker mMarker;
 
     BitmapDescriptor location = BitmapDescriptorFactory
-            .fromResource(R.drawable.location);
+            .fromResource(R.mipmap.zhuji);
     private LatLng ll;
 
     @Override
@@ -49,8 +49,8 @@ public class MyBaiDuFootPrintActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mybaidu_foot_print);
         mMapView = (MapView) findViewById(R.id.mapView);
         mBaiduMap = mMapView.getMap();
-        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(14.0f);
-        mBaiduMap.setMapStatus(msu);
+        MapStatusUpdate msu = MapStatusUpdateFactory.zoomBy(-5.0f);
+        mBaiduMap.animateMapStatus(msu);
         initView();
     }
 

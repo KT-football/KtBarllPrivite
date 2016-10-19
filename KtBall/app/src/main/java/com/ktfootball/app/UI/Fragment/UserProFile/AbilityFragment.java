@@ -54,6 +54,8 @@ public class AbilityFragment extends BaseFragment {
     private List<ImageView> mImageQiu = new ArrayList<>();
     private int cont = 20;
     private UserMsg mUserMsg;
+    private LinearLayout mEmpty;
+    private LinearLayout mMain;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -163,6 +165,8 @@ public class AbilityFragment extends BaseFragment {
         mImageQiu.add(mImage_qiu8);
         mImageQiu.add(mImage_qiu9);
         mImageQiu.add(mImage_qiu10);
+        mEmpty = getViewById(R.id.empty);
+        mMain = getViewById(R.id.linear_main);
         mUserMsg = App.getUserMsg();
 
 
@@ -183,6 +187,10 @@ public class AbilityFragment extends BaseFragment {
             mTv_chuandang.setText(mUserMsg.getPannas() + "");
             mTv_jinqiu.setText(mUserMsg.getGoals() + "");
             checkView();
+            if (mUserMsg.getLast10_goals_list() ==null||mUserMsg.getLast10_goals_list().size()==0){
+                mEmpty.setVisibility(View.VISIBLE);
+                mMain.setVisibility(View.GONE);
+            }
         }
 
     }

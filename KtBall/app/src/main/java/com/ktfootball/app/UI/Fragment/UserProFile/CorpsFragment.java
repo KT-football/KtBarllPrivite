@@ -105,13 +105,25 @@ public class CorpsFragment extends BaseFragment implements BGARefreshLayout.BGAR
                                     if (leagues.get(i).game_type.equals("2")) {
                                         leagues.get(i).code = 2;
                                         leagues3.add(leagues.get(i));
-                                    } else if (leagues.get(i).game_type.equals("1")){
+                                    } else if (leagues.get(i).game_type.equals("1")) {
                                         leagues.get(i).code = 1;
                                         leagues2.add(leagues.get(i));
-                                    }else{
+                                    } else {
                                         leagues.get(i).code = 1;
                                         leagues1.add(leagues.get(i));
                                     }
+                                }
+                                if (leagues3.size() == 0) {
+                                    Leagues l = new Leagues();
+                                    l.game_type = "2";
+                                    l.code = 2;
+                                    leagues3.add(l);
+                                }
+                                if (leagues2.size() == 0 && leagues1.size() == 0) {
+                                    Leagues l = new Leagues();
+                                    l.game_type = "1";
+                                    l.code = 1;
+                                    leagues2.add(l);
                                 }
                                 leagues1.addAll(leagues2);
                                 leagues1.addAll(leagues3);
@@ -146,8 +158,8 @@ public class CorpsFragment extends BaseFragment implements BGARefreshLayout.BGAR
                 new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
                     @Override
                     public void onHeaderClick(View header, int position, long headerId) {
-                        Intent intent = new Intent(getThis(),NewTeamActivity.class);
-                        intent.putExtra("type",headerId+"");
+                        Intent intent = new Intent(getThis(), NewTeamActivity.class);
+                        intent.putExtra("type", headerId + "");
                         startActivity(intent);
                     }
                 });
@@ -180,8 +192,9 @@ public class CorpsFragment extends BaseFragment implements BGARefreshLayout.BGAR
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         return false;
     }
+
     @Subscribe
-    public void addTeam(AddTeamEvent e){
+    public void addTeam(AddTeamEvent e) {
         mRefreshLayout.beginRefreshing();
     }
 }

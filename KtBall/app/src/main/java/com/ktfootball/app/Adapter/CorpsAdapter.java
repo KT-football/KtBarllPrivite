@@ -57,8 +57,16 @@ public class CorpsAdapter extends RecyclerView.Adapter<CorpsAdapter.CorpsView> i
 
     @Override
     public void onBindViewHolder(CorpsView holder, int position) {
-        holder.mName.setText(leagues2.get(position).name);
-        Glide.with(mContext).load("http://www.ktfootball.com" + leagues2.get(position).usera_avatar).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+        if (leagues2.get(position).usera_id == 0) {
+//            holder.view.setVisibility(View.GONE);
+            holder.tv_empty_content.setVisibility(View.VISIBLE);
+            holder.mName.setVisibility(View.INVISIBLE);
+            holder.mHead.setVisibility(View.INVISIBLE);
+        }else {
+            holder.tv_empty_content.setVisibility(View.GONE);
+            holder.mName.setText(leagues2.get(position).name);
+            Glide.with(mContext).load("http://www.ktfootball.com" + leagues2.get(position).usera_avatar).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+        }
     }
 
 
@@ -68,20 +76,25 @@ public class CorpsAdapter extends RecyclerView.Adapter<CorpsAdapter.CorpsView> i
     }
 
     public class CorpsView extends RecyclerView.ViewHolder {
-        TextView mName;
+        TextView mName,tv_empty_content;
         ImageView mHead;
+        View view;
 
         public CorpsView(View itemView) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.tv_name);
+            view = itemView;
             mHead = (ImageView) itemView.findViewById(R.id.tv_head);
+            tv_empty_content = (TextView) itemView.findViewById(R.id.tv_empty_content);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, TeamDetailsActivity.class);
-                    intent.putExtra("team_id", leagues2.get(getPosition()).league_id);
-                    intent.putExtra("game_type", leagues2.get(getPosition()).game_type);
-                    mContext.startActivity(intent);
+                    if (tv_empty_content.getVisibility() ==View.GONE) {
+                        Intent intent = new Intent(mContext, TeamDetailsActivity.class);
+                        intent.putExtra("team_id", leagues2.get(getPosition()).league_id);
+                        intent.putExtra("game_type", leagues2.get(getPosition()).game_type);
+                        mContext.startActivity(intent);
+                    }
                 }
             });
         }

@@ -11,7 +11,7 @@ public class Leagues {
 //    game_type:
     public String game_type;
 //    usera_id: 3
-    public long usera_id;
+    public long usera_id = 0;
 //    usera_nickname: 刘力豪leokt足球
     public String usera_nickname;
 //    usera_avatar: /system/user_profiles/avatars/000/000/008/original/0?1456748421

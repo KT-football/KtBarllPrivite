@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 
 import com.frame.app.base.fragment.BaseFragment;
 import com.ktfootball.app.Adapter.BattleChildAdapter;
@@ -28,6 +30,7 @@ public class BattleChildFragment extends BaseFragment implements BGARefreshLayou
     private BGARefreshLayout mRefreshLayout;
     private RecyclerView layout_recyclerview_rv;
     private BattleChildAdapter mBattleChildAdapter;
+    private boolean isEmpte = false;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -75,6 +78,27 @@ public class BattleChildFragment extends BaseFragment implements BGARefreshLayou
     public void refreshList(List<BattleBean.VideosBean> list) {
         mList = list;
         mBattleChildAdapter.setData(list);
+        if (list.size() == 0) {
+            if (!isEmpte) {
+                isEmpte = true;
+                mRefreshLayout.removeView(layout_recyclerview_rv);
+                mRefreshLayout.addView(LayoutInflater.from(getThis()).inflate(R.layout.empty_view, null));
+            }
+
+        } else
+        {
+            isEmpte = false;
+            boolean isVisinle = false;
+            for (int i = 0; i < mRefreshLayout.getChildCount(); i++) {
+                if (mRefreshLayout.getChildAt(i) instanceof RecyclerView) {
+                    isVisinle = true;
+                }
+                if (i == mRefreshLayout.getChildCount() - 1 && !isVisinle) {
+                    mRefreshLayout.addView(layout_recyclerview_rv);
+                }
+            }
+        }
+
         mRefreshLayout.endRefreshing();
     }
 

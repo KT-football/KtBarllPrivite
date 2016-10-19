@@ -3,19 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    android:padding="100dp">
 
-    <ImageView
-        android:id="@+id/image_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/empty_logo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_empty_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="您还没有参加该类型比赛"
-        android:textColor="#666666" />
+        <ImageView
+            android:id="@+id/image_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_logo" />
+
+        <TextView
+            android:id="@+id/tv_empty_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="您还没有参加该类型比赛"
+            android:textColor="#666666"
+            android:textSize="12dp" />
+    </LinearLayout>
 </LinearLayout>

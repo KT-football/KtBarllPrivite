@@ -8,6 +8,7 @@
     android:padding="10dp">
 
     <LinearLayout
+        android:id="@+id/linear_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -35,112 +36,128 @@
             tools:text="总场次:397" />
     </LinearLayout>
 
+    <include
+        android:id="@+id/empty"
+        layout="@layout/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linear_title"
+        android:visibility="gone"></include>
+
+
     <RelativeLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true">
+        android:id="@+id/relative_main"
+        android:layout_width="match_parent"
+        android:layout_below="@id/linear_title"
+        android:layout_height="match_parent">
 
-
-        <com.ktfootball.app.Views.MyOutCirCleView
-            android:id="@+id/myout"
+        <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true">
 
 
-        </com.ktfootball.app.Views.MyOutCirCleView>
+            <com.ktfootball.app.Views.MyOutCirCleView
+                android:id="@+id/myout"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true">
 
-        <com.ktfootball.app.Views.MyCirCleView
-            android:id="@+id/myCirCleView"
+
+            </com.ktfootball.app.Views.MyOutCirCleView>
+
+            <com.ktfootball.app.Views.MyCirCleView
+                android:id="@+id/myCirCleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_zhandouli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2004"
+                    android:textColor="@color/gold"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="战斗力"
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_centerInParent="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="bottom"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_zhandouli"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2004"
-                android:textColor="@color/gold"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tv_win"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/logo_win"
+                    android:drawablePadding="5dp"
+                    android:textColor="#333333"
+                    android:textSize="15dp"
+                    tools:text="251" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="战斗力"
-                android:textColor="#333333"
-                android:textSize="12dp" />
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/_tv_ping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/logo_ping"
+                    android:drawablePadding="5dp"
+                    android:textColor="#333333"
+                    android:textSize="15dp"
+                    tools:text="251" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_lose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/logo_lose"
+                    android:drawablePadding="5dp"
+                    android:textColor="#333333"
+                    android:textSize="15dp"
+                    tools:text="251" />
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:gravity="bottom"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tv_win"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/logo_win"
-                android:drawablePadding="5dp"
-                android:textColor="#333333"
-                android:textSize="15dp"
-                tools:text="251" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/_tv_ping"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/logo_ping"
-                android:drawablePadding="5dp"
-                android:textColor="#333333"
-                android:textSize="15dp"
-                tools:text="251" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tv_lose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/logo_lose"
-                android:drawablePadding="5dp"
-                android:textColor="#333333"
-                android:textSize="15dp"
-                tools:text="251" />
-        </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>

@@ -66,7 +66,14 @@
             android:name=".UI.Activity.LoginActivity"
             android:screenOrientation="portrait">
         </activity>
-
+        <activity
+            android:name=".UI.Activity.ChongZhiActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".UI.Activity.ChongZhiDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".UI.Activity.SystemMagActivity"
             android:screenOrientation="portrait">

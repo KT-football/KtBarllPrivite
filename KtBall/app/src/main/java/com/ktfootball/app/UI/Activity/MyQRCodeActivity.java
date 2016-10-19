@@ -120,6 +120,10 @@ public class MyQRCodeActivity extends BaseActivity {
         finish();
     }
 
+    @OnClick(R.id.btn1)
+    public void btn(){
+        startActivity(ChongZhiActivity.class);
+    }
 
 //    参赛二维码(用于显示参赛二维码页面)(get)
 //    接口地址: http://www.ktfootball.com/apiv2/users/qrcode

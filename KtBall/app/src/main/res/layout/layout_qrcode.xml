@@ -89,13 +89,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:background="@color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="40dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -152,5 +152,19 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@mipmap/duizhanbtn"
+            android:text="KT币充值"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 </LinearLayout>

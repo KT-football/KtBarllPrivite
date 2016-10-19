@@ -25,6 +25,7 @@ import com.frame.app.utils.GsonTools;
 import com.frame.app.utils.LogUtils;
 import com.kt.ktball.App;
 import com.ktfootball.app.Constants;
+import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.ktfootball.app.UI.Activity.MyQRCodeActivity;
 import com.kt.ktball.entity.UserInfo;
 import com.ktfootball.app.Manager.BitmapManager;
@@ -509,7 +510,9 @@ public class UserinfoChangeActivity extends BaseActivity {
 
     @OnClick(R.id.btn_goout)
     public void goout() {
-//        android.os.Process.killProcess(android.os.Process.myPid());
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @OnClick(R.id.layout_settting)

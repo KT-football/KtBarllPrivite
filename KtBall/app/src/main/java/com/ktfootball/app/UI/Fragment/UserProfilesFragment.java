@@ -35,6 +35,7 @@ import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.JudgeSeleteActivity;
 import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.ktfootball.app.UI.Activity.MyBaiDuFootPrintActivity;
+import com.ktfootball.app.UI.Activity.MyMsgActivity;
 import com.ktfootball.app.UI.Activity.MyQRCodeActivity;
 import com.ktfootball.app.UI.Activity.UserProfiles;
 import com.ktfootball.app.UI.Fragment.UserProFile.AbilityFragment;
@@ -322,6 +323,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
         contentView.findViewById(R.id.linear_message).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getThis(), MyMsgActivity.class));
                 popupWindow.dismiss();
             }
         });

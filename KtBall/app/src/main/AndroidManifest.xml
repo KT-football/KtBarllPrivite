@@ -68,6 +68,16 @@
         </activity>
 
         <activity
+            android:name=".UI.Activity.SystemMagActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".UI.Activity.setting.BindPhoneActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name=".UI.Activity.CarouselActivity"
             android:screenOrientation="portrait">
         </activity>

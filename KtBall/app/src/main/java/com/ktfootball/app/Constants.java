@@ -8,7 +8,7 @@ public class Constants {
 
     public static final String HOST = "http://www.ktfootball.com";
     public static final String KTHOST = HOST + "/apiv2/";
-//    public static final String KTHOST = HOST;
+    //    public static final String KTHOST = HOST;
     //更改战队头像、
     public static final String CHANGE_LEAGUE_AVATAR = KTHOST + "users/change_league_avatar";
     //修改个人头像
@@ -117,6 +117,12 @@ public class Constants {
     public static final String FINISH_BC_ORDER = KTHOST + "bc_jd/finish_bc_order";
     //俱乐部下赛事详情(get)
     public static final String GAME_DETAIL = KTHOST + "club_app/game_detail";
+    //用户消息(用于消息栏页面)(get)
+    public static final String USER_MESSAGE = KTHOST + "users/user_messages";
+    //系統消息已讀
+    public static final String RED_MESSAGE = KTHOST + "users/read_message";
+    //修改密码
+    public static final String CHANGE_PWD = KTHOST + "users/update_password";
 
 
     //============================================== IntentCode =====================================================

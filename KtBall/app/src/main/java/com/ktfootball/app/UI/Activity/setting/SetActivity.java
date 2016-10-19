@@ -94,6 +94,8 @@ public class SetActivity extends BaseActivity {
 
     @OnClick(R.id.layout_userinfochange_bingphone)
     public void bingphone(View v) {
+        Intent intent = new Intent(getThis(), BindPhoneActivity.class);
+        startActivityForResult(intent, NICKNAME_START);
 
     }
 }

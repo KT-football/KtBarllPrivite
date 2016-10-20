@@ -119,6 +119,18 @@ public class Constants {
     public static final String GAME_DETAIL = KTHOST + "club_app/game_detail";
     //用户消息(用于消息栏页面)(get)
     public static final String USER_MESSAGE = KTHOST + "users/user_messages";
+    //用户組隊消息(用于消息栏页面)(get)
+    public static final String USER_Team_MESSAGE = KTHOST + "users/league_invitations";
+    //同樣組隊消息
+    public static final String USER_TEAM_AGREE_MESSAGE = KTHOST + "users/agree_invite_league";
+    //拒絕組隊消息
+    public static final String USER_TEAM_DISAAGREE_MESSAGE = KTHOST + "users/disagree_invite_league";
+    //用户约战消息
+    public static final String USER_BATTLE_MESSAGE = KTHOST + "users/battle_invitations";
+    //同樣y约战消息
+    public static final String USER_BATTLE_AGREE_MESSAGE = KTHOST + "users/agree_invite_battle";
+    //拒絕约战消息
+    public static final String USER_BATTLE_DISAAGREE_MESSAGE = KTHOST + "users/disagree_invite_battle";
     //系統消息已讀
     public static final String RED_MESSAGE = KTHOST + "users/read_message";
     //修改密码

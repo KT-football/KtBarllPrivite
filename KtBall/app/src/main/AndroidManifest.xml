@@ -103,6 +103,12 @@
             android:name=".UI.Activity.HengHuadActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".UI.Activity.SystemBallteMsgActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UI.Activity.SystemTeamMsgActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".UI.Activity.MyFollowActivity"
             android:screenOrientation="portrait" />
         <activity

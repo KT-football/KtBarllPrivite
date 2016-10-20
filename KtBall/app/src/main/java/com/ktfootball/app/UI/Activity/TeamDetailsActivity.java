@@ -8,6 +8,7 @@ import android.os.Message;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.kt.ktball.App;
 import com.ktfootball.app.Constants;
 import com.kt.ktball.entity.TeamDetailData;
 import com.ktfootball.app.Manager.BitmapManager;
@@ -44,6 +46,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class TeamDetailsActivity extends BaseActivity {
 
@@ -78,6 +81,9 @@ public class TeamDetailsActivity extends BaseActivity {
     TextView textViewZhanC;
     @Bind(R.id.relativeLayout37)
     RelativeLayout myTeam;
+    @Bind(R.id.btn_add)
+    Button btn_add;
+
 
     long league_id;
     String gameType;
@@ -162,18 +168,23 @@ public class TeamDetailsActivity extends BaseActivity {
         textViewJiFen.setText("" + teamDetailData.scores);
         textViewTitle.setText(teamDetailData.name);
         textViewName.setText(teamDetailData.name);
+        if (teamDetailData.usera_id!=App.getUserId()&&teamDetailData.userb_id!=App.getUserId()&&teamDetailData.userc_id!=App.getUserId())
+            btn_add.setVisibility(View.GONE);
         if (gameType.equals("2")) {
             String uri1 = "http://www.ktfootball.com" + teamDetailData.usera_avatar;
             Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
+            imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
             textViewZhanA.setText("战斗力：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
                 String uri2 = "http://www.ktfootball.com" + teamDetailData.userb_avatar;
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
+                imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
                 textViewZhanB.setText("战斗力：" + teamDetailData.userb_power);
 
             } else {
+                imageViewB.setVisibility(View.GONE);
                 imageViewB.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -187,9 +198,11 @@ public class TeamDetailsActivity extends BaseActivity {
             if (teamDetailData.userc_avatar != null) {
                 String uri3 = "http://www.ktfootball.com" + teamDetailData.userc_avatar;
                 Glide.with(this).load(uri3).transform(new GlideCircleTransform(this)).into(imageViewC);
+                imageViewC.setVisibility(View.VISIBLE);
                 textViewNameC.setText(teamDetailData.userc_nickname);
                 textViewZhanC.setText("战斗力：" + teamDetailData.userc_power);
             } else {
+                imageViewC.setVisibility(View.GONE);
                 imageViewC.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -204,14 +217,17 @@ public class TeamDetailsActivity extends BaseActivity {
             imageViewC.setVisibility(View.GONE);
             String uri1 = "http://www.ktfootball.com" + teamDetailData.usera_avatar;
             Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
+            imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
             textViewZhanA.setText("战队力：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
                 String uri2 = "http://www.ktfootball.com" + teamDetailData.userb_avatar;
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
+                imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
                 textViewZhanB.setText("战队力：" + teamDetailData.userb_power);
             } else {
+                imageViewB.setVisibility(View.GONE);
                 imageViewB.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -356,5 +372,14 @@ public class TeamDetailsActivity extends BaseActivity {
         intent.putExtra("outputY", 280);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, SelectAvatarDialog.PHOTO_REQUEST_GALLERY);
+    }
+
+    @OnClick(R.id.btn_add)
+    public void addTeam(){
+
+                Intent intent = new Intent(TeamDetailsActivity.this, InviteActivity.class);
+                intent.putExtra(MyTeamActivity.EXTRA_GAME_TYPE, gameType);
+                intent.putExtra(MyTeamActivity.EXTRA_TEAM_ID, league_id);
+                startActivity(intent);
     }
 }

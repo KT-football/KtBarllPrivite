@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:padding="10dp"
     tools:context=".UI.Activity.VideoDetailsActivity">
 

@@ -510,4 +510,9 @@ public class UserProfiles extends BaseActivity {
         startActivity(intent);
 
     }
+
+    @OnClick(R.id.tv_search)
+    public void toSearch(){
+        startActivity(MyFirendActivity.class);
+    }
 }

@@ -41,6 +41,7 @@ public class MyFansAdapter extends RecyclerView.Adapter<MyFansAdapter.ViewHoder>
         Glide.with(mContext).load(Constants.HOST+mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
         holder.mName.setText(mList.get(position).getNickname());
         holder.mZhan.setText("战斗力:"+mList.get(position).getPower());
+        holder.mCancle.setVisibility(View.GONE);
     }
 
     @Override
@@ -55,13 +56,14 @@ public class MyFansAdapter extends RecyclerView.Adapter<MyFansAdapter.ViewHoder>
 
     public class ViewHoder extends RecyclerView.ViewHolder {
         private ImageView mHead;
-        private TextView mName, mZhan;
+        private TextView mName, mZhan,mCancle;
 
         public ViewHoder(View itemView) {
             super(itemView);
             mHead = (ImageView) itemView.findViewById(R.id.image_head);
             mName = (TextView) itemView.findViewById(R.id.tv_name);
             mZhan = (TextView) itemView.findViewById(R.id.tv_zandou);
+            mCancle = (TextView) itemView.findViewById(R.id.tv_cancle);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

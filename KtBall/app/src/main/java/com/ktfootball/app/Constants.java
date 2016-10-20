@@ -145,6 +145,8 @@ public class Constants {
     public static final String USER_FANS = KTHOST + "users/fans";
     //我的关注
     public static final String USER_FOLLOWERS = KTHOST + "users/followers";
+    //第三登陸
+    public static final String LOGIN_THIRD_PART = KTHOST + "users/login_for_third_part";
 
 
     //============================================== IntentCode =====================================================

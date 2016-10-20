@@ -44,6 +44,7 @@ public class SharedDialog extends Dialog {
     private LinearLayout wx;
     private LinearLayout pyq;
     private LinearLayout xlwb;
+    private LinearLayout qq;
 
     private View.OnClickListener OnCancelClick = new View.OnClickListener() {
         @Override
@@ -84,6 +85,40 @@ public class SharedDialog extends Dialog {
             dismiss();
         }
     };
+
+    private View.OnClickListener qqClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(isQQAvilible(activity)){
+                ((BaseActivity)activity).showToast("正在打开QQ");
+                activity.showLoadingDiaglog();
+                sharedUtils.Shared_qq(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        LogUtils.d("onComplete");
+                        Log.d("pyqClick","onComplete");
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+                        LogUtils.e(i+""+throwable.toString());
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+                        LogUtils.d("onCancel");
+                        activity.closeLoadingDialog();
+                    }
+                });
+            }else{
+                ((BaseActivity)activity).showToast("请安装QQ");
+            }
+            dismiss();
+        }
+    };
+
 
     private View.OnClickListener pyqClick = new View.OnClickListener() {
         @Override
@@ -168,6 +203,7 @@ public class SharedDialog extends Dialog {
         wx = (LinearLayout) findViewById(R.id.dialog_shared_wx);
         pyq = (LinearLayout) findViewById(R.id.dialog_shared_pyq);
         xlwb = (LinearLayout) findViewById(R.id.dialog_shared_xlwb);
+        qq = (LinearLayout) findViewById(R.id.dialog_shared_qq);
         cancelButton = (Button) findViewById(R.id.button_cancel);
         init();
     }
@@ -177,7 +213,7 @@ public class SharedDialog extends Dialog {
         wx.setOnClickListener(wxClick);
         pyq.setOnClickListener(pyqClick);
         xlwb.setOnClickListener(xlwbClick);
-
+        qq.setOnClickListener(qqClick);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         WindowManager.LayoutParams params = window.getAttributes();

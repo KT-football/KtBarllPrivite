@@ -124,12 +124,15 @@ public class Constants {
     //修改密码
     public static final String CHANGE_PWD = KTHOST + "users/update_password";
     //充值列表
-    public static final String RECHARGE_LIST = KTHOST+"orders/recharge_ktb";
+    public static final String RECHARGE_LIST = KTHOST + "orders/recharge_ktb";
     //充值KT币
-    public static  final String CHONGZHI_KT= KTHOST+"orders/recharge_ktb";
+    public static final String CHONGZHI_KT = KTHOST + "orders/recharge_ktb";
     //支付成功call_back(充值KT币)(post)
     public static final String RECHARG_KEB_BACK = KTHOST + "orders/recharge_ktb_callback";
-
+    //用户粉丝
+    public static final String USER_FANS = KTHOST + "users/fans";
+    //我的关注
+    public static final String USER_FOLLOWERS = KTHOST + "users/followers";
 
 
     //============================================== IntentCode =====================================================

@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.frame.app.base.fragment.BaseFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.kt.ktball.App;
 import com.kt.ktball.entity.Leagues;
 import com.kt.ktball.entity.LeaguesData;
 import com.kt.ktball.myclass.VolleyUtil;
@@ -104,6 +105,18 @@ public class UserTeamFragment extends BaseFragment implements BGARefreshLayout.B
                                         leagues1.add(leagues.get(i));
                                     }
                                 }
+                                if (leagues3.size() == 0) {
+                                    Leagues l = new Leagues();
+                                    l.game_type = "2";
+                                    l.code = 2;
+                                    leagues3.add(l);
+                                }
+                                if (leagues2.size() == 0 && leagues1.size() == 0) {
+                                    Leagues l = new Leagues();
+                                    l.game_type = "1";
+                                    l.code = 1;
+                                    leagues2.add(l);
+                                }
                                 leagues1.addAll(leagues2);
                                 leagues1.addAll(leagues3);
                                 mAdapter.setData(leagues1);
@@ -127,7 +140,11 @@ public class UserTeamFragment extends BaseFragment implements BGARefreshLayout.B
     private void initRecycler() {
         layout_recyclerview_rv = getViewById(R.id.layout_recyclerview_rv);
         layout_recyclerview_rv.setLayoutManager(new LinearLayoutManager(getThis()));
-        mAdapter = new CorpsAdapter(getThis());
+        if (userId == App.getUserId()) {
+            mAdapter = new CorpsAdapter(getThis());
+        }else{
+            mAdapter = new CorpsAdapter(getThis(),true);
+        }
         layout_recyclerview_rv.setAdapter(mAdapter);
         StickyRecyclerHeadersDecoration headersDecor;
         layout_recyclerview_rv.addItemDecoration(headersDecor = new StickyRecyclerHeadersDecoration(mAdapter));
@@ -137,9 +154,11 @@ public class UserTeamFragment extends BaseFragment implements BGARefreshLayout.B
                 new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
                     @Override
                     public void onHeaderClick(View header, int position, long headerId) {
-                        Intent intent = new Intent(getThis(), NewTeamActivity.class);
-                        intent.putExtra("type", headerId + "");
-                        startActivity(intent);
+                        if (userId == App.getUserId()) {
+                            Intent intent = new Intent(getThis(), NewTeamActivity.class);
+                            intent.putExtra("type", headerId + "");
+                            startActivity(intent);
+                        }
                     }
                 });
         layout_recyclerview_rv.addOnItemTouchListener(touchListener);

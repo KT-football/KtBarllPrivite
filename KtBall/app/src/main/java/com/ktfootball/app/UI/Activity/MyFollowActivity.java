@@ -1,4 +1,4 @@
-package com.ktfootball.app.UI.Fragment.UserDetail;
+package com.ktfootball.app.UI.Activity;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -11,14 +11,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
-import com.frame.app.base.fragment.BaseFragment;
+import com.frame.app.base.activity.BaseActivity;
 import com.google.gson.Gson;
 import com.kt.ktball.myclass.VolleyUtil;
-import com.ktfootball.app.Adapter.BattleChildAdapter;
-import com.ktfootball.app.Entity.BattleBean;
-import com.ktfootball.app.Event.BattleEvent;
+import com.ktfootball.app.Adapter.MyFansAdapter;
+import com.ktfootball.app.Adapter.MyFollowAdapter;
+import com.ktfootball.app.Constants;
+import com.ktfootball.app.Entity.MyFasnBean;
+import com.ktfootball.app.Entity.MyFollowBean;
+import com.ktfootball.app.Event.FollowEvent;
 import com.ktfootball.app.R;
-import com.ktfootball.app.UI.Activity.UserProfiles;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
 import org.json.JSONObject;
@@ -26,46 +28,60 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.OnClick;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
-import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
 
 /**
- * Created by leo on 16/10/17.
+ * Created by leo on 16/10/20.
  */
-
-public class UserReviewFragment  extends BaseFragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
-    List<BattleBean.VideosBean> mList = new ArrayList<>();
+public class MyFollowActivity extends BaseActivity implements BGARefreshLayout.BGARefreshLayoutDelegate {
     private BGARefreshLayout mRefreshLayout;
     private RecyclerView layout_recyclerview_rv;
     private boolean isEmpte = false;
-    private BattleChildAdapter mBattleChildAdapter;
     private Long userId;
+    private List<MyFollowBean.FollowersBean> mList = new ArrayList<>();
+    private MyFollowAdapter mAdapter;
+    @Override
+    protected void initHandler(Message msg) {
+
+    }
+
     @Override
     protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.fragment_battle_child);
-        userId = ((UserProfiles) getActivity()).userId;
+        setContentView(R.layout.activity_my_follow);
+        userId = getIntent().getLongExtra("user_id", 0);
         initRefreshLayout();
         initRecycler();
-        mRefreshLayout.beginRefreshing();
+    }
+
+    @Override
+    protected void setListener() {
+
     }
 
     private void initRecycler() {
         layout_recyclerview_rv = getViewById(R.id.layout_recyclerview_rv);
         layout_recyclerview_rv.setLayoutManager(new LinearLayoutManager(getThis()));
-        layout_recyclerview_rv.setAdapter(mBattleChildAdapter = new BattleChildAdapter(getThis(), mList));
+        layout_recyclerview_rv.setAdapter(mAdapter = new MyFollowAdapter(getThis(),mList));
     }
 
     private void initRefreshLayout() {
         mRefreshLayout = getViewById(R.id.rl_modulename_refresh);
         mRefreshLayout.setDelegate(this);
-        BGARefreshViewHolder refreshViewHolder = new MyBGARefreshViewHolder(getActivity(), true);
+        BGARefreshViewHolder refreshViewHolder = new MyBGARefreshViewHolder(getThis(), true);
         mRefreshLayout.setRefreshViewHolder(refreshViewHolder);
     }
 
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+        mRefreshLayout.beginRefreshing();
+    }
 
-    public void getVideoList() {
-        String url = "http://www.ktfootball.com/apiv2/videos/my_videos?user_id=" + userId
+
+    private void getData() {
+        String url = Constants.USER_FOLLOWERS+"?user_id=" + userId
                 + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -77,8 +93,11 @@ public class UserReviewFragment  extends BaseFragment implements BGARefreshLayou
                     public void onResponse(JSONObject jsonObject) {
                         closeLoadingDialog();
                         Gson gson = new Gson();
-                        BattleBean battleBean = gson.fromJson(jsonObject.toString(), BattleBean.class);
-                        refreshList(battleBean.getVideos());
+                        MyFollowBean fasnBean = gson.fromJson(jsonObject.toString(), MyFollowBean.class);
+                        if (fasnBean.getResponse().equals("success")) {
+                            mList = fasnBean.getFollowers();
+                        }
+                        refreshList(mList);
 
                     }
                 }, new Response.ErrorListener() {
@@ -92,31 +111,21 @@ public class UserReviewFragment  extends BaseFragment implements BGARefreshLayou
     }
 
     @Override
-    protected void setListener() {
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        getData();
 
     }
 
     @Override
-    protected void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected void onUserVisible() {
-
-    }
-
-    @Override
-    protected void initHandler(Message msg) {
-
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        return false;
     }
 
     /**
      * 刷新数据
      */
-    public void refreshList(List<BattleBean.VideosBean> list) {
-        mList = list;
-        mBattleChildAdapter.setData(list);
+    public void refreshList(List<MyFollowBean.FollowersBean> list) {
+        mAdapter.setData(list);
         if (list.size() == 0) {
             if (!isEmpte) {
                 isEmpte = true;
@@ -124,8 +133,7 @@ public class UserReviewFragment  extends BaseFragment implements BGARefreshLayou
                 mRefreshLayout.addView(LayoutInflater.from(getThis()).inflate(R.layout.empty_view, null));
             }
 
-        } else
-        {
+        } else {
             isEmpte = false;
             boolean isVisinle = false;
             for (int i = 0; i < mRefreshLayout.getChildCount(); i++) {
@@ -140,14 +148,14 @@ public class UserReviewFragment  extends BaseFragment implements BGARefreshLayou
         mRefreshLayout.endRefreshing();
     }
 
-    @Override
-    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        getVideoList();
-
+    @OnClick(R.id.imageView45)
+    public void back(){
+        finish();
     }
 
-    @Override
-    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-        return false;
+    @Subscribe
+    public void cancle(FollowEvent followEvent){
+        mRefreshLayout.beginRefreshing();
     }
 }
+

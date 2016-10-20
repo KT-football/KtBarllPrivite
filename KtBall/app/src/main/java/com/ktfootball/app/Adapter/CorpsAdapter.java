@@ -27,11 +27,19 @@ public class CorpsAdapter extends RecyclerView.Adapter<CorpsAdapter.CorpsView> i
     private List<String> mHeadList = new ArrayList<>();
     private ArrayList<Leagues> leagues2 = new ArrayList<>();
     private Context mContext;
-
+    private boolean mIsUser = false;
     public CorpsAdapter(Context mContext) {
         this.mContext = mContext;
         mHeadList.add("2 V 2");
         mHeadList.add("3 V 3");
+
+    }
+
+    public CorpsAdapter(Context mContext,boolean isUser) {
+        this.mContext = mContext;
+        mHeadList.add("2 V 2");
+        mHeadList.add("3 V 3");
+        mIsUser = isUser;
 
     }
 
@@ -108,6 +116,9 @@ public class CorpsAdapter extends RecyclerView.Adapter<CorpsAdapter.CorpsView> i
             super(itemView);
             mAdd = (ImageView) itemView.findViewById(R.id.image_add);
             mTitle = (TextView) itemView.findViewById(R.id.tv_titile);
+            if (mIsUser){
+                mAdd.setVisibility(View.INVISIBLE);
+            }
         }
     }
 

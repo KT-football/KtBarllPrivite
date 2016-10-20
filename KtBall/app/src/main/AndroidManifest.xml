@@ -103,6 +103,12 @@
             android:name=".UI.Activity.HengHuadActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".UI.Activity.MyFollowActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UI.Activity.MyFansActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".UI.Activity.VideoActivity"
             android:screenOrientation="portrait" />
         <activity

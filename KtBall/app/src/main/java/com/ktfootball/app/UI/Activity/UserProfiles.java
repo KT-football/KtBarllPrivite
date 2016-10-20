@@ -340,6 +340,24 @@ public class UserProfiles extends BaseActivity {
         finish();
     }
 
+    @OnClick(R.id.tv_fans)
+    public void toFans(){
+        if (currentUserId == userId){
+            Intent intent = new Intent(getThis(),MyFansActivity.class);
+            intent.putExtra("user_id",currentUserId);
+            startActivity(intent);
+        }
+    }
+
+    @OnClick(R.id.tv_guanzhu)
+    public void toGuanZhu(){
+        if (currentUserId == userId){
+            Intent intent = new Intent(getThis(),MyFollowActivity.class);
+            intent.putExtra("user_id",currentUserId);
+            startActivity(intent);
+        }
+    }
+
     public void doFollowed() {//关注
         if (followed == 0) {//未关注，点击关注
             String url = "http://www.ktfootball.com/apiv2/users/follow";

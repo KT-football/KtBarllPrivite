@@ -168,8 +168,8 @@ public class MyMsgActivity extends BaseActivity {
                         closeLoadingDialog();
                         Gson gson = new Gson();
                         myMsgBattleBean = gson.fromJson(jsonObject.toString(), MyMsgBattleBean.class);
-                        if (myMsgTeamBean.getResponse().equals("success")) {
-                            for (int i = 0; i < myMsgTeamBean.getLeague_invitations().size(); i++) {
+                        if (myMsgBattleBean.getResponse().equals("success")) {
+                            for (int i = 0; i < myMsgBattleBean.getLeague_invitations().size(); i++) {
 //                                if (myMsgBattleBean.getLeague_invitations().get(i).get() == -1) {
 //                                    mCont3 += 1;
 //                                }

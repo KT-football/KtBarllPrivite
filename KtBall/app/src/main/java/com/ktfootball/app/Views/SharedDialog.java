@@ -45,6 +45,8 @@ public class SharedDialog extends Dialog {
     private LinearLayout pyq;
     private LinearLayout xlwb;
     private LinearLayout qq;
+    private LinearLayout qzom;
+    private LinearLayout shouchan;
 
     private View.OnClickListener OnCancelClick = new View.OnClickListener() {
         @Override
@@ -63,6 +65,7 @@ public class SharedDialog extends Dialog {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         Log.d("Shared_wx","onComplete");
+                        activity.showToast("分享成功~");
                         activity.closeLoadingDialog();
                     }
 
@@ -70,12 +73,14 @@ public class SharedDialog extends Dialog {
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
                         Log.d("Shared_wx", "onError");
+                        activity.showToast("分享失敗~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         Log.d("Shared_wx","onCancel");
+                        activity.showToast("分享取消~");
                         activity.closeLoadingDialog();
                     }
                 });
@@ -97,18 +102,21 @@ public class SharedDialog extends Dialog {
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         LogUtils.d("onComplete");
                         Log.d("pyqClick","onComplete");
+                        activity.showToast("分享成功~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
+                        activity.showToast("分享失敗~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         LogUtils.d("onCancel");
+                        activity.showToast("分享取消~");
                         activity.closeLoadingDialog();
                     }
                 });
@@ -131,18 +139,57 @@ public class SharedDialog extends Dialog {
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         LogUtils.d("onComplete");
                         Log.d("pyqClick","onComplete");
+                        activity.showToast("分享成功~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
+                        activity.showToast("分享失敗~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         LogUtils.d("onCancel");
+                        activity.showToast("分享取消~");
+                        activity.closeLoadingDialog();
+                    }
+                });
+            }else{
+                ((BaseActivity)activity).showToast("请安装微信");
+            }
+            dismiss();
+        }
+    };
+
+    private View.OnClickListener wxsc = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(isWeixinAvilible(activity)){
+                ((BaseActivity)activity).showToast("正在打开微信");
+                activity.showLoadingDiaglog();
+                sharedUtils.Shared_wxsc(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        LogUtils.d("onComplete");
+                        Log.d("pyqClick","onComplete");
+                        activity.showToast("分享成功~");
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+                        LogUtils.e(i+""+throwable.toString());
+                        activity.showToast("分享失敗~");
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+                        LogUtils.d("onCancel");
+                        activity.showToast("分享取消~");
                         activity.closeLoadingDialog();
                     }
                 });
@@ -163,17 +210,20 @@ public class SharedDialog extends Dialog {
                 sharedUtils.Shared_xlvb(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        activity.showToast("分享成功~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
+                        activity.showToast("分享失敗~");
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
+                        activity.showToast("分享取消~");
                         activity.closeLoadingDialog();
                     }
                 });
@@ -183,6 +233,42 @@ public class SharedDialog extends Dialog {
             dismiss();
         }
     };
+
+
+    private View.OnClickListener qqZom = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            if(isQzon(activity)){
+                ((BaseActivity)activity).showToast("正在打开QQ空间");
+                activity.showLoadingDiaglog();
+                sharedUtils.Shared_qqZom(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        activity.showToast("分享成功~");
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+                        LogUtils.e(i+""+throwable.toString());
+                        activity.showToast("分享失敗~");
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+                        activity.showToast("分享取消~");
+                        activity.closeLoadingDialog();
+                    }
+                });
+            }else{
+                ((BaseActivity)activity).showToast("请安装QQ空间");
+            }
+            dismiss();
+        }
+    };
+
 
     public SharedDialog(BaseActivity activity, int themeResId) {
         super(activity, themeResId);
@@ -205,6 +291,8 @@ public class SharedDialog extends Dialog {
         xlwb = (LinearLayout) findViewById(R.id.dialog_shared_xlwb);
         qq = (LinearLayout) findViewById(R.id.dialog_shared_qq);
         cancelButton = (Button) findViewById(R.id.button_cancel);
+        qzom = (LinearLayout) findViewById(R.id.dialog_shared_qqzome);
+        shouchan = (LinearLayout) findViewById(R.id.dialog_shared_shouchan);
         init();
     }
 
@@ -214,6 +302,8 @@ public class SharedDialog extends Dialog {
         pyq.setOnClickListener(pyqClick);
         xlwb.setOnClickListener(xlwbClick);
         qq.setOnClickListener(qqClick);
+        qzom.setOnClickListener(qqZom);
+        shouchan.setOnClickListener(wxsc);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         WindowManager.LayoutParams params = window.getAttributes();
@@ -250,6 +340,11 @@ public class SharedDialog extends Dialog {
     public static boolean isXlwbAvilible(Context context) {
         return isAvilible(context,"com.sina.weibo");
     }
+
+    public static boolean isQzon(Context context) {
+        return isAvilible(context,"com.qzone ");
+    }
+
 
     public void setTitle(String title) {
         sharedUtils.title = title;

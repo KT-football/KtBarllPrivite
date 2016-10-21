@@ -13,6 +13,8 @@ import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.wechat.favorite.WechatFavorite;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
 
@@ -67,6 +69,22 @@ public class SharedUtils {
         qzone.share(sp);
     }
 
+    public void Shared_wxsc(PlatformActionListener paListener) {
+        Wechat.ShareParams sp = new Wechat.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);
+        sp.setTitle(title);
+//        sp.setTitleUrl(titleUrl);
+        sp.setText(text);
+        sp.setImageData(bitmap);
+        sp.setUrl(titleUrl);
+        LogUtils.e(titleUrl);
+
+        Platform qzone = ShareSDK.getPlatform(WechatFavorite.NAME);
+        qzone.setPlatformActionListener(paListener); // 设置分享事件回调
+        // 执行图文分享
+        qzone.share(sp);
+    }
+
     public void Shared_qq(PlatformActionListener paListener) {
         Wechat.ShareParams sp = new Wechat.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
@@ -82,6 +100,24 @@ public class SharedUtils {
         // 执行图文分享
         qzone.share(sp);
     }
+
+
+    public void Shared_qqZom(PlatformActionListener paListener) {
+        Wechat.ShareParams sp = new Wechat.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);
+        sp.setTitle(title);
+//        sp.setTitleUrl(titleUrl);
+        sp.setText(text);
+        sp.setImageData(bitmap);
+        sp.setUrl(titleUrl);
+        LogUtils.e(titleUrl);
+
+        Platform qzone = ShareSDK.getPlatform(QZone.NAME);
+        qzone.setPlatformActionListener(paListener); // 设置分享事件回调
+        // 执行图文分享
+        qzone.share(sp);
+    }
+
 
     public void Shared_pyq(PlatformActionListener paListener) {
         WechatMoments.ShareParams sp = new WechatMoments.ShareParams();

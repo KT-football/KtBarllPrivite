@@ -35,7 +35,7 @@ public class UserAbilityFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        userMsg = App.getUserMsg();
+        userMsg = (UserMsg) getArguments().getSerializable("info");
         if (userMsg != null) {
             mTv_Kt.setText(userMsg.getKt() + "");
             mTv_chuandang.setText(userMsg.getPannas() + "");

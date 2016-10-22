@@ -97,6 +97,7 @@ public class UserProfiles extends BaseActivity {
     public long userId;
     int followed = 0;
     private List<Fragment> mList = new ArrayList<>();
+    private UserMsg userMsg;
 
     public static final String USERID = "userId";
 
@@ -175,9 +176,6 @@ public class UserProfiles extends BaseActivity {
 
 
     private void getUserMsg() {
-        mList.add(new UserAbilityFragment());
-        mList.add(new UserReviewFragment());
-        mList.add(new UserTeamFragment());
         String url = "http://www.ktfootball.com/apiv2/users/detail?" +
                 "current_user_id=" + currentUserId + "&user_id=" + userId +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
@@ -189,7 +187,7 @@ public class UserProfiles extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
                         closeLoadingDialog();
-                        UserMsg userMsg = new Gson().fromJson(jsonObject.toString(), new TypeToken<UserMsg>() {
+                        userMsg = new Gson().fromJson(jsonObject.toString(), new TypeToken<UserMsg>() {
                         }.getType());
                         initView(userMsg);//初始化视图
                     }
@@ -205,6 +203,13 @@ public class UserProfiles extends BaseActivity {
 
     //初始化视图
     private void initView(UserMsg userMsg) {
+        UserAbilityFragment userAbilityFragment = new UserAbilityFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("info",userMsg);
+        userAbilityFragment.setArguments(bundle);
+        mList.add(userAbilityFragment);
+        mList.add(new UserReviewFragment());
+        mList.add(new UserTeamFragment());
         String uri = "http://www.ktfootball.com" + userMsg.avatar;//加载头像
         Glide.with(getThis()).load(uri).into(avatarImage);
         Glide.with(getThis()).load(uri).transform(new GlideCircleTransform(getThis())).into(mHead);

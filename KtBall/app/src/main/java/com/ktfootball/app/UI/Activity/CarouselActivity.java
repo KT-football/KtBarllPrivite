@@ -31,7 +31,6 @@ public class CarouselActivity extends BaseActivity {
     @Bind(R.id.viewpager_carousel)
     ViewPager mViewPager;
     private List<Fragment> mList = new ArrayList<>();
-    private View mView;
 
     @Override
     protected void initHandler(Message msg) {
@@ -53,9 +52,7 @@ public class CarouselActivity extends BaseActivity {
     protected void initData(Bundle savedInstanceState) {
         mList.add(new Carouse1Fragment());
         mList.add(new Carouse2Fragment());
-        Carouse3Fragment carouse3Fragment = new Carouse3Fragment();
-        carouse3Fragment.mDiffuseView.start();
-        mList.add(carouse3Fragment);
+        mList.add(new Carouse3Fragment());
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

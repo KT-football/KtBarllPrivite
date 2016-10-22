@@ -261,6 +261,7 @@ public class LoginActivity extends BaseActivity {
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                 PlatformDb platformDb = platform.getDb();
                 loginThird(platformDb.getUserId(), platformDb.getUserIcon(), platformDb.getUserName(), platformDb.getUserGender(), 1);
+                myDialog.dismiss();
             }
 
             @Override
@@ -287,6 +288,7 @@ public class LoginActivity extends BaseActivity {
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                 PlatformDb platformDb = platform.getDb();
                 loginThird(platformDb.getUserId(), platformDb.getUserIcon(), platformDb.getUserName(), platformDb.getUserGender(), 2);
+                myDialog.dismiss();
             }
 
             @Override
@@ -317,6 +319,7 @@ public class LoginActivity extends BaseActivity {
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                 PlatformDb platformDb = platform.getDb();
                 loginThird(platformDb.getUserId(), platformDb.getUserIcon(), platformDb.getUserName(), platformDb.getUserGender(), 0);
+                myDialog.dismiss();
             }
 
             @Override

@@ -13,6 +13,7 @@ import com.frame.app.base.fragment.BaseFragment;
 import com.kt.ktball.App;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.ktfootball.app.Constants;
+import com.ktfootball.app.Event.Rank1Event;
 import com.ktfootball.app.Event.RankEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Fragment.Rank.StartFragment;
@@ -45,7 +46,6 @@ public class StatrRankFragment extends BaseFragment {
         mViewpager.setNoScroll(true);
         mList.add(new StartFragment());
         mList.add(new SuperStarFragment());
-
     }
 
     @Override
@@ -70,6 +70,7 @@ public class StatrRankFragment extends BaseFragment {
                 mTab1.setBackgroundColor(0xffffffff);
             }
         });
+
 
     }
 
@@ -99,6 +100,13 @@ public class StatrRankFragment extends BaseFragment {
     protected void initHandler(Message msg) {
 
     }
+
+    @Subscribe
+    public void setMineRank(Rank1Event event){
+        mMine.setText(App.getUserMsg().getRank()+"");
+    }
+
+
 
     @Subscribe
     public void setMine(RankEvent event){

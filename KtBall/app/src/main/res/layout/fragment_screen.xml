@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:background="@mipmap/logo_pai"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:textColor="@color/white"
-            android:textSize="12dp"
+            android:textSize="10dp"
             tools:text="全国排名:3" />
 
         <TextView

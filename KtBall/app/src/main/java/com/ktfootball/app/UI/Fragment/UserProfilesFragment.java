@@ -31,6 +31,7 @@ import com.kt.ktball.App;
 import com.kt.ktball.entity.UserMsg;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Event.Rank1Event;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.JudgeSeleteActivity;
 import com.ktfootball.app.UI.Activity.LoginActivity;
@@ -46,6 +47,8 @@ import com.ktfootball.app.Utils.Util;
 import com.ktfootball.app.Views.CircleProgressView;
 
 import org.json.JSONObject;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by leo on 16/10/13.
@@ -129,6 +132,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
                         }.getType());
                         initView(userMsg);//初始化视图
                         App.getInstance().setUserMSG(userMsg);
+                        EventBus.getDefault().post(new Rank1Event());
                     }
                 }, new Response.ErrorListener() {
             @Override

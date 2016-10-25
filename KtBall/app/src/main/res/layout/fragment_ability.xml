@@ -144,6 +144,7 @@
         android:layout_weight="1"
         android:background="@drawable/shape_grey"
         android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
         <RelativeLayout

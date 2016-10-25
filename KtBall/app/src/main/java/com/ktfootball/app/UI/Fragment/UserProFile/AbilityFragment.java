@@ -187,7 +187,7 @@ public class AbilityFragment extends BaseFragment {
             mTv_chuandang.setText(mUserMsg.getPannas() + "");
             mTv_jinqiu.setText(mUserMsg.getGoals() + "");
             checkView();
-            if (mUserMsg.getLast10_goals_list() ==null||mUserMsg.getLast10_goals_list().size()==0){
+            if (mUserMsg.getLast10_goals_list() == null || mUserMsg.getLast10_goals_list().size() == 0) {
                 mEmpty.setVisibility(View.VISIBLE);
                 mMain.setVisibility(View.GONE);
             }
@@ -222,15 +222,19 @@ public class AbilityFragment extends BaseFragment {
             mImagedown.get(i).setLayoutParams(linearParams1);
             mImagedown.get(i).setVisibility(View.VISIBLE);
         }
-        for (int i = 0; i < mUserMsg.getLast10_game_video_id_list().size(); i++) {
+        for (int i = 0; i < 10; i++) {
             final int finalI = i;
             mImageQiu.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getThis(), VideoDetailsActivity.class);
-                    intent.putExtra(Constants.EXTRA_VIDEOS_ID, mUserMsg.getLast10_game_video_id_list().get(finalI));
-                    intent.putExtra(Constants.EXTRA_SCORES, mUserMsg.getLast10_goals_list().get(finalI) + " : " + mUserMsg.getLast10_pannas_list().get(finalI));
-                    startActivity(intent);
+                    if (finalI <= mUserMsg.getLast10_game_video_id_list().size() - 1) {
+                        Intent intent = new Intent(getThis(), VideoDetailsActivity.class);
+                        intent.putExtra(Constants.EXTRA_VIDEOS_ID, mUserMsg.getLast10_game_video_id_list().get(finalI));
+                        intent.putExtra(Constants.EXTRA_SCORES, mUserMsg.getLast10_goals_list().get(finalI) + " : " + mUserMsg.getLast10_pannas_list().get(finalI));
+                        startActivity(intent);
+                    } else {
+                        showToast("该场比赛暂时没有视频哟~");
+                    }
                 }
             });
         }

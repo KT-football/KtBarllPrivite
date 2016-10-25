@@ -45,10 +45,17 @@ public class SharedUtils {
 
     public void Shared_xlvb(PlatformActionListener paListener) {
         SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);
+        sp.setTitle(title);
+//        sp.setTitleUrl(titleUrl);
         sp.setText(text);
+        sp.setImageData(bitmap);
+        sp.setUrl(titleUrl);
+        LogUtils.e(titleUrl);
 
         Platform weibo = ShareSDK.getPlatform(SinaWeibo.NAME);
         weibo.setPlatformActionListener(paListener); // 设置分享事件回调
+        weibo.authorize();
         // 执行图文分享
         weibo.share(sp);
     }
@@ -70,7 +77,7 @@ public class SharedUtils {
     }
 
     public void Shared_wxsc(PlatformActionListener paListener) {
-        Wechat.ShareParams sp = new Wechat.ShareParams();
+        WechatFavorite.ShareParams sp = new WechatFavorite.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
 //        sp.setTitleUrl(titleUrl);
@@ -86,7 +93,7 @@ public class SharedUtils {
     }
 
     public void Shared_qq(PlatformActionListener paListener) {
-        Wechat.ShareParams sp = new Wechat.ShareParams();
+        QQ.ShareParams sp = new QQ.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
 //        sp.setTitleUrl(titleUrl);
@@ -103,10 +110,10 @@ public class SharedUtils {
 
 
     public void Shared_qqZom(PlatformActionListener paListener) {
-        Wechat.ShareParams sp = new Wechat.ShareParams();
+        QZone.ShareParams sp = new QZone.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-//        sp.setTitleUrl(titleUrl);
+        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);
@@ -131,7 +138,6 @@ public class SharedUtils {
         qzone.setPlatformActionListener(paListener); // 设置分享事件回调
         // 执行图文分享
         qzone.share(sp);
-        qzone.removeAccount();
     }
 
     public String getTitle() {

@@ -223,7 +223,7 @@ public class SharedDialog extends Dialog {
 
                     @Override
                     public void onCancel(Platform platform, int i) {
-                        activity.showToast("分享取消~");
+//                        activity.showToast("分享取消~");
                         activity.closeLoadingDialog();
                     }
                 });
@@ -239,7 +239,7 @@ public class SharedDialog extends Dialog {
         @Override
         public void onClick(View v) {
 
-            if(isQzon(activity)){
+//            if(isQzon(activity)){
                 ((BaseActivity)activity).showToast("正在打开QQ空间");
                 activity.showLoadingDiaglog();
                 sharedUtils.Shared_qqZom(new PlatformActionListener() {
@@ -262,9 +262,7 @@ public class SharedDialog extends Dialog {
                         activity.closeLoadingDialog();
                     }
                 });
-            }else{
-                ((BaseActivity)activity).showToast("请安装QQ空间");
-            }
+//            、
             dismiss();
         }
     };

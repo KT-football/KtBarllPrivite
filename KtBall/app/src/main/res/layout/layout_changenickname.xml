@@ -7,19 +7,20 @@
     <RelativeLayout
         android:id="@+id/relativeLayout6"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/footTextColor">
+        android:layout_height="44dp"
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/imageView45"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
             android:onClick="doBack"
-            android:src="@drawable/retu" />
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:src="@drawable/icon_back" />
 
         <TextView
             android:id="@+id/textView36"
@@ -29,7 +30,7 @@
             android:layout_centerVertical="true"
             android:text="昵称修改"
             android:textColor="@android:color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
         <RelativeLayout
             android:id="@+id/layout_changenickname"
@@ -51,11 +52,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
+        android:padding="10dp"
         android:layout_marginTop="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:text="昵称"
             android:textColor="@color/black"/>
 

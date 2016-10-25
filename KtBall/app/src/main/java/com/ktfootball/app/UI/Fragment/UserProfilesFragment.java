@@ -147,6 +147,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
 
     //初始化视图
     private void initView(UserMsg userMsg) {
+        setSelect(0);
         String uri = "http://www.ktfootball.com" + userMsg.avatar;//加载头像
         Glide.with(getActivity()).load(uri).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).into(mHead);
         int lvi = 0;
@@ -179,7 +180,6 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
             mProgressView.setTimerProgress(100);
         }
         mTv_LV.setText("LV" + lvi);
-        setSelect(0);
 
     }
 

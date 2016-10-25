@@ -45,7 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         loadingDialog = new LoadingDialog(getThis()); // 初始化进度条
         initView(savedInstanceState);
         ButterKnife.bind(this);//绑定
-        EventBus.getDefault().register(this);
+        if (!EventBus.getDefault().isRegistered(this))
+            EventBus.getDefault().register(this);
         initData(savedInstanceState);
         setListener();
         LogUtils.allowD = BaseApplication.isTest; // 测试环境下允许打log
@@ -159,15 +160,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    public void showDialogToast(String str, String str1,DialogInterface.OnClickListener listener1,String str2,DialogInterface.OnClickListener listener2){
+    public void showDialogToast(String str, String str1, DialogInterface.OnClickListener listener1, String str2, DialogInterface.OnClickListener listener2) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getThis());
         builder.setMessage(str);
         builder.setTitle("提示");
-        if(listener1 == null){
+        if (listener1 == null) {
             listener1 = showDialogToastListener;
         }
-        builder.setNegativeButton(str1,listener1);
-        builder.setPositiveButton(str2,listener2);
+        builder.setNegativeButton(str1, listener1);
+        builder.setPositiveButton(str2, listener2);
         builder.create().show();
     }
 
@@ -211,7 +212,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             });
         }
     }
-
 
 
     /**
@@ -336,15 +336,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             return false;
         }
     }
-    public class MessagBean{
+
+    public class MessagBean {
 
     }
 
     @Subscribe()
-    public void helloEventBus(MessagBean message){
+    public void helloEventBus(MessagBean message) {
 
     }
-
 
 
 }

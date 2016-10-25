@@ -57,7 +57,8 @@ public abstract class BaseFragment extends Fragment {
 				parent.removeView(rootView);
 			}
 		}
-		EventBus.getDefault().register(this);
+		if (!EventBus.getDefault().isRegistered(this))
+			EventBus.getDefault().register(this);
 		return rootView;
 	}
 

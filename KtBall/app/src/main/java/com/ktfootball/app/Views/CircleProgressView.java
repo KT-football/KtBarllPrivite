@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -146,12 +148,18 @@ public class CircleProgressView extends View {
     public void setTimerProgress(final int position) {
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
+
             int i = 0;
 
             @Override
             public void run() {
                 i += 1;
-                setProgressNotInUiThread(i);
+                Message message = new Message();
+                message.what = 0;
+                Bundle bundle = new Bundle();
+                bundle.putInt("pisition", i);
+                message.setData(bundle);
+                handler.sendMessage(message);
                 if (i == position) {
                     timer.cancel();
                 }
@@ -159,4 +167,16 @@ public class CircleProgressView extends View {
         }, 0, 50);
 
     }
+
+
+    private Handler handler = new Handler() {
+
+
+        @Override
+        public void dispatchMessage(Message msg) {
+            super.dispatchMessage(msg);
+            setProgress(msg.getData().getInt("pisition"));
+
+        }
+    };
 }

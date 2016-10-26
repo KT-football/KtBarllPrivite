@@ -150,7 +150,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
     private void initView(UserMsg userMsg) {
         setSelect(0);
         String uri = Constants.HEAD_HOST + userMsg.avatar;//加载头像
-        Glide.with(getActivity()).load(uri).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).into(mHead);
+        Glide.with(getActivity()).load(uri).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead);
         int lvi = 0;
         if (userMsg.exp <= 50) {
             lvi = 0;

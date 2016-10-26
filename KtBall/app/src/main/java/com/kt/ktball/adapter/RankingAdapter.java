@@ -60,7 +60,7 @@ public class RankingAdapter extends BaseAdapter {
         }
         Users users = getItem(position);
         String url = Constants.HEAD_HOST + users.avatar;
-        Glide.with(context).load(url).into(holder.avatar);
+        Glide.with(context).load(url).error(R.drawable.result_btnkt).into(holder.avatar);
         holder.fight.setText("战斗力：" + users.power);
         holder.rank.setText("排名：" + (position+1));
         return convertView;

@@ -60,7 +60,7 @@ public class MyTeamAdapter extends BaseAdapter {
         }
         Leagues leagues = getItem(position);
         String url = Constants.HEAD_HOST + leagues.usera_avatar;
-        Glide.with(context).load(url).transform(new GlideCircleTransform(context)).into(holder.imageView);
+        Glide.with(context).load(url).transform(new GlideCircleTransform(context)).error(R.drawable.result_btnkt).into(holder.imageView);
         holder.textView.setText(leagues.name);
         return convertView;
     }

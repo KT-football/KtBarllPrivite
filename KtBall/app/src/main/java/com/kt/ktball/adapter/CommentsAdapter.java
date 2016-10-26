@@ -78,7 +78,7 @@ public class CommentsAdapter extends BaseAdapter {
         }
         final Comments comments = getItem(position);
         String uri = Constants.HEAD_HOST + comments.avatar;
-        Glide.with(context).load(uri).transform(new GlideCircleTransform(context)).into(holder.avatar);
+        Glide.with(context).load(uri).transform(new GlideCircleTransform(context)).error(R.drawable.result_btnkt).into(holder.avatar);
         holder.name.setText(comments.nickname);
         holder.comments.setText(comments.content);
         holder.delete.setText(comments.can_delete == 0 ? "" : "删除");

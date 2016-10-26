@@ -61,7 +61,7 @@ public class MyFirendAdapter extends BaseAdapter {
         }
         Users users = getItem(position);
         String url = Constants.HEAD_HOST + users.avatar;
-        Glide.with(context).load(url).transform(new GlideCircleTransform(context)).into(holder.avatar);
+        Glide.with(context).load(url).transform(new GlideCircleTransform(context)).error(R.drawable.result_btnkt).into(holder.avatar);
         holder.name.setText(users.nickname);
         holder.zhandouli.setText("战斗力：" + users.power);
         return convertView;

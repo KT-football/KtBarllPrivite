@@ -60,7 +60,7 @@ public class GameMatchAdapter extends BaseAdapter {
         }
         Games games = getItem(position);
         String uri = Constants.HEAD_HOST + games.avatar;
-        Glide.with(context).load(uri).into(holder.imageView);
+        Glide.with(context).load(uri).error(R.drawable.result_btnkt).into(holder.imageView);
         holder.place.setText(games.place);
         holder.name.setText(games.name);
         return convertView;

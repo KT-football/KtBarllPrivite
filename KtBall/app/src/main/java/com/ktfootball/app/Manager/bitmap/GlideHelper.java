@@ -14,6 +14,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.kt.ktball.App;
+import com.ktfootball.app.R;
 
 import java.io.File;
 
@@ -48,6 +49,7 @@ public class GlideHelper {
         Glide.with(App.getContext())
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .error(R.drawable.result_btnkt)
                 .into(view);
     }
 
@@ -55,6 +57,7 @@ public class GlideHelper {
         Glide.with(context)
                 .load(url)
                 .transform(transformations).placeholder(placeHolder)
+                .error(R.drawable.result_btnkt)
                 .into(view);
     }
 
@@ -62,6 +65,7 @@ public class GlideHelper {
         Glide.with(context)
                 .load(url)
                 .transform(transformations)
+                .error(R.drawable.result_btnkt)
                 .into(view);
     }
 

@@ -74,7 +74,7 @@ public class CorpsAdapter extends RecyclerView.Adapter<CorpsAdapter.CorpsView> i
         }else {
             holder.tv_empty_content.setVisibility(View.GONE);
             holder.mName.setText(leagues2.get(position).name);
-            Glide.with(mContext).load(Constants.HEAD_HOST + leagues2.get(position).usera_avatar).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+            Glide.with(mContext).load(Constants.HEAD_HOST + leagues2.get(position).usera_avatar).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
         }
     }
 

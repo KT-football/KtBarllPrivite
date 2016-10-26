@@ -51,7 +51,7 @@ public class SystemTeamMsgItem extends RecyclerView.Adapter<SystemTeamMsgItem.Sy
 
     @Override
     public void onBindViewHolder(SystemTeamMsgItem.SystemView holder, final int position) {
-        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).error(R.drawable.result_btnkt).into(holder.mHead);
         holder.mName.setText(mList.get(position).getNickname());
         holder.mStatus.setText(mList.get(position).getLeague_name());
         holder.mAgree.setOnClickListener(new View.OnClickListener() {

@@ -61,7 +61,7 @@ public class GamePlaceAdapter extends BaseAdapter {
         }
         Games games = getItem(position);
         String url = Constants.HEAD_HOST + games.avatar;
-        Glide.with(context).load(url).into(holder.imageViewAvatar);
+        Glide.with(context).load(url).error(R.drawable.result_btnkt).into(holder.imageViewAvatar);
         holder.textViewName.setText(games.name);
         return convertView;
     }

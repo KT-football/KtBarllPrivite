@@ -38,7 +38,7 @@ public class MyFansAdapter extends RecyclerView.Adapter<MyFansAdapter.ViewHoder>
 
     @Override
     public void onBindViewHolder(ViewHoder holder, int position) {
-        Glide.with(mContext).load(Constants.HEAD_HOST+mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+        Glide.with(mContext).load(Constants.HEAD_HOST+mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).error(R.drawable.result_btnkt).into(holder.mHead);
         holder.mName.setText(mList.get(position).getNickname());
         holder.mZhan.setText("战斗力:"+mList.get(position).getPower());
         holder.mCancle.setVisibility(View.GONE);

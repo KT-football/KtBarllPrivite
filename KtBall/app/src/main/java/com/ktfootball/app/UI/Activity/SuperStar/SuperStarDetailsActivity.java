@@ -86,7 +86,7 @@ public class SuperStarDetailsActivity extends BaseActivity {
                 if (isSuccess(response.get().response)) {
                     starUserProfile = response.get();
                     mTv_name.setText(response.get().nickname);
-                    Glide.with(getThis()).load(Constants.HEAD_HOST + response.get().avatar).into(mHead);
+                    Glide.with(getThis()).load(Constants.HEAD_HOST + response.get().avatar).error(R.drawable.result_btnkt).into(mHead);
                     mTv_content.setText(response.get().star_intro);
                     doCommentedVideos();
                 } else {

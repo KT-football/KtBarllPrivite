@@ -172,13 +172,13 @@ public class TeamDetailsActivity extends BaseActivity {
             btn_add.setVisibility(View.GONE);
         if (gameType.equals("2")) {
             String uri1 = Constants.HEAD_HOST + teamDetailData.usera_avatar;
-            Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
+            Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewA);
             imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
             textViewZhanA.setText("战斗力：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
                 String uri2 = Constants.HEAD_HOST + teamDetailData.userb_avatar;
-                Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
+                Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
                 imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
                 textViewZhanB.setText("战斗力：" + teamDetailData.userb_power);
@@ -197,7 +197,7 @@ public class TeamDetailsActivity extends BaseActivity {
             }
             if (teamDetailData.userc_avatar != null) {
                 String uri3 = Constants.HEAD_HOST + teamDetailData.userc_avatar;
-                Glide.with(this).load(uri3).transform(new GlideCircleTransform(this)).into(imageViewC);
+                Glide.with(this).load(uri3).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewC);
                 imageViewC.setVisibility(View.VISIBLE);
                 textViewNameC.setText(teamDetailData.userc_nickname);
                 textViewZhanC.setText("战斗力：" + teamDetailData.userc_power);
@@ -216,13 +216,13 @@ public class TeamDetailsActivity extends BaseActivity {
         } else {
             imageViewC.setVisibility(View.GONE);
             String uri1 = Constants.HEAD_HOST + teamDetailData.usera_avatar;
-            Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
+            Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewA);
             imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
             textViewZhanA.setText("战队力：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
                 String uri2 = Constants.HEAD_HOST + teamDetailData.userb_avatar;
-                Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
+                Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
                 imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
                 textViewZhanB.setText("战队力：" + teamDetailData.userb_power);

@@ -167,7 +167,7 @@ public class InviteActivity extends BaseActivity {
                                         listView.setVisibility(View.GONE);
                                         relativeLayout.setVisibility(View.VISIBLE);
                                         String url = Constants.HEAD_HOST + data.avatar;
-                                        Glide.with(InviteActivity.this).load(url).transform(new GlideCircleTransform(InviteActivity.this)).into(imageView);
+                                        Glide.with(InviteActivity.this).load(url).transform(new GlideCircleTransform(InviteActivity.this)).error(R.drawable.result_btnkt).into(imageView);
                                         textViewName.setText(data.nickname);
                                         textViewP.setText("战斗力：" + data.power);
                                         textView.setText("取消");

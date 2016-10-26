@@ -15,6 +15,7 @@ import com.kt.ktball.App;
 import com.ktfootball.app.Manager.bitmap.GlideHelper;
 import com.ktfootball.app.Manager.bitmap.MyBitmapImageViewTarget;
 import com.ktfootball.app.Manager.bitmap.PlaceHolder;
+import com.ktfootball.app.R;
 
 import java.io.File;
 
@@ -109,6 +110,7 @@ public class BitmapManager {
         Glide.with(App.getContext())
                 .load(uri)
                 .asBitmap()
+                .error(R.drawable.result_btnkt)
                 .into(new BitmapImageViewTarget(view) {
                     @Override
                     protected void setResource(Bitmap resource) {

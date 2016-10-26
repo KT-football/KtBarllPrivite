@@ -61,7 +61,7 @@ public class MyGameAdapter extends BaseAdapter {
         }
         Games games = getItem(position);
         String url = Constants.HEAD_HOST + games.avatar;
-        Glide.with(context).load(url).into(holder.imageView);
+        Glide.with(context).load(url).error(R.drawable.result_btnkt).into(holder.imageView);
         holder.name.setText(games.name);
         holder.time.setText(games.date_start + " - " + games.date_end);
         return convertView;

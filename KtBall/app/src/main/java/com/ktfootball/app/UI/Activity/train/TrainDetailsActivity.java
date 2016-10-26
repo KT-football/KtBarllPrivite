@@ -294,7 +294,7 @@ public class TrainDetailsActivity extends BaseActivity {
      * @return
      */
     private String checkSize(int size) {
-        DecimalFormat df = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("0.00");
         return df.format((double) size / 1024) + "M";
 
     }

@@ -48,7 +48,7 @@ public class TrainingLevelAdapter extends RecyclerView.Adapter<RecyclerView.View
         trainHolder.bar.setColors(colcr);
         trainHolder.bar.setHintString(appCarToons.now_level_name);
         trainHolder.bar.setHintPaintColor(colcr[0]);
-        BitmapManager.getInstance().display(trainHolder.img, Constants.HOST + appCarToons.avatar);
+        BitmapManager.getInstance().display(trainHolder.img, Constants.HEAD_HOST + appCarToons.avatar);
     }
 
     @Override

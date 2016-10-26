@@ -558,7 +558,7 @@ public class KtActivity extends BaseActivity {
     public void initScanUser(ScanUser user, RelativeLayout relativeLayout, MyCircleImageView imageViewAvatar, TextView nicknameTv, TextView zandouliTv, ImageView boom, ImageView dengji, boolean left) {
         String avatar = user.avatar;
         String nickname = user.nickname;
-        String path1 = Constants.HOST + avatar;
+        String path1 = Constants.HEAD_HOST + avatar;
         BitmapManager.getInstance().displayUserLogo(imageViewAvatar, path1);
         nicknameTv.setText(nickname);
         nicknameTv.setTag(path1);

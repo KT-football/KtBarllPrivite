@@ -248,26 +248,26 @@ public class UploadingActivity extends BaseActivity implements View.OnClickListe
 
         textViewA.setText(userA.nickname);
         textViewF.setText(userF.nickname);
-        BitmapManager.getInstance().displayUserLogo(imageViewAA, Constants.HOST + userA.avatar);
-        BitmapManager.getInstance().displayUserLogo(imageViewFF, Constants.HOST + userF.avatar);
+        BitmapManager.getInstance().displayUserLogo(imageViewAA, Constants.HEAD_HOST + userA.avatar);
+        BitmapManager.getInstance().displayUserLogo(imageViewFF, Constants.HEAD_HOST + userF.avatar);
         switch (team) {
             case 1:
                 break;
             case 2:
                 textViewB.setText(userB.nickname);
                 textViewE.setText(userE.nickname);
-                BitmapManager.getInstance().displayUserLogo(imageViewBB, Constants.HOST + userB.avatar);
-                BitmapManager.getInstance().displayUserLogo(imageViewEE, Constants.HOST + userE.avatar);
+                BitmapManager.getInstance().displayUserLogo(imageViewBB, Constants.HEAD_HOST + userB.avatar);
+                BitmapManager.getInstance().displayUserLogo(imageViewEE, Constants.HEAD_HOST + userE.avatar);
                 break;
             case 3:
                 textViewC.setText(userC.nickname);
                 textViewD.setText(userD.nickname);
                 textViewB.setText(userB.nickname);
                 textViewE.setText(userE.nickname);
-                BitmapManager.getInstance().displayUserLogo(imageViewBB, Constants.HOST + userB.avatar);
-                BitmapManager.getInstance().displayUserLogo(imageViewEE, Constants.HOST + userE.avatar);
-                BitmapManager.getInstance().displayUserLogo(imageViewCC, Constants.HOST + userC.avatar);
-                BitmapManager.getInstance().displayUserLogo(imageViewDD, Constants.HOST + userD.avatar);
+                BitmapManager.getInstance().displayUserLogo(imageViewBB, Constants.HEAD_HOST + userB.avatar);
+                BitmapManager.getInstance().displayUserLogo(imageViewEE, Constants.HEAD_HOST + userE.avatar);
+                BitmapManager.getInstance().displayUserLogo(imageViewCC, Constants.HEAD_HOST + userC.avatar);
+                BitmapManager.getInstance().displayUserLogo(imageViewDD, Constants.HEAD_HOST + userD.avatar);
                 break;
         }
     }

@@ -22,6 +22,8 @@ public class Constants {
     public static final String FEEDBACK = KTHOST + "users/feedback";
     //更新个人信息
     public static final String PROFILE = KTHOST + "users/update_profile";
+    //获取个人信息
+    public static final String GET_PROFILE = KTHOST + "users/profile";
     //退出战队
     public static final String LEAVE_LEAGUE = KTHOST + "users/leave_league";
     //获取班级数据

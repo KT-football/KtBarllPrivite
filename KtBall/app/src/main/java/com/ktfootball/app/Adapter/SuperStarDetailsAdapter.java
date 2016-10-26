@@ -64,7 +64,7 @@ public class SuperStarDetailsAdapter extends RecyclerView.Adapter<RecyclerView.V
         if(holder instanceof SuperStarHeaderViewHolder){
             ((SuperStarHeaderViewHolder) holder).details.setText(starUserProfile.star_intro);
             ((SuperStarHeaderViewHolder) holder).name.setText(starUserProfile.nickname);
-            BitmapManager.getInstance().displayUserLogo(((SuperStarHeaderViewHolder) holder).header, Constants.HOST+starUserProfile.avatar);
+            BitmapManager.getInstance().displayUserLogo(((SuperStarHeaderViewHolder) holder).header, Constants.HEAD_HOST+starUserProfile.avatar);
         }else{
             BitmapManager.getInstance().displayKTItem(((SuperStarViewHolder) holder).img, Constants.HOST+videoses.get(position).picture);
             ((SuperStarViewHolder) holder).time.setText(videoses.get(position).upload_date);

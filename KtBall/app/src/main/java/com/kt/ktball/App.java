@@ -105,6 +105,6 @@ public class App extends MultiDexApplication {
     }
 
     public static String getImageUrl(String url){
-        return Constants.HOST + url;
+        return Constants.HEAD_HOST + url;
     }
 }

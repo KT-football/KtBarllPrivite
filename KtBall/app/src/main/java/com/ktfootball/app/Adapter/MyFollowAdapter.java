@@ -58,7 +58,7 @@ public class MyFollowAdapter extends RecyclerView.Adapter<MyFollowAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHoder holder, final int position) {
-        Glide.with(mContext).load(Constants.HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
         holder.mName.setText(mList.get(position).getNickname());
         holder.mZhan.setText("战斗力:" + mList.get(position).getPower());
         holder.mCancle.setOnClickListener(new View.OnClickListener() {

@@ -26,7 +26,7 @@ public class TrainListAdapter extends BaseRecyclerViewAdapter<AppCartoons.Cartoo
 
     @Override
     protected void bindView(TrainListViewHolder holder, int position, AppCartoons.Cartoons model) {
-        BitmapManager.getInstance().display(holder.img, Constants.HOST+model.avatar);
+        BitmapManager.getInstance().display(holder.img, Constants.HEAD_HOST+model.avatar);
         holder.name.setText(model.name);
         holder.name_2.setText(model.sub_name);
         if("0".equals(model.is_added)){

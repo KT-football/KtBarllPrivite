@@ -63,7 +63,7 @@ public class MyQRCodeActivity extends BaseActivity {
     @Override
     protected void initData(Bundle savedInstanceState) {
         UserLogin userLogin = App.getUserLogin();
-        Glide.with(getThis()).load(Constants.HOST + userLogin.avatar).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).into(header);
+        Glide.with(getThis()).load(Constants.HEAD_HOST + userLogin.avatar).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).into(header);
         name.setText(userLogin.nickname);
         bi.setText(userLogin.ktb+"");
         chang.setText(userLogin.vip_count+"");

@@ -26,7 +26,7 @@ public class GamePlaceAdapter extends BaseRecyclerViewAdapter<GamePlace.Games,Ga
 
     @Override
     protected void bindView(GamePlaceViewHolder holder, int position, GamePlace.Games model) {
-        BitmapManager.getInstance().display(holder.imageViewAvatar, Constants.HOST+model.avatar);
+        BitmapManager.getInstance().display(holder.imageViewAvatar, Constants.HEAD_HOST+model.avatar);
         holder.textViewName.setText(model.name);
     }
 

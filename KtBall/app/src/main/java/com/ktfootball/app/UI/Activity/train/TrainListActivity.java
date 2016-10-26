@@ -107,7 +107,7 @@ public class TrainListActivity extends BaseActivity {
         rv = (RecyclerView) findViewById(R.id.layout_trainlist_rv);
         GridLayoutManager gm = new GridLayoutManager(getThis(),2);
         rv.setLayoutManager(gm);
-        BitmapManager.getInstance().displayUserLogo(header, Constants.HOST+App.getUserLogin().avatar);
+        BitmapManager.getInstance().displayUserLogo(header, Constants.HEAD_HOST+App.getUserLogin().avatar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowCustomEnabled(true);

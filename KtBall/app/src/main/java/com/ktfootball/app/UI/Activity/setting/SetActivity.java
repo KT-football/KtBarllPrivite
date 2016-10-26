@@ -54,7 +54,7 @@ public class SetActivity extends BaseActivity {
         UserLogin userLogin = App.getUserLogin();
         name.setText(userLogin.nickname);
         account.setText(userLogin.email);
-        BitmapManager.getInstance().displayUserLogo(header, Constants.HOST + userLogin.avatar);
+        BitmapManager.getInstance().displayUserLogo(header, Constants.HEAD_HOST + userLogin.avatar);
 
     }
 

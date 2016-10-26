@@ -113,7 +113,7 @@ public class UserinfoChangeActivity extends BaseActivity {
     protected void initData(Bundle savedInstanceState) {
         userId = getIntent().getStringExtra(USER_ID);
         getuserInfo(userId);
-        BitmapManager.getInstance().displayUserLogo(header, Constants.HOST + App.getUserLogin().avatar);
+        BitmapManager.getInstance().displayUserLogo(header, Constants.HEAD_HOST + App.getUserLogin().avatar);
         PackageManager manager = this.getPackageManager();
         try {
             PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
@@ -175,13 +175,13 @@ public class UserinfoChangeActivity extends BaseActivity {
     }
 
     private void getuserInfo(String userid) {
-        String url = Constants.PROFILE + "?user_id=" +
+        String url = Constants.GET_PROFILE + "?user_id=" +
                 userid +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         LogUtils.e(url);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
-                Request.Method.POST,
+                Request.Method.GET,
                 url,
                 null,
                 new Response.Listener<JSONObject>() {

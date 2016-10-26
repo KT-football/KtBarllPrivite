@@ -49,7 +49,7 @@ public class SystemBattleMsgItem extends RecyclerView.Adapter<SystemBattleMsgIte
 
     @Override
     public void onBindViewHolder(SystemBattleMsgItem.SystemView holder, final int position) {
-        Glide.with(mContext).load(Constants.HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
         holder.mName.setText(mList.get(position).getNickname());
         holder.mStatus.setText(mList.get(position).getGame_name());
         holder.mAgree.setOnClickListener(new View.OnClickListener() {

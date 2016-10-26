@@ -81,6 +81,7 @@ public class MyFollowActivity extends BaseActivity implements BGARefreshLayout.B
 
 
     private void getData() {
+        mList.clear();
         String url = Constants.USER_FOLLOWERS+"?user_id=" + userId
                 + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();

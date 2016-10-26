@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.kt.ktball.entity.Users;
 import com.kt.ktball.myclass.GlideCircleTransform;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class MyFirendAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Users users = getItem(position);
-        String url = "http://www.ktfootball.com" + users.avatar;
+        String url = Constants.HEAD_HOST + users.avatar;
         Glide.with(context).load(url).transform(new GlideCircleTransform(context)).into(holder.avatar);
         holder.name.setText(users.nickname);
         holder.zhandouli.setText("战斗力：" + users.power);

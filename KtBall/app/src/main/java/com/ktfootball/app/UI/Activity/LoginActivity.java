@@ -112,7 +112,7 @@ public class LoginActivity extends BaseActivity {
 
     //向服务器发送json请求登录
     public void login() {
-        String url = "http://www.ktfootball.com/apiv2/users/login";
+        String url = Constants.HOST +"users/login";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("account", user);

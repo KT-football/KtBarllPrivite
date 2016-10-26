@@ -88,7 +88,7 @@ public class ChongZhiActivity extends BaseActivity {
 
     private void getData() {
         showLoadingDiaglog();
-        String url = Constants.RECHARGE_LIST + "?&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+        String url = Constants.RECHARGE_LIST + "?authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 
 import com.frame.app.utils.LogUtils;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import java.util.HashMap;
@@ -34,8 +35,8 @@ public class SharedUtils {
     public String titleUrl = "标题的超链接";
     public String text = "测试分享的文本";
     public String imageUrl = "http://7sby7r.com1.z0.glb.clouddn.com/CYSJ_02.jpg";
-    public String site = "http://www.ktfootball.com";
-    public String siteUrl = "http://www.ktfootball.com";
+    public String site = Constants.HEAD_HOST;
+    public String siteUrl = Constants.HEAD_HOST;
     public Bitmap bitmap = null;
 
     public SharedUtils() {

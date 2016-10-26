@@ -29,6 +29,7 @@ import com.kt.ktball.entity.Users;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -89,7 +90,7 @@ public class InviteActivity extends BaseActivity {
 
     private void initView() {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID,0);
-        String url = "http://www.ktfootball.com/apiv2/users/followers?user_id=" +
+        String url = Constants.HOST +"users/followers?user_id=" +
                 userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -144,7 +145,7 @@ public class InviteActivity extends BaseActivity {
         }
         if (!TextUtils.isEmpty(input)) {
             if (textView.getText().toString().equals("搜索")) {//搜索
-                String url = "http://www.ktfootball.com/apiv2/users/search_user?keyword="
+                String url = Constants.HOST +"users/search_user?keyword="
                         + input + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
                 showLoadingDiaglog();
                 JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -165,7 +166,7 @@ public class InviteActivity extends BaseActivity {
                                         firendId = data.user_id;
                                         listView.setVisibility(View.GONE);
                                         relativeLayout.setVisibility(View.VISIBLE);
-                                        String url = "http://www.ktfootball.com" + data.avatar;
+                                        String url = Constants.HEAD_HOST + data.avatar;
                                         Glide.with(InviteActivity.this).load(url).transform(new GlideCircleTransform(InviteActivity.this)).into(imageView);
                                         textViewName.setText(data.nickname);
                                         textViewP.setText("战斗力：" + data.power);
@@ -206,9 +207,9 @@ public class InviteActivity extends BaseActivity {
     public void doInviteFirend(View view) {//邀请搜索到的好友
         String url = "";
         if (game_type.equals("2")){
-            url = "http://www.ktfootball.com/apiv2/users/invite_league3v3";
+            url = Constants.HOST +"users/invite_league3v3";
         } else {
-            url = "http://www.ktfootball.com/apiv2/users/invite_league";
+            url = Constants.HOST +"users/invite_league";
         }
         JSONObject jsonObject = new JSONObject();
         try {

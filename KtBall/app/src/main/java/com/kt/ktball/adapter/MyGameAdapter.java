@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kt.ktball.entity.Games;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class MyGameAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Games games = getItem(position);
-        String url = "http://www.ktfootball.com" + games.avatar;
+        String url = Constants.HEAD_HOST + games.avatar;
         Glide.with(context).load(url).into(holder.imageView);
         holder.name.setText(games.name);
         holder.time.setText(games.date_start + " - " + games.date_end);

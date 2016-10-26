@@ -19,6 +19,7 @@ import com.frame.app.base.activity.BaseActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kt.ktball.entity.EditGameData;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.Manager.BitmapManager;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Views.SharedDialog;
@@ -31,7 +32,7 @@ import cn.sharesdk.framework.ShareSDK;
 
 public class GamesDetailsActivity extends BaseActivity {
 
-    public  static final String EXTRA_LOCATION = "location";
+    public static final String EXTRA_LOCATION = "location";
     @Bind(R.id.textView117)
     TextView textViewName;
     @Bind(R.id.imageView36)
@@ -74,8 +75,8 @@ public class GamesDetailsActivity extends BaseActivity {
     private void initView() {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
         Intent intent = getIntent();
-        gameId = intent.getLongExtra(GameMatchActivity.EXTRA_GAME_ID,0);
-        String url = "http://www.ktfootball.com/apiv2/games/edit?game_id="
+        gameId = intent.getLongExtra(GameMatchActivity.EXTRA_GAME_ID, 0);
+        String url = Constants.HOST +"games/edit?game_id="
                 + gameId + "&user_id=" + userId +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
@@ -89,7 +90,8 @@ public class GamesDetailsActivity extends BaseActivity {
                         closeLoadingDialog();
                         Log.d("=========", jsonObject.toString());
                         EditGameData editGameData = new Gson().fromJson(jsonObject.toString(),
-                                new TypeToken<EditGameData>(){}.getType());
+                                new TypeToken<EditGameData>() {
+                                }.getType());
                         Log.d("=========", editGameData.toString());
                         init(editGameData);
                     }
@@ -111,7 +113,7 @@ public class GamesDetailsActivity extends BaseActivity {
         textViewPlace.setText(editGameData.place);
         textViewMoney.setText("$ " + editGameData.enter_ktb + ".00");
         location = editGameData.location;
-        String uri = "http://www.ktfootball.com" + editGameData.avatar;
+        String uri = Constants.HEAD_HOST + editGameData.avatar;
         BitmapManager.getInstance().displayUserLogo(imageView, uri);
     }
 
@@ -120,7 +122,7 @@ public class GamesDetailsActivity extends BaseActivity {
     }
 
     public void doAddress(View view) {//点击查看地址
-        if (location == null){
+        if (location == null) {
             Toast.makeText(this, "经纬度为空", Toast.LENGTH_SHORT).show();
         } else {
 //            Intent intent = new Intent(this,LookOverAddressActivity.class);
@@ -136,7 +138,7 @@ public class GamesDetailsActivity extends BaseActivity {
     private void showDialog() {
         if (sharedDialog == null) {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            sharedDialog.setTitleUrl("http://ktfootball.com/app_share/game?game_id=" + gameId);
+            sharedDialog.setTitleUrl(Constants.HOST + "app_share/game?game_id=" + gameId);
             String title = "我已经报名了" + textViewTime.getText().toString() + textViewPlace.getText().toString();
             sharedDialog.setTitle(title);
             sharedDialog.setText("KT足球比赛赛事精选");

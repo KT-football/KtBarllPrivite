@@ -15,6 +15,7 @@ import com.frame.app.base.fragment.BaseFragment;
 import com.google.gson.Gson;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Adapter.BattleChildAdapter;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.BattleBean;
 import com.ktfootball.app.Event.BattleEvent;
 import com.ktfootball.app.R;
@@ -65,7 +66,7 @@ public class UserReviewFragment  extends BaseFragment implements BGARefreshLayou
 
 
     public void getVideoList() {
-        String url = "http://www.ktfootball.com/apiv2/videos/my_videos?user_id=" + userId
+        String url = Constants.HOST +"videos/my_videos?user_id=" + userId
                 + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(

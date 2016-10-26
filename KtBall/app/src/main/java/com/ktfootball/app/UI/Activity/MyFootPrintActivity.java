@@ -17,6 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 import com.kt.ktball.entity.LocationData;
 import com.kt.ktball.myclass.VolleyUtil;
@@ -75,7 +76,7 @@ public class MyFootPrintActivity extends AppCompatActivity {
     private void initView() {
         Intent intent = getIntent();
         userId = intent.getLongExtra(UserProfiles.EXTRA_ME_OR_HE_USER_ID, 0);
-        String url = "http://www.ktfootball.com/apiv2/users/kt_track?user_id="+
+        String url = Constants.HOST +"users/kt_track?user_id="+
                 userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
 
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(

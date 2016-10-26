@@ -108,7 +108,7 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final StarComment comments = getItem(groupPosition);
-        String uri = Constants.HOST + comments.avatar;
+        String uri = Constants.HEAD_HOST + comments.avatar;
         Glide.with(context).load(uri).transform(new GlideCircleTransform(context)).into(holder.avatar);
         holder.name.setText(comments.nickname+":");
         holder.comments.setText(comments.content);
@@ -155,7 +155,7 @@ public class MyExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 
         final SubComment comments = item_list.get(groupPosition).get(childPosition);
-        String uri = Constants.HOST + comments.avatar;
+        String uri = Constants.HEAD_HOST + comments.avatar;
         Glide.with(context).load(uri).transform(new GlideCircleTransform(context)).into(itemHolder.avatar);
         itemHolder.name.setText(comments.nickname+":");
         itemHolder.comments.setText(comments.content);

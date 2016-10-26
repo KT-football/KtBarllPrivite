@@ -31,6 +31,7 @@ import com.kt.ktball.App;
 import com.kt.ktball.entity.UserMsg;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.Event.Rank1Event;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.JudgeSeleteActivity;
@@ -115,7 +116,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
      * 获取用户信息
      */
     private void getUserMsg() {
-        String url = "http://www.ktfootball.com/apiv2/users/detail?" +
+        String url = Constants.HOST +"users/detail?" +
                 "current_user_id=" + currentUserId + "&user_id=" + userId +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         Log.e("huangbo", currentUserId + " +  " + userId + url);
@@ -148,7 +149,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
     //初始化视图
     private void initView(UserMsg userMsg) {
         setSelect(0);
-        String uri = "http://www.ktfootball.com" + userMsg.avatar;//加载头像
+        String uri = Constants.HEAD_HOST + userMsg.avatar;//加载头像
         Glide.with(getActivity()).load(uri).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).into(mHead);
         int lvi = 0;
         if (userMsg.exp <= 50) {

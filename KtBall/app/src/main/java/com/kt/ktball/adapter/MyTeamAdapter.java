@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.kt.ktball.entity.Leagues;
 import com.kt.ktball.myclass.GlideCircleTransform;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class MyTeamAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Leagues leagues = getItem(position);
-        String url = "http://www.ktfootball.com" + leagues.usera_avatar;
+        String url = Constants.HEAD_HOST + leagues.usera_avatar;
         Glide.with(context).load(url).transform(new GlideCircleTransform(context)).into(holder.imageView);
         holder.textView.setText(leagues.name);
         return convertView;

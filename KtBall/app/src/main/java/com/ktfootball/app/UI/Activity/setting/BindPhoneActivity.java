@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.frame.app.base.activity.BaseActivity;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -72,7 +73,7 @@ public class BindPhoneActivity extends BaseActivity {
     public void changer() {
         if (edt2.getText().toString() != null) {
             showLoadingDiaglog();
-            String url = "http://www.ktfootball.com/apiv2/users/binding_new_mobile?phone="
+            String url = Constants.HOST +"users/binding_new_mobile?phone="
                     + phone + "&captcha=" + edt2.getText().toString() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.POST,
@@ -112,7 +113,7 @@ public class BindPhoneActivity extends BaseActivity {
         if (TextUtils.isEmpty(phone)) {
             myAlertDialog.doAlertDialog("请输入手机号");
         } else if (phone.length() == 11) {
-            String url = "http://www.ktfootball.com/apiv2/users/send_mobile_captcha_for_binding_new_mobile?phone="
+            String url = Constants.HOST +"users/send_mobile_captcha_for_binding_new_mobile?phone="
                     + phone + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.GET,

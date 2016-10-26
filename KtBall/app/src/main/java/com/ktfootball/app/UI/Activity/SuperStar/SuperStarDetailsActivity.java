@@ -56,7 +56,6 @@ public class SuperStarDetailsActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void initHandler(Message msg) {
 
@@ -87,7 +86,7 @@ public class SuperStarDetailsActivity extends BaseActivity {
                 if (isSuccess(response.get().response)) {
                     starUserProfile = response.get();
                     mTv_name.setText(response.get().nickname);
-                    Glide.with(getThis()).load(Constants.HOST+response.get().avatar).into(mHead);
+                    Glide.with(getThis()).load(Constants.HEAD_HOST + response.get().avatar).into(mHead);
                     mTv_content.setText(response.get().star_intro);
                     doCommentedVideos();
                 } else {
@@ -127,14 +126,14 @@ public class SuperStarDetailsActivity extends BaseActivity {
     }
 
     @OnClick(R.id.tv_main)
-    public void goDetail(){
-        Intent intent = new Intent(getThis(),UserProfiles.class);
-        intent.putExtra(UserProfiles.USERID,Long.valueOf(userId));
+    public void goDetail() {
+        Intent intent = new Intent(getThis(), UserProfiles.class);
+        intent.putExtra(UserProfiles.USERID, Long.valueOf(userId));
         startActivity(intent);
     }
 
     @OnClick(R.id.tv_tab1)
-    public void checkTab1(){
+    public void checkTab1() {
         mTab1.setBackgroundColor(getResources().getColor(R.color.gold));
         mTab1.setTextColor(0xffffffff);
         mTab2.setTextColor(getResources().getColor(R.color.gold));
@@ -144,7 +143,7 @@ public class SuperStarDetailsActivity extends BaseActivity {
     }
 
     @OnClick(R.id.tv_tab2)
-    public void checkTab2(){
+    public void checkTab2() {
         mTab2.setBackgroundColor(getResources().getColor(R.color.gold));
         mTab2.setTextColor(0xffffffff);
         mTab1.setTextColor(getResources().getColor(R.color.gold));

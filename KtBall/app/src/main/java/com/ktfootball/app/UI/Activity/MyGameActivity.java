@@ -21,6 +21,7 @@ import com.kt.ktball.entity.GamePlace;
 import com.kt.ktball.entity.Games;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -64,7 +65,7 @@ public class MyGameActivity extends BaseActivity {
     private void initView() {//初始化视图
         long userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID,0);
         int distance = 10000;
-        String url = "http://www.ktfootball.com/apiv2/games/club_games?user_id="
+        String url = Constants.HOST +"games/club_games?user_id="
                 + userId + "&distance=" + distance
                 + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();

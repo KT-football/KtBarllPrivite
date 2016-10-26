@@ -262,7 +262,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     }
 
     private void initV() {//评论详情
-        String url = "http://www.ktfootball.com/apiv2/videos/comments?user_id="
+        String url = Constants.HOST + "videos/comments?user_id="
                 + userId + "&game_video_id=" + video +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         Log.d("]]]]]]]]]]]]", url);
@@ -343,7 +343,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     }
 
     private void initView() {
-        String url = "http://www.ktfootball.com/apiv2/videos/show?game_video_id="
+        String url = Constants.HOST + "videos/show?game_video_id="
                 + video + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         Log.d("=========", url);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -379,8 +379,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
             case 0://1v1
                 relativeLayout1.setVisibility(View.VISIBLE);
                 relativeLayout4.setVisibility(View.VISIBLE);
-                String uri1 = "http://www.ktfootball.com" + videoDetailsData.users.get(0).avatar;
-                String uri2 = "http://www.ktfootball.com" + videoDetailsData.users.get(1).avatar;
+                String uri1 = Constants.HEAD_HOST + videoDetailsData.users.get(0).avatar;
+                String uri2 = Constants.HEAD_HOST + videoDetailsData.users.get(1).avatar;
                 Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
                 textViewNameA.setText(videoDetailsData.users.get(0).nickname);
@@ -409,10 +409,10 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 relativeLayout4.setVisibility(View.VISIBLE);
                 relativeLayout2.setVisibility(View.VISIBLE);
                 relativeLayout5.setVisibility(View.VISIBLE);
-                String uri11 = "http://www.ktfootball.com" + videoDetailsData.users.get(0).avatar;
-                String uri21 = "http://www.ktfootball.com" + videoDetailsData.users.get(1).avatar;
-                String uri31 = "http://www.ktfootball.com" + videoDetailsData.users.get(2).avatar;
-                String uri41 = "http://www.ktfootball.com" + videoDetailsData.users.get(3).avatar;
+                String uri11 = Constants.HEAD_HOST + videoDetailsData.users.get(0).avatar;
+                String uri21 = Constants.HEAD_HOST + videoDetailsData.users.get(1).avatar;
+                String uri31 = Constants.HEAD_HOST + videoDetailsData.users.get(2).avatar;
+                String uri41 = Constants.HEAD_HOST + videoDetailsData.users.get(3).avatar;
                 Glide.with(this).load(uri11).transform(new GlideCircleTransform(this)).into(imageViewA);
                 Glide.with(this).load(uri21).transform(new GlideCircleTransform(this)).into(imageViewC);
                 Glide.with(this).load(uri31).transform(new GlideCircleTransform(this)).into(imageViewB);
@@ -465,12 +465,12 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 relativeLayout4.setVisibility(View.VISIBLE);
                 relativeLayout6.setVisibility(View.VISIBLE);
                 relativeLayout5.setVisibility(View.VISIBLE);
-                String uri111 = "http://www.ktfootball.com" + videoDetailsData.users.get(0).avatar;
-                String uri222 = "http://www.ktfootball.com" + videoDetailsData.users.get(1).avatar;
-                String uri333 = "http://www.ktfootball.com" + videoDetailsData.users.get(2).avatar;
-                String uri444 = "http://www.ktfootball.com" + videoDetailsData.users.get(3).avatar;
-                String uri555 = "http://www.ktfootball.com" + videoDetailsData.users.get(3).avatar;
-                String uri666 = "http://www.ktfootball.com" + videoDetailsData.users.get(3).avatar;
+                String uri111 = Constants.HEAD_HOST + videoDetailsData.users.get(0).avatar;
+                String uri222 = Constants.HEAD_HOST + videoDetailsData.users.get(1).avatar;
+                String uri333 = Constants.HEAD_HOST + videoDetailsData.users.get(2).avatar;
+                String uri444 = Constants.HEAD_HOST + videoDetailsData.users.get(3).avatar;
+                String uri555 = Constants.HEAD_HOST + videoDetailsData.users.get(3).avatar;
+                String uri666 = Constants.HEAD_HOST + videoDetailsData.users.get(3).avatar;
                 Glide.with(this).load(uri111).transform(new GlideCircleTransform(this)).into(imageViewA);
                 Glide.with(this).load(uri222).transform(new GlideCircleTransform(this)).into(imageViewC);
                 Glide.with(this).load(uri333).transform(new GlideCircleTransform(this)).into(imageViewE);
@@ -558,7 +558,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     }
 
     public void doLove(View view) {//喜欢影片
-        String url = "http://www.ktfootball.com/apiv2/videos/like";
+        String url = Constants.HOST + "videos/like";
         JSONObject jsonObject1 = new JSONObject();
         try {
             jsonObject1.put("game_video_id", video);
@@ -641,7 +641,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     private void showDialog() {
         if (sharedDialog == null) {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            sharedDialog.setTitleUrl("http://ktfootball.com/app_share/game_video?game_video_id=" + video);
+            sharedDialog.setTitleUrl(Constants.HOST + "app_share/game_video?game_video_id=" + video);
             String title = getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + "来自KT足球";
             sharedDialog.setTitle(title);
             sharedDialog.setText("KT足球比赛视频精选");
@@ -777,9 +777,9 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         if (videoDetailsData != null) {
             Intent intent = new Intent(getThis(), HengHuadActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("info",videoDetailsData);
-            bundle.putString("url","http://ktfootball.com/app_share/game_video?game_video_id=" + video);
-            bundle.putString("title",getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + "来自KT足球");
+            bundle.putSerializable("info", videoDetailsData);
+            bundle.putString("url", Constants.HOST + "app_share/game_video?game_video_id=" + video);
+            bundle.putString("title", getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + "来自KT足球");
             intent.putExtras(bundle);
             startActivity(intent);
         }

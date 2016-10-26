@@ -135,7 +135,7 @@ public class TeamDetailsActivity extends BaseActivity {
         Intent intent = getIntent();
         league_id = intent.getLongExtra(MyTeamActivity.EXTRA_TEAM_ID, 0);
         gameType = intent.getStringExtra(MyTeamActivity.EXTRA_GAME_TYPE);
-        String url = "http://www.ktfootball.com/apiv2/users/info_league?league_id=" +
+        String url = Constants.HOST +"users/info_league?league_id=" +
                 league_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -163,7 +163,7 @@ public class TeamDetailsActivity extends BaseActivity {
     }
 
     private void init(final TeamDetailData teamDetailData) {//获得战队详情
-        String url = "http://www.ktfootball.com" + teamDetailData.avatar;
+        String url = Constants.HEAD_HOST + teamDetailData.avatar;
         BitmapManager.getInstance().displayUserLogo(imageViewAvatar, url);
         textViewJiFen.setText("" + teamDetailData.scores);
         textViewTitle.setText(teamDetailData.name);
@@ -171,13 +171,13 @@ public class TeamDetailsActivity extends BaseActivity {
         if (teamDetailData.usera_id!=App.getUserId()&&teamDetailData.userb_id!=App.getUserId()&&teamDetailData.userc_id!=App.getUserId())
             btn_add.setVisibility(View.GONE);
         if (gameType.equals("2")) {
-            String uri1 = "http://www.ktfootball.com" + teamDetailData.usera_avatar;
+            String uri1 = Constants.HEAD_HOST + teamDetailData.usera_avatar;
             Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
             imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
             textViewZhanA.setText("战斗力：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
-                String uri2 = "http://www.ktfootball.com" + teamDetailData.userb_avatar;
+                String uri2 = Constants.HEAD_HOST + teamDetailData.userb_avatar;
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
                 imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
@@ -196,7 +196,7 @@ public class TeamDetailsActivity extends BaseActivity {
                 });
             }
             if (teamDetailData.userc_avatar != null) {
-                String uri3 = "http://www.ktfootball.com" + teamDetailData.userc_avatar;
+                String uri3 = Constants.HEAD_HOST + teamDetailData.userc_avatar;
                 Glide.with(this).load(uri3).transform(new GlideCircleTransform(this)).into(imageViewC);
                 imageViewC.setVisibility(View.VISIBLE);
                 textViewNameC.setText(teamDetailData.userc_nickname);
@@ -215,13 +215,13 @@ public class TeamDetailsActivity extends BaseActivity {
             }
         } else {
             imageViewC.setVisibility(View.GONE);
-            String uri1 = "http://www.ktfootball.com" + teamDetailData.usera_avatar;
+            String uri1 = Constants.HEAD_HOST + teamDetailData.usera_avatar;
             Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).into(imageViewA);
             imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
             textViewZhanA.setText("战队力：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
-                String uri2 = "http://www.ktfootball.com" + teamDetailData.userb_avatar;
+                String uri2 = Constants.HEAD_HOST + teamDetailData.userb_avatar;
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).into(imageViewB);
                 imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);

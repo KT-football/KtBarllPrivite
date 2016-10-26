@@ -76,7 +76,7 @@ public class StatrRankFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        Glide.with(getThis()).load(Constants.HOST+App.getUserLogin().avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead);
+        Glide.with(getThis()).load(Constants.HEAD_HOST+App.getUserLogin().avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead);
         mViewpager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

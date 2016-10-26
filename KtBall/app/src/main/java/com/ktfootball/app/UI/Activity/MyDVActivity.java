@@ -58,7 +58,7 @@ public class MyDVActivity extends BaseActivity {
     private void initView() {
         Intent intent = getIntent();
         userId = intent.getLongExtra(UserProfiles.EXTRA_ME_OR_HE_USER_ID,0);
-        String url = "http://www.ktfootball.com/apiv2/videos/my_videos?user_id=" +
+        String url = Constants.HOST +"videos/my_videos?user_id=" +
                 userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(

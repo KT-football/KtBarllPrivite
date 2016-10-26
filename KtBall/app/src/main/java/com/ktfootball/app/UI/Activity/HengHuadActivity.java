@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.kt.ktball.entity.Users;
 import com.kt.ktball.entity.VideoDetailsData;
 import com.kt.ktball.myclass.GlideCircleTransform;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 import com.ktfootball.app.Views.SharedDialog;
 
@@ -87,11 +88,11 @@ public class HengHuadActivity extends BaseActivity {
     protected void initData(Bundle savedInstanceState) {
         ShareSDK.initSDK(this);
         mVideoDetailsData = (VideoDetailsData) getIntent().getSerializableExtra("info");
-        Glide.with(getThis()).load("http://www.ktfootball.com"+mVideoDetailsData.getUsers().get(0).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead1);
-        Glide.with(getThis()).load("http://www.ktfootball.com"+mVideoDetailsData.getUsers().get(1).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead2);
-        Glide.with(getThis()).load("http://www.ktfootball.com"+mVideoDetailsData.getUsers().get(1).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead3);
-        Glide.with(getThis()).load("http://www.ktfootball.com"+mVideoDetailsData.getUsers().get(0).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead4);
-        Glide.with(getThis()).load("http://www.ktfootball.com"+mVideoDetailsData.getUsers().get(1).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead5);
+        Glide.with(getThis()).load(Constants.HEAD_HOST+mVideoDetailsData.getUsers().get(0).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead1);
+        Glide.with(getThis()).load(Constants.HEAD_HOST+mVideoDetailsData.getUsers().get(1).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead2);
+        Glide.with(getThis()).load(Constants.HEAD_HOST+mVideoDetailsData.getUsers().get(1).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead3);
+        Glide.with(getThis()).load(Constants.HEAD_HOST+mVideoDetailsData.getUsers().get(0).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead4);
+        Glide.with(getThis()).load(Constants.HEAD_HOST+mVideoDetailsData.getUsers().get(1).avatar).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead5);
         timer = new Timer();
         timer.schedule(new TimerTask() {
             int i = 0;

@@ -181,7 +181,7 @@ public class UserinfoChangeActivity extends BaseActivity {
         LogUtils.e(url);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
-                Request.Method.GET,
+                Request.Method.POST,
                 url,
                 null,
                 new Response.Listener<JSONObject>() {

@@ -21,6 +21,7 @@ import com.kt.ktball.entity.Leagues;
 import com.kt.ktball.entity.LeaguesData;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Adapter.CorpsAdapter;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.BattleBean;
 import com.ktfootball.app.Event.AddTeamEvent;
 import com.ktfootball.app.R;
@@ -71,7 +72,7 @@ public class UserTeamFragment extends BaseFragment implements BGARefreshLayout.B
 
     private void getData() {
         showLoadingDiaglog();
-        String url = "http://www.ktfootball.com/apiv2/users/leagues?user_id="
+        String url = Constants.HOST +"users/leagues?user_id="
                 + userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

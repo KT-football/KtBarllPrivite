@@ -27,6 +27,7 @@ import com.frame.app.base.activity.BaseActivity;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.Event.AddTeamEvent;
 import com.ktfootball.app.R;
 
@@ -105,7 +106,7 @@ public class NewTeamActivity extends BaseActivity {
             myAlertDialog.doAlertDialog("请选择战队类型");
         } else {
             myDialog.show();
-            String url = "http://www.ktfootball.com/apiv2/users/create_league";
+            String url = Constants.HOST +"users/create_league";
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("user_id",userId);

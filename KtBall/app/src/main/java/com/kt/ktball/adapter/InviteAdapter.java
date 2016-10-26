@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.bumptech.glide.Glide;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.UI.Activity.InviteActivity;
 import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.kt.ktball.entity.Users;
@@ -66,11 +67,11 @@ public class InviteAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
-        if (convertView == null){
-            convertView = inflater.inflate(R.layout.invite_list_item,parent,false);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.invite_list_item, parent, false);
             holder = new ViewHolder();
             holder.avatar = (ImageView) convertView.findViewById(R.id.imageView53);
-            holder.name  = (TextView) convertView.findViewById(R.id.textView58);
+            holder.name = (TextView) convertView.findViewById(R.id.textView58);
             holder.zhandouli = (TextView) convertView.findViewById(R.id.textView59);
             holder.invite = (TextView) convertView.findViewById(R.id.textView105);
             convertView.setTag(holder);
@@ -78,32 +79,32 @@ public class InviteAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final Users users = getItem(position);
-        String url = "http://www.ktfootball.com" + users.avatar;
+        String url = Constants.HEAD_HOST + users.avatar;
         Glide.with(context).load(url).transform(new GlideCircleTransform(context)).into(holder.avatar);
         holder.name.setText(users.nickname);
         holder.zhandouli.setText("战斗力：" + users.power);
-        myDialog = new MyDialog(context,"正在提交");
-        userId = PreferenceManager.getDefaultSharedPreferences(context).getLong(LoginActivity.PRE_CURRENT_USER_ID,0);
+        myDialog = new MyDialog(context, "正在提交");
+        userId = PreferenceManager.getDefaultSharedPreferences(context).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
         final String game_type = InviteActivity.game_type;
         holder.invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = "";
-                if (game_type.equals("2")){
-                    url = "http://www.ktfootball.com/apiv2/users/invite_league3v3";
+                if (game_type.equals("2")) {
+                    url = Constants.HOST +"users/invite_league3v3";
                 } else {
-                    url = "http://www.ktfootball.com/apiv2/users/invite_league";
+                    url = Constants.HOST +"users/invite_league";
                 }
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("user_id", userId);
                     jsonObject.put("to_user_id", users.user_id);
-                    jsonObject.put("league_id",InviteActivity.league_id);
-                    jsonObject.put("authenticity_token","K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                    jsonObject.put("league_id", InviteActivity.league_id);
+                    jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(Request.Method.POST,url,jsonObject,
+                JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject object) {
@@ -111,10 +112,10 @@ public class InviteAdapter extends BaseAdapter {
                                     MyAlertDialog myAlertDialog = new MyAlertDialog(context);
                                     JSONObject jsonObject1 = new JSONObject(object.toString());
                                     String response = jsonObject1.getString("response");
-                                    if (response.equals("success")){
+                                    if (response.equals("success")) {
                                         holder.invite.setText("已邀请");
                                         myAlertDialog.doAlertDialog("发送邀请成功");
-                                    } else if (response.equals("error")){
+                                    } else if (response.equals("error")) {
                                         String msg = jsonObject1.getString("msg");
                                         myAlertDialog.doAlertDialog(msg);
                                     }
@@ -126,8 +127,7 @@ public class InviteAdapter extends BaseAdapter {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                     }
-                })
-                {
+                }) {
 
                     @Override
                     public Map<String, String> getHeaders() {
@@ -143,7 +143,7 @@ public class InviteAdapter extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder{
+    class ViewHolder {
         ImageView avatar;
         TextView name;
         TextView zhandouli;

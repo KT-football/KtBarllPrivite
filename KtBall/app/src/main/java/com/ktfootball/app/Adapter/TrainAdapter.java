@@ -95,7 +95,7 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (getItemViewType(position) == HEADER) {
             TrainHeaderHolder trainHeaderHolder = (TrainHeaderHolder) holder;
-            BitmapManager.getInstance().display(trainHeaderHolder.header, Constants.HOST + userAppCartoons.avatar);
+            BitmapManager.getInstance().display(trainHeaderHolder.header, Constants.HEAD_HOST + userAppCartoons.avatar);
             trainHeaderHolder.yxl.setText(userAppCartoons.total_finished_minutes);
             trainHeaderHolder.ywc.setText(userAppCartoons.total_finished_times+"min");
             trainHeaderHolder.lxxl.setText(userAppCartoons.study_days+"天");
@@ -113,7 +113,7 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             trainHolder.bar.setAngle((int) Float.parseFloat(appCarToons.now_level_progress));
             int[] colcr = CommonUtils.getTrainColor(appCarToons.now_level_color);
             trainHolder.bar.setText(appCarToons.now_level_name);
-            BitmapManager.getInstance().display(trainHolder.img, Constants.HOST + appCarToons.avatar);
+            BitmapManager.getInstance().display(trainHolder.img, Constants.HEAD_HOST + appCarToons.avatar);
             trainHolder.rl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

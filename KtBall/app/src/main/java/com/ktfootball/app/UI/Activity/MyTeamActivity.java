@@ -21,6 +21,7 @@ import com.kt.ktball.entity.Leagues;
 import com.kt.ktball.entity.LeaguesData;
 import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -72,7 +73,7 @@ public class MyTeamActivity extends BaseActivity {
     private void initView() {
         myDialog = new MyDialog(this,"正在更新");
         myDialog.show();
-        String url = "http://www.ktfootball.com/apiv2/users/leagues?user_id="
+        String url = Constants.HOST +"users/leagues?user_id="
                 + userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

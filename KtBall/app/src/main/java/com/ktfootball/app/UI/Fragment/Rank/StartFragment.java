@@ -84,7 +84,7 @@ public class StartFragment extends BaseFragment {
     }
 
     private void initView() {
-        final String url = "http://www.ktfootball.com/apiv2/users/range1v1_power_top100?user_id=" +
+        final String url = Constants.HOST +"users/range1v1_power_top100?user_id=" +
                 App.getUserLogin().user_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -111,7 +111,7 @@ public class StartFragment extends BaseFragment {
                                     }
                                     switch (i) {
                                         case 0:
-                                            Glide.with(getThis()).load(Constants.HOST + data.get(i).avatar).into(mImage1);
+                                            Glide.with(getThis()).load(Constants.HEAD_HOST+ data.get(i).avatar).into(mImage1);
                                             mTv1.setText(data.get(i).nickname);
                                             mUser_id1 = data.get(i).user_id;
                                             mImage1.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +122,7 @@ public class StartFragment extends BaseFragment {
                                             });
                                             break;
                                         case 1:
-                                            Glide.with(getThis()).load(Constants.HOST + data.get(i).avatar).into(mImage2);
+                                            Glide.with(getThis()).load(Constants.HEAD_HOST + data.get(i).avatar).into(mImage2);
                                             mTv2.setText(data.get(i).nickname);
                                             mUser_id2 = data.get(i).user_id;
                                             mImage2.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,7 @@ public class StartFragment extends BaseFragment {
                                             });
                                             break;
                                         case 2:
-                                            Glide.with(getThis()).load(Constants.HOST + data.get(i).avatar).into(mImage3);
+                                            Glide.with(getThis()).load(Constants.HEAD_HOST+ data.get(i).avatar).into(mImage3);
                                             mTv3.setText(data.get(i).nickname);
                                             mUser_id3 = data.get(i).user_id;
                                             mImage3.setOnClickListener(new View.OnClickListener() {
@@ -197,7 +197,7 @@ public class StartFragment extends BaseFragment {
             } else {
                 mViewHoder = (ViewHoder) convertView.getTag();
             }
-            Glide.with(getThis()).load(Constants.HOST + mList.get(position).avatar).into(mViewHoder.image);
+            Glide.with(getThis()).load(Constants.HEAD_HOST + mList.get(position).avatar).error(R.drawable.result_btnkt).into(mViewHoder.image);
             mViewHoder.mTv.setText("NO." + (position + 4) +" "+ mList.get(position).nickname);
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override

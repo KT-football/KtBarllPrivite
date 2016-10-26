@@ -32,6 +32,7 @@ import com.kt.ktball.adapter.GameMatchAdapter;
 import com.kt.ktball.entity.GamePlace;
 import com.kt.ktball.entity.Games;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.BlockBook.MyOrderActivity;
 
@@ -160,7 +161,7 @@ public class GameMatchActivity extends BaseActivity {
 
     private void initView() {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
-        String url = "http://www.ktfootball.com/apiv2/games/list?user_id=" +
+        String url = Constants.HOST +"games/list?user_id=" +
                 userId + "&lon=" + longitude + "&lat=" + latitude +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         showLoadingDiaglog();

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.kt.ktball.entity.Leagues;
 import com.kt.ktball.myclass.GlideCircleTransform;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.TeamDetailsActivity;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
@@ -73,7 +74,7 @@ public class CorpsAdapter extends RecyclerView.Adapter<CorpsAdapter.CorpsView> i
         }else {
             holder.tv_empty_content.setVisibility(View.GONE);
             holder.mName.setText(leagues2.get(position).name);
-            Glide.with(mContext).load("http://www.ktfootball.com" + leagues2.get(position).usera_avatar).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
+            Glide.with(mContext).load(Constants.HEAD_HOST + leagues2.get(position).usera_avatar).transform(new GlideCircleTransform(mContext)).into(holder.mHead);
         }
     }
 

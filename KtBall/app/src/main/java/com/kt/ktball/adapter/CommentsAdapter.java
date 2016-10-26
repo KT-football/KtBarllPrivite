@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.bumptech.glide.Glide;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.kt.ktball.entity.Comments;
 import com.kt.ktball.myclass.GlideCircleTransform;
@@ -64,8 +65,8 @@ public class CommentsAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        if (convertView == null){
-            convertView = inflater.inflate(R.layout.comments_list_item,parent,false);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.comments_list_item, parent, false);
             holder = new ViewHolder();
             holder.avatar = (ImageView) convertView.findViewById(R.id.imageView63);
             holder.name = (TextView) convertView.findViewById(R.id.textView84);
@@ -76,7 +77,7 @@ public class CommentsAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final Comments comments = getItem(position);
-        String uri = "http://www.ktfootball.com" + comments.avatar;
+        String uri = Constants.HEAD_HOST + comments.avatar;
         Glide.with(context).load(uri).transform(new GlideCircleTransform(context)).into(holder.avatar);
         holder.name.setText(comments.nickname);
         holder.comments.setText(comments.content);
@@ -90,7 +91,7 @@ public class CommentsAdapter extends BaseAdapter {
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String uri = "http://www.ktfootball.com/apiv2/videos/delete_comment";
+                        String uri = Constants.HOST + "videos/delete_comment";
                         JSONObject jsonObject = new JSONObject();
                         long userId = PreferenceManager.getDefaultSharedPreferences(context).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
                         try {
@@ -143,10 +144,10 @@ public class CommentsAdapter extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder{
+    class ViewHolder {
         ImageView avatar;
         TextView name;
         TextView comments;
-        TextView  delete;
+        TextView delete;
     }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kt.ktball.entity.Users;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class RankingAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         Users users = getItem(position);
-        String url = "http://www.ktfootball.com" + users.avatar;
+        String url = Constants.HEAD_HOST + users.avatar;
         Glide.with(context).load(url).into(holder.avatar);
         holder.fight.setText("战斗力：" + users.power);
         holder.rank.setText("排名：" + (position+1));

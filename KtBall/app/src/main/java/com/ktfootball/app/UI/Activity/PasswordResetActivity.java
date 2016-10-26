@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.frame.app.base.activity.BaseActivity;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -79,7 +80,7 @@ public class PasswordResetActivity extends BaseActivity {
         } else if (phone.length() == 11){
             doButtonChange();
             time = 60;
-            String url = "http://www.ktfootball.com/apiv2/users/send_mobile_captcha_for_forget_password?phone="
+            String url = Constants.HOST +"users/send_mobile_captcha_for_forget_password?phone="
                     + phone + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.GET,
@@ -142,7 +143,7 @@ public class PasswordResetActivity extends BaseActivity {
         } else if (TextUtils.isEmpty(password)){
             myAlertDialog.doAlertDialog("请输入密码");
         } else {
-            String url = "http://www.ktfootball.com/apiv2/users/reset_password_check_captcha" +
+            String url = Constants.HOST +"users/reset_password_check_captcha" +
                     "?phone=" + phone + "&captcha=" + code +
                     "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -169,7 +170,7 @@ public class PasswordResetActivity extends BaseActivity {
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-                                    String url = "http://www.ktfootball.com/apiv2/users/reset_password";
+                                    String url = Constants.HOST +"users/reset_password";
                                     JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                                             Request.Method.POST,
                                             url,

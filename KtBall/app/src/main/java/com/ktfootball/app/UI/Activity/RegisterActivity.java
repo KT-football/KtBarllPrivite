@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.frame.app.base.activity.BaseActivity;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 
 import org.json.JSONException;
@@ -96,7 +97,7 @@ public class RegisterActivity extends BaseActivity {
         } else if (phone.length() == 11) {
             doButtonChange();
             time = 60;
-            String url = "http://www.ktfootball.com/apiv2/users/send_mobile_captcha?phone="
+            String url = Constants.HOST +"users/send_mobile_captcha?phone="
                     + phone + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.GET,
@@ -167,7 +168,7 @@ public class RegisterActivity extends BaseActivity {
         } else if (!flag) {
             myAlertDialog.doAlertDialog("请点击同意注册及参赛须知");
         } else {
-            String url = "http://www.ktfootball.com/apiv2/users/mregister";
+            String url = Constants.HOST +"users/mregister";
             JSONObject jsonObject1 = new JSONObject();
             try {
                 jsonObject1.put("nickname", name);

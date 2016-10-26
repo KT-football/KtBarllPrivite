@@ -6,10 +6,13 @@ package com.ktfootball.app;
 public class Constants {
 
 
-    public static final String HOST = "http://www.ktfootball.com";
-    public static final String KTHOST = HOST + "/apiv2/";
-    //    public static final String KTHOST = HOST;
-    //更改战队头像、
+    public static final String HOST = "http://api.ktfootball.com/";
+
+    //    public static final String HEAD_HOST = "http://www.ktfootball.com";
+    public static final String HEAD_HOST = "";
+    //    public static final String KTHOST = HOST + "/apiv2/";
+    public static final String KTHOST = HOST;
+    //更改战队头像、、
     public static final String CHANGE_LEAGUE_AVATAR = KTHOST + "users/change_league_avatar";
     //修改个人头像
     public static final String UPLOAD_AVATAR = KTHOST + "users/upload_avatar";
@@ -18,7 +21,7 @@ public class Constants {
     //意见反馈
     public static final String FEEDBACK = KTHOST + "users/feedback";
     //更新个人信息
-    public static final String PROFILE = KTHOST + "users/profile";
+    public static final String PROFILE = KTHOST + "users/update_profile";
     //退出战队
     public static final String LEAVE_LEAGUE = KTHOST + "users/leave_league";
     //获取班级数据
@@ -136,7 +139,7 @@ public class Constants {
     //修改密码
     public static final String CHANGE_PWD = KTHOST + "users/update_password";
     //充值列表
-    public static final String RECHARGE_LIST = KTHOST + "orders/recharge_ktb";
+    public static final String RECHARGE_LIST = KTHOST + "orders/recharge_ktb_page";
     //充值KT币
     public static final String CHONGZHI_KT = KTHOST + "orders/recharge_ktb";
     //支付成功call_back(充值KT币)(post)

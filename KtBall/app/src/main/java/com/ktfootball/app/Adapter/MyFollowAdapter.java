@@ -69,7 +69,7 @@ public class MyFollowAdapter extends RecyclerView.Adapter<MyFollowAdapter.ViewHo
                 builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String url = "http://www.ktfootball.com/apiv2/users/cancel_follow";
+                        String url = Constants.HOST +"users/cancel_follow";
                         JSONObject jsonObject1 = new JSONObject();
                         try {
                             jsonObject1.put("user_id", App.getUserId());

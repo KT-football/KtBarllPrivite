@@ -30,6 +30,7 @@ import com.kt.ktball.entity.UserMsg;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.setting.SetActivity;
 import com.ktfootball.app.UI.Activity.setting.UserinfoChangeActivity;
@@ -176,7 +177,7 @@ public class UserProfiles extends BaseActivity {
 
 
     private void getUserMsg() {
-        String url = "http://www.ktfootball.com/apiv2/users/detail?" +
+        String url = Constants.HOST +"users/detail?" +
                 "current_user_id=" + currentUserId + "&user_id=" + userId +
                 "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -210,9 +211,9 @@ public class UserProfiles extends BaseActivity {
         mList.add(userAbilityFragment);
         mList.add(new UserReviewFragment());
         mList.add(new UserTeamFragment());
-        String uri = "http://www.ktfootball.com" + userMsg.avatar;//加载头像
-        Glide.with(getThis()).load(uri).into(avatarImage);
-        Glide.with(getThis()).load(uri).transform(new GlideCircleTransform(getThis())).into(mHead);
+        String uri = Constants.HEAD_HOST + userMsg.avatar;//加载头像
+        Glide.with(getThis()).load(uri).error(R.drawable.result_btnkt).into(avatarImage);
+        Glide.with(getThis()).load(uri).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead);
         nameTextView.setText(userMsg.nickname);//姓名
         textViewFollowed.setText(userMsg.followed == 0 ? "关注" : "取消关注");
         followed = userMsg.followed;
@@ -365,7 +366,7 @@ public class UserProfiles extends BaseActivity {
 
     public void doFollowed() {//关注
         if (followed == 0) {//未关注，点击关注
-            String url = "http://www.ktfootball.com/apiv2/users/follow";
+            String url = Constants.HOST +"users/follow";
             JSONObject jsonObject1 = new JSONObject();
             try {
                 jsonObject1.put("user_id", currentUserId);
@@ -415,7 +416,7 @@ public class UserProfiles extends BaseActivity {
             builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    String url = "http://www.ktfootball.com/apiv2/users/cancel_follow";
+                    String url = Constants.HOST +"users/cancel_follow";
                     JSONObject jsonObject1 = new JSONObject();
                     try {
                         jsonObject1.put("user_id", currentUserId);

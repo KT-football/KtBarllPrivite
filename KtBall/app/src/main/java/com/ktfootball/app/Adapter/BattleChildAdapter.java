@@ -58,8 +58,8 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
         holder.mCont.setText(mList.get(position).getScores());
         holder.mNameLeft.setText(mList.get(position).getUsers().get(1).getNickname());
         holder.mNameRight.setText(mList.get(position).getUsers().get(0).getNickname());
-        Glide.with(mContext).load("http://www.ktfootball.com" + mList.get(position).getUsers().get(1).getAvatar()).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadLeft);
-        Glide.with(mContext).load("http://www.ktfootball.com" + mList.get(position).getUsers().get(0).getAvatar()).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadRight);
+        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getUsers().get(1).getAvatar()).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadLeft);
+        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getUsers().get(0).getAvatar()).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadRight);
         if (!mList.get(position).getScores().equals("")){
             if ((Integer.valueOf(mList.get(position).getScores().split(":")[0]) > Integer.valueOf(mList.get(position).getScores().split(":")[1]))) {
                 holder.mTab1.setVisibility(View.VISIBLE);

@@ -66,16 +66,9 @@ public class SelectAvatarDialog extends Dialog {
             }
 
             imageUri = Uri.fromFile(getFile());
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
-            intent.putExtra("crop", "true");
-            intent.putExtra("aspectX", 1);
-            intent.putExtra("aspectY", 1);
-            intent.putExtra("outputX", 280);
-            intent.putExtra("outputY", 280);
-            intent.putExtra("return-data", true);
-
-            activity.startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
+            activity.startActivityForResult(intent, UPDATE_AVATAR_RESULT);
             dismiss();
         }
     };

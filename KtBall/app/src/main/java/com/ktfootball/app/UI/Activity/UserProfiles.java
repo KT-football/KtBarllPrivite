@@ -52,6 +52,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 import cn.sharesdk.framework.ShareSDK;
+import de.greenrobot.event.Subscribe;
 
 public class UserProfiles extends BaseActivity {
 
@@ -520,5 +521,11 @@ public class UserProfiles extends BaseActivity {
     @OnClick(R.id.tv_search)
     public void toSearch(){
         startActivity(MyFirendActivity.class);
+    }
+
+
+    @Subscribe
+    public void upMsg(UserMsg userMsg){
+        getUserMsg();
     }
 }

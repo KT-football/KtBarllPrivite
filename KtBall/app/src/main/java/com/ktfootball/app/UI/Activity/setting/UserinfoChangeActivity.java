@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.utils.GsonTools;
 import com.frame.app.utils.LogUtils;
 import com.kt.ktball.App;
+import com.kt.ktball.entity.UserMsg;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.ktfootball.app.UI.Activity.MyQRCodeActivity;
@@ -58,6 +60,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by jy on 16/6/9.
@@ -295,11 +298,13 @@ public class UserinfoChangeActivity extends BaseActivity {
 //                showMessageDialog(R.string.request_succeed, response.get());
 //                showToast(R.string.request_succeed);
                 LogUtils.e(response.get());
+                EventBus.getDefault().post(new UserMsg());
             }
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
 //                showMessageDialog(R.string.request_failed, exception.getMessage());
+                Log.e("huangbo","dsadas");
             }
         }, false, true);
     }
@@ -341,7 +346,9 @@ public class UserinfoChangeActivity extends BaseActivity {
         }
         if (requestCode == SelectAvatarDialog.PHOTO_REQUEST_CAMERA) {
             intentToCrop();
-        } else if (requestCode == SelectAvatarDialog.PHOTO_REQUEST_GALLERY) {
+        } else if (requestCode == SelectAvatarDialog.UPDATE_AVATAR_RESULT) {
+            intentToCrop(data.getData());
+        }else if (requestCode == SelectAvatarDialog.PHOTO_REQUEST_GALLERY) {
             if (data == null) return;
             Bitmap photo = data.getParcelableExtra("data");
             header.setImageBitmap(photo);
@@ -368,6 +375,18 @@ public class UserinfoChangeActivity extends BaseActivity {
     private void intentToCrop() {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(Uri.fromFile(imageFile), "image/*");
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 280);
+        intent.putExtra("outputY", 280);
+        intent.putExtra("return-data", true);
+        startActivityForResult(intent, SelectAvatarDialog.PHOTO_REQUEST_GALLERY);
+    }
+
+    private void intentToCrop(Uri uri) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri == null ? Uri.fromFile(imageFile) : uri, "image/*");
         intent.putExtra("crop", "true");
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);

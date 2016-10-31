@@ -50,6 +50,7 @@ import com.ktfootball.app.Views.CircleProgressView;
 import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
+import de.greenrobot.event.Subscribe;
 
 /**
  * Created by leo on 16/10/13.
@@ -109,6 +110,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        setSelect(0);
         getUserMsg();
     }
 
@@ -148,7 +150,6 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
 
     //初始化视图
     private void initView(UserMsg userMsg) {
-        setSelect(0);
         String uri = Constants.HEAD_HOST + userMsg.avatar;//加载头像
         Glide.with(getActivity()).load(uri).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead);
         int lvi = 0;
@@ -371,5 +372,10 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
 
     }
 
+
+    @Subscribe
+    public void upMsg(UserMsg userMsg){
+        getUserMsg();
+    }
 
 }

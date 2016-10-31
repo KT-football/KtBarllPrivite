@@ -15,7 +15,7 @@ public class Constants {
     //更改战队头像、、
     public static final String CHANGE_LEAGUE_AVATAR = KTHOST + "users/change_league_avatar";
     //修改个人头像
-    public static final String UPLOAD_AVATAR = KTHOST + "users/upload_avatar";
+    public static final String UPLOAD_AVATAR = KTHOST + "users/change_avatar";
     //更改战队名称
     public static final String CHANGE_LEAGUE_NAME = KTHOST + "users/change_league_name";
     //意见反馈

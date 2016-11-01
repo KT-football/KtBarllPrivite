@@ -6,10 +6,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
+import com.frame.app.base.activity.BaseActivity;
+import com.frame.app.base.fragment.BaseFragment;
 import com.ktfootball.app.R;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,11 +27,17 @@ public class MyCirCleView extends View {
 
     private int mMaxProgress = 100;
 
-    private int mProgress = 30;
+    private float mProgress = 0;
 
-    private int mProgeress1 = 20;
+    private float mProgeress1 = 0;
 
-    private int mProgeress2 = 50;
+    private float mProgeress2 = 0;
+
+    private float mIs_Progress = 0;
+
+    private float mIs_Progress1 = 0;
+
+    private float mIs_Progress2 = 0;
 
 
     private final int mCircleLineStrokeWidth = 100;
@@ -43,6 +54,10 @@ public class MyCirCleView extends View {
     private String mTxtHint1;
 
     private String mTxtHint2;
+
+    private List<Float> mList1 = new ArrayList<>();
+    private List<Float> mList2 = new ArrayList<>();
+    private List<Float> mList3 = new ArrayList<>();
 
     public MyCirCleView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -79,7 +94,7 @@ public class MyCirCleView extends View {
         // 绘制圆圈，进度条背景
         canvas.drawArc(mRectF, -90, 360, false, mPaint);
         mPaint.setColor(0xffFFD669);
-        canvas.drawArc(mRectF, -90, ((float) mProgress / mMaxProgress) * 360, false, mPaint);
+        canvas.drawArc(mRectF, -90, (mProgress / mMaxProgress) * 360, false, mPaint);
 
         //===================================
 //        mPaint.setStrokeWidth(mTxtStrokeWidth);
@@ -98,7 +113,7 @@ public class MyCirCleView extends View {
         mPaint.setStrokeWidth(mCircleLineStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(0xff37E3CC);
-        canvas.drawArc(mRectF, (((float) mProgress / mMaxProgress) * 360) - 90, ((float) mProgeress1 / mMaxProgress) * 360, false, mPaint);
+        canvas.drawArc(mRectF, (( mIs_Progress / mMaxProgress) * 360) - 90, ( mProgeress1 / mMaxProgress) * 360, false, mPaint);
 
 
         //===================================
@@ -116,7 +131,7 @@ public class MyCirCleView extends View {
         mPaint.setStrokeWidth(mCircleLineStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(0xff67B7FF);
-        canvas.drawArc(mRectF, (((float) (mProgress + mProgeress1) / mMaxProgress) * 360) - 90, ((float) mProgeress2 / mMaxProgress) * 360, false, mPaint);
+        canvas.drawArc(mRectF, ( (mIs_Progress + mIs_Progress1) / mMaxProgress) * 360 - 90,  mProgeress2 / mMaxProgress * 360, false, mPaint);
 
         //===================================
 //        mPaint.setStrokeWidth(mTxtStrokeWidth);
@@ -167,11 +182,39 @@ public class MyCirCleView extends View {
         this.mMaxProgress = maxProgress;
     }
 
-    public void setProgress(int progress,int progress1) {
-        this.mProgress = progress;
-        this.mProgeress1 = progress1;
-        this.mProgeress2 = 100 - progress - progress1;
-        this.invalidate();
+    public void setProgress(final float progress, final float progress1) {
+        this.mIs_Progress = progress;
+        this.mIs_Progress1 = progress1;
+        this.mIs_Progress2 = 100 - progress - progress1;
+        for (int i = 0; i <10 ; i++) {
+            mList1.add((float) ((progress/10)*(i+1)));
+            mList2.add((float) ((progress1/10)*(i+1)));
+            mList3.add((float) (((100 - progress - progress1)/10)*(i+1)));
+        }
+        Log.e("huangbo",progress+" - "+progress1+" - "+(100 - progress - progress1) );
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            int i = 0;
+
+            @Override
+            public void run() {
+                mProgress = mList1.get(i);
+                mProgeress1 = mList2.get(i);
+                mProgeress2 = mList3.get(i);
+                ((BaseActivity)mContext).runOnUiThread(new TimerTask() {
+                    @Override
+                    public void run() {
+                        invalidate();
+                        Log.e("huangbo",mProgress+" - "+mProgeress1+" - "+mProgeress2);
+                    }
+                });
+                i += 1;
+                if (i == 10) {
+                    timer.cancel();
+                }
+            }
+        }, 500, 50);
+//        this.invalidate();
     }
 
     public void setProgressNotInUiThread(int progress) {

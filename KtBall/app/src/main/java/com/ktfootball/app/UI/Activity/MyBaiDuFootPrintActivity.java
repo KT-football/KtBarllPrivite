@@ -27,6 +27,7 @@ import com.kt.ktball.entity.LocationData;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONObject;
 
@@ -60,7 +61,7 @@ public class MyBaiDuFootPrintActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userId = intent.getLongExtra(UserProfiles.EXTRA_ME_OR_HE_USER_ID, 0);
         String url = Constants.HOST +"users/kt_track?user_id=" +
-                userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                userId + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/kt_track");
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

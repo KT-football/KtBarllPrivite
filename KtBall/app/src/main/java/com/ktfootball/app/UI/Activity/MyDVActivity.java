@@ -22,6 +22,7 @@ import com.kt.ktball.entity.Videos;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONObject;
 
@@ -59,7 +60,7 @@ public class MyDVActivity extends BaseActivity {
         Intent intent = getIntent();
         userId = intent.getLongExtra(UserProfiles.EXTRA_ME_OR_HE_USER_ID,0);
         String url = Constants.HOST +"videos/my_videos?user_id=" +
-                userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                userId + "&authenticity_token="+ MD5.getToken(Constants.HOST +"videos/my_videos");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

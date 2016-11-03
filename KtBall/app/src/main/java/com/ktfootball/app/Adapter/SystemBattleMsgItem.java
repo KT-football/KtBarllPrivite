@@ -22,6 +22,7 @@ import com.ktfootball.app.Entity.MyMsgTeamBean;
 import com.ktfootball.app.Event.SystemBattleMsgEvent;
 import com.ktfootball.app.Event.SystemTeamMsgEvent;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -111,7 +112,7 @@ public class SystemBattleMsgItem extends RecyclerView.Adapter<SystemBattleMsgIte
     private void agreeMessage(final int position) {
         ((BaseActivity) mContext).showLoadingDiaglog();
         String url = Constants.USER_BATTLE_AGREE_MESSAGE + "?battle_invitation_id="
-                + mList.get(position).getBattle_invitation_id() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + mList.get(position).getBattle_invitation_id() + "&authenticity_token="+ MD5.getToken(Constants.USER_BATTLE_AGREE_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -145,7 +146,7 @@ public class SystemBattleMsgItem extends RecyclerView.Adapter<SystemBattleMsgIte
     private void refuseMessage(final int position) {
         ((BaseActivity) mContext).showLoadingDiaglog();
         String url = Constants.USER_BATTLE_DISAAGREE_MESSAGE + "?battle_invitation_id="
-                + mList.get(position).getBattle_invitation_id() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + mList.get(position).getBattle_invitation_id() + "&authenticity_token="+ MD5.getToken(Constants.USER_BATTLE_DISAAGREE_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,

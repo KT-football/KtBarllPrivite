@@ -23,6 +23,7 @@ import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -98,7 +99,7 @@ public class RegisterActivity extends BaseActivity {
             doButtonChange();
             time = 60;
             String url = Constants.HOST +"users/send_mobile_captcha?phone="
-                    + phone + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                    + phone + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/send_mobile_captcha");
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.GET,
                     url,
@@ -176,7 +177,7 @@ public class RegisterActivity extends BaseActivity {
                 jsonObject1.put("password", password);
                 jsonObject1.put("password_confirmation", passwordAgain);
                 jsonObject1.put("captcha", code);
-                jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                jsonObject1.put("authenticity_token", MD5.getToken(url));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

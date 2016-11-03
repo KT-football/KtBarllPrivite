@@ -28,6 +28,7 @@ import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -117,7 +118,7 @@ public class LoginActivity extends BaseActivity {
         try {
             jsonObject.put("account", user);
             jsonObject.put("password", password);
-            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -198,7 +199,7 @@ public class LoginActivity extends BaseActivity {
             jsonObject.put("openid", userId);
             jsonObject.put("gender", gender);
             jsonObject.put("type", type);
-            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -32,6 +32,7 @@ import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -87,7 +88,7 @@ public class MyFirendActivity extends BaseActivity {
     private void initView() {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID,0);
         String url = Constants.HOST +"users/followers?user_id=" +
-                userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                userId + "&authenticity_token="+MD5.getToken(Constants.HOST +"users/followers");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -151,7 +152,7 @@ public class MyFirendActivity extends BaseActivity {
         if (!TextUtils.isEmpty(input)) {
             if (textView.getText().toString().equals("搜索")) {//搜索
                 String url = Constants.HOST +"users/search_user?keyword="
-                        + input + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                        + input + "&authenticity_token="+MD5.getToken(Constants.HOST +"users/search_user");
                 showLoadingDiaglog();
                 JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                         Request.Method.GET,
@@ -221,7 +222,7 @@ public class MyFirendActivity extends BaseActivity {
         try {
             jsonObject1.put("user_id",userId);
             jsonObject1.put("follow_user_id",firendId);
-            jsonObject1.put("authenticity_token","K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject1.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }

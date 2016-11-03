@@ -36,6 +36,7 @@ import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Net.CallServer;
 import com.ktfootball.app.Net.HttpListener;
 import com.ktfootball.app.UI.Activity.UserProfiles;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Views.SelectAvatarDialog;
 import com.ktfootball.app.Views.SelectSexDialog;
 import com.kt.ktball.views.wheelview.OnWheelScrollListener;
@@ -180,7 +181,7 @@ public class UserinfoChangeActivity extends BaseActivity {
     private void getuserInfo(String userid) {
         String url = Constants.GET_PROFILE + "?user_id=" +
                 userid +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token="+ MD5.getToken(Constants.GET_PROFILE);
         LogUtils.e(url);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
@@ -238,7 +239,7 @@ public class UserinfoChangeActivity extends BaseActivity {
             jsonObject.put("football_age", userInfo.football_age);
             jsonObject.put("country", userInfo.country);
             jsonObject.put("city", userInfo.city);
-            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -276,7 +277,7 @@ public class UserinfoChangeActivity extends BaseActivity {
         com.yolanda.nohttp.rest.Request<String> request = NoHttp.createStringRequest(Constants.UPLOAD_AVATAR, RequestMethod.POST);
 
         // 添加普通参数。
-        request.add("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+        request.add("authenticity_token", MD5.getToken(Constants.UPLOAD_AVATAR));
         request.add("user_id", userid);
 
         // 上传文件需要实现NoHttp的Binary接口，NoHttp默认实现了FileBinary、InputStreamBinary、ByteArrayBitnary、BitmapBinary。

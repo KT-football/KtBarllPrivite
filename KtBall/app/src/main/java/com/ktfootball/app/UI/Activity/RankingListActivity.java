@@ -23,6 +23,7 @@ import com.kt.ktball.entity.Users;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +60,7 @@ public class RankingListActivity extends BaseActivity {
 
     private void initView() {
         final String url = Constants.HOST +"users/range1v1_power_top100?user_id=" +
-                userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                userId + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/range1v1_power_top100");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

@@ -17,6 +17,7 @@ import com.kt.ktball.App;
 import com.ktfootball.app.Constants;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,7 +73,7 @@ public class TeamNameChangeActivity extends BaseActivity {
         try {
             jsonObject.put("league_id", league_id);
             jsonObject.put("name", name);
-            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -111,7 +112,7 @@ public class TeamNameChangeActivity extends BaseActivity {
         try {
             jsonObject.put("league_id", league_id);
             jsonObject.put("user_id", App.getUserId());
-            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }

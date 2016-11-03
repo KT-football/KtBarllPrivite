@@ -23,6 +23,7 @@ import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +68,7 @@ public class MyGameActivity extends BaseActivity {
         int distance = 10000;
         String url = Constants.HOST +"games/club_games?user_id="
                 + userId + "&distance=" + distance
-                + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + "&authenticity_token="+ MD5.getToken(Constants.HOST +"games/club_games");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

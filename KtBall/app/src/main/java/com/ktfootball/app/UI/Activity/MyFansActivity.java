@@ -18,6 +18,7 @@ import com.ktfootball.app.Adapter.MyFansAdapter;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.MyFasnBean;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
 import org.json.JSONObject;
@@ -78,7 +79,7 @@ public class MyFansActivity extends BaseActivity implements BGARefreshLayout.BGA
 
     private void getData() {
         String url = Constants.USER_FANS+"?user_id=" + userId
-                + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + "&authenticity_token="+ MD5.getToken(Constants.USER_FANS);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

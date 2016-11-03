@@ -20,6 +20,7 @@ import com.ktfootball.app.Entity.BattleBean;
 import com.ktfootball.app.Event.BattleEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.UserProfiles;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
 import org.json.JSONObject;
@@ -67,7 +68,7 @@ public class UserReviewFragment  extends BaseFragment implements BGARefreshLayou
 
     public void getVideoList() {
         String url = Constants.HOST +"videos/my_videos?user_id=" + userId
-                + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + "&authenticity_token="+ MD5.getToken(Constants.HOST +"videos/my_videos");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

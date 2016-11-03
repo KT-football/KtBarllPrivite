@@ -1,5 +1,6 @@
 package com.ktfootball.app.Base;
 
+import com.ktfootball.app.Utils.MD5;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.rest.CacheMode;
 import com.yolanda.nohttp.rest.RestRequest;
@@ -11,12 +12,12 @@ public abstract class BaseRestRequest<T> extends RestRequest<T> {
     public BaseRestRequest(String url) {
         super(url);
         setCacheMode(CacheMode.ONLY_REQUEST_NETWORK);
-        add("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+        add("authenticity_token", MD5.getToken(url));
     }
 
     public BaseRestRequest(String url, RequestMethod requestMethod) {
         super(url, requestMethod);
         setCacheMode(CacheMode.ONLY_REQUEST_NETWORK);
-        add("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+        add("authenticity_token", MD5.getToken(url));
     }
 }

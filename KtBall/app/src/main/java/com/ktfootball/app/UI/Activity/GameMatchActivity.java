@@ -35,6 +35,7 @@ import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.BlockBook.MyOrderActivity;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONObject;
 
@@ -161,9 +162,9 @@ public class GameMatchActivity extends BaseActivity {
 
     private void initView() {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
-        String url = Constants.HOST +"games/list?user_id=" +
+        String url = Constants.HOST + "games/list?user_id=" +
                 userId + "&lon=" + longitude + "&lat=" + latitude +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token=" + MD5.getToken(Constants.HOST + "games/list");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

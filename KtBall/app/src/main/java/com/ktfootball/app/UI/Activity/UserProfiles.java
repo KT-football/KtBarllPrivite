@@ -37,6 +37,7 @@ import com.ktfootball.app.UI.Activity.setting.UserinfoChangeActivity;
 import com.ktfootball.app.UI.Fragment.UserDetail.UserAbilityFragment;
 import com.ktfootball.app.UI.Fragment.UserDetail.UserReviewFragment;
 import com.ktfootball.app.UI.Fragment.UserDetail.UserTeamFragment;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.Util;
 import com.ktfootball.app.Views.CircleProgressView;
 import com.ktfootball.app.Views.SharedDialog;
@@ -180,7 +181,7 @@ public class UserProfiles extends BaseActivity {
     private void getUserMsg() {
         String url = Constants.HOST +"users/detail?" +
                 "current_user_id=" + currentUserId + "&user_id=" + userId +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token="+MD5.getToken(Constants.HOST +"users/detail");
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -372,7 +373,7 @@ public class UserProfiles extends BaseActivity {
             try {
                 jsonObject1.put("user_id", currentUserId);
                 jsonObject1.put("follow_user_id", userId);
-                jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                jsonObject1.put("authenticity_token", MD5.getToken(url));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -422,7 +423,7 @@ public class UserProfiles extends BaseActivity {
                     try {
                         jsonObject1.put("user_id", currentUserId);
                         jsonObject1.put("follow_user_id", userId);
-                        jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                        jsonObject1.put("authenticity_token", MD5.getToken(url));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

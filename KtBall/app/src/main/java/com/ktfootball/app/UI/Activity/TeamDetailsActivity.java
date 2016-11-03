@@ -31,6 +31,7 @@ import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Net.CallServer;
 import com.ktfootball.app.Net.HttpListener;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Views.SelectAvatarDialog;
 import com.ktfootball.app.R;
 import com.yolanda.nohttp.FileBinary;
@@ -136,7 +137,7 @@ public class TeamDetailsActivity extends BaseActivity {
         league_id = intent.getLongExtra(MyTeamActivity.EXTRA_TEAM_ID, 0);
         gameType = intent.getStringExtra(MyTeamActivity.EXTRA_GAME_TYPE);
         String url = Constants.HOST +"users/info_league?league_id=" +
-                league_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                league_id + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/info_league");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -303,7 +304,7 @@ public class TeamDetailsActivity extends BaseActivity {
         com.yolanda.nohttp.rest.Request<String> request = NoHttp.createStringRequest(Constants.CHANGE_LEAGUE_AVATAR, RequestMethod.POST);
 
         // 添加普通参数。
-        request.add("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+        request.add("authenticity_token", MD5.getToken(Constants.CHANGE_LEAGUE_AVATAR));
         request.add("league_id", league_id);
 
         // 上传文件需要实现NoHttp的Binary接口，NoHttp默认实现了FileBinary、InputStreamBinary、ByteArrayBitnary、BitmapBinary。

@@ -28,6 +28,7 @@ import com.ktfootball.app.Entity.MyFollowBean;
 import com.ktfootball.app.Event.FollowEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.UserProfiles;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,7 +75,7 @@ public class MyFollowAdapter extends RecyclerView.Adapter<MyFollowAdapter.ViewHo
                         try {
                             jsonObject1.put("user_id", App.getUserId());
                             jsonObject1.put("follow_user_id", mList.get(position).getUser_id());
-                            jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                            jsonObject1.put("authenticity_token", MD5.getToken(url));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

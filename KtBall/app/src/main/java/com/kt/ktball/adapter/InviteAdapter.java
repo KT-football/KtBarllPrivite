@@ -24,6 +24,7 @@ import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -100,7 +101,7 @@ public class InviteAdapter extends BaseAdapter {
                     jsonObject.put("user_id", userId);
                     jsonObject.put("to_user_id", users.user_id);
                     jsonObject.put("league_id", InviteActivity.league_id);
-                    jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                    jsonObject.put("authenticity_token", MD5.getToken(url));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

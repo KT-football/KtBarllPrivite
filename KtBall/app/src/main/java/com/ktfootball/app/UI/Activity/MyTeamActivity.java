@@ -23,6 +23,7 @@ import com.kt.ktball.myclass.MyDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,7 +75,7 @@ public class MyTeamActivity extends BaseActivity {
         myDialog = new MyDialog(this,"正在更新");
         myDialog.show();
         String url = Constants.HOST +"users/leagues?user_id="
-                + userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + userId + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/leagues");
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

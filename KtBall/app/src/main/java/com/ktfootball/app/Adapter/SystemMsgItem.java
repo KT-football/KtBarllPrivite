@@ -19,6 +19,7 @@ import com.ktfootball.app.Entity.MessageBean;
 import com.ktfootball.app.Event.SystemMsgEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.VideoDetailsActivity;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +90,7 @@ public class SystemMsgItem extends RecyclerView.Adapter<SystemMsgItem.SystemView
     private void readMessage(final TextView tv_content, final int position) {
         ((BaseActivity) mContext).showLoadingDiaglog();
         String url = Constants.RED_MESSAGE + "?user_message_id="
-                + mList.get(position).getUser_message_id() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + mList.get(position).getUser_message_id() + "&authenticity_token="+ MD5.getToken(Constants.RED_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,

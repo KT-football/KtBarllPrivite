@@ -20,6 +20,7 @@ import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,13 +76,13 @@ public class PasswordResetActivity extends BaseActivity {
 
     public void doGetCode(View view) {//获取验证码
         String phone = editTextPhone.getText().toString();
-        if (TextUtils.isEmpty(phone)){
+        if (TextUtils.isEmpty(phone)) {
             myAlertDialog.doAlertDialog("请输入手机号");
-        } else if (phone.length() == 11){
+        } else if (phone.length() == 11) {
             doButtonChange();
             time = 60;
-            String url = Constants.HOST +"users/send_mobile_captcha_for_forget_password?phone="
-                    + phone + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+            String url = Constants.HOST + "users/send_mobile_captcha_for_forget_password?phone="
+                    + phone + "&authenticity_token=" + MD5.getToken(Constants.HOST + "users/send_mobile_captcha_for_forget_password");
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.GET,
                     url,
@@ -104,11 +105,11 @@ public class PasswordResetActivity extends BaseActivity {
 
     private void doButtonChange() {//点击发送验证码后buttom状态的改变
         if (timer == null) timer = new Timer();
-        if (timerTask != null)timerTask.cancel();
+        if (timerTask != null) timerTask.cancel();
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                if (time > 1){
+                if (time > 1) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -128,7 +129,7 @@ public class PasswordResetActivity extends BaseActivity {
                 time--;
             }
         };
-        timer.schedule(timerTask,0,1000);
+        timer.schedule(timerTask, 0, 1000);
     }
 
     public void doResetPassword(View view) {//密码重置
@@ -136,16 +137,16 @@ public class PasswordResetActivity extends BaseActivity {
         String code = editTextCode.getText().toString();
         final String password = editTextPassword.getText().toString();
         final String password_confirmation = editTextPasswordAgain.getText().toString();
-        if (TextUtils.isEmpty(phone)){
+        if (TextUtils.isEmpty(phone)) {
             myAlertDialog.doAlertDialog("请输入手机号");
-        } else if (TextUtils.isEmpty(code)){
+        } else if (TextUtils.isEmpty(code)) {
             myAlertDialog.doAlertDialog("请输入验证码");
-        } else if (TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             myAlertDialog.doAlertDialog("请输入密码");
         } else {
-            String url = Constants.HOST +"users/reset_password_check_captcha" +
+            String url = Constants.HOST + "users/reset_password_check_captcha" +
                     "?phone=" + phone + "&captcha=" + code +
-                    "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                    "&authenticity_token="+MD5.getToken(Constants.HOST + "users/reset_password_check_captcha");
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                     Request.Method.GET,
                     url,
@@ -153,24 +154,24 @@ public class PasswordResetActivity extends BaseActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                            Log.d("=============jsonObject",jsonObject.toString());
+                            Log.d("=============jsonObject", jsonObject.toString());
                             try {
                                 JSONObject jsonObject11 = new JSONObject(jsonObject.toString());
                                 String response11 = jsonObject11.getString("response");
                                 if (response11.equals("error")) {
                                     String msg = jsonObject11.getString("msg");
                                     myAlertDialog.doAlertDialog(msg);
-                                } else if (response11.equals("success")){
+                                } else if (response11.equals("success")) {
+                                    String url = Constants.HOST + "users/reset_password";
                                     JSONObject jsonObject1 = new JSONObject();
                                     try {
                                         jsonObject1.put("phone", phone);
                                         jsonObject1.put("password", password);
                                         jsonObject1.put("password_confirmation", password_confirmation);
-                                        jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                                        jsonObject1.put("authenticity_token", MD5.getToken(url));
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-                                    String url = Constants.HOST +"users/reset_password";
                                     JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                                             Request.Method.POST,
                                             url,
@@ -191,10 +192,10 @@ public class PasswordResetActivity extends BaseActivity {
                                                             handler.postDelayed(new Runnable() {
                                                                 @Override
                                                                 public void run() {
-                                                                    startActivity(new Intent(PasswordResetActivity.this,LoginActivity.class));
+                                                                    startActivity(new Intent(PasswordResetActivity.this, LoginActivity.class));
                                                                     finish();
                                                                 }
-                                                            },1500);
+                                                            }, 1500);
                                                         }
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -224,7 +225,7 @@ public class PasswordResetActivity extends BaseActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-                    Log.d("==============",volleyError.toString());
+                    Log.d("==============", volleyError.toString());
                 }
             }
             );

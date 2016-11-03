@@ -16,6 +16,7 @@ import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.MessageBean;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,7 +72,7 @@ public class ChangePassWordActivity extends BaseActivity {
     private void getData() {
         showLoadingDiaglog();
         String url = Constants.CHANGE_PWD + "?user_id="
-                + App.getUserLogin().user_id + "&password=" + edt1.getText().toString() + "&new_password=" + edt2.getText().toString() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + App.getUserLogin().user_id + "&password=" + edt1.getText().toString() + "&new_password=" + edt2.getText().toString() + "&authenticity_token="+ MD5.getToken(Constants.CHANGE_PWD);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,

@@ -49,6 +49,7 @@ import com.ktfootball.app.Net.HttpListener;
 import com.ktfootball.app.R;
 import com.ktfootball.app.Request.BaseEntityRequest;
 import com.ktfootball.app.Request.VideoRequest;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Views.CustomExpandableListView;
 import com.ktfootball.app.Views.SharedDialog;
 import com.yolanda.nohttp.RequestMethod;
@@ -264,7 +265,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     private void initV() {//评论详情
         String url = Constants.HOST + "videos/comments?user_id="
                 + userId + "&game_video_id=" + video +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token="+MD5.getToken(Constants.HOST + "videos/comments");
         Log.d("]]]]]]]]]]]]", url);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -344,7 +345,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     private void initView() {
         String url = Constants.HOST + "videos/show?game_video_id="
-                + video + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + video + "&authenticity_token="+MD5.getToken(Constants.HOST + "videos/show");
         Log.d("=========", url);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -563,7 +564,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         try {
             jsonObject1.put("game_video_id", video);
             jsonObject1.put("user_id", userId);
-            jsonObject1.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject1.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }

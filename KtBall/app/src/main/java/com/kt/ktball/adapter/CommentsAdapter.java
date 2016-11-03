@@ -24,6 +24,7 @@ import com.kt.ktball.myclass.GlideCircleTransform;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -97,7 +98,7 @@ public class CommentsAdapter extends BaseAdapter {
                         try {
                             jsonObject.put("user_id", userId);
                             jsonObject.put("game_video_comment_id", comments.game_video_comment_id);
-                            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+                            jsonObject.put("authenticity_token", MD5.getToken(uri));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

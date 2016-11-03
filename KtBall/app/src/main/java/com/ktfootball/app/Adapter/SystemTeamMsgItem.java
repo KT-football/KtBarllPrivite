@@ -24,6 +24,7 @@ import com.ktfootball.app.Event.SystemMsgEvent;
 import com.ktfootball.app.Event.SystemTeamMsgEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.VideoDetailsActivity;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -113,7 +114,7 @@ public class SystemTeamMsgItem extends RecyclerView.Adapter<SystemTeamMsgItem.Sy
     private void agreeMessage(final int position) {
         ((BaseActivity) mContext).showLoadingDiaglog();
         String url = Constants.USER_TEAM_AGREE_MESSAGE + "?league_invitation_id="
-                + mList.get(position).getLeague_invitation_id() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + mList.get(position).getLeague_invitation_id() + "&authenticity_token=" + MD5.getToken(Constants.USER_TEAM_AGREE_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -149,7 +150,7 @@ public class SystemTeamMsgItem extends RecyclerView.Adapter<SystemTeamMsgItem.Sy
     private void refuseMessage(final int position) {
         ((BaseActivity) mContext).showLoadingDiaglog();
         String url = Constants.USER_TEAM_DISAAGREE_MESSAGE + "?league_invitation_id="
-                + mList.get(position).getLeague_invitation_id() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + mList.get(position).getLeague_invitation_id() + "&authenticity_token="+MD5.getToken(Constants.USER_TEAM_DISAAGREE_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,

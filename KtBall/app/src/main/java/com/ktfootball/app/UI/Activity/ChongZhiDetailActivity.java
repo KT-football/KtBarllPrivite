@@ -26,6 +26,7 @@ import com.ktfootball.app.Net.HttpListener;
 import com.ktfootball.app.R;
 import com.ktfootball.app.Request.PayResult;
 import com.ktfootball.app.Request.PaymentCallbackRequest;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.SignUtils;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.rest.Response;
@@ -92,7 +93,7 @@ public class ChongZhiDetailActivity extends BaseActivity {
 
     @OnClick(R.id.btn1)
     public void toPay() {
-        String url = Constants.CHONGZHI_KT + "?user_id=" + App.getUserLogin().user_id + "&recharge_id=" + mRechargeListBean.getRecharge_id() + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+        String url = Constants.CHONGZHI_KT + "?user_id=" + App.getUserLogin().user_id + "&recharge_id=" + mRechargeListBean.getRecharge_id() + "&authenticity_token="+ MD5.getToken(Constants.CHONGZHI_KT);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,

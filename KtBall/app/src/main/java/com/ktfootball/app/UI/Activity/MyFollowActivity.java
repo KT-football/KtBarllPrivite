@@ -21,6 +21,7 @@ import com.ktfootball.app.Entity.MyFasnBean;
 import com.ktfootball.app.Entity.MyFollowBean;
 import com.ktfootball.app.Event.FollowEvent;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
 import org.json.JSONObject;
@@ -83,7 +84,7 @@ public class MyFollowActivity extends BaseActivity implements BGARefreshLayout.B
     private void getData() {
         mList.clear();
         String url = Constants.USER_FOLLOWERS+"?user_id=" + userId
-                + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + "&authenticity_token="+ MD5.getToken(Constants.USER_FOLLOWERS);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

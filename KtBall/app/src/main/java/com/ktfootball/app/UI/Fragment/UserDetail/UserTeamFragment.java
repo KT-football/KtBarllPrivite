@@ -27,6 +27,7 @@ import com.ktfootball.app.Event.AddTeamEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.NewTeamActivity;
 import com.ktfootball.app.UI.Activity.UserProfiles;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
@@ -73,7 +74,7 @@ public class UserTeamFragment extends BaseFragment implements BGARefreshLayout.B
     private void getData() {
         showLoadingDiaglog();
         String url = Constants.HOST +"users/leagues?user_id="
-                + userId + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + userId + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/leagues");
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

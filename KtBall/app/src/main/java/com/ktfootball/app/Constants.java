@@ -1,5 +1,7 @@
 package com.ktfootball.app;
 
+import com.ktfootball.app.Utils.MD5;
+
 /**
  * Created by jy on 16/5/18.
  */
@@ -27,7 +29,7 @@ public class Constants {
     //退出战队
     public static final String LEAVE_LEAGUE = KTHOST + "users/leave_league";
     //获取班级数据
-    public static final String GET_CLUB_SCHOOL_CLASS_DATA = KTHOST + "offline/get_club_school_class_data?authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8&club_id=";
+    public static final String GET_CLUB_SCHOOL_CLASS_DATA = KTHOST + "offline/get_club_school_class_data?authenticity_token="+ MD5.getToken("/offline/get_club_school_class_data")+"&club_id=";
     //获取token
     public static final String GET_ROLE = KTHOST + "users/get_role";
     //更新学生信息

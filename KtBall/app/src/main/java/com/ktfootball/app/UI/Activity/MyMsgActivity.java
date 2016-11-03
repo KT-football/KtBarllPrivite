@@ -22,6 +22,7 @@ import com.ktfootball.app.Event.SystemBattleMsgEvent;
 import com.ktfootball.app.Event.SystemMsgEvent;
 import com.ktfootball.app.Event.SystemTeamMsgEvent;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONObject;
 
@@ -74,7 +75,7 @@ public class MyMsgActivity extends BaseActivity {
     private void getData() {
         showLoadingDiaglog();
         String url = Constants.USER_MESSAGE + "?user_id="
-                + App.getUserLogin().user_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + App.getUserLogin().user_id + "&authenticity_token="+MD5.getToken(Constants.USER_MESSAGE );
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -114,7 +115,7 @@ public class MyMsgActivity extends BaseActivity {
     private void getTeamData() {
         showLoadingDiaglog();
         String url = Constants.USER_Team_MESSAGE + "?user_id="
-                + App.getUserLogin().user_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + App.getUserLogin().user_id + "&authenticity_token="+MD5.getToken(Constants.USER_Team_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -156,7 +157,7 @@ public class MyMsgActivity extends BaseActivity {
     private void getBattleData() {
         showLoadingDiaglog();
         String url = Constants.USER_BATTLE_MESSAGE + "?user_id="
-                + App.getUserLogin().user_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + App.getUserLogin().user_id + "&authenticity_token="+ MD5.getToken(Constants.USER_BATTLE_MESSAGE);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

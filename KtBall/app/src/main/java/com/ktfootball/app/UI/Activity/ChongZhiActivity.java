@@ -23,6 +23,7 @@ import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.ChongZhiListBean;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -88,7 +89,7 @@ public class ChongZhiActivity extends BaseActivity {
 
     private void getData() {
         showLoadingDiaglog();
-        String url = Constants.RECHARGE_LIST + "?authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+        String url = Constants.RECHARGE_LIST + "?authenticity_token="+ MD5.getToken(Constants.RECHARGE_LIST);
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

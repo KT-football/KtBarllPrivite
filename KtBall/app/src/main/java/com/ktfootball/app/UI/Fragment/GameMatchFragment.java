@@ -38,6 +38,7 @@ import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.BlockBook.MyOrderActivity;
 import com.ktfootball.app.UI.Activity.GamesDetailsActivity;
 import com.ktfootball.app.UI.Activity.LoginActivity;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
 import org.json.JSONObject;
@@ -184,7 +185,7 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
         userId = PreferenceManager.getDefaultSharedPreferences(getActivity()).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
         url = Constants.HOST +"games/list?user_id=" +
                 userId + "&lon=" + longitude + "&lat=" + latitude +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token="+ MD5.getToken(Constants.HOST +"games/list");
         mRefreshLayout.beginRefreshing();
     }
 

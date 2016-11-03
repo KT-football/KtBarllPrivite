@@ -30,6 +30,7 @@ import com.ktfootball.app.Event.RankEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.RankingListActivity;
 import com.ktfootball.app.UI.Activity.UserProfiles;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,7 +86,7 @@ public class StartFragment extends BaseFragment {
 
     private void initView() {
         final String url = Constants.HOST +"users/range1v1_power_top100?user_id=" +
-                App.getUserLogin().user_id + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                App.getUserLogin().user_id + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/range1v1_power_top100");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

@@ -22,6 +22,7 @@ import com.kt.ktball.entity.EditGameData;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Manager.BitmapManager;
 import com.kt.ktball.myclass.VolleyUtil;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Views.SharedDialog;
 import com.ktfootball.app.R;
 
@@ -78,7 +79,7 @@ public class GamesDetailsActivity extends BaseActivity {
         gameId = intent.getLongExtra(GameMatchActivity.EXTRA_GAME_ID, 0);
         String url = Constants.HOST +"games/edit?game_id="
                 + gameId + "&user_id=" + userId +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token="+ MD5.getToken(Constants.HOST+"games/edit");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

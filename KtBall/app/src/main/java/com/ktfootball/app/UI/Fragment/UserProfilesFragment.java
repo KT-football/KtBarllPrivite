@@ -44,6 +44,7 @@ import com.ktfootball.app.UI.Fragment.UserProFile.AbilityFragment;
 import com.ktfootball.app.UI.Fragment.UserProFile.BattleFragment;
 import com.ktfootball.app.UI.Fragment.UserProFile.CorpsFragment;
 import com.ktfootball.app.UI.Fragment.UserProFile.ScreeningsFragment;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Utils.Util;
 import com.ktfootball.app.Views.CircleProgressView;
 
@@ -120,7 +121,7 @@ public class UserProfilesFragment extends BaseFragment implements View.OnClickLi
     private void getUserMsg() {
         String url = Constants.HOST +"users/detail?" +
                 "current_user_id=" + currentUserId + "&user_id=" + userId +
-                "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/detail");
         Log.e("huangbo", currentUserId + " +  " + userId + url);
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(

@@ -22,6 +22,7 @@ import com.ktfootball.app.Event.BattleEvent;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.ktfootball.app.UI.Fragment.BattleChildFragment;
+import com.ktfootball.app.Utils.MD5;
 import com.ktfootball.app.Views.NoScrollViewPager;
 
 import org.json.JSONObject;
@@ -126,7 +127,7 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
 
     public void getVideoList() {
         String url = Constants.HOST +"videos/my_videos?user_id=" + userId
-                + "&authenticity_token=K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8";
+                + "&authenticity_token="+ MD5.getToken(Constants.HOST +"videos/my_videos");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,

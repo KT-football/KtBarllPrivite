@@ -17,6 +17,7 @@ import com.kt.ktball.App;
 import com.ktfootball.app.Constants;
 import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.R;
+import com.ktfootball.app.Utils.MD5;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,7 +74,7 @@ public class FeedbackAvtivity extends BaseActivity {
             jsonObject.put("user_id", App.getUserLogin().user_id);
             jsonObject.put("mobile", phoneText);
             jsonObject.put("content", contentText);
-            jsonObject.put("authenticity_token", "K9MpaPMdj0jij2m149sL1a7TcYrWXmg5GLrAJDCNBx8");
+            jsonObject.put("authenticity_token", MD5.getToken(url));
         } catch (JSONException e) {
             e.printStackTrace();
         }

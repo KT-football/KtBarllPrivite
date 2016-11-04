@@ -1,23 +1,15 @@
 package com.ktfootball.app.UI.Fragment;
 
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -25,6 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.frame.app.base.fragment.BaseFragment;
 import com.frame.app.view.MyListView;
 import com.google.gson.Gson;
@@ -45,7 +41,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
 
@@ -65,6 +60,8 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
     private TextView baocahng;
     private BGARefreshLayout mRefreshLayout;
     private String url;
+    public LocationClient mLocationClient = null;
+    public BDLocationListener myListener = new MyLocationListener();
 
     @Override
     protected void initHandler(Message msg) {
@@ -102,7 +99,6 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        initView();
         openGPSSettings();//打开GPS定位
     }
 
@@ -132,65 +128,60 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
         }
     }
 
-
+    /**
+     * 获取位置
+     */
     private void getLocation() {
-        // 获取位置管理服务
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
-        // 查找到服务信息
-        Criteria criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_FINE); // 高精度
-        criteria.setAltitudeRequired(false);
-        criteria.setBearingRequired(false);
-        criteria.setCostAllowed(true);
-        criteria.setPowerRequirement(Criteria.POWER_LOW); // 低功耗
-        String provider = locationManager.getBestProvider(criteria, true); // 获取GPS信息
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(provider);
-        updateToNewLocation(location);
-        // 设置监听器，自动更新的最小时间为间隔N秒(1秒为1*1000，这样写主要为了方便)或最小位移变化超过N米
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100 * 1000, 500, new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        });
+        mLocationClient = new LocationClient(getThis());     //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);    //注册监听函数
+        initLocation();
+        mLocationClient.start();
     }
 
-    private void updateToNewLocation(Location location) {
-        if (location != null) {
+
+    /**
+     * 初始化定位
+     */
+    private void initLocation() {
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy
+        );//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
+        option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系
+//        int span=1000;
+        option.setScanSpan(0);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
+        option.setOpenGps(true);//可选，默认false,设置是否使用gps
+        option.setLocationNotify(true);//可选，默认false，设置是否当GPS有效时按照1S/1次频率输出GPS结果
+        option.setIsNeedLocationDescribe(true);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
+        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+        option.setIgnoreKillProcess(false);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
+        option.SetIgnoreCacheException(false);//可选，默认false，设置是否收集CRASH信息，默认收集
+        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤GPS仿真结果，默认需要
+        mLocationClient.setLocOption(option);
+
+    }
+
+    /**
+     * 定位监听
+     */
+    public class MyLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
             latitude = location.getLatitude();
             longitude = location.getLongitude();
+            userId = PreferenceManager.getDefaultSharedPreferences(getActivity()).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
+            mRefreshLayout.beginRefreshing();
         }
+
     }
 
-
-    private void initView() {
-        userId = PreferenceManager.getDefaultSharedPreferences(getActivity()).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
-        url = Constants.HOST +"games/list?user_id=" +
-                userId + "&lon=" + longitude + "&lat=" + latitude +
-                "&authenticity_token="+ MD5.getToken(Constants.HOST +"games/list");
-        mRefreshLayout.beginRefreshing();
-    }
 
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+        url = Constants.HOST + "games/list?user_id=" +
+                userId + "&lon=" + longitude + "&lat=" + latitude +
+                "&authenticity_token=" + MD5.getToken(Constants.HOST + "games/list");
         initData();
 
     }
@@ -199,6 +190,7 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         return false;
     }
+
 
 
 
@@ -220,7 +212,7 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
                         final ArrayList<Games> data1 = new ArrayList<>();
                         data1.add(data.get(0));
                         ArrayList<Games> data2 = new ArrayList<>();
-                        for (int i = data.size() - 1; i > 0; i--) {
+                        for (int i =  1; i > data.size(); i++) {
                             data2.add(data.get(i));
                         }
                         gameMatchAdapter1 = new GameMatchAdapter(data1, getActivity());
@@ -257,5 +249,6 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
         );
         VolleyUtil.getInstance(getActivity()).addRequest(jsonRequest);
     }
+
 
 }

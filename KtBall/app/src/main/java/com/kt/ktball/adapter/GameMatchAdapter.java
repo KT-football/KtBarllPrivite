@@ -52,8 +52,8 @@ public class GameMatchAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.game_match_list_item,parent,false);
             holder = new ViewHolder();
             holder.imageView = (ImageView) convertView.findViewById(R.id.imageView89);
-            holder.place = (TextView) convertView.findViewById(R.id.textView115);
-            holder.name = (TextView) convertView.findViewById(R.id.textView116);
+            holder.place = (TextView) convertView.findViewById(R.id.textView116);
+            holder.name = (TextView) convertView.findViewById(R.id.textView115);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

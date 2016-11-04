@@ -319,6 +319,16 @@
             </intent-filter>
             </activity>
 
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2"></action>
+            </intent-filter>
+        </service>
+
         <!--微信分享回调-->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -329,7 +339,7 @@
 .
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="aj7HOxTdynwFtLRpyFCrpyB2w5NYnBI8" />
+            android:value="9XNhF0BZ0V7GZ7Q4ocBWGQtc8nqs5kBG" />
 
         <meta-data
             android:name="UMENG_APPKEY"

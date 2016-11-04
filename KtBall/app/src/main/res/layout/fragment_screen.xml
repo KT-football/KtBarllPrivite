@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#f5f5f5"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingRight="10dp">
 
     <LinearLayout
         android:id="@+id/linear_title"
@@ -22,7 +22,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="5dp"
             android:textColor="@color/white"
-            android:textSize="10dp"
+            android:textSize="12dp"
             tools:text="全国排名:3" />
 
         <TextView

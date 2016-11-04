@@ -34,9 +34,9 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         // TODO Auto-generated method stub
+        SDKInitializer.initialize(getApplicationContext());
         super.onCreate();
         MultiDex.install(this);
-        SDKInitializer.initialize(this);
         NoHttp.initialize(this);
         configuration = new YoukuPlayerBaseConfiguration(this) {
             @Override

@@ -3,6 +3,8 @@ package com.ktfootball.app.Utils;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -29,14 +31,22 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
 
     private RotateAnimation mRotateAnimation;
 
+
+    private RotateAnimation mFootRotateAnimation;
+
+
     private String mPullDownRefreshText = "下拉刷新..";
     private String mReleaseRefreshText = "释放更新..";
     private String mRefreshingText = "Loading...";
+    /**
+     * 整个加载更多控件的背景颜色资源id
+     */
+    private int mLoadMoreBackgroundColorRes = -1;
 
     /**
-     * @param context
-     * @param isLoadingMoreEnabled 上拉加载更多是否可用
+     * 是否开启加载更多功能
      */
+    private boolean mIsLoadingMoreEnabled = true;
     public MyBGARefreshViewHolder(Context context, boolean isLoadingMoreEnabled) {
         super(context, isLoadingMoreEnabled);
         mPullDownRefreshText = context.getString(R.string.pull_refresh);
@@ -57,6 +67,11 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
         mRotateAnimation.setDuration(1000);
         mRotateAnimation.setRepeatCount(-1);
 
+        mFootRotateAnimation = new RotateAnimation(0, 359, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        mFootRotateAnimation.setInterpolator(new LinearInterpolator());
+        mFootRotateAnimation.setDuration(1000);
+        mFootRotateAnimation.setRepeatCount(-1);
+
     }
 
     /**
@@ -67,6 +82,12 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
     public void setPullDownRefreshText(String pullDownRefreshText) {
         mPullDownRefreshText = pullDownRefreshText;
     }
+
+
+    /**
+     * 整个加载更多控件的背景drawable资源id
+     */
+    private int mLoadMoreBackgroundDrawableRes = -1;
 
     /**
      * 设置满足刷新条件时的文本
@@ -84,6 +105,28 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
      */
     public void setRefreshingText(String refreshingText) {
         mRefreshingText = refreshingText;
+    }
+
+    @Override
+    public View getLoadMoreFooterView() {
+        if (!mIsLoadingMoreEnabled) {
+            return null;
+        }
+        if (mLoadMoreFooterView == null) {
+            mLoadMoreFooterView = View.inflate(mContext, R.layout.view_normal_refresh_my_footer, null);
+            mLoadMoreFooterView.setBackgroundColor(Color.TRANSPARENT);
+            if (mLoadMoreBackgroundColorRes != -1) {
+                mLoadMoreFooterView.setBackgroundResource(mLoadMoreBackgroundColorRes);
+            }
+            if (mLoadMoreBackgroundDrawableRes != -1) {
+                mLoadMoreFooterView.setBackgroundResource(mLoadMoreBackgroundDrawableRes);
+            }
+            mFooterStatusTv = (TextView) mLoadMoreFooterView.findViewById(cn.bingoogolapple.refreshlayout.R.id.tv_normal_refresh_footer_status);
+            mFooterChrysanthemumIv = (ImageView) mLoadMoreFooterView.findViewById(cn.bingoogolapple.refreshlayout.R.id.iv_normal_refresh_footer_chrysanthemum);
+            mFooterChrysanthemumIv.setAnimation(mFootRotateAnimation);
+            mFooterStatusTv.setText(mRefreshingText);
+        }
+        return mLoadMoreFooterView;
     }
 
     @Override
@@ -150,6 +193,28 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
 //        mHeaderChrysanthemumAd.start();
     }
 
+
+    /**
+     * 设置整个加载更多控件的背景drawable资源id
+     *
+     * @param loadMoreBackgroundDrawableRes
+     */
+    public void setLoadMoreBackgroundDrawableRes(@DrawableRes int loadMoreBackgroundDrawableRes) {
+        mLoadMoreBackgroundDrawableRes = loadMoreBackgroundDrawableRes;
+    }
+
+
+
+    /**
+     * 设置整个加载更多控件的背景颜色资源id
+     *
+     * @param loadMoreBackgroundColorRes
+     */
+    public void setLoadMoreBackgroundColorRes(@ColorRes int loadMoreBackgroundColorRes) {
+        mLoadMoreBackgroundColorRes = loadMoreBackgroundColorRes;
+    }
+
+
     @Override
     public void onEndRefreshing() {
         mHeaderStatusTv.setText(mPullDownRefreshText);
@@ -159,6 +224,24 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
         mRotateAnimation.cancel();
         mDownAnim.setDuration(0);
         mHeaderArrowIv.startAnimation(mDownAnim);
+    }
+
+    /**
+     * 进入加载更多状态
+     */
+    public void changeToLoadingMore() {
+        if (mIsLoadingMoreEnabled && mFootRotateAnimation != null) {
+            mFootRotateAnimation.start();
+        }
+    }
+
+    /**
+     * 结束上拉加载更多
+     */
+    public void onEndLoadingMore() {
+        if (mIsLoadingMoreEnabled && mFootRotateAnimation != null) {
+            mFootRotateAnimation.cancel();
+        }
     }
 }
 

@@ -6,11 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.frame.app.base.fragment.BaseFragment;
 import com.ktfootball.app.Adapter.BattleChildAdapter;
 import com.ktfootball.app.Entity.BattleBean;
 import com.ktfootball.app.Event.BattleEvent;
+import com.ktfootball.app.Event.BattleEventLoad;
 import com.ktfootball.app.R;
 import com.ktfootball.app.Utils.MyBGARefreshViewHolder;
 
@@ -85,8 +87,7 @@ public class BattleChildFragment extends BaseFragment implements BGARefreshLayou
                 mRefreshLayout.addView(LayoutInflater.from(getThis()).inflate(R.layout.empty_view, null));
             }
 
-        } else
-        {
+        } else {
             isEmpte = false;
             boolean isVisinle = false;
             for (int i = 0; i < mRefreshLayout.getChildCount(); i++) {
@@ -102,6 +103,19 @@ public class BattleChildFragment extends BaseFragment implements BGARefreshLayou
         mRefreshLayout.endRefreshing();
     }
 
+
+    /**
+     * 加载数据
+     *
+     * @param list
+     */
+    public void loadList(List<BattleBean.VideosBean> list) {
+        mList = list;
+        mBattleChildAdapter.addData(list);
+        mRefreshLayout.endLoadingMore();
+    }
+
+
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
         EventBus.getDefault().post(new BattleEvent());
@@ -110,6 +124,7 @@ public class BattleChildFragment extends BaseFragment implements BGARefreshLayou
 
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-        return false;
+        EventBus.getDefault().post(new BattleEventLoad());
+        return true;
     }
 }

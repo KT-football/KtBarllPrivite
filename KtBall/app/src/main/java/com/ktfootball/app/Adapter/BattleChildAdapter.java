@@ -10,13 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.kt.ktball.entity.Videos;
 import com.kt.ktball.myclass.GlideCircleTransform;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.BattleBean;
 import com.ktfootball.app.R;
-import com.ktfootball.app.UI.Activity.MyDVActivity;
 import com.ktfootball.app.UI.Activity.VideoDetailsActivity;
+import com.ktfootball.app.Utils.TimeUtils;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
 
     @Override
     public BattleView onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new BattleView(LayoutInflater.from(mContext).inflate(R.layout.item_battle_child,null));
+        return new BattleView(LayoutInflater.from(mContext).inflate(R.layout.item_battle_child, null));
     }
 
     @Override
@@ -56,11 +55,11 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
         }
         holder.mAddress.setText(mList.get(position).getLocal());
         holder.mCont.setText(mList.get(position).getScores());
-        holder.mNameLeft.setText(mList.get(position).getUsers().get(1).getNickname());
         holder.mNameRight.setText(mList.get(position).getUsers().get(0).getNickname());
-        Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getUsers().get(1).getAvatar()).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadLeft);
+        holder.mNameLeft.setText(mList.get(position).getUsers().size()>1?mList.get(position).getUsers().get(1).getNickname():"ccccc");
+        Glide.with(mContext).load(Constants.HEAD_HOST + (mList.get(position).getUsers().size()>1?mList.get(position).getUsers().get(1).getAvatar():"")).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadLeft);
         Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getUsers().get(0).getAvatar()).error(R.drawable.result_btnkt).transform(new GlideCircleTransform(mContext)).into(holder.mHeadRight);
-        if (!mList.get(position).getScores().equals("")){
+        if (!mList.get(position).getScores().equals("")) {
             if ((Integer.valueOf(mList.get(position).getScores().split(":")[0]) > Integer.valueOf(mList.get(position).getScores().split(":")[1]))) {
                 holder.mTab1.setVisibility(View.VISIBLE);
                 holder.mTab2.setVisibility(View.GONE);
@@ -72,8 +71,8 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
                 holder.mHeadRight.setBackgroundResource(R.drawable.oval_glod);
                 holder.mHeadLeft.setBackgroundResource(R.drawable.oval_grey);
             }
-    }
-        holder.mTime.setText(mList.get(position).getTime());
+        }
+        holder.mTime.setText(TimeUtils.getStrTime((mList.get(position).getVideo_time()+"")));
     }
 
 
@@ -83,10 +82,10 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
     }
 
     public class BattleView extends RecyclerView.ViewHolder {
-        TextView mNameLeft,mNameRight;
-        ImageView mHeadLeft,mHeadRight;
-        TextView mAddress,mTime,mCont,mType;
-        TextView mTab1,mTab2;
+        TextView mNameLeft, mNameRight;
+        ImageView mHeadLeft, mHeadRight;
+        TextView mAddress, mTime, mCont, mType;
+        TextView mTab1, mTab2;
 
         public BattleView(View itemView) {
             super(itemView);
@@ -103,9 +102,9 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext,VideoDetailsActivity.class);
-                    intent.putExtra(Constants.EXTRA_VIDEOS_ID,mList.get(getPosition()).getGame_video_id());
-                    intent.putExtra(Constants.EXTRA_SCORES,mList.get(getPosition()).getScores());
+                    Intent intent = new Intent(mContext, VideoDetailsActivity.class);
+                    intent.putExtra(Constants.EXTRA_VIDEOS_ID, mList.get(getPosition()).getGame_video_id());
+                    intent.putExtra(Constants.EXTRA_SCORES, mList.get(getPosition()).getScores());
                     mContext.startActivity(intent);
                 }
             });
@@ -113,6 +112,11 @@ public class BattleChildAdapter extends RecyclerView.Adapter<BattleChildAdapter.
     }
 
     public void setData(List<BattleBean.VideosBean> list) {
+        mList = list;
+        notifyDataSetChanged();
+    }
+
+    public void addData(List<BattleBean.VideosBean> list) {
         mList = list;
         notifyDataSetChanged();
     }

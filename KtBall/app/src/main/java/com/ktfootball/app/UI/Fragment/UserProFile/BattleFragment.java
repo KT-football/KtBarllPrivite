@@ -19,6 +19,7 @@ import com.kt.ktball.myclass.VolleyUtil;
 import com.ktfootball.app.Constants;
 import com.ktfootball.app.Entity.BattleBean;
 import com.ktfootball.app.Event.BattleEvent;
+import com.ktfootball.app.Event.BattleEventLoad;
 import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.LoginActivity;
 import com.ktfootball.app.UI.Fragment.BattleChildFragment;
@@ -47,7 +48,7 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
     private BattleChildFragment mFirstFragment;
     private BattleChildFragment mScondFragment;
     private BattleChildFragment mThreeFragment;
-
+    private int mPage = 1;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -85,7 +86,7 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
             }
         });
         noscroolview.setOffscreenPageLimit(2);
-        getVideoList();
+        getVideoList(mPage);
 
     }
 
@@ -125,9 +126,9 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
 
     }
 
-    public void getVideoList() {
-        String url = Constants.HOST +"videos/my_videos?user_id=" + userId
-                + "&authenticity_token="+ MD5.getToken(Constants.HOST +"videos/my_videos");
+    public void getVideoList(int page) {
+        String url = Constants.HOST + "videos/my_videos?user_id=" + userId + "&page=" + page
+                + "&authenticity_token=" + MD5.getToken(Constants.HOST + "videos/my_videos");
         showLoadingDiaglog();
         JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -139,9 +140,11 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
                         closeLoadingDialog();
                         Gson gson = new Gson();
                         BattleBean battleBean = gson.fromJson(jsonObject.toString(), BattleBean.class);
-                        mFitstList.clear();
-                        mScondList.clear();
-                        mThreeList.clear();
+                        if (mPage == 1) {
+                            mFitstList.clear();
+                            mScondList.clear();
+                            mThreeList.clear();
+                        }
                         for (int i = 0; i < battleBean.getVideos().size(); i++) {
                             switch (battleBean.getVideos().get(i).getGame_video_type()) {
                                 case 0:
@@ -155,9 +158,15 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
                                     break;
                             }
                         }
-                        mFirstFragment.refreshList(mFitstList);
-                        mScondFragment.refreshList(mScondList);
-                        mThreeFragment.refreshList(mThreeList);
+                        if (mPage == 1) {
+                            mFirstFragment.refreshList(mFitstList);
+                            mScondFragment.refreshList(mScondList);
+                            mThreeFragment.refreshList(mThreeList);
+                        } else {
+                            mFirstFragment.loadList(mFitstList);
+                            mScondFragment.loadList(mScondList);
+                            mThreeFragment.loadList(mThreeList);
+                        }
 
                     }
                 }, new Response.ErrorListener() {
@@ -172,7 +181,15 @@ public class BattleFragment extends BaseFragment implements View.OnClickListener
 
     @Subscribe
     public void refush(BattleEvent event) {
-        getVideoList();
+        mPage = 1;
+        getVideoList(mPage);
+
+    }
+
+    @Subscribe
+    public void load(BattleEventLoad event) {
+        mPage += 1;
+        getVideoList(mPage);
 
     }
 

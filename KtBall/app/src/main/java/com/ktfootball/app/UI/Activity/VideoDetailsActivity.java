@@ -381,13 +381,10 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 relativeLayout1.setVisibility(View.VISIBLE);
                 relativeLayout4.setVisibility(View.VISIBLE);
                 String uri1 = Constants.HEAD_HOST + videoDetailsData.users.get(0).avatar;
-                String uri2 = Constants.HEAD_HOST + videoDetailsData.users.get(1).avatar;
                 Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewA);
-                Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
                 textViewNameA.setText(videoDetailsData.users.get(0).nickname);
-                textViewNameB.setText(videoDetailsData.users.get(1).nickname);
                 textViewZhanA.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(0).power);
-                textViewZhanB.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(1).power);
+
                 imageViewA.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -396,14 +393,20 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                         startActivity(intent);
                     }
                 });
-                imageViewB.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getThis(), UserProfiles.class);
-                        intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(1).user_id);
-                        startActivity(intent);
-                    }
-                });
+                if (videoDetailsData.users.size()>1){
+                    String uri2 = Constants.HEAD_HOST + videoDetailsData.users.get(1).avatar;
+                    textViewNameB.setText(videoDetailsData.users.get(1).nickname);
+                    textViewZhanB.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(1).power);
+                    Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
+                    imageViewB.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getThis(), UserProfiles.class);
+                            intent.putExtra(UserProfiles.USERID, videoDetailsData.users.get(1).user_id);
+                            startActivity(intent);
+                        }
+                    });
+                }
                 break;
             case 1://2v2
                 relativeLayout1.setVisibility(View.VISIBLE);

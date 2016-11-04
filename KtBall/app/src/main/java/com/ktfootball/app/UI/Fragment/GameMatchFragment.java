@@ -212,7 +212,7 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
                         final ArrayList<Games> data1 = new ArrayList<>();
                         data1.add(data.get(0));
                         ArrayList<Games> data2 = new ArrayList<>();
-                        for (int i =  1; i > data.size(); i++) {
+                        for (int i =  1; i < data.size(); i++) {
                             data2.add(data.get(i));
                         }
                         gameMatchAdapter1 = new GameMatchAdapter(data1, getActivity());

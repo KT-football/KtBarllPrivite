@@ -39,8 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="@string/wx"
                     android:maxLength="10"
+                    android:text="@string/wx"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -64,8 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="@string/pengyouquan"
                     android:maxLength="10"
+                    android:text="@string/pengyouquan"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -170,8 +170,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="@string/wx_shouc"
                     android:maxLength="10"
+                    android:text="@string/wx_shouc"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -186,8 +186,8 @@
                 android:visibility="visible">
 
                 <ImageView
-                    android:layout_width="84dp"
-                    android:layout_height="54dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="57dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ssdk_oks_classic_twitter" />
 
@@ -201,26 +201,27 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dialog_shared_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:visibility="invisible">
+                android:visibility="visible">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ssdk_oks_classic_qzone" />
+                    android:src="@drawable/ssdk_oks_classic_facebook" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="QQ空間"
+                    android:text="Facebook"
                     android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>

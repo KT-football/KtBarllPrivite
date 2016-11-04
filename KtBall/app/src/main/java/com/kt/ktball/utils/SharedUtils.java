@@ -9,6 +9,7 @@ import com.ktfootball.app.R;
 
 import java.util.HashMap;
 
+import cn.sharesdk.facebook.Facebook;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -144,9 +145,11 @@ public class SharedUtils {
 
     public void Shared_twitter(PlatformActionListener paListener) {
         Twitter.ShareParams sp = new Twitter.ShareParams();
-        sp.setShareType(Platform.SHARE_TEXT);
+        sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
         sp.setText(text);
+        sp.setImageData(bitmap);
+        sp.setUrl(titleUrl);
 
         Platform twitter = ShareSDK.getPlatform(Twitter.NAME);
         twitter.setPlatformActionListener(paListener); // 设置分享事件回调
@@ -154,6 +157,23 @@ public class SharedUtils {
         // 执行图文分享
         twitter.share(sp);
     }
+
+
+    public void Shared_facebook(PlatformActionListener paListener) {
+        Facebook.ShareParams sp = new Facebook.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);
+        sp.setTitle(title);
+        sp.setText(text);
+        sp.setImageData(bitmap);
+        sp.setUrl(titleUrl);
+
+        Platform facebook = ShareSDK.getPlatform(Facebook.NAME);
+        facebook.setPlatformActionListener(paListener); // 设置分享事件回调
+        facebook.authorize();
+        // 执行图文分享
+        facebook.share(sp);
+    }
+
 
     public String getTitle() {
         return title;

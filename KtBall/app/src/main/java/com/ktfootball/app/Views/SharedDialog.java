@@ -48,6 +48,7 @@ public class SharedDialog extends Dialog {
     private LinearLayout qzom;
     private LinearLayout shouchan;
     private LinearLayout dialog_shared_twitter;
+    private LinearLayout facebook;
 
     private View.OnClickListener OnCancelClick = new View.OnClickListener() {
         @Override
@@ -299,6 +300,36 @@ public class SharedDialog extends Dialog {
             dismiss();
         }
     };
+    private View.OnClickListener fackBookClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            activity.showLoadingDiaglog();
+            sharedUtils.Shared_facebook(new PlatformActionListener() {
+                @Override
+                public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                    LogUtils.d("onComplete");
+                    Log.d("pyqClick","onComplete");
+                    activity.showToast(activity.getString(R.string.share_success));
+                    activity.closeLoadingDialog();
+                }
+
+                @Override
+                public void onError(Platform platform, int i, Throwable throwable) {
+                    LogUtils.e(i+""+throwable.toString());
+                    activity.showToast(activity.getString(R.string.share_error));
+                    activity.closeLoadingDialog();
+                }
+
+                @Override
+                public void onCancel(Platform platform, int i) {
+                    LogUtils.d("onCancel");
+                    activity.showToast(activity.getString(R.string.share_cancle));
+                    activity.closeLoadingDialog();
+                }
+            });
+            dismiss();
+        }
+    };
 
 
     public SharedDialog(BaseActivity activity, int themeResId) {
@@ -325,6 +356,7 @@ public class SharedDialog extends Dialog {
         qzom = (LinearLayout) findViewById(R.id.dialog_shared_qqzome);
         shouchan = (LinearLayout) findViewById(R.id.dialog_shared_shouchan);
         dialog_shared_twitter = (LinearLayout) findViewById(R.id.dialog_shared_twitter);
+        facebook = (LinearLayout) findViewById(R.id.dialog_shared_facebook);
         init();
     }
 
@@ -337,6 +369,7 @@ public class SharedDialog extends Dialog {
         qzom.setOnClickListener(qqZom);
         shouchan.setOnClickListener(wxsc);
         dialog_shared_twitter.setOnClickListener(twitter);
+        facebook.setOnClickListener(fackBookClick);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         WindowManager.LayoutParams params = window.getAttributes();

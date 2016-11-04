@@ -216,43 +216,44 @@ public class AbilityFragment extends BaseFragment {
 
     private void checkView() {
 
+        if (mUserMsg.getLast10_goals_list().size()>0) {
+            final Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                int i = 0;
 
-        final Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            int i = 0;
-
-            @Override
-            public void run() {
-                getActivity().runOnUiThread(new TimerTask() {
-                    @Override
-                    public void run() {
-                        mImageQiu.get(i).setVisibility(View.VISIBLE);
-                        int user = mUserMsg.getLast10_goals_list().get(i);
-                        int other = mUserMsg.getLast10_pannas_list().get(i);
-                        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) mImageTop.get(i).getLayoutParams();
-                        linearParams.height = cont * user;
-                        mImageTop.get(i).setLayoutParams(linearParams);
-                        mImageTop.get(i).setVisibility(View.VISIBLE);
-                        Animation myAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.scale);
-                        mImageTop.get(i).startAnimation(myAnimation);
-                        LinearLayout.LayoutParams linearParams1 = (LinearLayout.LayoutParams) mImagedown.get(i).getLayoutParams();
-                        linearParams1.height = cont * other;
-                        mImagedown.get(i).setLayoutParams(linearParams1);
-                        mImagedown.get(i).setVisibility(View.VISIBLE);
-                        Animation myAnimation1 = AnimationUtils.loadAnimation(getActivity(), R.anim.scale1);
-                        mImagedown.get(i).startAnimation(myAnimation1);
-                        mTvTopList.get(i).setText(user + "");
-                        mTv_DownList.get(i).setText(other + "");
-                        mTvTopList.get(i).setVisibility(View.VISIBLE);
-                        mTv_DownList.get(i).setVisibility(View.VISIBLE);
-                        i += 1;
-                        if (i == 10) {
-                            timer.cancel();
+                @Override
+                public void run() {
+                    getActivity().runOnUiThread(new TimerTask() {
+                        @Override
+                        public void run() {
+                            mImageQiu.get(i).setVisibility(View.VISIBLE);
+                            int user = mUserMsg.getLast10_goals_list().get(i);
+                            int other = mUserMsg.getLast10_pannas_list().get(i);
+                            LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) mImageTop.get(i).getLayoutParams();
+                            linearParams.height = cont * user;
+                            mImageTop.get(i).setLayoutParams(linearParams);
+                            mImageTop.get(i).setVisibility(View.VISIBLE);
+                            Animation myAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.scale);
+                            mImageTop.get(i).startAnimation(myAnimation);
+                            LinearLayout.LayoutParams linearParams1 = (LinearLayout.LayoutParams) mImagedown.get(i).getLayoutParams();
+                            linearParams1.height = cont * other;
+                            mImagedown.get(i).setLayoutParams(linearParams1);
+                            mImagedown.get(i).setVisibility(View.VISIBLE);
+                            Animation myAnimation1 = AnimationUtils.loadAnimation(getActivity(), R.anim.scale1);
+                            mImagedown.get(i).startAnimation(myAnimation1);
+                            mTvTopList.get(i).setText(user + "");
+                            mTv_DownList.get(i).setText(other + "");
+                            mTvTopList.get(i).setVisibility(View.VISIBLE);
+                            mTv_DownList.get(i).setVisibility(View.VISIBLE);
+                            i += 1;
+                            if (i == mUserMsg.getLast10_goals_list().size()) {
+                                timer.cancel();
+                            }
                         }
-                    }
-                });
-            }
-        }, 500, 500);
+                    });
+                }
+            }, 500, 500);
+        }
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mImage_up_1, "scaleY", 100f, 130f);
         animator.setDuration(1000);

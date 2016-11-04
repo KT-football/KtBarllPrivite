@@ -133,9 +133,9 @@
     <Facebook
         Id="8"
         SortId="8"
-        ConsumerKey="107704292745179"
-        ConsumerSecret="38053202e1a5fe26c80c753071f0b573"
-        RedirectUrl="http://www.sharesdk.cn"
+        ConsumerKey="1346236552062085"
+        ConsumerSecret="a9638621aef3d65d273444dcc532a37c"
+        RedirectUrl="http://mob.com"
         Enable="true" />
 
     <Twitter

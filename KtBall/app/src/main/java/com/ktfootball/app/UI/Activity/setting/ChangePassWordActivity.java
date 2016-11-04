@@ -65,7 +65,7 @@ public class ChangePassWordActivity extends BaseActivity {
         if (edt2.getText().toString().trim().equals(edt3.getText().toString().trim())) {
             getData();
         } else {
-            showToast("输入的密码不一致~");
+            showToast(getString(R.string.pwd_no_same));
         }
     }
 
@@ -83,7 +83,7 @@ public class ChangePassWordActivity extends BaseActivity {
                         closeLoadingDialog();
                         try {
                             if (jsonObject.getString("response").equals("success")) {
-                                showToast("修改密码成功~");
+                                showToast(getString(R.string.modify_success));
                                 finish();
                             } else {
                                 showToast(jsonObject.getString("msg"));

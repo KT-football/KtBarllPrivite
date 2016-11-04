@@ -63,7 +63,7 @@ public class TrainActivity extends BaseRecyclerView {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("培训");
+        setToolBarTitle(getString(R.string.train_1));
     }
 
     @Override

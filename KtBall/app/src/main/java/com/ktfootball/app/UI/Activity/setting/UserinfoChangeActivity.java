@@ -121,7 +121,7 @@ public class UserinfoChangeActivity extends BaseActivity {
         PackageManager manager = this.getPackageManager();
         try {
             PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
-            tv_version.setText("- 版本 "+info.versionName+" -"); // 版本名
+            tv_version.setText("-  "+getString(R.string.version)+" "+info.versionName+" -"); // 版本名
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -199,9 +199,9 @@ public class UserinfoChangeActivity extends BaseActivity {
                         nickname.setText(userInfo.nickname);
                         String gender = userInfo.gender;
                         if ("GG".equals(gender)) {
-                            sex.setText("男");
+                            sex.setText(getString(R.string.man));
                         } else {
-                            sex.setText("女");
+                            sex.setText(getString(R.string.gril));
                         }
                         brisday.setText(userInfo.birthday);
                     }
@@ -414,7 +414,7 @@ public class UserinfoChangeActivity extends BaseActivity {
         @Override
         public void onScrollingFinished(WheelView wheel) {
             NumericWheelAdapter temp = new NumericWheelAdapter(getThis(), 1, getDay(year.getCurrentItem() + 1950, month.getCurrentItem() + 1));
-            temp.setLabel("日");
+            temp.setLabel(getString(R.string.day));
             day.setViewAdapter(temp);
         }
 
@@ -437,7 +437,7 @@ public class UserinfoChangeActivity extends BaseActivity {
 
             NumericWheelAdapter numericWheelAdapter1 =
                     new NumericWheelAdapter(getThis(), 1950, Calendar.getInstance().get(Calendar.YEAR) + 10);
-            numericWheelAdapter1.setLabel("年");
+            numericWheelAdapter1.setLabel(getString(R.string.year));
             year.setViewAdapter(numericWheelAdapter1);
             year.setCyclic(true);
             year.setVisibleItems(7);
@@ -446,7 +446,7 @@ public class UserinfoChangeActivity extends BaseActivity {
 
             NumericWheelAdapter numericWheelAdapter2 =
                     new NumericWheelAdapter(getThis(), 1, 12);
-            numericWheelAdapter2.setLabel("月");
+            numericWheelAdapter2.setLabel(getString(R.string.month));
             month.setViewAdapter(numericWheelAdapter2);
             month.setCyclic(true);
             month.setCurrentItem(Calendar.getInstance().get(Calendar.MONTH));
@@ -455,7 +455,7 @@ public class UserinfoChangeActivity extends BaseActivity {
 
             NumericWheelAdapter numericWheelAdapter3 =
                     new NumericWheelAdapter(getThis(), 1, getDay(1996, 1));
-            numericWheelAdapter3.setLabel("日");
+            numericWheelAdapter3.setLabel(getString(R.string.day));
             day.setViewAdapter(numericWheelAdapter3);
             day.setCyclic(true);
             day.setCurrentItem(Calendar.getInstance().get(Calendar.DAY_OF_MONTH) - 1);

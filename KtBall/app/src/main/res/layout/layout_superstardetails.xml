@@ -51,7 +51,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:text="点评过的视频"
+        android:text="@string/dianping_video"
         android:textSize="16sp"
         android:background="#dd000000"
         android:textColor="@color/gold"

@@ -39,6 +39,8 @@ public class MyBGARefreshViewHolder extends BGARefreshViewHolder {
      */
     public MyBGARefreshViewHolder(Context context, boolean isLoadingMoreEnabled) {
         super(context, isLoadingMoreEnabled);
+        mPullDownRefreshText = context.getString(R.string.pull_refresh);
+        mReleaseRefreshText = context.getString(R.string.shfang_refresh);
         initAnimation();
     }
 

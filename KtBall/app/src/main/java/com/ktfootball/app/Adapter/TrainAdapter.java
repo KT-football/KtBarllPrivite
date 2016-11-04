@@ -98,7 +98,7 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             BitmapManager.getInstance().display(trainHeaderHolder.header, Constants.HEAD_HOST + userAppCartoons.avatar);
             trainHeaderHolder.yxl.setText(userAppCartoons.total_finished_minutes);
             trainHeaderHolder.ywc.setText(userAppCartoons.total_finished_times+"min");
-            trainHeaderHolder.lxxl.setText(userAppCartoons.study_days+"天");
+            trainHeaderHolder.lxxl.setText(userAppCartoons.study_days+""+context.getString(R.string.day));
             trainHeaderHolder.mytrain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -123,27 +123,27 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     context.startActivity(intent);
                 }
             });
-             trainHolder.item_wanc.setText("已完成"+(5*(int)Float.parseFloat(appCarToons.now_level_progress)));
-             trainHolder.item_shenyu.setText("距离学徒还有"+(500 -(5*(int)Float.parseFloat(appCarToons.now_level_progress)))+"次训练");
+             trainHolder.item_wanc.setText(context.getString(R.string.is_ok)+(5*(int)Float.parseFloat(appCarToons.now_level_progress)));
+             trainHolder.item_shenyu.setText(context.getString(R.string.distance_to_apprentice)+(500 -(5*(int)Float.parseFloat(appCarToons.now_level_progress)))+context.getString(R.string.train));
             ((ViewPager) trainHolder.mView).setCurrentItem(mItemSwipedStates.get(position).ordinal());
             trainHolder.delect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                    dialog.setTitle("提示");
-                    dialog.setMessage("是否清空本课程已下载的全部内容？");
-                    dialog.setNegativeButton("是",new DialogInterface.OnClickListener() {
+                    dialog.setTitle(context.getString(R.string.prompt));
+                    dialog.setMessage(context.getString(R.string.is_clear_class));
+                    dialog.setNegativeButton(context.getString(R.string.right),new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if(FileUtil.deleteFile(new File(FileUtil.getDecompressionDir(context)+appCarToons.name))){
-                                context.showDialogToast("删除成功");
+                                context.showDialogToast(context.getString(R.string.delete_success));
                             }else{
-                                context.showDialogToast("所删除的文件不存在");
+                                context.showDialogToast(context.getString(R.string.delete_file_nofind));
                             }
                             dialog.dismiss();
                         }
                     });
-                    dialog.setPositiveButton("否", new DialogInterface.OnClickListener() {
+                    dialog.setPositiveButton(context.getString(R.string.cancle), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();

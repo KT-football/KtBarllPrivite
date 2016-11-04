@@ -83,8 +83,8 @@ public class InviteAdapter extends BaseAdapter {
         String url = Constants.HEAD_HOST + users.avatar;
         Glide.with(context).load(url).transform(new GlideCircleTransform(context)).error(R.drawable.result_btnkt).into(holder.avatar);
         holder.name.setText(users.nickname);
-        holder.zhandouli.setText("战斗力：" + users.power);
-        myDialog = new MyDialog(context, "正在提交");
+        holder.zhandouli.setText(context.getResources().getString(R.string.fighting_capacity)+":"+ users.power);
+        myDialog = new MyDialog(context, context.getString(R.string.is_send));
         userId = PreferenceManager.getDefaultSharedPreferences(context).getLong(LoginActivity.PRE_CURRENT_USER_ID, 0);
         final String game_type = InviteActivity.game_type;
         holder.invite.setOnClickListener(new View.OnClickListener() {
@@ -114,8 +114,8 @@ public class InviteAdapter extends BaseAdapter {
                                     JSONObject jsonObject1 = new JSONObject(object.toString());
                                     String response = jsonObject1.getString("response");
                                     if (response.equals("success")) {
-                                        holder.invite.setText("已邀请");
-                                        myAlertDialog.doAlertDialog("发送邀请成功");
+                                        holder.invite.setText(context.getString(R.string.invitation));
+                                        myAlertDialog.doAlertDialog(context.getString(R.string.sned_invitation_success));
                                     } else if (response.equals("error")) {
                                         String msg = jsonObject1.getString("msg");
                                         myAlertDialog.doAlertDialog(msg);

@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dengji_A"
                 android:layout_centerHorizontal="true"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/activity_kt_text_size" />
 
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dengji_B"
                 android:layout_centerHorizontal="true"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/activity_kt_text_size" />
 
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dengji_C"
                 android:layout_centerHorizontal="true"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/activity_kt_text_size" />
 
@@ -232,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dengji_F"
                 android:layout_centerHorizontal="true"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/activity_kt_text_size" />
 
@@ -289,7 +289,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dengji_E"
                 android:layout_centerHorizontal="true"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/activity_kt_text_size" />
 
@@ -345,7 +345,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dengji_D"
                 android:layout_centerHorizontal="true"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/activity_kt_text_size" />
 

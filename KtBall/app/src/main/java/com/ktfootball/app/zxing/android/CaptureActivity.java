@@ -303,7 +303,7 @@ public final class CaptureActivity extends BaseToolBarActivity2 implements
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("二维码扫描");
+        setToolBarTitle(getString(R.string.shaomiao_erwm));
     }
 
     @Override

@@ -20,7 +20,7 @@ import com.frame.app.application.BaseApplication;
 import com.frame.app.manager.AppManager;
 import com.frame.app.manager.ThirdPartyManager;
 import com.frame.app.utils.LogUtils;
-import com.frame.app.view.LoadingDialog;
+import com.ktfootball.app.Views.LoadingDialog;
 
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;

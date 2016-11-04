@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="关于KT币"
+            android:text="@string/about_ktB"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -47,8 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:textColor="#333333"
-            android:text="KT币为KT足球的虚拟货币，每个账号第一场比赛均不消耗KT币，之后比赛都会消耗一定的KT币，部分的赛事为免费赛事的，KT币消耗为\n
- 当您账号内的KT币不够当前赛事消耗扣除的时候，您需要充值KT币，KT币与人民币的充值比例为10：1，200KT币起冲，充值的金额越高，您将获得更多的额外KT币（超过10：1的比例）" />
+            android:text="@string/about_ktB_content" />
 
     </RelativeLayout>
 </LinearLayout>

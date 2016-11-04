@@ -15,6 +15,7 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.twitter.Twitter;
 import cn.sharesdk.wechat.favorite.WechatFavorite;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
@@ -139,6 +140,19 @@ public class SharedUtils {
         qzone.setPlatformActionListener(paListener); // 设置分享事件回调
         // 执行图文分享
         qzone.share(sp);
+    }
+
+    public void Shared_twitter(PlatformActionListener paListener) {
+        Twitter.ShareParams sp = new Twitter.ShareParams();
+        sp.setShareType(Platform.SHARE_TEXT);
+        sp.setTitle(title);
+        sp.setText(text);
+
+        Platform twitter = ShareSDK.getPlatform(Twitter.NAME);
+        twitter.setPlatformActionListener(paListener); // 设置分享事件回调
+        twitter.authorize();
+        // 执行图文分享
+        twitter.share(sp);
     }
 
     public String getTitle() {

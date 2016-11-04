@@ -268,7 +268,7 @@ public class AbilityFragment extends BaseFragment {
                         intent.putExtra(Constants.EXTRA_SCORES, mUserMsg.getLast10_goals_list().get(finalI) + " : " + mUserMsg.getLast10_pannas_list().get(finalI));
                         startActivity(intent);
                     } else {
-                        showToast("该场比赛暂时没有视频哟~");
+                        showToast(getString(R.string.game_no_video));
                     }
                 }
             });

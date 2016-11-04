@@ -86,7 +86,7 @@ public class BindPhoneActivity extends BaseActivity {
                             closeLoadingDialog();
                             try {
                                 if (jsonObject.getString("response").equals("success")) {
-                                    showToast("绑定手机成功~");
+                                    showToast(getString(R.string.bind_phone_ok));
                                     finish();
                                 } else {
                                     showToast(jsonObject.getString("msg"));
@@ -104,7 +104,7 @@ public class BindPhoneActivity extends BaseActivity {
             );
             VolleyUtil.getInstance(this).addRequest(jsonRequest);
         } else {
-            showToast("验证码不能为空~");
+            showToast(getString(R.string.yanzhenma_not_empty));
         }
     }
 
@@ -112,7 +112,7 @@ public class BindPhoneActivity extends BaseActivity {
     public void doGetCode(View view) {//获取验证码
         phone = edt1.getText().toString();
         if (TextUtils.isEmpty(phone)) {
-            myAlertDialog.doAlertDialog("请输入手机号");
+            myAlertDialog.doAlertDialog(getString(R.string.check_phone));
         } else if (phone.length() == 11) {
             String url = Constants.HOST + "users/send_mobile_captcha_for_binding_new_mobile?phone="
                     + phone + "&authenticity_token="+MD5.getToken(Constants.HOST + "users/send_mobile_captcha_for_binding_new_mobile");
@@ -142,7 +142,7 @@ public class BindPhoneActivity extends BaseActivity {
             );
             VolleyUtil.getInstance(this).addRequest(jsonRequest);
         } else {
-            myAlertDialog.doAlertDialog("手机号格式错误");
+            myAlertDialog.doAlertDialog(getString(R.string.phone_error));
         }
     }
 
@@ -157,7 +157,7 @@ public class BindPhoneActivity extends BaseActivity {
                         @Override
                         public void run() {
                             buttonGetCode.setEnabled(false);
-                            buttonGetCode.setText(time + "秒后重新发送");
+                            buttonGetCode.setText(time + getString(R.string.restate_send));
                         }
                     });
                 } else {
@@ -165,7 +165,7 @@ public class BindPhoneActivity extends BaseActivity {
                         @Override
                         public void run() {
                             buttonGetCode.setEnabled(true);
-                            buttonGetCode.setText("重新发送验证码");
+                            buttonGetCode.setText(getString(R.string.restart_yanzhen));
                         }
                     });
                 }

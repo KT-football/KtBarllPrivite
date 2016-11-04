@@ -30,7 +30,6 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="姜涛"
                 android:textColor="#333333"
                 android:textSize="14dp" />
 
@@ -39,7 +38,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="姜涛"
                 android:textColor="#666666"
                 android:textSize="12dp" />
         </LinearLayout>
@@ -50,7 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_empty_yellow"
             android:padding="5dp"
-            android:text="取消关注"
+            android:text="@string/cancle_follow"
             android:textColor="@color/gold"
             android:textSize="12dp" />
     </LinearLayout>

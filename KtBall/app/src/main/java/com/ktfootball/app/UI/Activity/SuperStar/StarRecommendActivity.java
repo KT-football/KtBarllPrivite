@@ -25,7 +25,7 @@ public class StarRecommendActivity extends BaseRecyclerView {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("明星推荐");
+        setToolBarTitle(getString(R.string.recommend_start));
     }
 
     @Override

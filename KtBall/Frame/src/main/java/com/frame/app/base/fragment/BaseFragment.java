@@ -2,7 +2,6 @@ package com.frame.app.base.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Process;
@@ -20,7 +19,7 @@ import android.widget.Toast;
 import com.frame.app.application.BaseApplication;
 import com.frame.app.base.activity.BaseActivity;
 import com.frame.app.manager.ThirdPartyManager;
-import com.frame.app.view.LoadingDialog;
+import com.ktfootball.app.Views.LoadingDialog;
 
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;

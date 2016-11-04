@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="二维码扫描"
+                android:text="@string/shaomiao_erwm"
                 android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:id="@+id/textView34"
@@ -72,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="将二维码放入框内，即可自动扫描"
+            android:text="@string/erweima_shamiao"
             android:id="@+id/textView35"
             android:textSize="16dp"
             android:textColor="@android:color/white"

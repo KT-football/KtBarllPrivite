@@ -39,7 +39,7 @@ public class OrderDetailsActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("订单详情");
+        setToolBarTitle(getString(R.string.order_detail));
     }
 
     @Override
@@ -63,7 +63,7 @@ public class OrderDetailsActivity extends BaseToolBarActivity2 {
         orderstatus = getIntent().getStringExtra("orderstatus");
         doBcOrderDetail(orderid);
 
-        if(orderstatus.equals("已支付") || orderstatus.equals("待确定") || orderstatus.equals("待完成")|| orderstatus.equals("待评价")){
+        if(orderstatus.equals(getString(R.string.is_pay)) || orderstatus.equals(getString(R.string.wait_right)) || orderstatus.equals(getString(R.string.wait_ok))|| orderstatus.equals(getString(R.string.wait_pingjia))){
             yuping_ll.setVisibility(View.GONE);
             xingping_ll.setVisibility(View.GONE);
         }
@@ -108,16 +108,16 @@ public class OrderDetailsActivity extends BaseToolBarActivity2 {
     }
 
     private void init(BcOrderDetail bcOrderDetail){
-        status.setText("订单状态："+orderstatus);
+        status.setText(getString(R.string.order_status)+"："+orderstatus);
         time.setText(bcOrderDetail.activity_time);
-        ordernum.setText("订单号："+orderid);
+        ordernum.setText(getString(R.string.order_num)+"："+orderid);
         lianxiren.setText(bcOrderDetail.contact);
         phonenum.setText(bcOrderDetail.mobile);
         peoplenum.setText(bcOrderDetail.number_of_people);
         dizhi.setText(bcOrderDetail.address);
         String invoice_title = bcOrderDetail.invoice_title;
         if("".equals(invoice_title)){
-            invoice_title = "无";
+            invoice_title = getString(R.string.none);
         }
         ftitle.setText(invoice_title);
         yuping.setText(bcOrderDetail.comment);

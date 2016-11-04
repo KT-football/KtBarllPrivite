@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:text="今天不练，明天即使练两遍也不一定跟得上哦，你真的要退出吗？"
+        android:text="@string/is_content_exit"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:paddingRight="15dp"

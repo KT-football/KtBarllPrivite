@@ -43,8 +43,8 @@ public class MyOrderActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("我的订单");
-        setRightText("我要包场");
+        setToolBarTitle(getString(R.string.my_order));
+        setRightText(getString(R.string.my_get_order));
     }
 
     @Override
@@ -93,9 +93,9 @@ public class MyOrderActivity extends BaseToolBarActivity2 {
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         list_title = new ArrayList<>();
-        list_title.add("已支付");
-        list_title.add("待评价");
-        list_title.add("已完成");
+        list_title.add(getString(R.string.is_pay));
+        list_title.add(getString(R.string.wait_pingjia));
+        list_title.add(getString(R.string.is_over));
 
         //设置TabLayout的模式
         tab_FindFragment_title.setTabMode(TabLayout.MODE_FIXED);

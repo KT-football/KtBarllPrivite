@@ -82,7 +82,7 @@ public class PaymentFramgment extends PayFragment {
     public void refershListData(List<UserBcOrders.BcOrders> list){
         currentList = new ArrayList<>();
         for(UserBcOrders.BcOrders bcOrders : list){
-            if(bcOrders.status.equals("已支付") || bcOrders.status.equals("待确定") || bcOrders.status.equals("待完成")){
+            if(bcOrders.status.equals(getString(R.string.is_pay)) || bcOrders.status.equals(getString(R.string.wait_right)) || bcOrders.status.equals(getString(R.string.wait_ok))){
                 currentList.add(bcOrders);
             }
         }

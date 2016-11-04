@@ -206,7 +206,7 @@ public class GameResultActivity extends BaseActivity {
             chanceWinningA_ll.setVisibility(View.VISIBLE);
             chanceWinningB_ll.setVisibility(View.INVISIBLE);
             chanceWinningC_ll.setVisibility(View.INVISIBLE);
-            userA_zdl.setText("战斗力  " + postResult.user1_power);
+            userA_zdl.setText(getString(R.string.fighting_capacity)+" " + postResult.user1_power);
             if(postResult.user1_change_power <0){
                 userA_zdl_num.setTextColor(Color.GREEN);
             }else{
@@ -218,7 +218,7 @@ public class GameResultActivity extends BaseActivity {
             chanceWinningD_ll.setVisibility(View.VISIBLE);
             chanceWinningE_ll.setVisibility(View.INVISIBLE);
             chanceWinningF_ll.setVisibility(View.INVISIBLE);
-            userD_zdl.setText("战斗力  " + postResult.user2_power);
+            userD_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user2_power);
             if(postResult.user2_change_power <0){
                 userD_zdl_num.setTextColor(Color.GREEN);
             }else{
@@ -233,8 +233,8 @@ public class GameResultActivity extends BaseActivity {
             chanceWinningA_ll.setVisibility(View.VISIBLE);
             chanceWinningB_ll.setVisibility(View.VISIBLE);
             chanceWinningC_ll.setVisibility(View.INVISIBLE);
-            userA_zdl.setText("战斗力  " + postResult.user1_power);
-            userB_zdl.setText("  战斗力  " + postResult.user2_power);
+            userA_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user1_power);
+            userB_zdl.setText(" "+getString(R.string.fighting_capacity)+" "  + postResult.user2_power);
             if(postResult.user1_change_power <0){
                 userA_zdl_num.setTextColor(Color.GREEN);
             }else{
@@ -253,8 +253,8 @@ public class GameResultActivity extends BaseActivity {
             chanceWinningD_ll.setVisibility(View.VISIBLE);
             chanceWinningE_ll.setVisibility(View.VISIBLE);
             chanceWinningF_ll.setVisibility(View.INVISIBLE);
-            userD_zdl.setText("战斗力  " + postResult.user3_power);
-            userE_zdl.setText("战斗力  " + postResult.user4_power);
+            userD_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user3_power);
+            userE_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user4_power);
             if(postResult.user3_change_power <0){
                 userD_zdl_num.setTextColor(Color.GREEN);
             }else{
@@ -276,9 +276,9 @@ public class GameResultActivity extends BaseActivity {
             chanceWinningA_ll.setVisibility(View.VISIBLE);
             chanceWinningB_ll.setVisibility(View.VISIBLE);
             chanceWinningC_ll.setVisibility(View.VISIBLE);
-            userA_zdl.setText("战斗力  " + postResult.user1_power);
-            userB_zdl.setText("战斗力  " + postResult.user2_power);
-            userC_zdl.setText("战斗力  " + postResult.user3_power);
+            userA_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user1_power);
+            userB_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user2_power);
+            userC_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user3_power);
             if(postResult.user1_change_power <0){
                 userA_zdl_num.setTextColor(Color.GREEN);
             }else{
@@ -304,9 +304,9 @@ public class GameResultActivity extends BaseActivity {
             chanceWinningF_ll.setVisibility(View.VISIBLE);
             chanceWinningD_ll.setVisibility(View.VISIBLE);
             chanceWinningE_ll.setVisibility(View.VISIBLE);
-            userF_zdl.setText("战斗力  " + postResult.user6_power);
-            userD_zdl.setText("战斗力  " + postResult.user5_power);
-            userE_zdl.setText("战斗力  " + postResult.user4_power);
+            userF_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user6_power);
+            userD_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user5_power);
+            userE_zdl.setText(getString(R.string.fighting_capacity)+" "  + postResult.user4_power);
             if(postResult.user6_change_power <0){
                 userF_zdl_num.setTextColor(Color.GREEN);
             }else{

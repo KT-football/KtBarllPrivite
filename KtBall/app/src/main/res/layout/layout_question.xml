@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="常见问题"
+            android:text="@string/question"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:gravity="center_vertical"
-            android:text="什么是KT足球？"/>
+            android:text="@string/what_kt"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:gravity="center_vertical"
-            android:text="如何计算战斗分？"/>
+            android:text="@string/how_to_fen"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:gravity="center_vertical"
-            android:text="如何参加KT足球比赛?"/>
+            android:text="@string/how_to_apply"/>
 
         <ImageView
             android:layout_width="wrap_content"

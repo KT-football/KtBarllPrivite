@@ -87,7 +87,7 @@ public class NewTeamActivity extends BaseActivity {
     protected void initData(Bundle savedInstanceState) {
         userId = PreferenceManager.getDefaultSharedPreferences(this).getLong(LoginActivity.PRE_CURRENT_USER_ID,0);
         myAlertDialog = new MyAlertDialog(this);
-        myDialog = new MyDialog(this,"正在创建");
+        myDialog = new MyDialog(this,getString(R.string.is_build));
         if (getIntent()!=null) {
             if (getIntent().getStringExtra("type").equals("1")) {
                 textView.setText("2v2");
@@ -102,9 +102,9 @@ public class NewTeamActivity extends BaseActivity {
     public void doNewTeamFinsh(View view) {//创建战队完成
         name = editText.getText().toString();
         if (TextUtils.isEmpty(name)){
-            myAlertDialog.doAlertDialog("战队名不能为空");
+            myAlertDialog.doAlertDialog(getString(R.string.team_name_empty));
         } else if (game_type < 0){
-            myAlertDialog.doAlertDialog("请选择战队类型");
+            myAlertDialog.doAlertDialog(getString(R.string.team_type));
         } else {
             myDialog.show();
             String url = Constants.HOST +"users/create_league";
@@ -130,7 +130,7 @@ public class NewTeamActivity extends BaseActivity {
                                 JSONObject jsonObject11 = new JSONObject(jsonObject1.toString());
                                 String response = jsonObject11.getString("response");
                                 if (response.equals("success")){
-                                    myAlertDialog.doAlertDialog("创建战队成功");
+                                    myAlertDialog.doAlertDialog(getString(R.string.build_team_ok));
                                     EventBus.getDefault().post(new AddTeamEvent());
                                     finish();
                                 } else if (response.equals("error")){
@@ -147,7 +147,7 @@ public class NewTeamActivity extends BaseActivity {
                     Log.d("]]]]]]]]]]]]]]]",error.toString());
                     //关闭动画
                     myDialog.dismiss();
-                    myAlertDialog.doAlertDialog("网络错误");
+                    myAlertDialog.doAlertDialog(getString(R.string.download_error_network));
                 }
             })
             {

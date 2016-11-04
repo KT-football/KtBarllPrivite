@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="我的好友"
+            android:text="@string/my_friend"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
     </RelativeLayout>
@@ -58,7 +58,7 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="#cccccc"
-            android:hint="请输入手机号或昵称搜索"
+            android:hint="@string/search_name"
             android:paddingLeft="10dp"
             android:singleLine="true"
             android:textColor="@android:color/white"
@@ -75,7 +75,7 @@
             android:gravity="center"
             android:onClick="doSearch"
             android:padding="5dp"
-            android:text="搜索"
+            android:text="@string/search"
             android:textSize="14dp" />
     </LinearLayout>
 
@@ -126,7 +126,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="姓名"
+                android:text="@string/user_name"
                 android:textColor="#333333" />
 
             <TextView
@@ -136,7 +136,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:textColor="#333333" />
         </LinearLayout>
 
@@ -149,7 +149,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
             android:onClick="doAddFirend"
-            android:text="关注"
+            android:text="@string/follow"
             android:background="@drawable/shape_full_yellow"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"

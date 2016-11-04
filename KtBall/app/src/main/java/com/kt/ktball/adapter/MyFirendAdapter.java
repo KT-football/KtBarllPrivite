@@ -49,11 +49,11 @@ public class MyFirendAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        if (convertView == null){
-            convertView = inflater.inflate(R.layout.my_firend_list_item,parent,false);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.my_firend_list_item, parent, false);
             holder = new ViewHolder();
             holder.avatar = (ImageView) convertView.findViewById(R.id.imageView53);
-            holder.name  = (TextView) convertView.findViewById(R.id.textView58);
+            holder.name = (TextView) convertView.findViewById(R.id.textView58);
             holder.zhandouli = (TextView) convertView.findViewById(R.id.textView59);
             convertView.setTag(holder);
         } else {
@@ -63,11 +63,11 @@ public class MyFirendAdapter extends BaseAdapter {
         String url = Constants.HEAD_HOST + users.avatar;
         Glide.with(context).load(url).transform(new GlideCircleTransform(context)).error(R.drawable.result_btnkt).into(holder.avatar);
         holder.name.setText(users.nickname);
-        holder.zhandouli.setText("战斗力：" + users.power);
+        holder.zhandouli.setText(context.getString(R.string.fighting_capacity) + ":" + users.power);
         return convertView;
     }
 
-    class ViewHolder{
+    class ViewHolder {
         ImageView avatar;
         TextView name;
         TextView zhandouli;

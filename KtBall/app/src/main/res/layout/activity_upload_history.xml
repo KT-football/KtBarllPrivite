@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="上传记录"
+            android:text="@string/upload_jil"
             android:textColor="@android:color/white"
             android:textSize="20dp"
             android:id="@+id/textView67"
@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="全部删除"
+            android:text="@string/delete_all"
             android:onClick="doDelete"
             android:layout_marginRight="16dp"
             android:textColor="@android:color/white"
@@ -61,7 +61,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="上传失败"
+            android:text="@string/upload_error"
             android:onClick="doError"
             android:textSize="20dp"
             android:gravity="center"
@@ -72,7 +72,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="上传成功"
+            android:text="@string/upload_succsee"
             android:textSize="20dp"
             android:gravity="center"
             android:onClick="doSuccess"

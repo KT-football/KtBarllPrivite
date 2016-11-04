@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.frame.app.utils.DateUtils;
 import com.frame.app.utils.LogUtils;
 import com.frame.app.utils.PhoneUtils;
+import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.BlockBook.WantToMakeActivity;
 import com.ktfootball.app.Utils.DateUtil;
 import com.ktfootball.app.calendar.doim.CustomDate;
@@ -166,11 +167,11 @@ public class CalendarView extends View {
                     mCallBack.clickDate(date);
                     invalidate();
                 } else {
-                    Toast.makeText(getContext(), "请选择三天后的日期！", 0).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.choose_three_dayago), 0).show();
                 }
 
             } else {
-                Toast.makeText(getContext(), "请选择城市！", 0).show();
+                Toast.makeText(getContext(), getResources().getString(R.string.choose_city), 0).show();
             }
         }
     }

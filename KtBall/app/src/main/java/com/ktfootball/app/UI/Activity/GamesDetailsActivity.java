@@ -109,8 +109,8 @@ public class GamesDetailsActivity extends BaseActivity {
 
     private void init(EditGameData editGameData) {
         textViewName.setText(editGameData.name);
-        textViewJieShao.setText(editGameData.introduction.isEmpty() ? "暂无活动介绍" : editGameData.introduction);
-        textViewTime.setText(editGameData.date_start + " 到 " + editGameData.date_end);
+        textViewJieShao.setText(editGameData.introduction.isEmpty() ? getString(R.string.no_jiesao) : editGameData.introduction);
+        textViewTime.setText(editGameData.date_start + getString(R.string.to)+ editGameData.date_end);
         textViewPlace.setText(editGameData.place);
         textViewMoney.setText("$ " + editGameData.enter_ktb + ".00");
         location = editGameData.location;
@@ -124,7 +124,7 @@ public class GamesDetailsActivity extends BaseActivity {
 
     public void doAddress(View view) {//点击查看地址
         if (location == null) {
-            Toast.makeText(this, "经纬度为空", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "经纬度为空", Toast.LENGTH_SHORT).show();
         } else {
 //            Intent intent = new Intent(this,LookOverAddressActivity.class);
 //            intent.putExtra(EXTRA_LOCATION,location);
@@ -140,9 +140,9 @@ public class GamesDetailsActivity extends BaseActivity {
         if (sharedDialog == null) {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
             sharedDialog.setTitleUrl(Constants.HOST + "app_share/game?game_id=" + gameId);
-            String title = "我已经报名了" + textViewTime.getText().toString() + textViewPlace.getText().toString();
+            String title = getString(R.string.signed_up) + textViewTime.getText().toString() + textViewPlace.getText().toString();
             sharedDialog.setTitle(title);
-            sharedDialog.setText("KT足球比赛赛事精选");
+            sharedDialog.setText(getString(R.string.kt_game_top));
         }
         sharedDialog.show();
         dimActivity(sharedDialog, 0.6f);

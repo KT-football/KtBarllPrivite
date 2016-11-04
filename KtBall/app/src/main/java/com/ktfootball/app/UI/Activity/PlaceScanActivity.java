@@ -35,7 +35,7 @@ public class PlaceScanActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("比赛地点");
+        setToolBarTitle(getString(R.string.game_address));
     }
 
     @Override

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="绑定手机"
+            android:text="@string/bind_phone"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -42,7 +42,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="完成"
+            android:text="@string/ok"
             android:textColor="@color/white" />
 
     </RelativeLayout>
@@ -63,7 +63,7 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:background="@null"
-            android:hint="请填写您的手机号"
+            android:hint="@string/check_phone"
             android:textColor="#333333"
             android:textColorHint="#999999"
             android:textSize="13dp" />
@@ -75,7 +75,7 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/shape_empty_yuan_yellow"
             android:onClick="doGetCode"
-            android:text="获取验证码"
+            android:text="@string/yanzmyanz"
             android:textColor="@color/colorOrange3"
             android:textSize="10dp" />
 
@@ -98,7 +98,7 @@
             android:layout_centerVertical="true"
             android:background="@null"
             android:gravity="center"
-            android:hint="请输入验证码"
+            android:hint="@string/yanzmyanz"
             android:textColor="#333333"
             android:textColorHint="#999999"
             android:textSize="13dp" />

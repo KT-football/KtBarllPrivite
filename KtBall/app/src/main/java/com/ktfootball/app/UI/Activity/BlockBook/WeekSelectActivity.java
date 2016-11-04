@@ -93,7 +93,7 @@ public class WeekSelectActivity extends BaseToolBarActivity2 implements GestureD
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("选择日期");
+        setToolBarTitle(getString(R.string.choose_time));
     }
 
     @Override
@@ -168,14 +168,14 @@ public class WeekSelectActivity extends BaseToolBarActivity2 implements GestureD
         getCurrent();
 
 
-        riqi.setText(year_c + "年" + month_c + "月" + day_c + "日");
+        riqi.setText(year_c + getString(R.string.year) + month_c + getString(R.string.month) + day_c + getString(R.string.day));
         gestureDetector = new GestureDetector(this);
         clickDate(year_c,month_c,day_c);
         dateAdapter = new DateAdapter(this, getResources(), currentYear,
                 currentMonth, currentWeek, currentNum, selectPostion,
                 currentWeek == 1 ? true : false);
-        currentClickDay = year_c + "年" + month_c + "月" + day_c + "日";
-        dateAdapter.setClickDay(year_c + "年" + month_c + "月" + day_c + "日");
+        currentClickDay = year_c + getString(R.string.year) + month_c + getString(R.string.month) + day_c + getString(R.string.day);
+        dateAdapter.setClickDay(year_c + getString(R.string.year) + month_c + getString(R.string.month) + day_c + getString(R.string.day));
         addGridView();
         dayNumbers = dateAdapter.getDayNumbers();
         gridView.setAdapter(dateAdapter);
@@ -386,9 +386,9 @@ public class WeekSelectActivity extends BaseToolBarActivity2 implements GestureD
                                     int position, long id) {
                 selectPostion = position;
                 dateAdapter.setSeclection(position);
-                currentClickDay = dateAdapter.getCurrentYear(selectPostion) + "年"
-                        + dateAdapter.getCurrentMonth(selectPostion) + "月"
-                        + dayNumbers[position] + "日";
+                currentClickDay = dateAdapter.getCurrentYear(selectPostion) + getString(R.string.year)
+                        + dateAdapter.getCurrentMonth(selectPostion) + getString(R.string.month)
+                        + dayNumbers[position] + getString(R.string.day);
                 riqi.setText(currentClickDay);
                 dateAdapter.setClickDay(currentClickDay);
                 clickDate = dateAdapter.getCurrentYear(selectPostion)+"-"+dateAdapter.getCurrentMonth(selectPostion) + "-"+dayNumbers[position];

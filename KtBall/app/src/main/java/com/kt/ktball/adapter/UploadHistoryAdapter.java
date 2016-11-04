@@ -66,7 +66,7 @@ public class UploadHistoryAdapter extends BaseAdapter {
         String s1 = s.substring(s.indexOf("球") + 2,s.length()-17);
         holer.textView.setText(s1);
         if(textCode == 1){
-            holer.button.setText("删除");
+            holer.button.setText(context.getString(R.string.delete));
             holer.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,7 +84,7 @@ public class UploadHistoryAdapter extends BaseAdapter {
                 }
             });
         }else{
-            holer.button.setText("重试");
+            holer.button.setText(context.getString(R.string.retry));
             holer.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

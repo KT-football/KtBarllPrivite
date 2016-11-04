@@ -23,7 +23,7 @@
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
-        android:text="将二维码放入框内，即可自动扫描"
+        android:text="@string/erweima_shamiao"
         android:paddingBottom="100dp"
         />
     

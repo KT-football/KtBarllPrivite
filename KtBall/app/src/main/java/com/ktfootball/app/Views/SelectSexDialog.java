@@ -25,14 +25,14 @@ public class SelectSexDialog extends Dialog {
     private View.OnClickListener OnCaptureClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            activity.setSex("男");
+            activity.setSex(activity.getString(R.string.man));
             dismiss();
         }
     };
     private View.OnClickListener OnGalleryClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            activity.setSex("女");
+            activity.setSex(activity.getString(R.string.gril));
             dismiss();
         }
     };

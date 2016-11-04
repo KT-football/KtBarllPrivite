@@ -81,7 +81,7 @@ public class EvaluatedFragment extends PayFragment {
     public void refershListData(List<UserBcOrders.BcOrders> list){
         currentList = new ArrayList<>();
         for(UserBcOrders.BcOrders bcOrders : list){
-            if(bcOrders.status.equals("待评价")){
+            if(bcOrders.status.equals(getString(R.string.wait_pingjia))){
                 currentList.add(bcOrders);
             }
         }

@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="如何参加KT足球比赛"
+            android:text="@string/how_to_apply"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -46,13 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="        请在入口处找到赛场按钮，选择赛场进行报名，报名成功即可前往赛场进行比赛，参赛时您需要展示您的会员卡，查看我的二维码，每场比赛需要扣除一定的KT币。" />
+            android:text="@string/how_to_content" />
 
         <TextView
             android:id="@+id/layout_footballrecommend_erweima"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="查看我的二维码"
+            android:text="@string/erweima_look"
             android:textColor="@color/setting_text_bt_color"
             android:layout_below="@+id/layout_footballrecommend_tv"/>
 
@@ -63,7 +63,7 @@
             android:textColor="@color/setting_text_bt_color"
             android:layout_below="@+id/layout_footballrecommend_tv"
             android:layout_toRightOf="@+id/layout_footballrecommend_erweima"
-            android:text="什么是KT币"
+            android:text="@string/what_kt_b"
             android:layout_marginLeft="10dp"/>
     </RelativeLayout>
 

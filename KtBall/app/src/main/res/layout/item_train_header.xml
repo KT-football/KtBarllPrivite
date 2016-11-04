@@ -45,7 +45,7 @@
                     android:layout_below="@+id/item_train_header_ywc"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="训练次数"
+                    android:text="@string/train_cont"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
 
@@ -81,7 +81,7 @@
                         android:layout_below="@+id/item_train_header_ywc"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="训练时长"
+                        android:text="@string/train_time"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
 
@@ -113,7 +113,7 @@
                         android:layout_below="@+id/item_train_header_ywc"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="连续训练"
+                        android:text="@string/train_lianxu"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
 
@@ -149,7 +149,7 @@
             android:drawableLeft="@mipmap/add_class"
             android:drawablePadding="5dp"
             android:padding="10dp"
-            android:text="添加课程"
+            android:text="@string/add_class"
             android:textColor="#333333"
             android:textSize="12dp" />
     </RelativeLayout>

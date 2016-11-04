@@ -195,21 +195,21 @@ public class LessonsActivity extends BaseActivity {
             case STARTTRAIN_1:
                 AppCartoon.Videos videos1 = selectVideo("0");
                 if (videos1 != null) {
-                    String str = "下载初级训练课程";
+                    String str = getString(R.string.download_1_class);
                     downVideos(str, videos1);
                 }
                 break;
             case STARTTRAIN_2:
                 AppCartoon.Videos videos2 = selectVideo("1");
                 if (videos2 != null) {
-                    String str = "下载中级训练课程";
+                    String str = getString(R.string.download_2_class);
                     downVideos(str, videos2);
                 }
                 break;
             case STARTTRAIN_3:
                 AppCartoon.Videos videos3 = selectVideo("2");
                 if (videos3 != null) {
-                    String str = "下载高级训练课程";
+                    String str = getString(R.string.download_3_class);
                     downVideos(str, videos3);
                 }
                 break;
@@ -217,7 +217,7 @@ public class LessonsActivity extends BaseActivity {
                 List<AppCartoon.Lessons> lit1 = appCartoon.lessons;
                 AppCartoon.Lessons lessons1 = lit1.get(1);
                 if (lessons1 != null) {
-                    String str = "下载教学漫画";
+                    String str = getString(R.string.download_manhua);
                     downLessons(str, lessons1, 0);
                 }
                 break;
@@ -225,7 +225,7 @@ public class LessonsActivity extends BaseActivity {
                 List<AppCartoon.Lessons> lit2 = appCartoon.lessons;
                 AppCartoon.Lessons lessons2 = lit2.get(0);
                 if (lessons2 != null) {
-                    String str = "下载漫画故事";
+                    String str = getString(R.string.download_gushi);
                     downLessons(str, lessons2, 1);
                 }
                 break;
@@ -271,8 +271,8 @@ public class LessonsActivity extends BaseActivity {
 
     private void showWiFiDialog(String str, String size, final String url, final String name) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getThis());
-        builder.setMessage("当前为Wi-Fi网络，建议下载本课全部内容（约" + size + "KB）");
-        builder.setTitle("提示");
+        builder.setMessage(getString(R.string.is_wifi_download) + size + "KB）");
+        builder.setTitle(getString(R.string.prompt));
         builder.setPositiveButton("   " + str, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -280,7 +280,7 @@ public class LessonsActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("下载本课全部内容", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.download_all_content), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -288,7 +288,7 @@ public class LessonsActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        builder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(getString(R.string.cancle), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -299,16 +299,16 @@ public class LessonsActivity extends BaseActivity {
 
     private void showGDialog(String size, final String url, final String name) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getThis());
-        builder.setMessage("下载内容将会消耗流量（约" + size + "KB)确定继续下载吗");
-        builder.setTitle("提示");
-        builder.setPositiveButton("我是土豪我要继续", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.download_liuliang) + size + getString(R.string.donwload_is));
+        builder.setTitle(getString(R.string.prompt));
+        builder.setPositiveButton(getString(R.string.i_have_money), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 doSingleDown(url, name);
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.cancle), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -402,13 +402,13 @@ public class LessonsActivity extends BaseActivity {
             mDownloadRequests.add(downloadRequest);
             String name = "";
             if (v.video_level.equals("0")) {
-                name = "下载初级教程";
+                name = getString(R.string.download_1);
             }
             if (v.video_level.equals("1")) {
-                name = "下载中级教程";
+                name = getString(R.string.download_2);
             }
             if (v.video_level.equals("2")) {
-                name = "下载高级教程";
+                name = getString(R.string.download_3);
             }
             mFileList.add(new LoadFile(name, 0));
         }
@@ -485,7 +485,7 @@ public class LessonsActivity extends BaseActivity {
                 ZipUtils.UnZipFolder(filePath, FileUtil.getDecompressionDir(getThis()) + appCartoon.name);
 
             } catch (Exception e) {
-                showDialogToast("文件解压错误");
+                showDialogToast(getString(R.string.zevf_error));
             }
             downFinish();
         }
@@ -567,7 +567,7 @@ public class LessonsActivity extends BaseActivity {
                 ZipUtils.UnZipFolder(filePath, FileUtil.getDecompressionDir(getThis()) + appCartoon.name);
 
             } catch (Exception e) {
-                showDialogToast("文件解压错误");
+                showDialogToast(getString(R.string.zevf_error));
             }
             getHandler().postAtTime(new Runnable() {
                 @Override

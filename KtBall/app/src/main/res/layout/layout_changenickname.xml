@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="昵称修改"
+            android:text="@string/nickname_xiugai"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="昵称"
+            android:text="@string/nickname"
             android:textColor="@color/black"/>
 
         <EditText

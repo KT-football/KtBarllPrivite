@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="初级难度"
+            android:text="@string/nandu_chuji"
             android:textColor="@color/train_start_text_color"
             android:textSize="16sp" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="（适合足球基础差，零基础的初学者）"
+            android:text="@string/nandu_chuji_content"
             android:textColor="@color/train_start_text_color"
             android:textSize="14sp" />
     </LinearLayout>
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="中级难度"
+            android:text="@string/nandu_zhongji"
             android:textColor="@color/train_start_text_color"
             android:textSize="16sp" />
 
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="（适合身体素质尚可，有一定基础的训练者）"
+            android:text="@string/nandu_zhongji_contgent"
             android:textColor="@color/train_start_text_color"
             android:textSize="14sp" />
     </LinearLayout>
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="高级难度"
+            android:text="@string/nandu_gaoji"
             android:textColor="@color/train_start_text_color"
             android:textSize="16sp" />
 
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="（适合身体素质强大，有一定基础的训练者）"
+            android:text="@string/nandu_gaoji_content"
             android:textColor="@color/train_start_text_color"
             android:textSize="14sp" />
     </LinearLayout>

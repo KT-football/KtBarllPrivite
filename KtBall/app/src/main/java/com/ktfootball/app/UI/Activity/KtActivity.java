@@ -322,13 +322,13 @@ public class KtActivity extends BaseActivity {
                 }
                 int imageViewCode = bundle.getInt(Constants.TWO_IMAGEVIEW_CODE);
                 if (userScanResult.equals("null")) {
-                    showDialogToast("请重新扫描");
+                    showDialogToast(getString(R.string.scan_again));
                 } else {
                     if (team == 1) {
                         LogUtils.e(userMap.get(1) + "......" + userScanResult);
                         if (userMap.get(1).equals(userScanResult)
                                 || userMap.get(6).equals(userScanResult)) {
-                            showDialogToast("用户已存在");
+                            showDialogToast(getString(R.string.user_isin));
                             return;
                         }
 
@@ -338,7 +338,7 @@ public class KtActivity extends BaseActivity {
                                 || userMap.get(2).equals(userScanResult)
                                 || userMap.get(5).equals(userScanResult)
                                 || userMap.get(6).equals(userScanResult)) {
-                            showDialogToast("用户已存在");
+                            showDialogToast(getString(R.string.user_isin));
                             return;
                         }
 
@@ -349,7 +349,7 @@ public class KtActivity extends BaseActivity {
                                 || userMap.get(4).equals(userScanResult)
                                 || userMap.get(5).equals(userScanResult)
                                 || userMap.get(6).equals(userScanResult)) {
-                            showDialogToast("用户已存在");
+                            showDialogToast(getString(R.string.user_isin));
                             return;
                         }
                     }
@@ -499,7 +499,7 @@ public class KtActivity extends BaseActivity {
     }
 
     private void get2v2LeagueInfo(ScanUser user1, ScanUser user2, final boolean isLeft){
-        showLoadingDiaglog("正在获取战队信息");
+        showLoadingDiaglog(getString(R.string.is_get_zhandui_message));
         PostLeagueRequest request = new PostLeagueRequest(Constants.POST_LEAGUE, RequestMethod.POST);
         request.add("user1_id", user1.user_id+"");
         request.add("user2_id", user2.user_id+"");
@@ -527,7 +527,7 @@ public class KtActivity extends BaseActivity {
     }
 
     private void get3v3LeagueInfo(ScanUser user1, ScanUser user2, ScanUser user3,final boolean isLeft){
-        showLoadingDiaglog("正在获取战队信息");
+        showLoadingDiaglog(getString(R.string.is_get_zhandui_message));
         PostLeagueRequest request = new PostLeagueRequest(Constants.POST_LEAGUE_3V3, RequestMethod.POST);
         request.add("user1_id", user1.user_id+"");
         request.add("user2_id", user2.user_id+"");

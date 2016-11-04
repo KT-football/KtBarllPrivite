@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity implements IRoundBallViewScrollLi
         Timer tExit = null;
         if (isExit == false) {
             isExit = true; // 准备退出
-            Toast.makeText(this, "确定要退出程序嘛~", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.suer_exit), Toast.LENGTH_SHORT).show();
             tExit = new Timer();
             tExit.schedule(new TimerTask() {
                 @Override

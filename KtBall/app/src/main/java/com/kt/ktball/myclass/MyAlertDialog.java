@@ -6,6 +6,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 
+import com.ktfootball.app.R;
+
 /**
  * Created by ww on 2016/3/5.
  */
@@ -22,7 +24,7 @@ public class MyAlertDialog {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(s);
         builder.setCancelable(false);
-        builder.setPositiveButton("确认", null);
+        builder.setPositiveButton(context.getString(R.string.right), null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }

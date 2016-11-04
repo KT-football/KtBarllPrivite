@@ -47,7 +47,7 @@ public class PaymentActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("确认支付");
+        setToolBarTitle(getString(R.string.queren_pay));
     }
 
     @Override
@@ -75,11 +75,11 @@ public class PaymentActivity extends BaseToolBarActivity2 {
                     // 判断resultStatus 为非"9000"则代表可能支付失败
                     // "8000"代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
                     if (TextUtils.equals(resultStatus, "8000")) {
-                        showToast("支付结果确认中");
+                        showToast(getString(R.string.is_paying));
 
                     } else {
                         // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
-                        showToast("支付失败");
+                        showToast(getString(R.string.pay_error));
                     }
                 }
                 break;
@@ -102,7 +102,7 @@ public class PaymentActivity extends BaseToolBarActivity2 {
 //                }else{
 //                    LogUtils.e(response.get().msg);
 //                }
-                showDialogToast("支付成功", new DialogInterface.OnClickListener() {
+                showDialogToast(getString(R.string.pay_succsee), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         setResult(Constants.PAY_SUCCESS);

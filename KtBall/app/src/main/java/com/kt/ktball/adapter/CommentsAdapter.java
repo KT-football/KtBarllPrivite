@@ -82,14 +82,14 @@ public class CommentsAdapter extends BaseAdapter {
         Glide.with(context).load(uri).transform(new GlideCircleTransform(context)).error(R.drawable.result_btnkt).into(holder.avatar);
         holder.name.setText(comments.nickname);
         holder.comments.setText(comments.content);
-        holder.delete.setText(comments.can_delete == 0 ? "" : "删除");
+        holder.delete.setText(comments.can_delete == 0 ? "" : context.getResources().getString(R.string.delete));
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("是否删除该条评论");
+                builder.setTitle(context.getResources().getString(R.string.is_delete_comment));
                 builder.setCancelable(false);
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(context.getResources().getString(R.string.right), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String uri = Constants.HOST + "videos/delete_comment";
@@ -137,7 +137,7 @@ public class CommentsAdapter extends BaseAdapter {
                         VolleyUtil.getInstance(context).addRequest(jsonRequest);
                     }
                 });
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(context.getResources().getString(R.string.cancle), null);
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }

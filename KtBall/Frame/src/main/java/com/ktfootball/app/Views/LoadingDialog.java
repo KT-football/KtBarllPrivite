@@ -1,4 +1,4 @@
-package com.frame.app.view;
+package com.ktfootball.app.Views;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -30,7 +29,6 @@ public class LoadingDialog extends AlertDialog {
 
     /**
      * @param context
-     * @param model   1、无背景、无文字的LoadingDialog
      */
     public LoadingDialog(Context context) {
         super(context, R.style.AlertDialogStyle);
@@ -73,7 +71,7 @@ public class LoadingDialog extends AlertDialog {
                 showRotateLoadingDialog();
                 break;
             case 4:
-                showKTLoadingDialog("请稍后");
+                showKTLoadingDialog("Loading...");
                 break;
             default:
                 showDefaultLoadingDialog();

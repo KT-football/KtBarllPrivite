@@ -102,11 +102,11 @@ public class UpHistoryActivity extends BaseActivity {
 
     public void initErrorButton(){
         List<VcrPath> list = VcrPathDaoHelper.getInstance().queryBySuccess(false);
-        errorTextView.setText("上传失败（"+list.size()+"）");
+        errorTextView.setText(getString(R.string.upload_error)+"（"+list.size()+"）");
     }
 
     public void initSuccessButton(){
         List<VcrPath> list = VcrPathDaoHelper.getInstance().queryBySuccess(true);
-        successTextView.setText("上传成功（"+list.size()+"）");
+        successTextView.setText(getString(R.string.upload_success)+"（"+list.size()+"）");
     }
 }

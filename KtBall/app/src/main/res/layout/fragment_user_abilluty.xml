@@ -21,7 +21,7 @@
             android:background="@mipmap/user_shuju"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text="竞技\n数据"
+            android:text="@string/shuju_jinji"
             android:textColor="@color/gold"
             android:textSize="12dp" />
 
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="场均进球"
+                    android:text="@string/jiqiuchangjun"
                     android:textColor="#666666"
                     android:textSize="12dp" />
 
@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="场均穿裆"
+                    android:text="@string/chuandang_changjun"
                     android:textColor="#666666"
                     android:textSize="12dp" />
 
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="场均KT"
+                    android:text="@string/kt_changjun"
                     android:textColor="#666666"
                     android:textSize="12dp" />
 

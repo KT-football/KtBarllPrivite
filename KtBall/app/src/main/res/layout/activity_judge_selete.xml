@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="裁判选择"
+            android:text="@string/referee_choose"
             android:textColor="@android:color/white"
             android:textSize="20dp"
             android:id="@+id/textView29"
@@ -63,7 +63,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="人工执裁"
+                android:text="@string/rengong"
                 android:gravity="center"
                 android:textSize="17dp"
                 android:textColor="@android:color/white"
@@ -89,7 +89,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="视频上传"
+                android:text="@string/voide_upload"
                 android:gravity="center"
                 android:textSize="17dp"
                 android:textColor="@android:color/white"

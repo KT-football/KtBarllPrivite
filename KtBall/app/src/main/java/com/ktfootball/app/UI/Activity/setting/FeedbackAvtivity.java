@@ -64,7 +64,7 @@ public class FeedbackAvtivity extends BaseActivity {
         String contentText = content.getText().toString();
         String phoneText = phone.getText().toString();
         if("".equals(contentText)){
-            showToast("请填写您要反馈的意见或建议，谢谢");
+            showToast(getString(R.string.wtite_advice));
             return;
         }
         showLoadingDiaglog();
@@ -85,7 +85,7 @@ public class FeedbackAvtivity extends BaseActivity {
                     public void onResponse(JSONObject jsonObject1) {
                         LogUtils.e(jsonObject1.toString());
                         closeLoadingDialog();
-                        showToast("反馈成功");
+                        showToast(getString(R.string.send_advice_ok));
                         finish();
                     }
                 }, new Response.ErrorListener() {

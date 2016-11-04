@@ -68,7 +68,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
-                android:text="接受"
+                android:text="@string/aggre"
                 android:textColor="#ffffff"
                 android:textSize="10dp" />
 
@@ -82,7 +82,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
-                android:text="拒绝"
+                android:text="@string/refuse"
                 android:textColor="#ffffff"
                 android:textSize="10dp" />
         </LinearLayout>

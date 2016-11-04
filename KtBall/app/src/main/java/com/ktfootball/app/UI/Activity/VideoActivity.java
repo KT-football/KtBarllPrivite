@@ -155,7 +155,7 @@ public class VideoActivity extends BaseActivity {
 
     private void setUploadButtonClick() {
         button.setEnabled(true);
-        button.setText("全部上传");
+        button.setText(getString(R.string.all_upload));
         current = 0;
         button.setOnClickListener(UploadVideoClick);
         getErrorCount();
@@ -225,7 +225,7 @@ public class VideoActivity extends BaseActivity {
     private int current = 0;
 
     public void doStopUploadVideo(View view) {
-        button.setText("继续上传");
+        button.setText(getString(R.string.continue_upload));
         button.setOnClickListener(goOn);
         if (uploader != null) {
             uploader.cancel();
@@ -233,7 +233,7 @@ public class VideoActivity extends BaseActivity {
     }
 
     public void doGoOnUploadVideo(View view) {
-        button.setText("暂停上传");
+        button.setText(getString(R.string.stop_upload));
         button.setOnClickListener(stop);
         startUpload();
     }
@@ -266,7 +266,7 @@ public class VideoActivity extends BaseActivity {
     private void startUpload() {
         if (list.size() != 0) {
             textViewCount.setText("" + list.size());
-            button.setText("暂停上传");
+            button.setText(getString(R.string.stop_upload));
             button.setOnClickListener(stop);
             size = list.size();
             copyList = new ArrayList<>(list);
@@ -395,16 +395,16 @@ public class VideoActivity extends BaseActivity {
 
             if (uploader != null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("退出将暂停上传视频");
+                builder.setTitle(getString(R.string.exit_alw_upload));
                 builder.setCancelable(false);
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(getString(R.string.right), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         uploader.cancel();
                         finish();
                     }
                 });
-                builder.setNegativeButton("取消", null);
+                builder.setNegativeButton(getString(R.string.cancle), null);
                 AlertDialog dialog = builder.create();
                 dialog.show();
 

@@ -150,7 +150,7 @@ public class MyFirendActivity extends BaseActivity {
             e.printStackTrace();
         }
         if (!TextUtils.isEmpty(input)) {
-            if (textView.getText().toString().equals("搜索")) {//搜索
+            if (textView.getText().toString().equals(getString(R.string.search))) {//搜索
                 String url = Constants.HOST +"users/search_user?keyword="
                         + input + "&authenticity_token="+MD5.getToken(Constants.HOST +"users/search_user");
                 showLoadingDiaglog();
@@ -175,8 +175,8 @@ public class MyFirendActivity extends BaseActivity {
                                         String url = Constants.HEAD_HOST + data.avatar;
                                         Glide.with(MyFirendActivity.this).load(url).transform(new GlideCircleTransform(MyFirendActivity.this)).into(imageView);
                                         textViewName.setText(data.nickname);
-                                        textViewP.setText("战斗力：" + data.power);
-                                        textView.setText("取消");
+                                        textViewP.setText(getString(R.string.fighting_capacity)+"：" + data.power);
+                                        textView.setText(getString(R.string.cancle));
                                     } else if (response.equals("error")){
                                         String msg = jsonObject1.getString("msg");
                                         MyAlertDialog myAlertDialog = new MyAlertDialog(MyFirendActivity.this);
@@ -205,7 +205,7 @@ public class MyFirendActivity extends BaseActivity {
             } else {//取消
                 relativeLayout.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
-                textView.setText("搜索");
+                textView.setText(getString(R.string.search));
             }
         }
     }
@@ -239,7 +239,7 @@ public class MyFirendActivity extends BaseActivity {
                             JSONObject jsonObject11 = new JSONObject(jsonObject.toString());
                             String response = jsonObject11.getString("response");
                             if (response.equals("success")){
-                                textViewAddFirend.setText("已添加");
+                                textViewAddFirend.setText(getString(R.string.is_add));
                             } else if (response.equals("error")){
                                 String msg = jsonObject11.getString("msg");
                                 MyAlertDialog myAlertDialog = new MyAlertDialog(MyFirendActivity.this);

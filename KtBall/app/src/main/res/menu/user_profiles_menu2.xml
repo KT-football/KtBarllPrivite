@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_set"
-        android:title="设置"
+        android:title="@string/setting"
         app:showAsAction="never"/>
 
     <item android:id="@+id/action_share"
-        android:title="分享"
+        android:title="@string/share"
         app:showAsAction="never"/>
 
     <!--<item android:id="@+id/action_my_msg"-->

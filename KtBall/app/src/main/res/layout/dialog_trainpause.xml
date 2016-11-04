@@ -17,7 +17,7 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             android:layout_gravity="center_vertical"
-            android:text="您已经训练了  "/>
+            android:text="@string/is_xunlian"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             android:layout_gravity="center_vertical"
-            android:text="  次啦，再接再厉啊！"/>
+            android:text="@string/zaijiezaili"/>
     </LinearLayout>
 
     <ImageView

@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="我的消息"
+                android:text="@string/my_message"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="我的足迹"
+                android:text="@string/my_zhuji"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="裁判系统"
+                android:text="@string/caipan"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
         </LinearLayout>

@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="对战记录"
+            android:text="@string/jilu"
             android:textColor="@android:color/white"
             android:textSize="20dp"
             android:id="@+id/textView29"

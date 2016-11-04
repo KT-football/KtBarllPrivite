@@ -198,7 +198,7 @@ public class HengHuadActivity extends BaseActivity {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
             sharedDialog.setTitleUrl(getIntent().getStringExtra("url"));
             sharedDialog.setTitle(getIntent().getStringExtra("title"));
-            sharedDialog.setText("KT足球比赛视频精选");
+            sharedDialog.setText(getString(R.string.kt_game_vodep_top));
         }
         sharedDialog.show();
         dimActivity(sharedDialog, 0.6f);

@@ -23,7 +23,7 @@ public class JudgeSeleteTwoActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("裁判选择");
+        setToolBarTitle(getString(R.string.referee_choose));
     }
 
     @Override

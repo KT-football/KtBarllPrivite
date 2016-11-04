@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initData(Bundle savedInstanceState) {
         ShareSDK.initSDK(this);
-        myDialog = new MyDialog(this, "正在登录");
+        myDialog = new MyDialog(this, getString(R.string.is_login));
         myAlertDialog = new MyAlertDialog(this);
         //设置密码成暗码
         editTextPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -104,7 +104,7 @@ public class LoginActivity extends BaseActivity {
 //        user = "Leo@tempot.com";
 //        password = "18601666098";
         if (TextUtils.isEmpty(user) || TextUtils.isEmpty(password)) {
-            myAlertDialog.doAlertDialog("请输入账号和密码");
+            myAlertDialog.doAlertDialog(getString(R.string.enter_number_pwd));
         } else {
             myDialog.show();
             login();
@@ -128,14 +128,12 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         LogUtils.e(response.toString());
-                        //关闭动画
-                        myDialog.dismiss();
                         //解析从服务器上接收到的json数据
                         UserLogin userMsg = new Gson().fromJson(response.toString(), new TypeToken<UserLogin>() {
                         }.getType());
                         //返回的是错误
                         if (userMsg.response.equals("error")) {
-                            myAlertDialog.doAlertDialog("用户名密码错误");
+                            myAlertDialog.doAlertDialog(getString(R.string.user_num_pwd_error));
                         } else {
                             App.setLocalUserInfo(response.toString());
                             PreferenceManager.getDefaultSharedPreferences(LoginActivity.this)
@@ -148,6 +146,8 @@ public class LoginActivity extends BaseActivity {
                             //把俱乐部的id用意图传递过去
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
+                            //关闭动画
+                            myDialog.dismiss();
                             finish();
                         }
                     }
@@ -156,7 +156,7 @@ public class LoginActivity extends BaseActivity {
             public void onErrorResponse(VolleyError error) {
                 //关闭动画
                 myDialog.dismiss();
-                myAlertDialog.doAlertDialog("网络错误");
+                myAlertDialog.doAlertDialog(getString(R.string.network_connection_timeout));
             }
         }) {
 
@@ -215,7 +215,7 @@ public class LoginActivity extends BaseActivity {
                         }.getType());
                         //返回的是错误
                         if (userMsg.response.equals("error")) {
-                            myAlertDialog.doAlertDialog("网络错误");
+                            myAlertDialog.doAlertDialog(getString(R.string.network_connection_timeout));
                         } else {
                             App.setLocalUserInfo(response.toString());
                             PreferenceManager.getDefaultSharedPreferences(LoginActivity.this)
@@ -236,7 +236,7 @@ public class LoginActivity extends BaseActivity {
             public void onErrorResponse(VolleyError error) {
                 //关闭动画
                 myDialog.dismiss();
-                myAlertDialog.doAlertDialog("网络错误");
+                myAlertDialog.doAlertDialog(getString(R.string.network_connection_timeout));
             }
         }) {
 
@@ -311,7 +311,7 @@ public class LoginActivity extends BaseActivity {
         myDialog.show();
         Platform platform_wb = ShareSDK.getPlatform(getThis(), Wechat.NAME);
         if (!platform_wb.isClientValid()) {
-            showToast("微信未安装,请先安装微信");
+            showToast(getString(R.string.wei_noinstall));
 
         }
         platform_wb.SSOSetting(true);

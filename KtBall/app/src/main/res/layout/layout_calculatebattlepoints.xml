@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="什么是KT币"
+            android:text="@string/what_kt_b"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="        KT足球战斗分是一种计算双方KT能力的数值，初始战斗分为100分，比赛结束后会按照本场比赛的情况，胜利的玩家战斗力增加，失败的玩家战斗力减少，增加和减少的部分主要取决于双方的战斗力以及本场比赛的双方的表现，打败越厉害的对手得到的战斗力会越多哦。" />
+            android:text="@string/what_kt_b_content" />
 
     </RelativeLayout>
 </LinearLayout>

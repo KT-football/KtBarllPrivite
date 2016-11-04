@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="明星详情"
+            android:text="@string/start_detail"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -42,7 +42,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="主页"
+            android:text="@string/zhuye"
             android:textColor="@color/white"
             android:textSize="14dp" />
 
@@ -87,7 +87,7 @@
             android:layout_weight="1"
             android:background="@color/gold"
             android:gravity="center"
-            android:text="介紹"
+            android:text="@string/jiesao"
             android:textColor="@color/white"
             android:textSize="14dp" />
 
@@ -98,7 +98,7 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:gravity="center"
-            android:text="点评"
+            android:text="@string/dianping"
             android:textColor="@color/gold"
             android:textSize="14dp" />
     </LinearLayout>
@@ -120,7 +120,7 @@
             android:padding="10dp"
             android:minLines="7"
             android:textColor="#333333"
-            android:text="暂时还没有简介哟"
+            android:text="@string/no_jianjie"
             android:textSize="12dp" />
 
         <android.support.v7.widget.RecyclerView

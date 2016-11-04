@@ -130,18 +130,6 @@ public class TrainDetailsActivity extends BaseActivity {
     private int tab = 1;
 
 
-    private void showSharedDialog() {
-        if (dialog == null) {
-            dialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            dialog.setTitleUrl("http://ktfootball.com/app_share/cartoon?user_id=" + App.getUserLogin().user_id + "&app_cartoon_id=" + appCartoon.id);
-            dialog.setTitle("我在看KT足球漫画足球教程" + appCartoon.name + "，跟我一起来练习吧");
-            dialog.setText("KT足球漫画教程");
-        }
-        dialog.show();
-        dimActivity(dialog, 0.6f);
-
-
-    }
 
 
     @Override
@@ -255,13 +243,13 @@ public class TrainDetailsActivity extends BaseActivity {
         appCartoon = userAppCartoons;
         tv_title.setText(userAppCartoons.name);
         yxl.setText(userAppCartoons.finished_minutes + "min");
-        ywc.setText(userAppCartoons.finished_times + "次");
+        ywc.setText(userAppCartoons.finished_times + getString(R.string.cont));
         mProgressView.setTimerProgress((int) Float.parseFloat(userAppCartoons.now_level_progress));
         int[] colcr = CommonUtils.getTrainColor(userAppCartoons.now_level_color);
         mName.setText(userAppCartoons.now_level_name);
         mName.setTextColor(colcr[0]);
-        mTv_manhua_download.setText("下载 " + checkSize(Integer.valueOf(userAppCartoons.lessons.get(1).zip_size)));
-        mTv_kt_download.setText("下载 " + checkSize(Integer.valueOf(userAppCartoons.lessons.get(0).zip_size)));
+        mTv_manhua_download.setText(getString(R.string.download1)+" " + checkSize(Integer.valueOf(userAppCartoons.lessons.get(1).zip_size)));
+        mTv_kt_download.setText(getString(R.string.download1)+" " + checkSize(Integer.valueOf(userAppCartoons.lessons.get(0).zip_size)));
         if (FileUtil.fileExists(FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/" + userAppCartoons.lessons.get(1).name)) {
             mTv_manhua_download.setVisibility(View.GONE);
         } else {
@@ -280,9 +268,9 @@ public class TrainDetailsActivity extends BaseActivity {
             String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
             String name = getFileName(videos1.download_video_url).replace(".zip", "");
             if (FileUtil.fileExists(path + name)) {
-                layout_traindetails_start.setText("开始训练");
+                layout_traindetails_start.setText(getString(R.string.start_train));
             } else {
-                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+                layout_traindetails_start.setText(getString(R.string.download_train)+"(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
             }
         }
     }
@@ -364,21 +352,21 @@ public class TrainDetailsActivity extends BaseActivity {
             case STARTTRAIN_1:
                 AppCartoon.Videos videos1 = selectVideo("0");
                 if (videos1 != null) {
-                    String str = "下载初级训练课程";
+                    String str = getString(R.string.download_1_class);
                     downVideos(str, videos1);
                 }
                 break;
             case STARTTRAIN_2:
                 AppCartoon.Videos videos2 = selectVideo("1");
                 if (videos2 != null) {
-                    String str = "下载中级训练课程";
+                    String str =  getString(R.string.download_2_class);
                     downVideos(str, videos2);
                 }
                 break;
             case STARTTRAIN_3:
                 AppCartoon.Videos videos3 = selectVideo("2");
                 if (videos3 != null) {
-                    String str = "下载高级训练课程";
+                    String str =  getString(R.string.download_3_class);
                     downVideos(str, videos3);
                 }
                 break;
@@ -386,7 +374,7 @@ public class TrainDetailsActivity extends BaseActivity {
                 List<AppCartoon.Lessons> lit1 = appCartoon.lessons;
                 AppCartoon.Lessons lessons1 = lit1.get(1);
                 if (lessons1 != null) {
-                    String str = "下载教学漫画";
+                    String str =  getString(R.string.download_manhua);
                     downLessons(str, lessons1, 0);
                 }
                 break;
@@ -394,7 +382,7 @@ public class TrainDetailsActivity extends BaseActivity {
                 List<AppCartoon.Lessons> lit2 = appCartoon.lessons;
                 AppCartoon.Lessons lessons2 = lit2.get(0);
                 if (lessons2 != null) {
-                    String str = "下载漫画故事";
+                    String str =  getString(R.string.download_gushi);
                     downLessons(str, lessons2, 1);
                 }
                 break;
@@ -470,8 +458,8 @@ public class TrainDetailsActivity extends BaseActivity {
 
     private void showWiFiDialog(String str, String size, final String url, final String name) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getThis());
-        builder.setMessage("当前为Wi-Fi网络，建议下载本课全部内容（约" + size + "KB）");
-        builder.setTitle("提示");
+        builder.setMessage(getString(R.string.is_wifi_download) + size + "KB）");
+        builder.setTitle(getString(R.string.i_have_money));
         builder.setPositiveButton("   " + str, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -479,7 +467,7 @@ public class TrainDetailsActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("下载本课全部内容", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.download_all_content), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -487,7 +475,7 @@ public class TrainDetailsActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-        builder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(getString(R.string.cancle), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -498,16 +486,16 @@ public class TrainDetailsActivity extends BaseActivity {
 
     private void showGDialog(String size, final String url, final String name) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getThis());
-        builder.setMessage("下载内容将会消耗流量（约" + size + "KB)确定继续下载吗");
-        builder.setTitle("提示");
-        builder.setPositiveButton("我是土豪我要继续", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.download_liuliang) + size + getString(R.string.donwload_is));
+        builder.setTitle(getString(R.string.prompt));
+        builder.setPositiveButton(getString(R.string.i_have_money), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 doSingleDown(url, name);
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.cancle), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -550,13 +538,13 @@ public class TrainDetailsActivity extends BaseActivity {
             mDownloadRequests.add(downloadRequest);
             String name = "";
             if (v.video_level.equals("0")) {
-                name = "下载初级教程";
+                name = getString(R.string.download_1);
             }
             if (v.video_level.equals("1")) {
-                name = "下载中级教程";
+                name = getString(R.string.download_2);
             }
             if (v.video_level.equals("2")) {
-                name = "下载高级教程";
+                name = getString(R.string.download_3);
             }
             mFileList.add(new LoadFile(name, 0));
         }
@@ -635,7 +623,7 @@ public class TrainDetailsActivity extends BaseActivity {
                 ZipUtils.UnZipFolder(filePath, FileUtil.getDecompressionDir(getThis()) + appCartoon.name);
                 new File(filePath).delete();
             } catch (Exception e) {
-                showDialogToast("文件解压错误");
+                showDialogToast(getString(R.string.zevf_error));
             }
             downFinish();
         }
@@ -738,7 +726,7 @@ public class TrainDetailsActivity extends BaseActivity {
                 ZipUtils.UnZipFolder(filePath, FileUtil.getDecompressionDir(getThis()) + appCartoon.name);
                 new File(filePath).delete();
             } catch (Exception e) {
-                showDialogToast("文件解压错误");
+                showDialogToast(getString(R.string.zevf_error));
             }
             addToUserAppCartoons();
             getHandler().postAtTime(new Runnable() {
@@ -756,7 +744,7 @@ public class TrainDetailsActivity extends BaseActivity {
                         case DOWNLOAD_XUNLIAN:
                             mProgressXunlian.setVisibility(View.GONE);
                             layout_traindetails_start.setVisibility(View.VISIBLE);
-                            layout_traindetails_start.setText("开始训练");
+                            layout_traindetails_start.setText(getString(R.string.start_train));
                             break;
                         default:
                             singleDownDialog.dialogDismiss();
@@ -831,7 +819,7 @@ public class TrainDetailsActivity extends BaseActivity {
 
     @OnClick(R.id.tv_chuji)
     public void checkChuji() {
-        tv_tishi.setText("适合足球基础差,零基础的初学者");
+        tv_tishi.setText(getString(R.string.follow_prow));
         tv_chuji.setTextColor(0xffffffff);
         tv_chuji.setBackgroundColor(getResourcesColor(R.color.gold));
         tv_zhongji.setBackgroundColor(0xffffffff);
@@ -844,16 +832,16 @@ public class TrainDetailsActivity extends BaseActivity {
             String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
             String name = getFileName(videos1.download_video_url).replace(".zip", "");
             if (FileUtil.fileExists(path + name)) {
-                layout_traindetails_start.setText("开始训练");
+                layout_traindetails_start.setText(getString(R.string.start_train));
             } else {
-                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+                layout_traindetails_start.setText(getString(R.string.download_train)+"(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
             }
         }
     }
 
     @OnClick(R.id.tv_zhongji)
     public void checkZhongji() {
-        tv_tishi.setText("适合身体尚可,有一定的基础的训练者");
+        tv_tishi.setText(getString(R.string.follow_wheel));
         tv_zhongji.setTextColor(0xffffffff);
         tv_zhongji.setBackgroundColor(getResourcesColor(R.color.gold));
         tv_chuji.setBackgroundColor(0xffffffff);
@@ -866,16 +854,16 @@ public class TrainDetailsActivity extends BaseActivity {
             String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
             String name = getFileName(videos1.download_video_url).replace(".zip", "");
             if (FileUtil.fileExists(path + name)) {
-                layout_traindetails_start.setText("开始训练");
+                layout_traindetails_start.setText(getString(R.string.start_train));
             } else {
-                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+                layout_traindetails_start.setText(getString(R.string.download_train)+"(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
             }
         }
     }
 
     @OnClick(R.id.tv_gaoji)
     public void checkGaoji() {
-        tv_tishi.setText("适合身体素质强大,有一定基础的训练者");
+        tv_tishi.setText(getString(R.string.follow_ok));
         tv_gaoji.setTextColor(0xffffffff);
         tv_gaoji.setBackgroundColor(getResourcesColor(R.color.gold));
         tv_zhongji.setBackgroundColor(0xffffffff);
@@ -888,9 +876,9 @@ public class TrainDetailsActivity extends BaseActivity {
             String path = FileUtil.getDecompressionDir(getThis()) + appCartoon.name + "/";
             String name = getFileName(videos1.download_video_url).replace(".zip", "");
             if (FileUtil.fileExists(path + name)) {
-                layout_traindetails_start.setText("开始训练");
+                layout_traindetails_start.setText(getString(R.string.start_train));
             } else {
-                layout_traindetails_start.setText("下载训练(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
+                layout_traindetails_start.setText(getString(R.string.download_train)+"(" + checkSize(Integer.parseInt(videos1.video_size)) + ")");
             }
         }
 

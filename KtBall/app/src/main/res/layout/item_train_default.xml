@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/red"
-            android:text="删除"
+            android:text="@string/delete"
             android:textColor="@color/white" />
 
     </LinearLayout>

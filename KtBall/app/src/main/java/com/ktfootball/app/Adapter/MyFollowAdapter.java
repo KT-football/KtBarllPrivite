@@ -61,13 +61,13 @@ public class MyFollowAdapter extends RecyclerView.Adapter<MyFollowAdapter.ViewHo
     public void onBindViewHolder(ViewHoder holder, final int position) {
         Glide.with(mContext).load(Constants.HEAD_HOST + mList.get(position).getAvatar()).transform(new GlideCircleTransform(mContext)).error(R.drawable.result_btnkt).into(holder.mHead);
         holder.mName.setText(mList.get(position).getNickname());
-        holder.mZhan.setText("战斗力:" + mList.get(position).getPower());
+        holder.mZhan.setText(mContext.getString(R.string.fighting_capacity)+":" + mList.get(position).getPower());
         holder.mCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setTitle("是否取消关注？");
-                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                builder.setTitle(mContext.getString(R.string.is_cancle_follow));
+                builder.setPositiveButton(mContext.getString(R.string.right), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String url = Constants.HOST +"users/cancel_follow";
@@ -118,7 +118,7 @@ public class MyFollowAdapter extends RecyclerView.Adapter<MyFollowAdapter.ViewHo
                         VolleyUtil.getInstance(mContext).addRequest(jsonRequest);
                     }
 
-                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                }).setNegativeButton(mContext.getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

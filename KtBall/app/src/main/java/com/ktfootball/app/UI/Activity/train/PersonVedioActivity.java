@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.frame.app.base.Adapter.OnRecyclerViewItemClickListener;
 import com.frame.app.utils.LogUtils;
+import com.ktfootball.app.R;
 import com.ktfootball.app.UI.Activity.PlayerActivity;
 import com.ktfootball.app.Adapter.PersonVideoAdapter;
 import com.ktfootball.app.Base.BaseRecyclerView;
@@ -24,7 +25,7 @@ public class PersonVedioActivity extends BaseRecyclerView {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("真人视频");
+        setToolBarTitle(getString(R.string.really_video));
     }
 
     @Override

@@ -74,12 +74,12 @@ public class SystemTeamMsgItem extends RecyclerView.Adapter<SystemTeamMsgItem.Sy
         } else if (mList.get(position).getLeague_invitation_status() == 0) {
             holder.mAgree.setVisibility(View.GONE);
             holder.mCancle.setVisibility(View.GONE);
-            holder.tv_status1.setText("已拒绝");
+            holder.tv_status1.setText(mContext.getString(R.string.is_refuse));
             holder.tv_status1.setVisibility(View.VISIBLE);
         } else {
             holder.mAgree.setVisibility(View.GONE);
             holder.mCancle.setVisibility(View.GONE);
-            holder.tv_status1.setText("已接受");
+            holder.tv_status1.setText(mContext.getString(R.string.is_agree));
             holder.tv_status1.setTextColor(mContext.getResources().getColor(R.color.gold));
             holder.tv_status1.setVisibility(View.VISIBLE);
         }

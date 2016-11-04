@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="添加課程"
+            android:text="@string/add_class"
             android:textColor="@color/white"
             android:textSize="18dp" />
 
@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:background="@color/gold"
             android:gravity="center"
-            android:text="全部"
+            android:text="@string/all_cont"
             android:textColor="@color/white" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="带球"
+            android:text="@string/daiqiu"
             android:textColor="@color/gold" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="控球"
+            android:text="@string/kongqiu"
             android:textColor="@color/gold" />
     </LinearLayout>
 

@@ -72,7 +72,7 @@ public class MyTeamActivity extends BaseActivity {
     }
 
     private void initView() {
-        myDialog = new MyDialog(this,"正在更新");
+        myDialog = new MyDialog(this,getString(R.string.is_update));
         myDialog.show();
         String url = Constants.HOST +"users/leagues?user_id="
                 + userId + "&authenticity_token="+ MD5.getToken(Constants.HOST +"users/leagues");

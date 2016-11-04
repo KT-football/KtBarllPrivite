@@ -38,7 +38,7 @@ public class GamePlaceActivity extends BaseRecyclerViewNoRefresh {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("比赛地点");
+        setToolBarTitle(getString(R.string.game_address));
     }
 
     @Override

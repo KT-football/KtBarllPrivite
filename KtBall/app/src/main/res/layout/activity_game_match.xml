@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="赛事"
+            android:text="@string/game"
             android:textColor="@color/gold"
             android:textSize="18dp" />
 
@@ -32,7 +32,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="包场"
+            android:text="@string/baochang"
             android:textColor="@color/white"
             android:textSize="12dp" />
 
@@ -63,7 +63,7 @@
                     android:paddingBottom="5dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
-                    android:text="离我最近"
+                    android:text="@string/near_me"
                     android:textColor="#333333"
                     android:textSize="12dp" />
 
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:padding="8dp"
-                    android:text="更多选择"
+                    android:text="@string/more_choose"
                     android:textColor="#333333"
                     android:textSize="12dp" />
 

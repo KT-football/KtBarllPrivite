@@ -46,7 +46,7 @@
             android:layout_toRightOf="@+id/imageView24"
             android:background="@drawable/no_border"
             android:gravity="center"
-            android:hint="请输入账号"
+            android:hint="@string/wtite_zhanghao"
             android:textColor="@android:color/white"
             android:textColorHint="@color/colorHui"
             android:textCursorDrawable="@drawable/color_cursor_white"
@@ -92,7 +92,7 @@
             android:layout_toRightOf="@+id/imageView26"
             android:background="@drawable/no_border"
             android:gravity="center"
-            android:hint="请输入密码"
+            android:hint="@string/wtite_pwd"
             android:textColor="@android:color/white"
             android:textColorHint="@color/colorHui"
             android:textCursorDrawable="@drawable/color_cursor_white"
@@ -108,7 +108,7 @@
         android:layout_marginTop="70dp"
         android:background="@mipmap/logo_dengl"
         android:onClick="doLogin"
-        android:text="登 录"
+        android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="16dp" />
 
@@ -121,7 +121,7 @@
         android:drawableRight="@drawable/icon_right"
         android:onClick="doForgetPassword"
         android:padding="10dp"
-        android:text="找回密码"
+        android:text="@string/zhaohui_pwd"
         android:textColor="@color/colorHui"
         android:textSize="14dp" />
 
@@ -166,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView32"
         android:layout_centerHorizontal="true"
-        android:text="社交账号登陆"
+        android:text="@string/login_thrid"
         android:textColor="@color/colorHui"
         android:textSize="12dp" />
 
@@ -180,7 +180,7 @@
         android:gravity="center_vertical"
         android:onClick="doRegister"
         android:padding="20dp"
-        android:text="立即注册"
+        android:text="@string/register_go"
         android:textColor="@color/white"
         android:textSize="16dp" />
 

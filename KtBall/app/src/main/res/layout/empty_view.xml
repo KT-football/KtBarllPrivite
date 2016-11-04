@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="暂时还没有任何数据"
+            android:text="@string/no_content"
             android:textColor="#666666"
             android:textSize="12dp" />
     </LinearLayout>

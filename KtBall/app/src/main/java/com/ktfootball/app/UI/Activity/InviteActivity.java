@@ -145,7 +145,7 @@ public class InviteActivity extends BaseActivity {
             e.printStackTrace();
         }
         if (!TextUtils.isEmpty(input)) {
-            if (textView.getText().toString().equals("搜索")) {//搜索
+            if (textView.getText().toString().equals(getResources().getString(R.string.search))) {//搜索
                 String url = Constants.HOST +"users/search_user?keyword="
                         + input + "&authenticity_token="+MD5.getToken(Constants.HOST +"users/search_user");
                 showLoadingDiaglog();
@@ -170,8 +170,8 @@ public class InviteActivity extends BaseActivity {
                                         String url = Constants.HEAD_HOST + data.avatar;
                                         Glide.with(InviteActivity.this).load(url).transform(new GlideCircleTransform(InviteActivity.this)).error(R.drawable.result_btnkt).into(imageView);
                                         textViewName.setText(data.nickname);
-                                        textViewP.setText("战斗力：" + data.power);
-                                        textView.setText("取消");
+                                        textViewP.setText(getString(R.string.fighting_capacity)+":" + data.power);
+                                        textView.setText(getString(R.string.cancle));
                                     } else if (response.equals("error")){
                                         String msg = jsonObject1.getString("msg");
                                         MyAlertDialog myAlertDialog = new MyAlertDialog(InviteActivity.this);
@@ -200,7 +200,7 @@ public class InviteActivity extends BaseActivity {
             } else {//取消
                 relativeLayout.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
-                textView.setText("搜索");
+                textView.setText(getString(R.string.search));
             }
         }
     }
@@ -230,8 +230,8 @@ public class InviteActivity extends BaseActivity {
                             JSONObject jsonObject1 = new JSONObject(object.toString());
                             String response = jsonObject1.getString("response");
                             if (response.equals("success")){
-                                textViewAddFirend.setText("已邀请");
-                                myAlertDialog.doAlertDialog("发送邀请成功");
+                                textViewAddFirend.setText(getString(R.string.invitation));
+                                myAlertDialog.doAlertDialog(getString(R.string.sned_invitation_success));
                             } else if (response.equals("error")){
                                 String msg = jsonObject1.getString("msg");
                                 myAlertDialog.doAlertDialog(msg);

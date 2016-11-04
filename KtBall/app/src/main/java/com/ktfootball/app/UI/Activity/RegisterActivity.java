@@ -94,7 +94,7 @@ public class RegisterActivity extends BaseActivity {
     public void doGetCode(View view) {//获取验证码
         String phone = editTextPhone.getText().toString();
         if (TextUtils.isEmpty(phone)) {
-            myAlertDialog.doAlertDialog("请输入手机号");
+            myAlertDialog.doAlertDialog(getString(R.string.check_phone));
         } else if (phone.length() == 11) {
             doButtonChange();
             time = 60;
@@ -116,7 +116,7 @@ public class RegisterActivity extends BaseActivity {
             );
             VolleyUtil.getInstance(this).addRequest(jsonRequest);
         } else {
-            myAlertDialog.doAlertDialog("手机号格式错误");
+            myAlertDialog.doAlertDialog(getString(R.string.phone_error));
         }
     }
 
@@ -131,7 +131,7 @@ public class RegisterActivity extends BaseActivity {
                         @Override
                         public void run() {
                             buttonGetCode.setEnabled(false);
-                            buttonGetCode.setText(time + "秒后重新发送");
+                            buttonGetCode.setText(time + getString(R.string.restate_send));
                         }
                     });
                 } else {
@@ -139,7 +139,7 @@ public class RegisterActivity extends BaseActivity {
                         @Override
                         public void run() {
                             buttonGetCode.setEnabled(true);
-                            buttonGetCode.setText("重新发送验证码");
+                            buttonGetCode.setText(getString(R.string.restart_yanzhen));
                         }
                     });
                 }
@@ -157,17 +157,17 @@ public class RegisterActivity extends BaseActivity {
         String passwordAgain = editTextPasswordAgain.getText().toString();
         boolean flag = checkBox.isChecked();
         if (TextUtils.isEmpty(phone)) {
-            myAlertDialog.doAlertDialog("请输入手机号");
+            myAlertDialog.doAlertDialog(getString(R.string.check_phone));
         } else if (TextUtils.isEmpty(code)) {
-            myAlertDialog.doAlertDialog("请输入验证码");
+            myAlertDialog.doAlertDialog(getString(R.string.send_yanzhen));
         } else if (TextUtils.isEmpty(name)) {
-            myAlertDialog.doAlertDialog("请输入昵称或者姓名");
+            myAlertDialog.doAlertDialog(getString(R.string.send_user));
         } else if (TextUtils.isEmpty(password)) {
-            myAlertDialog.doAlertDialog("请输入密码");
+            myAlertDialog.doAlertDialog(getString(R.string.send_pwd));
         } else if (!password.equals(passwordAgain)) {
-            myAlertDialog.doAlertDialog("两次密码输入不一致");
+            myAlertDialog.doAlertDialog(getString(R.string.again_pwd_error));
         } else if (!flag) {
-            myAlertDialog.doAlertDialog("请点击同意注册及参赛须知");
+            myAlertDialog.doAlertDialog(getString(R.string.aggre_register));
         } else {
             String url = Constants.HOST +"users/mregister";
             JSONObject jsonObject1 = new JSONObject();
@@ -196,7 +196,7 @@ public class RegisterActivity extends BaseActivity {
                                     String msg = jsonObject2.getString("msg");
                                     myAlertDialog.doAlertDialog(msg);
                                 } else if (response.equals("success")) {
-                                    myAlertDialog.doAlertDialog("注册成功");
+                                    myAlertDialog.doAlertDialog(getString(R.string.register_ok));
                                     Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {
                                         @Override

@@ -18,6 +18,7 @@ package com.ktfootball.app.Net;
 
 import com.frame.app.base.activity.BaseActivity;
 import com.kt.ktball.utils.Toast;
+import com.ktfootball.app.R;
 import com.yolanda.nohttp.Logger;
 import com.yolanda.nohttp.error.NetworkError;
 import com.yolanda.nohttp.error.NotFoundCacheError;
@@ -121,20 +122,20 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
     public void onFailed(int what, String url, Object tag, Exception exception,
                          int responseCode, long networkMillis) {
         if (exception instanceof NetworkError) {// 网络不好
-            Toast.show(context, "请检查网络。");
+            Toast.show(context, context.getString(R.string.download_error_network));
         } else if (exception instanceof TimeoutError) {// 请求超时
-            Toast.show(context, "请求超时，网络不好或者服务器不稳定。");
+            Toast.show(context, context.getString(R.string.network_connection_timeout));
         } else if (exception instanceof UnKnownHostError) {// 找不到服务器
-            Toast.show(context, "未发现指定服务器。");
+            Toast.show(context, context.getString(R.string.no_find_service));
         } else if (exception instanceof URLError) {// URL是错的
-            Toast.show(context, "URL错误。");
+            Toast.show(context, context.getString(R.string.url_wrong));
         } else if (exception instanceof NotFoundCacheError) {
             // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
-            Toast.show(context, "没有发现缓存。");
+            Toast.show(context, context.getString(R.string.no_cache));
         } else if (exception instanceof ProtocolException) {
-            Toast.show(context, "系统不支持的请求方式。");
+            Toast.show(context, context.getString(R.string.client_cant_do));
         } else {
-            Toast.show(context, "未知错误。");
+            Toast.show(context, context.getString(R.string.noknow_error));
         }
         Logger.e("错误：" + exception.getMessage());
         if (callback != null)

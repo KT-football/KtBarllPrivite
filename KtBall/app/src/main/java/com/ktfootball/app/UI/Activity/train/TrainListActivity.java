@@ -166,7 +166,7 @@ public class TrainListActivity extends BaseActivity {
     }
 
     private void initToolBar() {
-        setToolBarTitle("添加课程");
+        setToolBarTitle(getString(R.string.add_class));
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="姓名"
+            android:text="@string/user_name"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
             android:id="@+id/textView58"
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="战斗力"
+            android:text="@string/fighting_capacity"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
             android:id="@+id/textView59"

@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="设置"
+            android:text="@string/setting"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:text="修改密码" />
+            android:text="@string/modify_pwd" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -212,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:text="绑定手机" />
+            android:text="@string/bind_phone" />
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="请选择城市"
+                android:text="@string/choose_city"
                 android:id="@+id/selectDialog_txv_title" />
 
             <LinearLayout
@@ -66,7 +66,7 @@
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="取消"
+                android:text="@string/cancle"
                 android:id="@+id/selectDialog_txv_cacel"
                 android:layout_weight="1" />
 
@@ -83,7 +83,7 @@
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="确定"
+                android:text="@string/right"
                 android:id="@+id/selectDialog_txv_confirm"
                 android:layout_weight="1" />
         </LinearLayout>

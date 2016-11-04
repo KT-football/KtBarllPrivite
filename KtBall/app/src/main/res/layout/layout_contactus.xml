@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="联系我们"
+            android:text="@string/lianxi_our"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="电话"
+                android:text="@string/phone"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_margin="15dp"/>
@@ -87,7 +87,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地址"
+                android:text="@string/address1"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -100,7 +100,7 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:layout_gravity="center_vertical"
-                android:text="上海市闵行区申长路988弄虹桥万科中心B2-P2内VIPROOM"
+                android:text="@string/address_our"
                 />
 
             <ImageView

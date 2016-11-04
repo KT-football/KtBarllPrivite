@@ -34,7 +34,7 @@ public class TrainingLevelActivity extends BaseRecyclerView {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("训练等级");
+        setToolBarTitle(getString(R.string.train_lv));
     }
 
     @Override

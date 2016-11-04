@@ -366,7 +366,7 @@ public class VedioStartActiviy extends BaseActivity {
                 List<AppCartoon.Lessons> lit1 = appCartoon.lessons;
                 AppCartoon.Lessons lessons1 = lit1.get(1);
                 if (lessons1 != null) {
-                    String str = "下载教学漫画";
+                    String str = getString(R.string.download_manhua);
                     downLessons(str, lessons1, 0);
                 }
             }
@@ -378,7 +378,7 @@ public class VedioStartActiviy extends BaseActivity {
                 List<AppCartoon.Lessons> lit2 = appCartoon.lessons;
                 AppCartoon.Lessons lessons2 = lit2.get(0);
                 if (lessons2 != null) {
-                    String str = "下载漫画故事";
+                    String str = getString(R.string.download_gushi);
                     downLessons(str, lessons2, 1);
                 }
             }

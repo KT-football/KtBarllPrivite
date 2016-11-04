@@ -282,7 +282,7 @@ public class VSActivity extends BaseActivity implements SurfaceHolder.Callback, 
         //获取当前时间
         String currentTime = String.valueOf(System.currentTimeMillis());
 //        String path = getCacheDir().getAbsolutePath()+"/KT足球/";
-        String path = FileUtil.getDir(getThis(),"KT足球");
+        String path = FileUtil.getDir(getThis(),getString(R.string.kt_ball));
 //        String path = Environment.getExternalStorageDirectory().toString() + "/KT足球/";
         relativeLayout.setVisibility(View.GONE);
         textViewTime.setVisibility(View.GONE);
@@ -296,7 +296,7 @@ public class VSActivity extends BaseActivity implements SurfaceHolder.Callback, 
         vSintent.putExtra(Constants.USER_F, userF);
         switch (team) {
             case 1:
-                VCRpath = path + userA.nickname + " VS " + userF.nickname + " 在" + gamePlace + currentTime + ".mp4";
+                VCRpath = path + userA.nickname + " VS " + userF.nickname + " "+getString(R.string.in) + gamePlace + currentTime + ".mp4";
                 break;
             case 2:
                 textViewB.setText(userB.nickname);
@@ -305,7 +305,7 @@ public class VSActivity extends BaseActivity implements SurfaceHolder.Callback, 
                 vSintent.putExtra(Constants.USER_E, userE);
                 BitmapManager.getInstance().displayUserLogo(imageViewBB, App.getImageUrl(userB.avatar));
                 BitmapManager.getInstance().displayUserLogo(imageViewEE, App.getImageUrl(userE.avatar));
-                VCRpath = path + userA.nickname + "," + userB.nickname + " VS " + userE.nickname + "," + userF.nickname + " 在" + gamePlace + currentTime + ".mp4";
+                VCRpath = path + userA.nickname + "," + userB.nickname + " VS " + userE.nickname + "," + userF.nickname + " "+getString(R.string.in) + gamePlace + currentTime + ".mp4";
                 break;
             case 3:
                 textViewC.setText(userC.nickname);
@@ -320,7 +320,7 @@ public class VSActivity extends BaseActivity implements SurfaceHolder.Callback, 
                 BitmapManager.getInstance().displayUserLogo(imageViewEE, App.getImageUrl(userE.avatar));
                 BitmapManager.getInstance().displayUserLogo(imageViewCC, App.getImageUrl(userC.avatar));
                 BitmapManager.getInstance().displayUserLogo(imageViewDD, App.getImageUrl(userD.avatar));
-                VCRpath = path + userA.nickname + "," + userB.nickname + "," + userC.nickname + " VS " + userD.nickname + "," + userE.nickname + "," + userF.nickname + " 在" + gamePlace + currentTime + ".mp4";
+                VCRpath = path + userA.nickname + "," + userB.nickname + "," + userC.nickname + " VS " + userD.nickname + "," + userE.nickname + "," + userF.nickname + " "+getString(R.string.in) + gamePlace + currentTime + ".mp4";
                 break;
         }
     }

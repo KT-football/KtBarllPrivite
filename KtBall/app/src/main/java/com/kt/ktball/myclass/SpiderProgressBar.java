@@ -142,23 +142,23 @@ public class SpiderProgressBar extends View {
         paint.setTextSize(30);
 
 
-        drawText(canvas,"胜率",radius * (float) Math.cos(Math.PI / 180 * 0 * (360 / (max - 1))) + center+6,
+        drawText(canvas,getResources().getString(R.string.winning_probability),radius * (float) Math.cos(Math.PI / 180 * 0 * (360 / (max - 1))) + center+6,
                 radius * (float) Math.sin(Math.PI / 180 * 0 * (360 / (max - 1))) + center-16,
                 paint,360/5+25);
 
-        drawText(canvas,"穿裆",radius * (float) Math.cos(Math.PI / 180 * 1 * (360 / (max - 1))) + center+18,
+        drawText(canvas,getResources().getString(R.string.wear_crotch),radius * (float) Math.cos(Math.PI / 180 * 1 * (360 / (max - 1))) + center+18,
                 radius * (float) Math.sin(Math.PI / 180 * 1 * (360 / (max - 1))) + center,
                 paint,360/5*2+25);
 
-        drawText(canvas," 进球",radius * (float) Math.cos(Math.PI / 180 * 2 * (360 / (max - 1))) + center+6 ,
+        drawText(canvas,getResources().getString(R.string.goal),radius * (float) Math.cos(Math.PI / 180 * 2 * (360 / (max - 1))) + center+6 ,
                 radius * (float) Math.sin(Math.PI / 180 * 2 * (360 / (max - 1))) + center+24,
                 paint,360/5*3+25);
 
-        drawText(canvas,"KT",radius * (float) Math.cos(Math.PI / 180 * 3 * (360 / (max - 1))) + center-16,
+        drawText(canvas,getResources().getString(R.string.kt),radius * (float) Math.cos(Math.PI / 180 * 3 * (360 / (max - 1))) + center-16,
                 radius * (float) Math.sin(Math.PI / 180 * 3 * (360 / (max - 1))) + center+12,
                 paint,360/5*4+20);
 
-        drawText(canvas,"得分 ",radius * (float) Math.cos(Math.PI / 180 * 4 * (360 / (max - 1))) + center-16,
+        drawText(canvas,getResources().getString(R.string.score),radius * (float) Math.cos(Math.PI / 180 * 4 * (360 / (max - 1))) + center-16,
                 radius * (float) Math.sin(Math.PI / 180 * 4 * (360 / (max - 1))) + center-12,
                 paint,360+20);
     }

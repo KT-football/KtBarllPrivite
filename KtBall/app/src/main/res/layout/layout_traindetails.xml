@@ -116,7 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="已完成"
+                            android:text="@string/is_ok"
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="已训练"
+                            android:text="@string/train"
                             android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
@@ -162,7 +162,7 @@
                     android:layout_weight="1"
                     android:background="@color/gold"
                     android:gravity="center"
-                    android:text="初级"
+                    android:text="@string/chuji"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -171,7 +171,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="中级"
+                    android:text="@string/zhongji"
                     android:textColor="@color/gold" />
 
                 <TextView
@@ -180,7 +180,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="高级"
+                    android:text="@string/gaoji"
                     android:textColor="@color/gold" />
             </LinearLayout>
 
@@ -191,7 +191,7 @@
                 android:layout_below="@+id/linear_lv"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="适合基础差的初学者"
+                android:text="@string/follow_prow"
                 android:textColor="#999999"
                 android:textSize="12dp" />
 
@@ -214,7 +214,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="教学漫画"
+                        android:text="@string/manhuajiaoxue"
                         android:textColor="@color/text_color_gray_7"
                         android:textSize="14dp" />
 
@@ -262,7 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="KT豹漫画故事"
+                        android:text="@string/manhuagushi"
                         android:textColor="@color/text_color_gray_7"
                         android:textSize="14dp" />
 
@@ -309,7 +309,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="真人示范"
+                        android:text="@string/really_people"
                         android:textColor="@color/text_color_gray_7"
                         android:textSize="14dp" />
 

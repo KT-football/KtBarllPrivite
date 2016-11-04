@@ -54,8 +54,8 @@ public class ScreeningsFragment extends BaseFragment{
             mTv_Lose.setText(userMsg.lose+"");
             mTv_ping.setText(userMsg.draw+"");
             mTv_win.setText(userMsg.win+"");
-            mTv_cont.setText("总场次 : "+(userMsg.lose+userMsg.draw+userMsg.win));
-            mTv_pai.setText("全国排行 : "+userMsg.rank);
+            mTv_cont.setText(getString(R.string.all_game)+" : "+(userMsg.lose+userMsg.draw+userMsg.win));
+            mTv_pai.setText(getString(R.string.contury_top)+" : "+userMsg.rank);
             tv_zhandouli.setText(userMsg.power+"");
             myCirCleView.setProgress(userMsg.win == 0?0:userMsg.win*100/(userMsg.lose+userMsg.draw+userMsg.win),userMsg.lose == 0?0:userMsg.lose*100/(userMsg.lose+userMsg.draw+userMsg.win));
             myoutCirCleView.setProgress(userMsg.win == 0?0:userMsg.win*100/(userMsg.lose+userMsg.draw+userMsg.win),userMsg.lose == 0?0:userMsg.lose*100/(userMsg.lose+userMsg.draw+userMsg.win));

@@ -48,7 +48,7 @@ public class SelectAvatarDialog extends Dialog {
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(getFile()));
                 activity.startActivityForResult(intent, PHOTO_REQUEST_CAMERA);
             } catch (Exception e) {
-                ((BaseActivity)activity).showToast("请赋予应用使用照相机权限");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.camera_per));
             }
             dismiss();
         }

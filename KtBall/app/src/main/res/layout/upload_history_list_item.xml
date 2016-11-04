@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="删除"
+        android:text="@string/delete"
         android:textColor="@android:color/holo_blue_light"
         android:id="@+id/button3"
         android:layout_centerVertical="true"

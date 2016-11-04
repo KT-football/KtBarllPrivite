@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="姓名"
+            android:text="@string/user_name"
             android:gravity="center_vertical"
             android:id="@+id/textView58"
             android:layout_weight="1" />
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="战斗力"
+            android:text="@string/fighting_capacity"
             android:gravity="center_vertical"
             android:id="@+id/textView59"
             android:layout_weight="1" />
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="邀请"
+        android:text="@string/advice"
         android:layout_marginRight="16dp"
         android:textSize="17dp"
         android:textColor="@android:color/holo_blue_dark"

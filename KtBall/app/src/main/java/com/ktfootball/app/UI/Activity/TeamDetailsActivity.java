@@ -176,13 +176,13 @@ public class TeamDetailsActivity extends BaseActivity {
             Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewA);
             imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
-            textViewZhanA.setText("战斗力：" + teamDetailData.usera_power);
+            textViewZhanA.setText(getString(R.string.fighting_capacity)+"：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
                 String uri2 = Constants.HEAD_HOST + teamDetailData.userb_avatar;
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
                 imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
-                textViewZhanB.setText("战斗力：" + teamDetailData.userb_power);
+                textViewZhanB.setText(getString(R.string.fighting_capacity)+"：" + teamDetailData.userb_power);
 
             } else {
                 imageViewB.setVisibility(View.GONE);
@@ -201,7 +201,7 @@ public class TeamDetailsActivity extends BaseActivity {
                 Glide.with(this).load(uri3).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewC);
                 imageViewC.setVisibility(View.VISIBLE);
                 textViewNameC.setText(teamDetailData.userc_nickname);
-                textViewZhanC.setText("战斗力：" + teamDetailData.userc_power);
+                textViewZhanC.setText(getString(R.string.fighting_capacity)+"：" + teamDetailData.userc_power);
             } else {
                 imageViewC.setVisibility(View.GONE);
                 imageViewC.setOnClickListener(new View.OnClickListener() {
@@ -220,13 +220,13 @@ public class TeamDetailsActivity extends BaseActivity {
             Glide.with(this).load(uri1).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewA);
             imageViewA.setVisibility(View.VISIBLE);
             textViewNameA.setText(teamDetailData.usera_nickname);
-            textViewZhanA.setText("战队力：" + teamDetailData.usera_power);
+            textViewZhanA.setText(getString(R.string.fighting_capacity)+"：" + teamDetailData.usera_power);
             if (teamDetailData.userb_avatar != null) {
                 String uri2 = Constants.HEAD_HOST + teamDetailData.userb_avatar;
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
                 imageViewB.setVisibility(View.VISIBLE);
                 textViewNameB.setText(teamDetailData.userb_nickname);
-                textViewZhanB.setText("战队力：" + teamDetailData.userb_power);
+                textViewZhanB.setText(getString(R.string.fighting_capacity)+"：" + teamDetailData.userb_power);
             } else {
                 imageViewB.setVisibility(View.GONE);
                 imageViewB.setOnClickListener(new View.OnClickListener() {

@@ -146,13 +146,13 @@ public class CachingActivity extends Activity{
 			tv_title.setText(info.title);
 
 			if(info.state == DownloadInfo.STATE_DOWNLOADING){							//当前视频的下载状态：正在下载
-				btn_pause_continue.setText("正在下载");
+				btn_pause_continue.setText(getString(R.string.is_loading));
 			}else if(info.state == DownloadInfo.STATE_PAUSE){								//当前视频的下载状态：暂停中
-				btn_pause_continue.setText("暂停中");
+				btn_pause_continue.setText(getString(R.string.is_stop));
 			}else if(info.state == DownloadInfo.STATE_INIT								//当前视频的下载状态：等待中
 					|| info.state == DownloadInfo.STATE_EXCEPTION
 					|| info.state == DownloadInfo.STATE_WAITING){
-				btn_pause_continue.setText("等待中");
+				btn_pause_continue.setText(getString(R.string.is_waiting));
 			}
 
 

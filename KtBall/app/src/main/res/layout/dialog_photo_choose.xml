@@ -39,7 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="微信好友"
+                    android:text="@string/wx"
+                    android:maxLength="10"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -63,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="朋友圈"
+                    android:text="@string/pengyouquan"
+                    android:maxLength="10"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -88,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="新浪微博"
+                    android:text="@string/xlwb"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -143,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="QQ空間"
+                    android:text="@string/qqzom"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -168,31 +170,33 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="微信收藏"
+                    android:text="@string/wx_shouc"
+                    android:maxLength="10"
                     android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dialog_shared_twitter"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:visibility="invisible">
+                android:visibility="visible">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="84dp"
+                    android:layout_height="54dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ssdk_oks_classic_qzone" />
+                    android:src="@drawable/ssdk_oks_classic_twitter" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="QQ空間"
+                    android:text="Twitter"
                     android:textColor="@color/black" />
             </LinearLayout>
 

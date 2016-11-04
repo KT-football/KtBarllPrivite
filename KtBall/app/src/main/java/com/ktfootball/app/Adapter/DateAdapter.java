@@ -224,9 +224,9 @@ public class DateAdapter extends BaseAdapter {
 		TextView tvCalendar = (TextView) convertView
 				.findViewById(R.id.tv_calendar);
 		tvCalendar.setText(dayNumber[position]);
-		String dy = getCurrentYear(position) + "年"
-				+getCurrentMonth(position) + "月"
-				+ dayNumber[position] + "日";
+		String dy = getCurrentYear(position) + context.getString(R.string.year)
+				+getCurrentMonth(position) + context.getString(R.string.month)
+				+ dayNumber[position] + context.getString(R.string.day);
 		if (dy.equals(clickDay)) {
 			tvCalendar.setSelected(true);
 			tvCalendar.setBackgroundResource(R.drawable.circle_message);

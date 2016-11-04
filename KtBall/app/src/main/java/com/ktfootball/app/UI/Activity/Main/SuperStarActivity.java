@@ -39,7 +39,7 @@ public class SuperStarActivity extends BaseRecyclerView {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("明星专区");
+        setToolBarTitle(getString(R.string.start_area));
     }
 
     @Override

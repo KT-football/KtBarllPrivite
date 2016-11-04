@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="名称"
+        android:text="@string/user_name"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:gravity="center"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="地址"
+        android:text="@string/address"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:gravity="center"
@@ -54,7 +54,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="时间"
+        android:text="@string/time"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:gravity="center"
@@ -66,7 +66,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="比分"
+        android:text="@string/cont1"
         android:textColor="@android:color/white"
         android:gravity="center"
         android:layout_marginLeft="16dp"

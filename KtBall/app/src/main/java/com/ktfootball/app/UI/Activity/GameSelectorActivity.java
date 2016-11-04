@@ -35,7 +35,7 @@ public class GameSelectorActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("赛事选择");
+        setToolBarTitle(getString(R.string.choose_game));
     }
 
     @Override

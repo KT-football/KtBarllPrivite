@@ -176,7 +176,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("对战详情");
+        setToolBarTitle(getString(R.string.fightin_detail));
     }
 
     @Override
@@ -364,7 +364,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 MyAlertDialog myAlertDialog = new MyAlertDialog(VideoDetailsActivity.this);
-                myAlertDialog.doAlertDialog("无法找到视频");
+                myAlertDialog.doAlertDialog(getString(R.string.cant_find_video));
             }
         }
         );
@@ -386,8 +386,8 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 Glide.with(this).load(uri2).transform(new GlideCircleTransform(this)).error(R.drawable.result_btnkt).into(imageViewB);
                 textViewNameA.setText(videoDetailsData.users.get(0).nickname);
                 textViewNameB.setText(videoDetailsData.users.get(1).nickname);
-                textViewZhanA.setText("战斗力" + videoDetailsData.users.get(0).power);
-                textViewZhanB.setText("战斗力" + videoDetailsData.users.get(1).power);
+                textViewZhanA.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(0).power);
+                textViewZhanB.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(1).power);
                 imageViewA.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -422,10 +422,10 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 textViewNameB.setText(videoDetailsData.users.get(2).nickname);
                 textViewNameC.setText(videoDetailsData.users.get(1).nickname);
                 textViewNameD.setText(videoDetailsData.users.get(3).nickname);
-                textViewZhanA.setText("战斗力" + videoDetailsData.users.get(0).power);
-                textViewZhanC.setText("战斗力" + videoDetailsData.users.get(1).power);
-                textViewZhanB.setText("战斗力" + videoDetailsData.users.get(2).power);
-                textViewZhanD.setText("战斗力" + videoDetailsData.users.get(3).power);
+                textViewZhanA.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(0).power);
+                textViewZhanC.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(1).power);
+                textViewZhanB.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(2).power);
+                textViewZhanD.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(3).power);
                 imageViewA.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -484,12 +484,12 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
                 textViewNameB.setText(videoDetailsData.users.get(3).nickname);
                 textViewNameD.setText(videoDetailsData.users.get(4).nickname);
                 textViewNameF.setText(videoDetailsData.users.get(5).nickname);
-                textViewZhanA.setText("战斗力" + videoDetailsData.users.get(0).power);
-                textViewZhanC.setText("战斗力" + videoDetailsData.users.get(1).power);
-                textViewZhanE.setText("战斗力" + videoDetailsData.users.get(2).power);
-                textViewZhanB.setText("战斗力" + videoDetailsData.users.get(3).power);
-                textViewZhanD.setText("战斗力" + videoDetailsData.users.get(4).power);
-                textViewZhanF.setText("战斗力" + videoDetailsData.users.get(5).power);
+                textViewZhanA.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(0).power);
+                textViewZhanC.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(1).power);
+                textViewZhanE.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(2).power);
+                textViewZhanB.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(3).power);
+                textViewZhanD.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(4).power);
+                textViewZhanF.setText(getString(R.string.fighting_capacity) + videoDetailsData.users.get(5).power);
                 imageViewA.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -643,9 +643,9 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
         if (sharedDialog == null) {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
             sharedDialog.setTitleUrl(Constants.HOST + "app_share/game_video?game_video_id=" + video);
-            String title = getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + "来自KT足球";
+            String title = getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + getString(R.string.from_kt);
             sharedDialog.setTitle(title);
-            sharedDialog.setText("KT足球比赛视频精选");
+            sharedDialog.setText(getString(R.string.kt_game_vodep_top));
         }
         sharedDialog.show();
         dimActivity(sharedDialog, 0.6f);
@@ -780,7 +780,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
             Bundle bundle = new Bundle();
             bundle.putSerializable("info", videoDetailsData);
             bundle.putString("url", Constants.HOST + "app_share/game_video?game_video_id=" + video);
-            bundle.putString("title", getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + "来自KT足球");
+            bundle.putString("title", getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + getString(R.string.from_kt));
             intent.putExtras(bundle);
             startActivity(intent);
         }

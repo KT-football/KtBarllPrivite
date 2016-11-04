@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#F5F5F5"
     android:orientation="vertical">
 
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="我的资料"
+            android:text="@string/my_info"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="完成"
+                android:text="@string/ok"
                 android:textColor="@color/white"
                 android:textSize="14dp" />
         </RelativeLayout>
@@ -71,7 +72,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/image_head_logo"
-            android:text="头像"
+            android:text="@string/head"
             android:textColor="#333333" />
 
         <LinearLayout
@@ -115,7 +116,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/image_head_name"
-            android:text="昵称"
+            android:text="@string/nickname"
             android:textColor="#333333" />
 
         <LinearLayout
@@ -166,7 +167,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/image_head_sex"
-            android:text="性别"
+            android:text="@string/sex"
             android:textColor="#333333" />
 
         <LinearLayout
@@ -215,7 +216,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/image_head_day"
-            android:text="生日"
+            android:text="@string/birty"
             android:textColor="#333333" />
 
         <LinearLayout
@@ -260,7 +261,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="帮助与反馈"
+            android:text="@string/help"
             android:textColor="#333333" />
 
     </LinearLayout>
@@ -289,7 +290,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="关于我们"
+            android:text="@string/about_us"
             android:textColor="#333333" />
 
     </LinearLayout>
@@ -314,7 +315,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="設置"
+            android:text="@string/setting"
             android:textColor="#333333" />
 
     </LinearLayout>
@@ -328,7 +329,7 @@
         android:layout_marginTop="50dp"
         android:background="@mipmap/info_tuichu"
         android:gravity="center"
-        android:text="退出登录"
+        android:text="@string/loginout"
         android:textColor="@color/white"
         android:textSize="14dp" />
 
@@ -338,7 +339,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:text="版本3.0"
+        tools:text="版本3.0"
         android:textColor="#333333"
         android:textSize="12dp" />
 

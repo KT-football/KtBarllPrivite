@@ -57,7 +57,7 @@
             android:textSize="15dp"
             android:textColor="#999999"
             android:visibility="gone"
-            android:text="暂时没有该类型的战队"
+            android:text="@string/team_no"
             />
 
         <View

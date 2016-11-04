@@ -24,7 +24,7 @@ public class PayAdapter extends BaseRecyclerViewAdapter<UserBcOrders.BcOrders, P
     @Override
     protected void bindView(PayViewHolder holder, int position, UserBcOrders.BcOrders model) {
         holder.dizhi.setText(model.address);
-        holder.time.setText("下单时间：" + model.pay_time);
+        holder.time.setText(mContext.getString(R.string.xiadan_time)+"：" + model.pay_time);
         holder.pay.setText("￥ " + model.amount);
         holder.state.setText(model.status);
     }

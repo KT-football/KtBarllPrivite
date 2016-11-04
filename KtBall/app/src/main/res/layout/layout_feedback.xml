@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="意见反馈"
+            android:text="@string/yijian"
             android:textColor="@android:color/white"
             android:textSize="18dp" />
 
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="        您的意见和建议是对我们KT足球最大的支持,是我们对产品优化改造的方向和动力，谢谢！" />
+            android:text="@string/advice_thanks" />
 
         <EditText
             android:id="@+id/layout_feedback_content"

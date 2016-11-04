@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:text="订单状态："
+            android:text="@string/order_status"
             android:textColor="@color/gold" />
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:text="订单号："
+            android:text="@string/order_num"
             android:textColor="@color/gold" />
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="7dp"
                 android:gravity="center_horizontal"
-                android:text="活动时间"
+                android:text="@string/time_activity"
                 android:textColor="@color/gold" />
 
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="联  系  人"
+                android:text="@string/lianxiren"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="手        机"
+                android:text="@string/phone"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="人        数"
+                android:text="@string/people_cont"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -171,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="地        址"
+                android:text="@string/address1"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -205,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="发票抬头"
+                android:text="@string/taitou"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -240,7 +240,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="星        评"
+                android:text="@string/pingjia"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -311,7 +311,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="语        评"
+                android:text="@string/pingjia_yu"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 

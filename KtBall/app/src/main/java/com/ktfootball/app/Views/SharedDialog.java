@@ -47,6 +47,7 @@ public class SharedDialog extends Dialog {
     private LinearLayout qq;
     private LinearLayout qzom;
     private LinearLayout shouchan;
+    private LinearLayout dialog_shared_twitter;
 
     private View.OnClickListener OnCancelClick = new View.OnClickListener() {
         @Override
@@ -59,13 +60,13 @@ public class SharedDialog extends Dialog {
         @Override
         public void onClick(View v) {
             if(isWeixinAvilible(activity)){
-                activity.showToast("正在打开微信");
+                activity.showToast(activity.getString(R.string.is_opne_wx));
                 activity.showLoadingDiaglog();
                 sharedUtils.Shared_wx(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         Log.d("Shared_wx","onComplete");
-                        activity.showToast("分享成功~");
+                        activity.showToast(activity.getString(R.string.share_success));
                         activity.closeLoadingDialog();
                     }
 
@@ -73,19 +74,19 @@ public class SharedDialog extends Dialog {
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
                         Log.d("Shared_wx", "onError");
-                        activity.showToast("分享失敗~");
+                        activity.showToast(activity.getString(R.string.share_error));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         Log.d("Shared_wx","onCancel");
-                        activity.showToast("分享取消~");
+                        activity.showToast(activity.getString(R.string.share_cancle));
                         activity.closeLoadingDialog();
                     }
                 });
             }else{
-                activity.showToast("请安装微信");
+                activity.showToast(activity.getString(R.string.please_install_wx));
             }
             dismiss();
         }
@@ -95,70 +96,102 @@ public class SharedDialog extends Dialog {
         @Override
         public void onClick(View v) {
             if(isQQAvilible(activity)){
-                ((BaseActivity)activity).showToast("正在打开QQ");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.is_open_QQ));
                 activity.showLoadingDiaglog();
                 sharedUtils.Shared_qq(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         LogUtils.d("onComplete");
                         Log.d("pyqClick","onComplete");
-                        activity.showToast("分享成功~");
+                        activity.showToast(activity.getString(R.string.share_success));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
-                        activity.showToast("分享失敗~");
+                        activity.showToast(activity.getString(R.string.share_error));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         LogUtils.d("onCancel");
-                        activity.showToast("分享取消~");
+                        activity.showToast(activity.getString(R.string.share_cancle));
                         activity.closeLoadingDialog();
                     }
                 });
             }else{
-                ((BaseActivity)activity).showToast("请安装QQ");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.please_install_qq));
             }
             dismiss();
         }
     };
 
 
-    private View.OnClickListener pyqClick = new View.OnClickListener() {
+
+    private View.OnClickListener twitter = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(isWeixinAvilible(activity)){
-                ((BaseActivity)activity).showToast("正在打开微信");
                 activity.showLoadingDiaglog();
-                sharedUtils.Shared_pyq(new PlatformActionListener() {
+                sharedUtils.Shared_twitter(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         LogUtils.d("onComplete");
                         Log.d("pyqClick","onComplete");
-                        activity.showToast("分享成功~");
+                        activity.showToast(activity.getString(R.string.share_success));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
-                        activity.showToast("分享失敗~");
+                        activity.showToast(activity.getString(R.string.share_error));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         LogUtils.d("onCancel");
-                        activity.showToast("分享取消~");
+                        activity.showToast(activity.getString(R.string.share_cancle));
+                        activity.closeLoadingDialog();
+                    }
+                });
+            dismiss();
+        }
+    };
+
+    private View.OnClickListener pyqClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(isWeixinAvilible(activity)){
+                ((BaseActivity)activity).showToast(activity.getString(R.string.is_open_wx));
+                activity.showLoadingDiaglog();
+                sharedUtils.Shared_pyq(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        LogUtils.d("onComplete");
+                        Log.d("pyqClick","onComplete");
+                        activity.showToast(activity.getString(R.string.share_success));
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+                        LogUtils.e(i+""+throwable.toString());
+                        activity.showToast(activity.getString(R.string.share_error));
+                        activity.closeLoadingDialog();
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+                        LogUtils.d("onCancel");
+                        activity.showToast(activity.getString(R.string.share_cancle));
                         activity.closeLoadingDialog();
                     }
                 });
             }else{
-                ((BaseActivity)activity).showToast("请安装微信");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.please_install_wx));
             }
             dismiss();
         }
@@ -168,33 +201,33 @@ public class SharedDialog extends Dialog {
         @Override
         public void onClick(View v) {
             if(isWeixinAvilible(activity)){
-                ((BaseActivity)activity).showToast("正在打开微信");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.is_open_wx));
                 activity.showLoadingDiaglog();
                 sharedUtils.Shared_wxsc(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                         LogUtils.d("onComplete");
                         Log.d("pyqClick","onComplete");
-                        activity.showToast("分享成功~");
+                        activity.showToast(activity.getString(R.string.share_success));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
-                        activity.showToast("分享失敗~");
+                        activity.showToast(activity.getString(R.string.share_error));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
                         LogUtils.d("onCancel");
-                        activity.showToast("分享取消~");
+                        activity.showToast(activity.getString(R.string.share_cancle));
                         activity.closeLoadingDialog();
                     }
                 });
             }else{
-                ((BaseActivity)activity).showToast("请安装微信");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.please_install_wx));
             }
             dismiss();
         }
@@ -205,30 +238,30 @@ public class SharedDialog extends Dialog {
         public void onClick(View v) {
 
             if(isXlwbAvilible(activity)){
-                ((BaseActivity)activity).showToast("正在打开新浪微博");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.is_open_xlwb));
                 activity.showLoadingDiaglog();
                 sharedUtils.Shared_xlvb(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        activity.showToast("分享成功~");
+                        activity.showToast(activity.getString(R.string.share_success));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
-                        activity.showToast("分享失敗~");
+                        activity.showToast(activity.getString(R.string.share_error));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
-//                        activity.showToast("分享取消~");
+//                        activity.showToast(activity.getString(R.string.share_cancle));
                         activity.closeLoadingDialog();
                     }
                 });
             }else{
-                ((BaseActivity)activity).showToast("请安装新浪微博");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.please_install_xlwb));
             }
             dismiss();
         }
@@ -240,25 +273,25 @@ public class SharedDialog extends Dialog {
         public void onClick(View v) {
 
 //            if(isQzon(activity)){
-                ((BaseActivity)activity).showToast("正在打开QQ空间");
+                ((BaseActivity)activity).showToast(activity.getString(R.string.is_open_qqkongjian));
                 activity.showLoadingDiaglog();
                 sharedUtils.Shared_qqZom(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        activity.showToast("分享成功~");
+                        activity.showToast(activity.getString(R.string.share_success));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
                         LogUtils.e(i+""+throwable.toString());
-                        activity.showToast("分享失敗~");
+                        activity.showToast(activity.getString(R.string.share_error));
                         activity.closeLoadingDialog();
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
-                        activity.showToast("分享取消~");
+                        activity.showToast(activity.getString(R.string.share_cancle));
                         activity.closeLoadingDialog();
                     }
                 });
@@ -291,6 +324,7 @@ public class SharedDialog extends Dialog {
         cancelButton = (Button) findViewById(R.id.button_cancel);
         qzom = (LinearLayout) findViewById(R.id.dialog_shared_qqzome);
         shouchan = (LinearLayout) findViewById(R.id.dialog_shared_shouchan);
+        dialog_shared_twitter = (LinearLayout) findViewById(R.id.dialog_shared_twitter);
         init();
     }
 
@@ -302,6 +336,7 @@ public class SharedDialog extends Dialog {
         qq.setOnClickListener(qqClick);
         qzom.setOnClickListener(qqZom);
         shouchan.setOnClickListener(wxsc);
+        dialog_shared_twitter.setOnClickListener(twitter);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         WindowManager.LayoutParams params = window.getAttributes();

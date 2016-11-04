@@ -31,7 +31,7 @@
             android:background="@android:color/white"
             android:gravity="center"
             android:onClick="doSend"
-            android:text="发送"
+            android:text="@string/send"
             android:textColor="@color/dodgerblue"
             android:textSize="17dp" />
 
@@ -46,7 +46,7 @@
             android:layout_toStartOf="@+id/textView65"
             android:background="@drawable/zhangfangyuanjiao_details"
             android:gravity="center_vertical"
-            android:hint="添加评论"
+            android:hint="@string/add_pingl"
             android:paddingLeft="5dp"
             android:textSize="14sp" />
     </RelativeLayout>
@@ -460,7 +460,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@mipmap/duizhanbtn"
                 android:gravity="center"
-                android:text="对战狠话"
+                android:text="@string/henghua"
                 android:textColor="@color/white"
                 android:textSize="14dp" />
 
@@ -571,7 +571,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:onClick="doSendMessage"
-                    android:text="评一下"
+                    android:text="@string/pingjia_yixia"
                     android:layout_marginRight="30dp"
                     android:textColor="#333333"
                     android:textSize="12dp" />

@@ -10,6 +10,7 @@ import com.ktfootball.app.Constants;
 import com.kt.ktball.entity.Token;
 import com.kt.ktball.myclass.MyAlertDialog;
 import com.ktfootball.app.Net.NetUtils;
+import com.ktfootball.app.R;
 import com.squareup.okhttp.Request;
 
 import java.io.File;
@@ -58,7 +59,7 @@ public class ServiceLoadBusiness extends BaseBusiness {
             public void onError(Request request, Exception e) {
                 LogUtils.e(request.toString());
                 MyAlertDialog myAlertDialog = new MyAlertDialog(act);
-                myAlertDialog.doAlertDialog("网络连接超时");
+                myAlertDialog.doAlertDialog(act.getString(R.string.network_connection_timeout));
             }
 
             @Override
@@ -81,7 +82,7 @@ public class ServiceLoadBusiness extends BaseBusiness {
             public void onError(Request request, Exception e) {
                 LogUtils.e(request.toString());
                 MyAlertDialog myAlertDialog = new MyAlertDialog(act);
-                myAlertDialog.doAlertDialog("网络连接超时");
+                myAlertDialog.doAlertDialog(act.getString(R.string.network_connection_timeout));
             }
 
             @Override
@@ -104,7 +105,7 @@ public class ServiceLoadBusiness extends BaseBusiness {
             public void onError(Request request, Exception e) {
                 LogUtils.e(request.toString());
                 MyAlertDialog myAlertDialog = new MyAlertDialog(act);
-                myAlertDialog.doAlertDialog("网络连接超时");
+                myAlertDialog.doAlertDialog(act.getString(R.string.network_connection_timeout));
             }
 
             @Override

@@ -48,7 +48,7 @@ public class ChangeNicknameActivity extends BaseActivity {
     public void userinfoSubmit(View v) {
        String nickname = et.getText().toString();
         if("".equals(nickname)){
-            showToast("请填写昵称");
+            showToast(getString(R.string.write_nickname));
             return;
         }
         Intent Intent= new Intent();

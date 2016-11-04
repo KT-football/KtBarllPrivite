@@ -19,7 +19,7 @@
             android:drawableTop="@drawable/selete_game"
             android:gravity="center_horizontal"
             android:onClick="doGamePlace"
-            android:text="选择赛事"
+            android:text="@string/choose_game"
             android:textColor="@android:color/white"
             android:textSize="17dp" />
 
@@ -33,7 +33,7 @@
             android:drawableTop="@drawable/my_game"
             android:gravity="center_horizontal"
             android:onClick="doMyGame"
-            android:text="我的赛事"
+            android:text="@string/my_game"
             android:textColor="@android:color/white"
             android:textSize="17dp" />
     </LinearLayout>

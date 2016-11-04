@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="城    市"
+                    android:text="@string/city"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="联系人"
+                android:text="@string/lianxiren"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="电    话"
+                android:text="@string/phone"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -167,7 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="人    数"
+                android:text="@string/people_cont"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="地    址"
+                android:text="@string/address1"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -236,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="开具发票"
+                android:text="@string/fapiao"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -271,7 +271,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="发票抬头"
+                android:text="@string/taitou"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -425,7 +425,7 @@
                 android:background="@color/gold"
                 android:gravity="center_horizontal"
                 android:padding="15dp"
-                android:text="下一步" />
+                android:text="@string/next" />
 
         </LinearLayout>
     </LinearLayout>

@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="邀请"
+            android:text="@string/advice"
             android:textColor="@android:color/white"
             android:textSize="18dp"
             android:id="@+id/textView36"
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="60dp"
             android:layout_height="40dp"
-            android:text="搜索"
+            android:text="@string/search"
             android:onClick="doSearch"
             android:textSize="17dp"
             android:gravity="center"
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/editText8"
-            android:hint="请输入手机号或昵称搜索"
+            android:hint="@string/search_name"
             android:drawableLeft="@android:drawable/ic_menu_search"
             android:background="@android:color/white"
             android:layout_centerVertical="true"
@@ -118,7 +118,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="姓名"
+                android:text="@string/user_name"
                 android:gravity="center_vertical"
                 android:textColor="#333333"
                 android:id="@+id/textView58"
@@ -127,7 +127,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="战斗力"
+                android:text="@string/fighting_capacity"
                 android:gravity="center_vertical"
                 android:textColor="#333333"
                 android:id="@+id/textView59"
@@ -137,7 +137,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="邀请"
+            android:text="@string/advice"
             android:onClick="doInviteFirend"
             android:layout_marginRight="16dp"
             android:textSize="17dp"

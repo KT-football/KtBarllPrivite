@@ -172,7 +172,7 @@ public class UserProfiles extends BaseActivity {
             textViewFollowed.setVisibility(View.VISIBLE);
             imageViewMenu.setVisibility(View.GONE);
             tv_search.setVisibility(View.GONE);
-            mTab3.setText("他的战队");
+            mTab3.setText(getString(R.string.other_team));
             mSetting.setVisibility(View.GONE);
         }
     }
@@ -217,25 +217,25 @@ public class UserProfiles extends BaseActivity {
         Glide.with(getThis()).load(uri).error(R.drawable.result_btnkt).into(avatarImage);
         Glide.with(getThis()).load(uri).transform(new GlideCircleTransform(getThis())).error(R.drawable.result_btnkt).into(mHead);
         nameTextView.setText(userMsg.nickname);//姓名
-        textViewFollowed.setText(userMsg.followed == 0 ? "关注" : "取消关注");
+        textViewFollowed.setText(userMsg.followed == 0 ? getString(R.string.follow) : getString(R.string.cancle_follow));
         followed = userMsg.followed;
-        mTv_fans.setText("粉丝 " + userMsg.fans_count);
-        mTv_guanzhu.setText("关注 "+userMsg.follow_count );
+        mTv_fans.setText(getString(R.string.fans)+" " + userMsg.fans_count);
+        mTv_guanzhu.setText(getString(R.string.follow)+" "+userMsg.follow_count );
         String power = null;//KT学徒
         if (userMsg.power > 0 && userMsg.power <= 500) {
-            power = "KT菜鸟";
+            power = getString(R.string.kt_1);
         } else if (userMsg.power > 500 && userMsg.power <= 1000) {
-            power = "KT学徒";
+            power = getString(R.string.kt_2);
         } else if (userMsg.power > 1000 && userMsg.power <= 1500) {
-            power = "KT达人";
+            power = getString(R.string.kt_3);
         } else if (userMsg.power > 1500 && userMsg.power <= 2000) {
-            power = "KT大师";
+            power = getString(R.string.kt_4);
         } else if (userMsg.power > 2000) {
-            power = "KT大神";
+            power = getString(R.string.kt_5);
         }
         powerTextView.setText(power);
 
-        rankTextView.setText("战力排名" + String.valueOf(userMsg.rank));//排名
+        rankTextView.setText(getString(R.string.fighting_capacity_top) + String.valueOf(userMsg.rank));//排名
         int lvi = 0;
         if (userMsg.exp <= 50) {
             lvi = 0;
@@ -335,8 +335,8 @@ public class UserProfiles extends BaseActivity {
         if (dialog == null) {
             dialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
             dialog.setTitleUrl("http://ktfootball.com/app_share/user?user_id=" + userId);
-            dialog.setTitle("我在KT足球已经排到了全国" + rankTextView.getText() + "名");
-            dialog.setText("我的个人档案");
+            dialog.setTitle(getString(R.string.country_top) + rankTextView.getText() + getString(R.string.rank));
+            dialog.setText(getString(R.string.my_dangan));
         }
         dialog.show();
         dimActivity(dialog, 0.6f);
@@ -390,7 +390,7 @@ public class UserProfiles extends BaseActivity {
                                 String response = jsonObject11.getString("response");
                                 if (response.equals("success")) {
                                     followed = 1;
-                                    textViewFollowed.setText("取消关注");
+                                    textViewFollowed.setText(getString(R.string.cancle_follow));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -413,9 +413,9 @@ public class UserProfiles extends BaseActivity {
             VolleyUtil.getInstance(this).addRequest(jsonRequest);
         } else {//关注，点击取消关注
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("是否取消关注？");
+            builder.setTitle(getString(R.string.is_cancle_follow));
             builder.setCancelable(false);
-            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(getString(R.string.right), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String url = Constants.HOST +"users/cancel_follow";
@@ -467,7 +467,7 @@ public class UserProfiles extends BaseActivity {
                     VolleyUtil.getInstance(UserProfiles.this).addRequest(jsonRequest);
                 }
             });
-            builder.setNegativeButton("取消", null);
+            builder.setNegativeButton(getString(R.string.cancle), null);
             AlertDialog dialog = builder.create();
             dialog.show();
         }

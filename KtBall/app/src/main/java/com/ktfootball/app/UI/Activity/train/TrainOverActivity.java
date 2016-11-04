@@ -98,24 +98,24 @@ public class TrainOverActivity extends BaseActivity {
         studyFinished = (StudyFinished) getIntent().getSerializableExtra("studyfinished");
         videos = (AppCartoon.Videos) getIntent().getSerializableExtra("vedio");
 
-        tv_1.setText("太棒啦！你已经完成了第"+studyFinished.finished_times+"次的训练");
-        tv_3.setText("再坚持完成"+studyFinished.next_need_exp+"次同样的训练，就能成为"+appCartoon.name+"大师啦");
+        tv_1.setText(getString(R.string.is_right)+studyFinished.finished_times+getString(R.string.cont_train));
+        tv_3.setText(getString(R.string.jianc)+studyFinished.next_need_exp+getString(R.string.made)+appCartoon.name+getString(R.string.dasjo));
     }
 
     private void doStudySelfScoreEvaluation() {
 
         if(dj == 0){
-            showDialogToast("给自己本次的表现打个分吧！");
+            showDialogToast(getString(R.string.dafen_biaoxian));
             return;
         }
 
         if(gt == 0){
-            showDialogToast("给自己本次的完成情况打个分吧！");
+            showDialogToast(getString(R.string.dafen_qingk));
             return;
         }
 
         if(bg == 0){
-            showDialogToast("给自己本次的技术成长打个分吧！");
+            showDialogToast(getString(R.string.dafen_chenghang));
             return;
         }
         com.yolanda.nohttp.rest.Request<BaseEntity> request = new BaseEntityRequest(Constants.STUDY_SELF_SCORE_EVALUATION, RequestMethod.POST);
@@ -146,16 +146,16 @@ public class TrainOverActivity extends BaseActivity {
 
     private void showCloseDialog(){
         AlertDialog.Builder dialog = new AlertDialog.Builder(getThis());
-        dialog.setTitle("提示");
-        dialog.setMessage("提交成功");
-        dialog.setNegativeButton("返回主界面", new DialogInterface.OnClickListener() {
+        dialog.setTitle(getString(R.string.prompt));
+        dialog.setMessage(getString(R.string.commit_ok));
+        dialog.setNegativeButton(getString(R.string.back_main), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
 
             }
         });
-        dialog.setPositiveButton("留在该页面", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.here), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -168,8 +168,8 @@ public class TrainOverActivity extends BaseActivity {
         if (dialog == null) {
             dialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
             dialog.setTitleUrl("http://ktfootball.com/app_share/study_finished?now_level_name="+studyFinished.now_level_name+"&total_finished_times="+videos.total_times+"&finished_times="+studyFinished.finished_times+"&next_need_exp="+studyFinished.next_need_exp+"&now_level_progress=" +studyFinished.now_level_progress);
-            dialog.setTitle("我在KT足球完成了" + appCartoon.name + "的训练，距离升级还有"+(Float.parseFloat(studyFinished.next_need_exp) - Float.parseFloat(studyFinished.now_level_progress)));
-            dialog.setText("KT足球训练详情");
+            dialog.setTitle(getString(R.string.kt_ok) + appCartoon.name + getString(R.string.train_have)+(Float.parseFloat(studyFinished.next_need_exp) - Float.parseFloat(studyFinished.now_level_progress)));
+            dialog.setText(getString(R.string.train_detail));
         }
         dialog.show();
         dimActivity(dialog, 0.6f);

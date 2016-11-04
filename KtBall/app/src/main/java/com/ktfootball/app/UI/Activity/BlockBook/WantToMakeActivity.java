@@ -82,7 +82,7 @@ public class WantToMakeActivity extends BaseToolBarActivity2 implements View.OnC
 
     @Override
     protected void initToolBar() {
-        setToolBarTitle("填写信息");
+        setToolBarTitle(getString(R.string.write_info));
     }
 
     @Override
@@ -122,17 +122,17 @@ public class WantToMakeActivity extends BaseToolBarActivity2 implements View.OnC
                 String dizhiStr = dizhi.getText().toString();
                 String ftitleStr = ftitle.getText().toString();
                 if (currentCity == null) {
-                    showToast("请选择城市");
+                    showToast(getString(R.string.choose_city));
                 } else if (lianxirenStr == null || "".equals(lianxirenStr)) {
-                    showToast("请填写联系人");
+                    showToast(getString(R.string.write_user));
                 } else if (phoneStr == null || "".equals(phoneStr)) {
-                    showToast("请填写联系方式");
+                    showToast(getString(R.string.write_type));
                 } else if (numStr == null || "".equals(numStr)) {
-                    showToast("请填写活动人数");
+                    showToast(getString(R.string.write_people_cont));
                 } else if (dizhiStr == null || "".equals(dizhiStr)) {
-                    showToast("请填写您的地址");
+                    showToast(getString(R.string.write_address));
                 } else if (switchCompat.isChecked() && (ftitleStr == null || "".equals(ftitleStr))) {
-                    showToast("请填写发票抬头");
+                    showToast(getString(R.string.write_taitou));
                 } else {
                     Intent intent = new Intent(getThis(), WeekSelectActivity.class);
                     intent.putExtra("GetCityPrice", cityPrice);
@@ -323,7 +323,7 @@ public class WantToMakeActivity extends BaseToolBarActivity2 implements View.OnC
 //        showYearView.setText();
 //        showMonthView.setText(month + "月");
 //        showWeekView.setText(DateUtil.weekName[DateUtil.getWeekDay() - 1]);
-        showDateView.setText(year + "年"+month+"月");
+        showDateView.setText(year + getString(R.string.year)+month+getString(R.string.month));
     }
 
     @Override

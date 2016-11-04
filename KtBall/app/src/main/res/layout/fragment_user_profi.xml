@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_gold"
                     android:padding="5dp"
-                    android:text="战斗回放"
+                    android:text="@string/profi_huifang"
                     android:textColor="@color/gold"
                     android:textSize="13dp" />
 
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_empty"
                     android:padding="5dp"
-                    android:text="场次数据"
+                    android:text="@string/changcihuif"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_empty"
                     android:padding="5dp"
-                    android:text="能力数据"
+                    android:text="@string/nenglishuju"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_empty"
                     android:padding="5dp"
-                    android:text="我的战队"
+                    android:text="@string/my_tearm"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
             </LinearLayout>

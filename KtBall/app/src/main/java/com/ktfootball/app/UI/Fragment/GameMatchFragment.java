@@ -117,15 +117,15 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
             getLocation();//获取经纬度
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("请开启GPS");
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            builder.setTitle(getString(R.string.open_gps));
+            builder.setPositiveButton(getString(R.string.right), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
                     startActivityForResult(intent, 0);
                 }
             });
-            builder.setNegativeButton("取消", null);
+            builder.setNegativeButton(getString(R.string.cancle), null);
             builder.setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();

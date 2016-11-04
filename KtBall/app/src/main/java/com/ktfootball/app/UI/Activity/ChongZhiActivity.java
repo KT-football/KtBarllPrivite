@@ -82,7 +82,7 @@ public class ChongZhiActivity extends BaseActivity {
             intent.putExtra("info", mRechargeListBean);
             startActivity(intent);
         } else {
-            showToast("请选择充值额度~");
+            showToast(getString(R.string.please_choose_money));
         }
 
     }
@@ -152,7 +152,7 @@ public class ChongZhiActivity extends BaseActivity {
             } else {
                 viewHoder = (ViewHoder) convertView.getTag();
             }
-            viewHoder.mBi.setText(mList.get(position).getKtb() + "KT币");
+            viewHoder.mBi.setText(mList.get(position).getKtb() + getString(R.string.kt_monty));
             viewHoder.mMoney.setText("￥" + mList.get(position).getPrice());
             if (isSelect == position) {
                 viewHoder.mBi.setTextColor(getResourcesColor(R.color.white));

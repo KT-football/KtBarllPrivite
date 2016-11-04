@@ -11,7 +11,6 @@ import java.util.Date;
 
 public class DateUtil {
 
-	public static String[] weekName = {"星期日" ,"星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
 
 	public static int getMonthDays(int year, int month) {
 		if (month > 12) {

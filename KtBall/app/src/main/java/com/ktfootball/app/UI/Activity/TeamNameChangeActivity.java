@@ -65,7 +65,7 @@ public class TeamNameChangeActivity extends BaseActivity {
     public void doUpdata(View v) {
         final String name = et.getText().toString();
         if (name == null || "".equals(name)) {
-            showToast("请填写战队名称");
+            showToast(getString(R.string.please_send_team_name));
             return;
         }
         String url = Constants.CHANGE_LEAGUE_NAME;
@@ -83,7 +83,7 @@ public class TeamNameChangeActivity extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject jsonObject1) {
                         Log.d("========", jsonObject1.toString());
-                        showToast("修改成功");
+                        showToast(getString(R.string.modify_success));
                         Intent intent = new Intent();
                         intent.putExtra("name", name);
                         setResult(NAME_CHANGE,intent);
@@ -122,7 +122,7 @@ public class TeamNameChangeActivity extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject jsonObject1) {
                         Log.d("========", jsonObject1.toString());
-                        showToast("退出成功");
+                        showToast(getString(R.string.exit_ok));
                         setResult(GOOUT_CHANGE);
                         finish();
                     }

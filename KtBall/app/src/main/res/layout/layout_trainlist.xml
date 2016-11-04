@@ -27,7 +27,7 @@
             android:layout_gravity="right"
             android:layout_marginRight="@dimen/frame_margin_widget_default"
             android:padding="@dimen/frame_padding_widget_default"
-            android:text="定位中"
+            android:text="@string/is_dngwei"
             android:visibility="gone" />
 
         <TextView
@@ -89,7 +89,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
-                    android:text="全部" />
+                    android:text="@string/all" />
 
                 <View
                     style="@style/line"
@@ -109,7 +109,7 @@
                     android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content"
-                    android:text="带球" />
+                    android:text="@string/daiqiu" />
 
                 <View
                     style="@style/line"
@@ -129,7 +129,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
-                    android:text="控球" />
+                    android:text="@string/kongqiu" />
 
                 <View
                     style="@style/line"

@@ -74,7 +74,7 @@
             android:background="@drawable/shape_gold_8"
             android:gravity="center"
             android:padding="3dp"
-            android:text="进球狂人"
+            android:text="@string/all_jinqiu_kuangren"
             android:textColor="@color/gold"
             android:textSize="10dp" />
 
@@ -89,7 +89,7 @@
             android:background="@drawable/shape_gold_8"
             android:gravity="center"
             android:padding="3dp"
-            android:text="KT大神"
+            android:text="@string/kt_5"
             android:textColor="@color/gold"
             android:textSize="10dp" />
 
@@ -103,7 +103,7 @@
             android:background="@drawable/shape_gold_8"
             android:gravity="center"
             android:padding="3dp"
-            android:text="疯狂穿裆"
+            android:text="@string/fengkuangchuan"
             android:textColor="@color/gold"
             android:textSize="10dp" />
 
@@ -118,7 +118,7 @@
             android:background="@drawable/shape_gold_8"
             android:gravity="center"
             android:padding="3dp"
-            android:text="体力无极限"
+            android:text="@string/tiliwujixian"
             android:textColor="@color/gold"
             android:textSize="10dp" />
 
@@ -232,7 +232,7 @@
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:maxLines="1"
-                    android:text="搜索"
+                    android:text="@string/search"
                     android:textColor="@android:color/white"
                     android:textSize="10dp" />
 
@@ -242,7 +242,7 @@
                     android:layout_height="15dp"
                     android:background="#6cFFC701"
                     android:gravity="center"
-                    android:text="取消关注"
+                    android:text="@string/cancle_follow"
                     android:textColor="#333333"
                     android:textSize="10dp"
                     android:visibility="gone" />
@@ -327,7 +327,7 @@
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:text="能力"
+            android:text="@string/nengli"
             android:textColor="#ffffff"
             android:textSize="12dp" />
 
@@ -339,7 +339,7 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:gravity="center"
-            android:text="比赛回顾"
+            android:text="@string/game_huigu"
             android:textColor="#999999"
             android:textSize="12dp" />
 
@@ -351,7 +351,7 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:gravity="center"
-            android:text="我的战队"
+            android:text="@string/my_tearm"
             android:textColor="#999999"
             android:textSize="12dp" />
 

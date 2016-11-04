@@ -187,9 +187,9 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="57dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ssdk_oks_classic_twitter" />
+                    android:src="@mipmap/twitter" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -212,9 +212,9 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ssdk_oks_classic_facebook" />
+                    android:src="@mipmap/facebook" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -47,7 +47,7 @@ public class SharedUtils {
         SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-//        sp.setTitleUrl(titleUrl);
+        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);
@@ -64,7 +64,7 @@ public class SharedUtils {
         Wechat.ShareParams sp = new Wechat.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-//        sp.setTitleUrl(titleUrl);
+        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);
@@ -80,7 +80,7 @@ public class SharedUtils {
         WechatFavorite.ShareParams sp = new WechatFavorite.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-//        sp.setTitleUrl(titleUrl);
+        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);
@@ -96,7 +96,7 @@ public class SharedUtils {
         QQ.ShareParams sp = new QQ.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-//        sp.setTitleUrl(titleUrl);
+        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);

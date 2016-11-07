@@ -7,7 +7,7 @@ android {
         applicationId "com.ktfootball.app"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 6
+        versionCode 7
         versionName "3.2.0"
         multiDexEnabled true
     }

@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,6 +114,7 @@ public class TrainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             trainHolder.bar.setAngle((int) Float.parseFloat(appCarToons.now_level_progress));
             int[] colcr = CommonUtils.getTrainColor(appCarToons.now_level_color);
             trainHolder.bar.setText(appCarToons.now_level_name);
+            trainHolder.bar.setGravity(Gravity.CENTER);
             BitmapManager.getInstance().display(trainHolder.img, Constants.HEAD_HOST + appCarToons.avatar);
             trainHolder.rl.setOnClickListener(new View.OnClickListener() {
                 @Override

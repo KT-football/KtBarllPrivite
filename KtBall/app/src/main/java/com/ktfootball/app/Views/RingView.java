@@ -29,13 +29,14 @@ public class RingView extends TextView {
 
     /**
      * 环的颜色
-     * */
+     */
     private final static int RingColor = Color.parseColor("#FFEFAE");
 
     /**
      * 进度的颜色
-     * */
-    private final static int PecentColor = Color.parseColor("#FFC800");;
+     */
+    private final static int PecentColor = Color.parseColor("#FFC800");
+    ;
 
     /**
      * 画笔
@@ -90,7 +91,7 @@ public class RingView extends TextView {
      * 文件显示的文本
      */
     private String text;
-    private static final int TEXTSIZE = 30;
+    private static final int TEXTSIZE = 24;
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -122,7 +123,7 @@ public class RingView extends TextView {
         Path path = new Path();
         path.reset();
         /*画圆*/
-        path.addCircle(content_X, content_Y, bigRadius -3 , Path.Direction.CCW);
+        path.addCircle(content_X, content_Y, bigRadius - 3, Path.Direction.CCW);
         path.close();
         canvas.drawPath(path, paint);
         path.reset();
@@ -130,30 +131,29 @@ public class RingView extends TextView {
         path.addCircle(content_X, content_Y, smallRadius, Path.Direction.CCW);
         path.close();
         canvas.drawPath(path, paint);
-        getSectorClip(canvas,startAngle);
+        getSectorClip(canvas, startAngle);
         path.reset();
         paint.setColor(Color.WHITE);
-        path.addCircle(content_X, content_Y, smallRadius-3, Path.Direction.CCW);
+        path.addCircle(content_X, content_Y, smallRadius - 3, Path.Direction.CCW);
         path.close();
         canvas.drawPath(path, paint);
-        if (text!=null) {
+        if (text != null) {
             paint.setColor(0xffFFC800);
             paint.setTextSize(TEXTSIZE);
             paint.setStyle(Paint.Style.FILL);
             int textHeight = height / 4;
             int textWidth = (int) paint.measureText(text, 0, text.length());
-            canvas.drawText(text, width / 2 - textWidth / 2, height / 2 + 15, paint);
+            canvas.drawText(text, width / 2 - textWidth / 2, height / 2 + textHeight / 2, paint);
         }
     }
+
     /**
      * 返回一个扇形的剪裁区
      *
-     * @param canvas
-     *            //画笔
-     * @param startAngle
-     *            //起始角度
+     * @param canvas     //画笔
+     * @param startAngle //起始角度
      */
-    private void getSectorClip(Canvas canvas,float startAngle) {
+    private void getSectorClip(Canvas canvas, float startAngle) {
         paint.setColor(PecentColor);//进度的颜色
         Path path = new Path();
         // 下面是获得一个三角形的剪裁区
@@ -172,7 +172,7 @@ public class RingView extends TextView {
                 content_Y + bigRadius);
         // 下面是获得弧形剪裁区的方法
         path.addArc(rectF, startAngle, SweepAngle - startAngle);
-        canvas.drawPath(path,paint);
+        canvas.drawPath(path, paint);
 
 
     }
@@ -180,12 +180,10 @@ public class RingView extends TextView {
     /**
      * 返回一个扇形的剪裁区
      *
-     * @param canvas
-     *            //画笔
-     * @param startAngle
-     *            //起始角度
+     * @param canvas     //画笔
+     * @param startAngle //起始角度
      */
-    private void getSmallSectorClip(Canvas canvas,float startAngle) {
+    private void getSmallSectorClip(Canvas canvas, float startAngle) {
         paint.setColor(Color.WHITE);
         Path path = new Path();
         // 下面是获得一个三角形的剪裁区
@@ -204,18 +202,18 @@ public class RingView extends TextView {
                 content_Y + smallRadius);
         // 下面是获得弧形剪裁区的方法
         path.addArc(rectF, startAngle, SweepAngle - startAngle);
-        canvas.drawPath(path,paint);
+        canvas.drawPath(path, paint);
 
 
     }
 
     /**
      */
-    public void setAngle(float startAngle){
-        SweepAngle = (360*startAngle/100 + 270);
+    public void setAngle(float startAngle) {
+        SweepAngle = (360 * startAngle / 100 + 270);
     }
 
-    public void setText(String text){
+    public void setText(String text) {
         this.text = text;
     }
 }

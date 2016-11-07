@@ -94,8 +94,7 @@ public class MyCirCleView extends View {
         // 绘制圆圈，进度条背景
         canvas.drawArc(mRectF, -90, 360, false, mPaint);
         mPaint.setColor(0xffFFD669);
-        canvas.drawArc(mRectF, -90, (mProgress / mMaxProgress) * 360, false, mPaint);
-
+        canvas.drawArc(mRectF, -90, mProgress* 360 / mMaxProgress, false, mPaint);
         //===================================
 //        mPaint.setStrokeWidth(mTxtStrokeWidth);
 //        String text = "胜";
@@ -113,8 +112,7 @@ public class MyCirCleView extends View {
         mPaint.setStrokeWidth(mCircleLineStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(0xff37E3CC);
-        canvas.drawArc(mRectF, (( mIs_Progress / mMaxProgress) * 360) - 90, ( mProgeress1 / mMaxProgress) * 360, false, mPaint);
-
+        canvas.drawArc(mRectF, (( mIs_Progress* 360 / mMaxProgress) ) - 90,  mProgeress1 * 360/ mMaxProgress, false, mPaint);
 
         //===================================
 //        mPaint.setStrokeWidth(mTxtStrokeWidth);
@@ -131,7 +129,7 @@ public class MyCirCleView extends View {
         mPaint.setStrokeWidth(mCircleLineStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(0xff67B7FF);
-        canvas.drawArc(mRectF, ( (mIs_Progress + mIs_Progress1) / mMaxProgress) * 360 - 90,  mProgeress2 / mMaxProgress * 360, false, mPaint);
+        canvas.drawArc(mRectF, ( (mIs_Progress + mIs_Progress1)* 360 / mMaxProgress)  - 90,  mProgeress2 * 360/ mMaxProgress , false, mPaint);
 
         //===================================
 //        mPaint.setStrokeWidth(mTxtStrokeWidth);
@@ -205,7 +203,6 @@ public class MyCirCleView extends View {
                     @Override
                     public void run() {
                         invalidate();
-                        Log.e("huangbo",mProgress+" - "+mProgeress1+" - "+mProgeress2);
                     }
                 });
                 i += 1;

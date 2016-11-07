@@ -263,7 +263,7 @@
   <string name="voide_upload">視頻上傳</string>  
   <string name="my_game">我的賽事</string>  
   <string name="wtite_zhanghao">請輸入賬號</string>  
-  <string name="wtite_pwd">請輸入賬號</string>  
+  <string name="wtite_pwd">請輸入密碼</string>
   <string name="login">登 錄</string>  
   <string name="zhaohui_pwd">找回密碼</string>  
   <string name="login_thrid">社交賬號登陸</string>  

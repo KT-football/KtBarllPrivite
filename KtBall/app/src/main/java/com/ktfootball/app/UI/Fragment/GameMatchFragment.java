@@ -125,6 +125,7 @@ public class GameMatchFragment extends BaseFragment implements BGARefreshLayout.
             builder.setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
+            mRefreshLayout.beginRefreshing();
         }
     }
 

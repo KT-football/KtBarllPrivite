@@ -33,7 +33,7 @@ public class SharedUtils {
     public String title = "测试分享的标题";
     public String titleUrl = "标题的超链接";
     public String text = "测试分享的文本";
-    public String imageUrl = "http://c.hiphotos.baidu.com/baike/c0%3Dbaike933%2C5%2C5%2C933%2C330/sign=c31a0032d6a20cf4529df68d17602053/d62a6059252dd42ab2ac861e053b5bb5c8eab8da.jpg";
+    public String imageUrl = "http://7sby7r.com1.z0.glb.clouddn.com/CYSJ_02.jpg";
     public String site = Constants.HEAD_HOST;
     public String siteUrl = Constants.HEAD_HOST;
     public Bitmap bitmap = null;
@@ -47,7 +47,7 @@ public class SharedUtils {
         SinaWeibo.ShareParams sp = new SinaWeibo.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-        sp.setTitleUrl(titleUrl);
+//        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);
@@ -64,7 +64,7 @@ public class SharedUtils {
         Wechat.ShareParams sp = new Wechat.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-        sp.setTitleUrl(titleUrl);
+//        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);
@@ -80,7 +80,7 @@ public class SharedUtils {
         WechatFavorite.ShareParams sp = new WechatFavorite.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
         sp.setTitle(title);
-        sp.setTitleUrl(titleUrl);
+//        sp.setTitleUrl(titleUrl);
         sp.setText(text);
         sp.setImageData(bitmap);
         sp.setUrl(titleUrl);

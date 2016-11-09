@@ -139,7 +139,7 @@ public class GamesDetailsActivity extends BaseActivity {
     private void showDialog() {
         if (sharedDialog == null) {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            sharedDialog.setTitleUrl(Constants.HOST + "app_share/game?game_id=" + gameId);
+            sharedDialog.setTitleUrl(Constants.SHARE_HOST + "app_share/game?game_id=" + gameId);
             String title = getString(R.string.signed_up) + textViewTime.getText().toString() + textViewPlace.getText().toString();
             sharedDialog.setTitle(title);
             sharedDialog.setText(getString(R.string.kt_game_top));

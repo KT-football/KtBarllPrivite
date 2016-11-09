@@ -167,7 +167,7 @@ public class TrainOverActivity extends BaseActivity {
     private void showDialog() {
         if (dialog == null) {
             dialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            dialog.setTitleUrl("http://ktfootball.com/app_share/study_finished?now_level_name="+studyFinished.now_level_name+"&total_finished_times="+videos.total_times+"&finished_times="+studyFinished.finished_times+"&next_need_exp="+studyFinished.next_need_exp+"&now_level_progress=" +studyFinished.now_level_progress);
+            dialog.setTitleUrl(Constants.SHARE_HOST+"app_share/study_finished?now_level_name="+studyFinished.now_level_name+"&total_finished_times="+videos.total_times+"&finished_times="+studyFinished.finished_times+"&next_need_exp="+studyFinished.next_need_exp+"&now_level_progress=" +studyFinished.now_level_progress);
             dialog.setTitle(getString(R.string.kt_ok) + appCartoon.name + getString(R.string.train_have)+(Float.parseFloat(studyFinished.next_need_exp) - Float.parseFloat(studyFinished.now_level_progress)));
             dialog.setText(getString(R.string.train_detail));
         }

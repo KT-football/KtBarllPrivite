@@ -9,7 +9,7 @@ public class Constants {
 
 
     public static final String HOST = "http://api.ktfootball.com/";
-
+    public static final String SHARE_HOST = "http://wx.ktfootball.com/";
     //    public static final String HEAD_HOST = "http://www.ktfootball.com";
     public static final String HEAD_HOST = "";
     //    public static final String KTHOST = HOST + "/apiv2/";

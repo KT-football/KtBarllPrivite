@@ -645,7 +645,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
     private void showDialog() {
         if (sharedDialog == null) {
             sharedDialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            sharedDialog.setTitleUrl(Constants.HOST + "app_share/game_video?game_video_id=" + video);
+            sharedDialog.setTitleUrl(Constants.SHARE_HOST + "app_share/game_video?game_video_id=" + video);
             String title = getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + getString(R.string.from_kt);
             sharedDialog.setTitle(title);
             sharedDialog.setText(getString(R.string.kt_game_vodep_top));
@@ -782,7 +782,7 @@ public class VideoDetailsActivity extends BaseToolBarActivity2 {
             Intent intent = new Intent(getThis(), HengHuadActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("info", videoDetailsData);
-            bundle.putString("url", Constants.HOST + "app_share/game_video?game_video_id=" + video);
+            bundle.putString("url", Constants.SHARE_HOST + "app_share/game_video?game_video_id=" + video);
             bundle.putString("title", getSharedString() + " @" + videoDetailsData.local + " @" + score + " ," + getString(R.string.from_kt));
             intent.putExtras(bundle);
             startActivity(intent);

@@ -334,7 +334,7 @@ public class UserProfiles extends BaseActivity {
     private void showDialog() {
         if (dialog == null) {
             dialog = new SharedDialog(this, R.style.transparentFrameWindowStyle);
-            dialog.setTitleUrl("http://ktfootball.com/app_share/user?user_id=" + userId);
+            dialog.setTitleUrl(Constants.SHARE_HOST+"app_share/user?user_id=" + userId);
             dialog.setTitle(getString(R.string.country_top) + rankTextView.getText() + getString(R.string.rank));
             dialog.setText(getString(R.string.my_dangan));
         }

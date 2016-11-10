@@ -156,8 +156,12 @@ public class SharedUtils {
     public void Shared_facebook(PlatformActionListener paListener) {
         Facebook.ShareParams sp = new Facebook.ShareParams();
         sp.setShareType(Platform.SHARE_WEBPAGE);
+        sp.setTitle(title);
+        sp.setTitleUrl(titleUrl);
         sp.setText(text);
-        sp.setImageUrl(imageUrl);
+        sp.setImageData(bitmap);
+        sp.setUrl(titleUrl);
+        LogUtils.e(titleUrl);
 
         Platform facebook = ShareSDK.getPlatform(Facebook.NAME);
         facebook.setPlatformActionListener(paListener); // 设置分享事件回调
